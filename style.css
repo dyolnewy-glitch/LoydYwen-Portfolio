@@ -1,0 +1,620 @@
+/* =========================
+   RESET DEFAULT STYLES
+========================= */
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+html {
+  scroll-behavior:smooth;
+}
+
+
+body {
+
+  font-family:Arial, sans-serif;
+
+  line-height:1.6;
+
+  color:#333;
+
+  background:#f4f4f4;
+
+}
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+
+header {
+
+  background-color:#008080;
+
+  color:white;
+
+  padding:15px 0;
+
+  position:sticky;
+
+  top:0;
+
+  z-index:1000;
+
+  box-shadow:0 2px 5px rgba(0,0,0,0.3);
+
+}
+
+
+
+header .container {
+
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  max-width:1100px;
+
+  margin:auto;
+
+  padding:0 20px;
+
+
+}
+
+
+
+header .logo img {
+
+
+  height:50px;
+
+  width:auto;
+
+
+}
+
+
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+
+header nav ul {
+
+
+  display:flex;
+
+  list-style:none;
+
+
+}
+
+
+
+header nav ul li {
+
+
+  margin-left:25px;
+
+
+}
+
+
+
+header nav ul li a {
+
+
+  color:white;
+
+  text-decoration:none;
+
+  font-weight:bold;
+
+  padding:5px 10px;
+
+  border-radius:4px;
+
+  transition:.3s;
+
+
+}
+
+
+
+header nav ul li a:hover {
+
+
+  background:#006666;
+
+
+}
+
+
+
+
+/* ACTIVE LINK */
+
+
+header nav ul li a.active {
+
+
+  background:#ffcc00;
+
+  color:#333;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+
+
+.menu-toggle {
+
+
+  display:none;
+
+  cursor:pointer;
+
+
+}
+
+
+
+.menu-toggle span {
+
+
+  display:block;
+
+  width:30px;
+
+  height:3px;
+
+  background:white;
+
+  margin:6px 0;
+
+  transition:.3s;
+
+
+}
+
+
+
+
+
+.menu-toggle.active span:nth-child(1){
+
+  transform:rotate(45deg) translate(6px,6px);
+
+}
+
+
+
+.menu-toggle.active span:nth-child(2){
+
+  opacity:0;
+
+}
+
+
+
+.menu-toggle.active span:nth-child(3){
+
+  transform:rotate(-45deg) translate(6px,-6px);
+
+}
+
+
+
+
+
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+
+section {
+
+
+  padding:80px 20px;
+
+  max-width:1100px;
+
+  margin:auto;
+
+  text-align:center;
+
+
+}
+
+
+
+section h2 {
+
+
+  font-size:30px;
+
+  margin-bottom:30px;
+
+
+}
+
+
+
+section p {
+
+
+  font-size:18px;
+
+  max-width:800px;
+
+  margin:0 auto 20px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+
+.btn {
+
+
+  text-decoration:none;
+
+  background:#008080;
+
+  color:white;
+
+  padding:12px 25px;
+
+  border-radius:5px;
+
+  font-weight:bold;
+
+  transition:.3s;
+
+
+}
+
+
+
+.btn:hover {
+
+
+  background:#006666;
+
+  transform:translateY(-2px);
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+
+footer {
+
+
+  background:#008080;
+
+  color:white;
+
+  padding:30px 0;
+
+  text-align:center;
+
+
+}
+
+
+
+footer .social-links a {
+
+
+  color:white;
+
+  text-decoration:none;
+
+  margin:0 10px;
+
+  font-weight:bold;
+
+  transition:.3s;
+
+
+}
+
+
+
+footer .social-links a:hover {
+
+
+  color:#ffcc00;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   HEADER SCROLL EFFECT
+========================= */
+
+
+header.scrolled {
+
+
+  padding:10px 0;
+
+  background:#006666;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+
+@keyframes fadeInUp {
+
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+section {
+
+
+animation:fadeInUp .8s ease forwards;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+
+@media screen and (max-width:768px){
+
+
+
+header .container {
+
+
+  flex-direction:row;
+
+  justify-content:space-between;
+
+
+}
+
+
+
+
+.menu-toggle {
+
+
+  display:block;
+
+
+}
+
+
+
+
+header nav {
+
+
+  position:absolute;
+
+  top:80px;
+
+  left:0;
+
+  width:100%;
+
+  background:#008080;
+
+  display:none;
+
+
+}
+
+
+
+
+header nav.show {
+
+
+  display:block;
+
+
+}
+
+
+
+
+
+header nav ul {
+
+
+  display:flex;
+
+  flex-direction:column;
+
+  width:100%;
+
+
+}
+
+
+
+
+header nav ul li {
+
+
+  margin:0;
+
+  border-bottom:1px solid rgba(255,255,255,.3);
+
+
+}
+
+
+
+
+header nav ul li a {
+
+
+  display:block;
+
+  padding:15px 20px;
+
+  border-radius:0;
+
+
+}
+
+
+
+
+header nav ul li a.active {
+
+
+  background:#ffcc00;
+
+  color:#333;
+
+
+}
+
+
+
+
+
+section h2 {
+
+
+  font-size:26px;
+
+
+}
+
+
+
+section p {
+
+
+  font-size:16px;
+
+
+}
+
+
+}
+
+
+
+
+
+
+/* SMALL PHONE */
+
+
+@media screen and (max-width:480px){
+
+
+header .logo img {
+
+
+  height:40px;
+
+
+}
+
+
+
+section {
+
+
+  padding:60px 15px;
+
+
+}
+
+
+}

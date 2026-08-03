@@ -1,0 +1,571 @@
+/* =====================================
+   ABOUT SECTION
+===================================== */
+
+.about-section {
+    padding: 120px 20px 70px;
+    background: #f5f7fa;
+}
+
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+
+
+/* =====================================
+   TITLE
+===================================== */
+
+.about-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+.about-title h1 {
+    font-size: 38px;
+    color: #008080;
+    margin: 0;
+    font-weight: 700;
+}
+
+
+
+.edit-btn {
+
+    background: #008080;
+    color: white;
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: .3s;
+
+}
+
+
+.edit-btn:hover {
+
+    background:#006666;
+
+}
+
+
+
+
+
+/* =====================================
+   IMAGE + TEXT
+===================================== */
+
+
+.about-main {
+
+    display:flex;
+
+    gap:45px;
+
+    align-items:flex-start;
+
+}
+
+
+
+
+
+/* =====================================
+   IMAGE
+===================================== */
+
+
+.about-image {
+
+    width:280px;
+
+    text-align:center;
+
+    flex-shrink:0;
+
+}
+
+
+
+.about-image img {
+
+    width:250px;
+
+    height:330px;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    border-radius:18px;
+
+    border:5px solid white;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+
+
+
+/* =====================================
+   CHANGE PHOTO BUTTON
+===================================== */
+
+
+.change-photo-btn {
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    width:250px;
+
+    padding:10px 18px;
+
+
+    background:#008080;
+
+    color:white;
+
+
+    border:none;
+
+    border-radius:8px;
+
+
+    cursor:pointer;
+
+
+    font-size:15px;
+
+
+    transition:.3s;
+
+}
+
+
+
+.change-photo-btn:hover {
+
+    background:#006666;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   ABOUT TEXT
+===================================== */
+
+
+.about-text {
+
+    flex:1;
+
+}
+
+
+
+.about-text p {
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#333;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.about-text strong {
+
+    color:#008080;
+
+}
+
+
+
+
+
+/* =====================================
+   FUN FACTS
+===================================== */
+
+
+.funfacts {
+
+    margin-top:50px;
+
+    padding-top:30px;
+
+    border-top:2px solid #eeeeee;
+
+}
+
+
+
+.funfacts h2 {
+ font-size: 38px;
+    color: #008080;
+    margin: 0;
+    font-weight: 700;
+}
+
+
+
+.funfacts p {
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    color:#333;
+
+}
+
+
+
+
+
+/* =====================================
+   EDIT OVERLAY
+===================================== */
+
+
+.edit-overlay {
+
+    display:none;
+
+
+    position:fixed;
+
+
+    top:0;
+
+    left:0;
+
+
+    width:100%;
+
+    height:100%;
+
+
+    background:rgba(0,0,0,.55);
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    z-index:9999;
+
+}
+
+
+
+
+
+.edit-modal {
+
+    width:90%;
+
+    max-width:750px;
+
+
+    background:white;
+
+
+    padding:35px;
+
+
+    border-radius:18px;
+
+
+    max-height:90vh;
+
+
+    overflow-y:auto;
+
+}
+
+
+
+
+.edit-modal h2 {
+
+    color:#222;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.edit-modal textarea {
+
+
+    width:100%;
+
+
+    min-height:180px;
+
+
+    padding:15px;
+
+
+    border:1px solid #ccc;
+
+
+    border-radius:10px;
+
+
+    resize:vertical;
+
+
+    font-size:16px;
+
+
+    line-height:1.7;
+
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+
+
+/* =====================================
+   MODAL BUTTONS
+===================================== */
+
+
+.modal-buttons {
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+}
+
+
+
+.save-btn,
+.cancel-btn {
+
+
+    padding:11px 25px;
+
+
+    border:none;
+
+
+    border-radius:8px;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    font-size:15px;
+
+}
+
+
+
+.save-btn {
+
+    background:#008080;
+
+}
+
+
+
+.save-btn:hover {
+
+    background:#006666;
+
+}
+
+
+
+
+.cancel-btn {
+
+    background:#dc3545;
+
+}
+
+
+
+.cancel-btn:hover {
+
+    background:#b52a37;
+
+}
+
+
+
+
+
+
+/* =====================================
+   RESPONSIVE TABLET
+===================================== */
+
+
+@media(max-width:850px){
+
+
+.about-main {
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+
+.about-text {
+
+    width:100%;
+
+}
+
+
+
+.about-container {
+
+    padding:25px;
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+
+@media(max-width:500px){
+
+
+.about-section {
+
+    padding:100px 15px 50px;
+
+}
+
+
+
+.about-container {
+
+    padding:20px;
+
+}
+
+
+
+.about-title h1 {
+
+    font-size:28px;
+
+}
+
+
+
+.edit-btn {
+
+    padding:8px 12px;
+
+}
+
+
+
+.about-image img {
+
+    width:210px;
+
+    height:280px;
+
+}
+
+
+
+.change-photo-btn {
+
+    width:210px;
+
+}
+
+
+
+.edit-modal {
+
+    padding:20px;
+
+}
+
+
+
+.modal-buttons {
+
+    flex-direction:column;
+
+}
+
+
+
+.save-btn,
+.cancel-btn {
+
+    width:100%;
+
+}
+
+
+}
