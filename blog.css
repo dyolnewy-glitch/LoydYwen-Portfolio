@@ -2,49 +2,32 @@
    BLOG SECTION
 ===================================== */
 
-.blog{
-
-    padding:80px 20px;
-
-    background:#f4f6f8;
-
-    min-height:100vh;
-
+.blog {
+    padding: 80px 20px;
+    background: #f4f6f8;
+    min-height: 100vh;
 }
 
 
 /* =====================================
-   BLOG HEADING
+   TITLE
 ===================================== */
 
-.blog-heading{
-
-    text-align:center;
-
-    margin-bottom:35px;
-
-    position:relative;
-
+.blog-heading {
+    text-align: center;
+    margin-bottom: 35px;
+    position: relative;
 }
 
-
-.blog-heading h1{
-
-    font-size:42px;
-
-    color:#008080;
-
-    margin-bottom:10px;
-
+.blog-heading h1 {
+    font-size: 42px;
+    color: #008080;
+    margin: 0 0 10px;
 }
 
-
-.blog-heading p{
-
-    color:#555;
-
-    margin:0;
-
+.blog-heading p {
+    color: #555;
+    margin: 0;
 }
 
 
@@ -52,45 +35,33 @@
    ADD BLOG BUTTON
 ===================================== */
 
-.add-btn{
+.add-btn {
+    position: fixed;
+    top: 100px;
+    right: 30px;
 
-    position:fixed;
+    z-index: 1000;
 
-    top:100px;
+    background: #008080;
+    color: white;
 
-    right:30px;
+    border: none;
 
-    z-index:1000;
+    padding: 12px 22px;
 
-    background:#008080;
+    border-radius: 30px;
 
-    color:white;
+    cursor: pointer;
 
-    border:none;
+    font-weight: bold;
 
-    padding:12px 22px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-
-    white-space:nowrap;
-
-    transition:.3s;
-
+    white-space: nowrap;
 }
 
-
-.add-btn:hover{
-
-    background:#006666;
-
-    transform:translateY(-2px);
-
+.add-btn:hover {
+    background: #006666;
 }
 
 
@@ -98,48 +69,29 @@
    SEARCH AND FILTER
 ===================================== */
 
-.blog-tools{
+.blog-tools {
+    max-width: 1200px;
 
-    max-width:1200px;
+    margin: 70px auto 35px;
 
-    margin:0 auto 35px;
+    display: flex;
 
-    display:flex;
-
-    gap:15px;
-
+    gap: 15px;
 }
-
 
 .blog-tools input,
+.blog-tools select {
+    flex: 1;
 
-.blog-tools select{
+    padding: 12px;
 
-    flex:1;
+    border-radius: 10px;
 
-    padding:12px;
+    border: 1px solid #ccc;
 
-    border-radius:10px;
+    font-size: 15px;
 
-    border:1px solid #ccc;
-
-    font-size:15px;
-
-    outline:none;
-
-    background:white;
-
-}
-
-
-.blog-tools input:focus,
-
-.blog-tools select:focus{
-
-    border-color:#008080;
-
-    box-shadow:0 0 0 2px rgba(0,128,128,.1);
-
+    background: white;
 }
 
 
@@ -147,16 +99,14 @@
    SECTION TITLE
 ===================================== */
 
-.section-title{
+.section-title {
+    max-width: 1200px;
 
-    max-width:1200px;
+    margin: 30px auto 20px;
 
-    margin:30px auto 20px;
+    color: #008080;
 
-    color:#008080;
-
-    font-size:28px;
-
+    font-size: 28px;
 }
 
 
@@ -164,19 +114,17 @@
    BLOG GRID
 ===================================== */
 
-.blog-container{
+.blog-container {
+    max-width: 1200px;
 
-    max-width:1200px;
+    margin: auto;
 
-    margin:auto;
-
-    display:grid;
+    display: grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
+        repeat(auto-fit, minmax(280px, 1fr));
 
-    gap:30px;
-
+    gap: 30px;
 }
 
 
@@ -184,31 +132,23 @@
    BLOG CARD
 ===================================== */
 
-.blog-card{
+.blog-card {
+    background: white;
 
-    background:white;
+    border-radius: 15px;
 
-    border-radius:15px;
-
-    overflow:hidden;
+    overflow: hidden;
 
     box-shadow:
-    0 8px 20px rgba(0,0,0,.12);
+        0 8px 20px rgba(0, 0, 0, .12);
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:.3s;
-
+    transition: .3s;
 }
 
-
-.blog-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:
-    0 12px 25px rgba(0,0,0,.16);
-
+.blog-card:hover {
+    transform: translateY(-5px);
 }
 
 
@@ -216,18 +156,14 @@
    BLOG IMAGE
 ===================================== */
 
-.blog-card-image{
+.blog-card-image {
+    width: 100%;
 
-    width:100%;
+    aspect-ratio: 1 / 1;
 
-    aspect-ratio:1/1;
+    object-fit: cover;
 
-    object-fit:cover;
-
-    background:#eee;
-
-    display:block;
-
+    background: #eee;
 }
 
 
@@ -235,57 +171,42 @@
    BLOG INFO
 ===================================== */
 
-.blog-info{
-
-    padding:20px;
-
+.blog-info {
+    padding: 20px;
 }
 
+.blog-category {
+    display: inline-block;
 
-.blog-category{
+    background: #e0f2f1;
 
-    display:inline-block;
+    color: #008080;
 
-    background:#e0f2f1;
+    padding: 5px 12px;
 
-    color:#008080;
+    border-radius: 20px;
 
-    padding:5px 12px;
+    font-size: 12px;
 
-    border-radius:20px;
+    font-weight: bold;
 
-    font-size:12px;
-
-    font-weight:bold;
-
-    margin-bottom:10px;
-
+    margin-bottom: 10px;
 }
 
+.blog-info h2 {
+    color: #008080;
 
-.blog-info h2{
+    font-size: 22px;
 
-    color:#008080;
-
-    font-size:22px;
-
-    margin:5px 0 10px;
-
-    line-height:1.3;
-
+    margin: 5px 0 10px;
 }
 
+.blog-info p {
+    color: #666;
 
-.blog-info p{
+    font-size: 14px;
 
-    color:#666;
-
-    font-size:14px;
-
-    line-height:1.5;
-
-    margin:0;
-
+    line-height: 1.5;
 }
 
 
@@ -293,56 +214,32 @@
    ACTION BUTTONS
 ===================================== */
 
-.actions{
+.actions {
+    display: flex;
 
-    display:flex;
+    gap: 10px;
 
-    gap:10px;
-
-    padding:0 20px 20px;
-
+    padding: 0 20px 20px;
 }
 
+.actions button {
+    border: none;
 
-.actions button{
+    padding: 8px 15px;
 
-    border:none;
+    border-radius: 6px;
 
-    padding:8px 15px;
+    color: white;
 
-    border-radius:6px;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-    transition:.2s;
-
+    cursor: pointer;
 }
 
-
-.actions button:hover{
-
-    opacity:.85;
-
-    transform:translateY(-1px);
-
+.edit {
+    background: #ff9800;
 }
 
-
-.edit{
-
-    background:#ff9800;
-
-}
-
-
-.delete{
-
-    background:#e53935;
-
+.delete {
+    background: #e53935;
 }
 
 
@@ -350,103 +247,65 @@
    FEATURED BLOG
 ===================================== */
 
-#featuredContainer{
+#featuredContainer {
+    max-width: 1200px;
 
-    max-width:1200px;
+    margin: auto;
 
-    margin:auto;
+    display: flex;
 
-    display:flex;
+    gap: 20px;
 
-    gap:20px;
-
-    overflow:hidden;
-
+    overflow: hidden;
 }
 
+.featured-card {
+    background: white;
 
-.featured-card{
+    border-radius: 15px;
 
-    background:white;
-
-    border-radius:15px;
-
-    overflow:hidden;
+    overflow: hidden;
 
     box-shadow:
-    0 8px 20px rgba(0,0,0,.12);
+        0 8px 20px rgba(0, 0, 0, .12);
 
-    cursor:pointer;
+    cursor: pointer;
 
-    flex:1;
+    flex: 1;
 
-    min-width:0;
+    min-width: 0;
 
-    transition:.3s;
-
+    transition: .3s;
 }
 
-
-.featured-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:
-    0 12px 25px rgba(0,0,0,.16);
-
+.featured-card:hover {
+    transform: translateY(-5px);
 }
 
+.featured-card img {
+    width: 100%;
 
-.featured-card img{
+    aspect-ratio: 16 / 9;
 
-    width:100%;
-
-    aspect-ratio:16/9;
-
-    object-fit:cover;
-
-    display:block;
-
+    object-fit: cover;
 }
 
+.featured-badge {
+    display: inline-block;
 
-.featured-badge{
+    margin: 15px;
 
-    display:inline-block;
+    background: #008080;
 
-    margin:15px;
+    color: white;
 
-    background:#008080;
+    padding: 6px 12px;
 
-    color:white;
+    border-radius: 20px;
 
-    padding:6px 12px;
+    font-size: 13px;
 
-    border-radius:20px;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-}
-
-
-/* =====================================
-   NO BLOG
-===================================== */
-
-#noBlog{
-
-    max-width:1200px;
-
-    margin:30px auto;
-
-    text-align:center;
-
-    color:#777;
-
-    font-size:16px;
-
+    font-weight: bold;
 }
 
 
@@ -454,189 +313,94 @@
    MODAL
 ===================================== */
 
-.modal{
+.modal {
+    display: none;
 
-    display:none;
+    position: fixed;
 
-    position:fixed;
+    inset: 0;
 
-    inset:0;
+    background: rgba(0, 0, 0, .5);
 
-    background:rgba(0,0,0,.5);
+    z-index: 2000;
 
-    z-index:2000;
+    padding-top: 100px;
 
-    padding-top:100px;
-
-    overflow-y:auto;
-
+    overflow-y: auto;
 }
 
+.modal-box {
+    background: white;
 
-.modal-box{
+    width: 90%;
 
-    background:white;
+    max-width: 600px;
 
-    width:90%;
+    margin: 0 auto 50px;
 
-    max-width:600px;
+    padding: 30px;
 
-    margin:0 auto 50px;
-
-    padding:30px;
-
-    border-radius:15px;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.25);
-
+    border-radius: 15px;
 }
 
-
-.modal-box h2{
-
-    color:#008080;
-
-    margin-top:0;
-
-    margin-bottom:20px;
-
+.modal-box h2 {
+    color: #008080;
 }
-
 
 .modal-box input,
-
 .modal-box textarea,
+.modal-box select {
+    width: 100%;
 
-.modal-box select{
+    padding: 12px;
 
-    width:100%;
+    margin: 8px 0;
 
-    padding:12px;
+    border-radius: 8px;
 
-    margin:8px 0;
+    border: 1px solid #ccc;
 
-    border-radius:8px;
-
-    border:1px solid #ccc;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    box-sizing:border-box;
-
+    box-sizing: border-box;
 }
 
+.modal-box textarea {
+    height: 180px;
 
-.modal-box input:focus,
-
-.modal-box textarea:focus,
-
-.modal-box select:focus{
-
-    outline:none;
-
-    border-color:#008080;
-
-    box-shadow:0 0 0 2px rgba(0,128,128,.1);
-
+    resize: vertical;
 }
 
+.modal-actions {
+    display: flex;
 
-.modal-box textarea{
+    gap: 10px;
 
-    height:180px;
-
-    resize:vertical;
-
+    margin-top: 20px;
 }
 
+.save-btn {
+    background: #008080;
 
-.modal-box label{
+    color: white;
 
-    display:block;
+    border: none;
 
-    margin-top:12px;
+    padding: 12px 20px;
 
-    color:#555;
+    border-radius: 8px;
 
+    cursor: pointer;
 }
 
+.cancel-btn {
+    background: #ccc;
 
-.modal-box label input[type="checkbox"]{
+    border: none;
 
-    width:auto;
+    padding: 12px 20px;
 
-    margin-right:8px;
+    border-radius: 8px;
 
-}
-
-
-/* =====================================
-   MODAL ACTIONS
-===================================== */
-
-.modal-actions{
-
-    display:flex;
-
-    gap:10px;
-
-    margin-top:20px;
-
-}
-
-
-.save-btn{
-
-    background:#008080;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 20px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-}
-
-
-.save-btn:hover{
-
-    background:#006666;
-
-}
-
-
-.cancel-btn{
-
-    background:#ccc;
-
-    color:#333;
-
-    border:none;
-
-    padding:12px 20px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-}
-
-
-.cancel-btn:hover{
-
-    background:#bbb;
-
+    cursor: pointer;
 }
 
 
@@ -644,27 +408,20 @@
    IMAGE PREVIEW
 ===================================== */
 
-.image-preview-container{
+.image-preview-container {
+    display: none;
 
-    display:none;
-
-    margin-top:10px;
-
+    margin-top: 10px;
 }
 
+.image-preview-container img {
+    width: 100%;
 
-.image-preview-container img{
+    max-height: 250px;
 
-    width:100%;
+    object-fit: cover;
 
-    max-height:250px;
-
-    object-fit:cover;
-
-    border-radius:10px;
-
-    display:block;
-
+    border-radius: 10px;
 }
 
 
@@ -672,16 +429,14 @@
    BLOG PREVIEW OVERLAY
 ===================================== */
 
-.blog-overlay{
+.blog-overlay {
+    position: fixed;
 
-    position:fixed;
+    inset: 0;
 
-    inset:0;
+    background: rgba(0, 0, 0, .45);
 
-    background:rgba(0,0,0,.45);
-
-    z-index:2500;
-
+    z-index: 2500;
 }
 
 
@@ -689,48 +444,35 @@
    BLOG PREVIEW
 ===================================== */
 
-.blog-preview{
+.blog-preview {
+    position: fixed;
 
-    position:fixed;
+    top: 90px;
 
-    top:90px;
+    left: 50%;
 
-    left:50%;
+    transform: translateX(-50%);
 
-    transform:translateX(-50%);
+    width: 90%;
 
-    width:90%;
+    max-width: 900px;
 
-    max-width:900px;
+    max-height: 80vh;
 
-    max-height:80vh;
+    overflow-y: auto;
 
-    overflow-y:auto;
+    background: white;
 
-    background:white;
+    padding: 30px;
 
-    padding:30px;
+    border-radius: 15px;
 
-    border-radius:15px;
-
-    z-index:3000;
+    z-index: 3000;
 
     box-shadow:
-    0 10px 40px rgba(0,0,0,.3);
+        0 10px 40px rgba(0, 0, 0, .3);
 
-    box-sizing:border-box;
-
-}
-
-
-/* =====================================
-   PREVIEW CONTENT
-===================================== */
-
-.preview-content{
-
-    width:100%;
-
+    box-sizing: border-box;
 }
 
 
@@ -738,20 +480,16 @@
    PREVIEW IMAGE
 ===================================== */
 
-.blog-preview img{
+.blog-preview img {
+    width: 100%;
 
-    width:100%;
+    max-height: 450px;
 
-    max-height:450px;
+    object-fit: contain;
 
-    object-fit:contain;
+    display: block;
 
-    display:block;
-
-    margin-bottom:25px;
-
-    border-radius:10px;
-
+    margin-bottom: 25px;
 }
 
 
@@ -759,16 +497,12 @@
    PREVIEW TITLE
 ===================================== */
 
-.blog-preview h2{
+.blog-preview h2 {
+    color: #008080;
 
-    color:#008080;
+    font-size: 30px;
 
-    font-size:30px;
-
-    margin:15px 0;
-
-    line-height:1.3;
-
+    margin: 15px 0;
 }
 
 
@@ -776,24 +510,22 @@
    PREVIEW CATEGORY
 ===================================== */
 
-.blog-preview .blog-category{
+.blog-preview .blog-category {
+    display: inline-block;
 
-    display:inline-block;
+    background: #e0f2f1;
 
-    background:#e0f2f1;
+    color: #008080;
 
-    color:#008080;
+    padding: 6px 12px;
 
-    padding:6px 12px;
+    border-radius: 20px;
 
-    border-radius:20px;
+    font-size: 12px;
 
-    font-size:12px;
+    font-weight: bold;
 
-    font-weight:bold;
-
-    margin-bottom:10px;
-
+    margin-bottom: 10px;
 }
 
 
@@ -801,14 +533,12 @@
    PREVIEW DATE
 ===================================== */
 
-.preview-date{
+.preview-date {
+    color: #777;
 
-    color:#777;
+    font-size: 14px;
 
-    font-size:14px;
-
-    margin-bottom:25px;
-
+    margin-bottom: 25px;
 }
 
 
@@ -816,42 +546,26 @@
    PREVIEW DESCRIPTION
 ===================================== */
 
-.preview-description{
-
-    margin-top:20px;
-
+.preview-description {
+    margin-top: 20px;
 }
 
+.preview-description p {
+    color: #444;
 
-/* =====================================
-   EACH PARAGRAPH
-===================================== */
+    font-size: 16px;
 
-.preview-description p{
+    line-height: 1.8;
 
-    color:#444;
+    margin-top: 0;
 
-    font-size:16px;
+    margin-bottom: 22px;
 
-    line-height:1.8;
-
-    margin-top:0;
-
-    margin-bottom:22px;
-
-    text-align:justify;
-
+    text-align: justify;
 }
 
-
-/* =====================================
-   LAST PARAGRAPH
-===================================== */
-
-.preview-description p:last-child{
-
-    margin-bottom:0;
-
+.preview-description p:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -859,80 +573,14 @@
    FOOTER
 ===================================== */
 
-footer{
+footer {
+    background: #008080;
 
-    background:#008080;
+    color: white;
 
-    color:white;
+    text-align: center;
 
-    text-align:center;
-
-    padding:25px;
-
-}
-
-
-footer p{
-
-    margin:0 0 10px;
-
-}
-
-
-.social-links{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-}
-
-
-.social-links a{
-
-    color:white;
-
-    text-decoration:none;
-
-}
-
-
-.social-links a:hover{
-
-    text-decoration:underline;
-
-}
-
-
-/* =====================================
-   TABLET
-===================================== */
-
-@media(max-width:900px){
-
-    .blog{
-
-        padding:70px 20px;
-
-    }
-
-
-    .blog-container{
-
-        grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-    }
-
-
-    #featuredContainer{
-
-        gap:20px;
-
-    }
-
+    padding: 25px;
 }
 
 
@@ -940,444 +588,201 @@ footer p{
    MOBILE
 ===================================== */
 
-@media(max-width:768px){
+@media (max-width: 768px) {
 
-    .blog{
-
-        /*
-        Extra top space para hindi tumama
-        ang Add Blog button sa heading.
-        */
-
-        padding:150px 15px 60px;
-
+    .blog {
+        padding: 60px 15px;
     }
 
 
-    /* =================================
-       BLOG HEADING
+    /* ================================
+       BLOG TITLE
     ================================= */
 
-    .blog-heading{
+    .blog-heading {
+        margin-bottom: 0;
 
-        margin-bottom:30px;
+        padding-right: 0;
+    }
 
-        padding:0 5px;
+    .blog-heading h1 {
+        font-size: 32px;
 
+        margin-bottom: 8px;
+    }
+
+    .blog-heading p {
+        font-size: 14px;
+
+        line-height: 1.6;
     }
 
 
-    .blog-heading h1{
-
-        font-size:32px;
-
-        margin-bottom:10px;
-
-        line-height:1.2;
-
-    }
-
-
-    .blog-heading p{
-
-        font-size:14px;
-
-        line-height:1.6;
-
-    }
-
-
-    /* =================================
-       ADD BLOG BUTTON MOBILE
+    /* ================================
+       ADD BUTTON
+       
+       IMPORTANT:
+       HINDI NA FIXED SA MOBILE
+       SARILING ROW SIYA
     ================================= */
 
-    .add-btn{
+    .add-btn {
+        position: static;
 
-        /*
-        Hindi na didikit sa My Blog.
-        */
+        display: block;
 
-        position:absolute;
+        width: fit-content;
 
-        top:115px;
+        margin: 20px auto 25px;
 
-        right:15px;
+        padding: 11px 20px;
 
-        padding:10px 16px;
-
-        font-size:14px;
-
-        border-radius:25px;
-
+        font-size: 14px;
     }
 
 
-    /*
-    Important:
-    Button stays above the heading
-    with enough space.
-    */
-
-    /* =================================
+    /* ================================
        SEARCH AND FILTER
     ================================= */
 
-    .blog-tools{
+    .blog-tools {
+        width: 100%;
 
-        flex-direction:column;
+        margin: 0 auto 30px;
 
-        gap:10px;
+        display: flex;
 
-        margin-bottom:30px;
+        flex-direction: column;
 
+        gap: 10px;
     }
-
 
     .blog-tools input,
+    .blog-tools select {
+        width: 100%;
 
-    .blog-tools select{
-
-        width:100%;
-
-        box-sizing:border-box;
-
+        box-sizing: border-box;
     }
 
 
-    /* =================================
+    /* ================================
        SECTION TITLE
     ================================= */
 
-    .section-title{
+    .section-title {
+        font-size: 24px;
 
-        font-size:24px;
+        margin-top: 30px;
 
-        margin:30px auto 18px;
-
+        margin-bottom: 18px;
     }
 
 
-    /* =================================
-       BLOG GRID
+    /* ================================
+       LATEST BLOGS
     ================================= */
 
-    .blog-container{
+    .blog-container {
+        grid-template-columns: 1fr;
 
-        grid-template-columns:1fr;
-
-        gap:20px;
-
+        gap: 20px;
     }
 
 
-    /* =================================
-       FEATURED SLIDER
+    /* ================================
+       FEATURED BLOG SLIDER
     ================================= */
 
-    #featuredContainer{
+    #featuredContainer {
+        overflow-x: auto;
 
-        overflow-x:auto;
+        scroll-snap-type: x mandatory;
 
-        scroll-snap-type:x mandatory;
+        scrollbar-width: none;
 
-        scrollbar-width:none;
+        padding-bottom: 10px;
+    }
 
-        padding-bottom:10px;
+    #featuredContainer::-webkit-scrollbar {
+        display: none;
+    }
 
-        gap:15px;
+    .featured-card {
+        flex: 0 0 85%;
 
+        scroll-snap-align: start;
     }
 
 
-    #featuredContainer::-webkit-scrollbar{
-
-        display:none;
-
-    }
-
-
-    .featured-card{
-
-        flex:0 0 85%;
-
-        scroll-snap-align:start;
-
-    }
-
-
-    /* =================================
-       BLOG CARD
+    /* ================================
+       BLOG PREVIEW
     ================================= */
 
-    .blog-card{
+    .blog-preview {
+        top: 70px;
 
-        width:100%;
+        width: 94%;
 
+        max-height: 84vh;
+
+        padding: 20px;
+
+        border-radius: 12px;
+    }
+
+    .blog-preview h2 {
+        font-size: 24px;
+
+        line-height: 1.3;
+    }
+
+    .blog-preview img {
+        max-height: 300px;
+
+        margin-bottom: 20px;
     }
 
 
-    .blog-card-image{
+    /* ================================
+       PREVIEW PARAGRAPHS
+    ================================= */
 
-        aspect-ratio:1/1;
+    .preview-description p {
+        font-size: 15px;
 
+        line-height: 1.8;
+
+        margin-bottom: 22px;
+
+        text-align: left;
     }
 
 
-    .blog-info{
+    /* ================================
+       MODAL
+    ================================= */
 
-        padding:18px;
+    .modal {
+        padding-top: 70px;
+    }
 
+    .modal-box {
+        width: 94%;
+
+        padding: 22px;
+
+        margin-bottom: 30px;
+
+        box-sizing: border-box;
     }
 
 
-    .blog-info h2{
-
-        font-size:21px;
-
-    }
-
-
-    /* =================================
+    /* ================================
        ACTION BUTTONS
     ================================= */
 
-    .actions{
-
-        padding:0 18px 18px;
-
-    }
-
-
-    .actions button{
-
-        padding:8px 14px;
-
-    }
-
-
-    /* =================================
-       BLOG PREVIEW MOBILE
-    ================================= */
-
-    .blog-preview{
-
-        top:80px;
-
-        width:92%;
-
-        max-height:82vh;
-
-        padding:20px;
-
-        border-radius:12px;
-
-    }
-
-
-    .blog-preview h2{
-
-        font-size:24px;
-
-        line-height:1.3;
-
-    }
-
-
-    .blog-preview img{
-
-        max-height:300px;
-
-        margin-bottom:20px;
-
-    }
-
-
-    /* =================================
-       MOBILE PARAGRAPHS
-    ================================= */
-
-    .preview-description p{
-
-        font-size:15px;
-
-        line-height:1.8;
-
-        margin-bottom:22px;
-
-        text-align:left;
-
-    }
-
-
-    /* =================================
-       MODAL MOBILE
-    ================================= */
-
-    .modal{
-
-        padding-top:70px;
-
-    }
-
-
-    .modal-box{
-
-        width:95%;
-
-        padding:22px;
-
-        margin-bottom:30px;
-
-        box-sizing:border-box;
-
-    }
-
-
-    .modal-box h2{
-
-        font-size:22px;
-
-    }
-
-
-    .modal-box textarea{
-
-        height:160px;
-
-    }
-
-
-    /* =================================
-       MODAL BUTTONS
-    ================================= */
-
-    .modal-actions{
-
-        flex-direction:row;
-
-    }
-
-
-    .save-btn,
-
-    .cancel-btn{
-
-        flex:1;
-
-    }
-
-
-    /* =================================
-       FOOTER MOBILE
-    ================================= */
-
-    footer{
-
-        padding:25px 15px;
-
-    }
-
-
-    .social-links{
-
-        flex-wrap:wrap;
-
-        gap:15px;
-
-    }
-
-}
-
-
-/* =====================================
-   SMALL MOBILE
-===================================== */
-
-@media(max-width:480px){
-
-    .blog{
-
-        padding:150px 12px 50px;
-
-    }
-
-
-    .blog-heading h1{
-
-        font-size:30px;
-
-    }
-
-
-    .blog-heading p{
-
-        font-size:13px;
-
-    }
-
-
-    .add-btn{
-
-        top:115px;
-
-        right:12px;
-
-        padding:9px 14px;
-
-        font-size:13px;
-
-    }
-
-
-    .section-title{
-
-        font-size:22px;
-
-    }
-
-
-    .featured-card{
-
-        flex:0 0 90%;
-
-    }
-
-
-    .blog-preview{
-
-        width:94%;
-
-        top:70px;
-
-        max-height:85vh;
-
-        padding:18px;
-
-    }
-
-
-    .blog-preview h2{
-
-        font-size:22px;
-
-    }
-
-
-    .preview-description p{
-
-        font-size:14px;
-
-        line-height:1.75;
-
-    }
-
-
-    .modal-box{
-
-        width:96%;
-
-        padding:18px;
-
+    .actions {
+        flex-wrap: wrap;
     }
 
 }
