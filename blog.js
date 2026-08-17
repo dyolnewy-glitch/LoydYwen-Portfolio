@@ -7,15 +7,14 @@
    BLOG DATA
 ========================================================= */
 
-let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+let blogs = [];
 
 let editingIndex = -1;
 
 
 /* =========================================================
    DEFAULT BLOGS
-   4 LATEST BLOGS
-   2 FEATURED BLOGS
+   THESE WILL BE ADDED IF MISSING
 ========================================================= */
 
 const defaultBlogs = [
@@ -296,14 +295,21 @@ I am thankful for the people who guided me and for the experiences that became p
 
 function initializeBlogs() {
 
+    const savedBlogs =
+        localStorage.getItem("blogs");
+
+
     /*
-       If there are no saved blogs,
-       use the default blogs.
+       FIRST VISIT
+       No localStorage yet.
     */
 
-    if (!localStorage.getItem("blogs")) {
+    if (!savedBlogs) {
 
-        blogs = [...defaultBlogs];
+        blogs =
+            defaultBlogs.map(blog => ({
+                ...blog
+            }));
 
         saveBlogs();
 
@@ -312,18 +318,20 @@ function initializeBlogs() {
 
 
     /*
-       Load existing blogs.
+       LOAD SAVED BLOGS
     */
 
     try {
 
-        blogs = JSON.parse(
-            localStorage.getItem("blogs")
-        );
+        blogs =
+            JSON.parse(savedBlogs);
 
     } catch (error) {
 
-        blogs = [...defaultBlogs];
+        blogs =
+            defaultBlogs.map(blog => ({
+                ...blog
+            }));
 
         saveBlogs();
 
@@ -332,12 +340,15 @@ function initializeBlogs() {
 
 
     /*
-       Make sure blogs is an array.
+       MAKE SURE BLOGS IS AN ARRAY
     */
 
     if (!Array.isArray(blogs)) {
 
-        blogs = [...defaultBlogs];
+        blogs =
+            defaultBlogs.map(blog => ({
+                ...blog
+            }));
 
         saveBlogs();
 
@@ -346,21 +357,22 @@ function initializeBlogs() {
 
 
     /*
-       Add missing default blogs.
+       ADD MISSING DEFAULT BLOGS.
 
-       This prevents old localStorage data
-       from removing newly added blogs.
+       IMPORTANT:
+       Existing custom blogs are NOT deleted.
     */
 
     defaultBlogs.forEach(defaultBlog => {
 
-        const existingBlog = blogs.find(
-            blog =>
-                blog.title === defaultBlog.title
-        );
+        const existing =
+            blogs.find(
+                blog =>
+                    blog.title === defaultBlog.title
+            );
 
 
-        if (!existingBlog) {
+        if (!existing) {
 
             blogs.push({
                 ...defaultBlog
@@ -372,66 +384,112 @@ function initializeBlogs() {
 
 
     /*
-       Always keep the correct information
-       for the four original blogs.
+       UPDATE THE ORIGINAL BLOG INFORMATION
+       WITHOUT REMOVING OTHER BLOGS.
     */
 
-    const freeTime = blogs.find(
-        blog =>
-            blog.title === "Creating in My Free Time"
-    );
+    const freeTime =
+        blogs.find(
+            blog =>
+                blog.title ===
+                "Creating in My Free Time"
+        );
+
 
     if (freeTime) {
 
-        freeTime.date = "2026-08-18";
-        freeTime.order = 1;
-        freeTime.category = "Personal";
-        freeTime.image = "com.jpg";
+        freeTime.date =
+            "2026-08-18";
+
+        freeTime.order =
+            1;
+
+        freeTime.category =
+            "Personal";
+
+        freeTime.image =
+            "com.jpg";
+
+        freeTime.featured =
+            false;
 
     }
 
 
-    const justLeaves = blogs.find(
-        blog =>
-            blog.title === "Just Leaves 🍂"
-    );
+    const justLeaves =
+        blogs.find(
+            blog =>
+                blog.title ===
+                "Just Leaves 🍂"
+        );
+
 
     if (justLeaves) {
 
-        justLeaves.date = "2026-08-18";
-        justLeaves.order = 2;
-        justLeaves.category = "Personal";
-        justLeaves.image = "leaves.jpg";
+        justLeaves.date =
+            "2026-08-18";
+
+        justLeaves.order =
+            2;
+
+        justLeaves.category =
+            "Personal";
+
+        justLeaves.image =
+            "leaves.jpg";
+
+        justLeaves.featured =
+            false;
 
     }
 
 
-    const graduation = blogs.find(
-        blog =>
-            blog.title === "Graduation Day"
-    );
+    const graduation =
+        blogs.find(
+            blog =>
+                blog.title ===
+                "Graduation Day"
+        );
+
 
     if (graduation) {
 
-        graduation.date = "2026-06-24";
-        graduation.order = 3;
-        graduation.featured = true;
-        graduation.image = "profilepic.jpg";
+        graduation.date =
+            "2026-06-24";
+
+        graduation.order =
+            3;
+
+        graduation.image =
+            "profilepic.jpg";
+
+        graduation.featured =
+            true;
 
     }
 
 
-    const ojt = blogs.find(
-        blog =>
-            blog.title === "OJT Experience"
-    );
+    const ojt =
+        blogs.find(
+            blog =>
+                blog.title ===
+                "OJT Experience"
+        );
+
 
     if (ojt) {
 
-        ojt.date = "2026-05-28";
-        ojt.order = 4;
-        ojt.featured = true;
-        ojt.image = "ojt.jpg";
+        ojt.date =
+            "2026-05-28";
+
+        ojt.order =
+            4;
+
+        ojt.image =
+            "ojt.jpg";
+
+        ojt.featured =
+            true;
 
     }
 
@@ -464,7 +522,10 @@ function formatDate(date) {
     if (!date) return "";
 
     const d =
-        new Date(date + "T00:00:00");
+        new Date(
+            date + "T00:00:00"
+        );
+
 
     return d.toLocaleDateString(
         "en-US",
@@ -480,7 +541,7 @@ function formatDate(date) {
 
 /* =========================================================
    SORT BLOGS
-   DATE LATEST → OLDEST
+   LATEST → OLDEST
    SAME DATE → ORDER
 ========================================================= */
 
@@ -490,17 +551,24 @@ function sortBlogs() {
         (a, b) => {
 
             const dateA =
-                new Date(a.date + "T00:00:00");
+                new Date(
+                    a.date + "T00:00:00"
+                );
+
 
             const dateB =
-                new Date(b.date + "T00:00:00");
+                new Date(
+                    b.date + "T00:00:00"
+                );
 
 
             const dateDifference =
                 dateB - dateA;
 
 
-            if (dateDifference !== 0) {
+            if (
+                dateDifference !== 0
+            ) {
 
                 return dateDifference;
 
@@ -508,8 +576,8 @@ function sortBlogs() {
 
 
             return (
-                (a.order || 999) -
-                (b.order || 999)
+                (Number(a.order) || 999) -
+                (Number(b.order) || 999)
             );
 
         }
@@ -542,20 +610,21 @@ function displayBlogs() {
     if (!container) return;
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     if (featuredContainer) {
 
-        featuredContainer.innerHTML = "";
+        featuredContainer.innerHTML =
+            "";
 
     }
 
 
-    /* =====================================================
-       LATEST BLOGS
-       ONLY 4
-    ===================================================== */
+    /*
+       LATEST 4
+    */
 
     const latestBlogs =
         blogs.slice(0, 4);
@@ -582,16 +651,14 @@ function displayBlogs() {
                 blog.category || "";
 
 
-            /*
-               CLICK CARD
-               Except buttons.
-            */
+            card.onclick =
+                function () {
 
-            card.onclick = function () {
+                    openBlog(
+                        originalIndex
+                    );
 
-                openBlog(originalIndex);
-
-            };
+                };
 
 
             card.innerHTML = `
@@ -605,16 +672,23 @@ function displayBlogs() {
                 <div class="blog-info">
 
                     <span class="blog-category">
-                        ${escapeHTML(blog.category || "Uncategorized")}
+                        ${escapeHTML(
+                            blog.category ||
+                            "Uncategorized"
+                        )}
                     </span>
 
                     <h2>
-                        ${escapeHTML(blog.title)}
+                        ${escapeHTML(
+                            blog.title
+                        )}
                     </h2>
 
                     <p>
                         Blog Date:
-                        ${formatDate(blog.date)}
+                        ${formatDate(
+                            blog.date
+                        )}
                     </p>
 
                 </div>
@@ -646,34 +720,41 @@ function displayBlogs() {
             `;
 
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
 
         }
     );
 
 
-    /* =====================================================
-       FEATURED BLOGS
-       ONLY 2
+    /*
+       FEATURED ONLY:
        GRADUATION + OJT
-    ===================================================== */
+    */
 
     if (featuredContainer) {
 
         const featuredTitles = [
+
             "Graduation Day",
+
             "OJT Experience"
+
         ];
 
 
         const featuredBlogs =
             featuredTitles
-                .map(title =>
-                    blogs.find(
-                        blog =>
-                            blog.title === title &&
-                            blog.featured === true
-                    )
+                .map(
+                    title =>
+                        blogs.find(
+                            blog =>
+                                blog.title ===
+                                    title &&
+                                blog.featured ===
+                                    true
+                        )
                 )
                 .filter(Boolean);
 
@@ -719,16 +800,23 @@ function displayBlogs() {
                     <div class="blog-info">
 
                         <span class="blog-category">
-                            ${escapeHTML(blog.category || "Uncategorized")}
+                            ${escapeHTML(
+                                blog.category ||
+                                "Uncategorized"
+                            )}
                         </span>
 
                         <h2>
-                            ${escapeHTML(blog.title)}
+                            ${escapeHTML(
+                                blog.title
+                            )}
                         </h2>
 
                         <p>
                             Blog Date:
-                            ${formatDate(blog.date)}
+                            ${formatDate(
+                                blog.date
+                            )}
                         </p>
 
                     </div>
@@ -746,9 +834,9 @@ function displayBlogs() {
     }
 
 
-    /* =====================================================
+    /*
        NO BLOG
-    ===================================================== */
+    */
 
     const noBlog =
         document.getElementById(
@@ -780,19 +868,37 @@ function escapeHTML(text) {
     if (!text) return "";
 
     return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 /* =========================================================
    FORMAT BLOG CONTENT
-   BLANK LINE = NEW PARAGRAPH
-   SINGLE LINE = SAME PARAGRAPH
 ========================================================= */
 
 function formatContent(content) {
@@ -806,7 +912,9 @@ function formatContent(content) {
 
     const paragraphs =
         cleanContent
-            .split(/\n\s*\n/)
+            .split(
+                /\n\s*\n/
+            )
             .filter(
                 paragraph =>
                     paragraph.trim() !== ""
@@ -814,6 +922,7 @@ function formatContent(content) {
 
 
     return paragraphs
+
         .map(
             paragraph => {
 
@@ -822,14 +931,21 @@ function formatContent(content) {
 
 
                 return `
+
                     <p>
-                        ${escapeHTML(text)
-                            .replace(/\n/g, "<br>")}
+                        ${escapeHTML(
+                            text
+                        ).replace(
+                            /\n/g,
+                            "<br>"
+                        )}
                     </p>
+
                 `;
 
             }
         )
+
         .join("");
 
 }
@@ -853,7 +969,14 @@ function openBlog(index) {
         );
 
 
-    if (!overlay || !preview) return;
+    if (
+        !overlay ||
+        !preview
+    ) {
+
+        return;
+
+    }
 
 
     const blog =
@@ -881,20 +1004,35 @@ function openBlog(index) {
             >
 
             <span class="blog-category">
-                ${escapeHTML(blog.category || "Uncategorized")}
+
+                ${escapeHTML(
+                    blog.category ||
+                    "Uncategorized"
+                )}
+
             </span>
 
             <h2>
-                ${escapeHTML(blog.title)}
+
+                ${escapeHTML(
+                    blog.title
+                )}
+
             </h2>
 
             <p class="preview-date">
-                ${formatDate(blog.date)}
+
+                ${formatDate(
+                    blog.date
+                )}
+
             </p>
 
             <div class="preview-description">
 
-                ${formatContent(blog.content)}
+                ${formatContent(
+                    blog.content
+                )}
 
             </div>
 
@@ -904,32 +1042,28 @@ function openBlog(index) {
 
 
     /*
-       CLICK ANYWHERE INSIDE OPENED BLOG
-       = CLOSE BLOG
+       CLICK BLOG = CLOSE
     */
 
-    preview.onclick = function () {
+    preview.onclick =
+        function () {
 
-        closePreview();
+            closePreview();
 
-    };
+        };
 
 
     /*
-       CLICK OVERLAY
-       = CLOSE BLOG
+       CLICK OVERLAY = CLOSE
     */
 
-    overlay.onclick = function () {
+    overlay.onclick =
+        function () {
 
-        closePreview();
+            closePreview();
 
-    };
+        };
 
-
-    /*
-       Prevent body scrolling.
-    */
 
     document.body.style.overflow =
         "hidden";
@@ -1000,7 +1134,8 @@ function openModal() {
     if (!modal) return;
 
 
-    editingIndex = -1;
+    editingIndex =
+        -1;
 
 
     document.getElementById(
@@ -1047,29 +1182,30 @@ function openModal() {
         "";
 
 
-    const previewContainer =
-        document.getElementById(
-            "imagePreviewContainer"
-        );
-
-
-    if (previewContainer) {
-
-        previewContainer.style.display =
-            "none";
-
-    }
-
-
     const preview =
         document.getElementById(
             "imagePreview"
         );
 
 
+    const previewContainer =
+        document.getElementById(
+            "imagePreviewContainer"
+        );
+
+
     if (preview) {
 
-        preview.src = "";
+        preview.src =
+            "";
+
+    }
+
+
+    if (previewContainer) {
+
+        previewContainer.style.display =
+            "none";
 
     }
 
@@ -1100,7 +1236,8 @@ function closeModal() {
     }
 
 
-    editingIndex = -1;
+    editingIndex =
+        -1;
 
 }
 
@@ -1163,36 +1300,47 @@ function saveBlog() {
     }
 
 
-    function finishSave(imageData) {
-
-        /*
-           New blogs get a new order number.
-        */
+    function finishSave(
+        imageData
+    ) {
 
         const maxOrder =
             blogs.reduce(
-                (max, blog) =>
-                    Math.max(
+                (
+                    max,
+                    blog
+                ) => {
+
+                    return Math.max(
                         max,
-                        Number(blog.order) || 0
-                    ),
+                        Number(
+                            blog.order
+                        ) || 0
+                    );
+
+                },
                 0
             );
 
 
         const existingBlog =
             editingIndex >= 0
-                ? blogs[editingIndex]
+                ? blogs[
+                    editingIndex
+                ]
                 : null;
 
 
         const blogData = {
 
-            title: title,
+            title:
+                title,
 
-            category: category,
+            category:
+                category,
 
-            date: date,
+            date:
+                date,
 
             order:
                 existingBlog
@@ -1202,7 +1350,8 @@ function saveBlog() {
                     )
                     : maxOrder + 1,
 
-            content: content,
+            content:
+                content,
 
             image:
                 imageData ||
@@ -1212,14 +1361,19 @@ function saveBlog() {
                         : "profilepic.jpg"
                 ),
 
-            featured: featured
+            featured:
+                featured
 
         };
 
 
-        if (editingIndex >= 0) {
+        if (
+            editingIndex >= 0
+        ) {
 
-            blogs[editingIndex] =
+            blogs[
+                editingIndex
+            ] =
                 blogData;
 
         }
@@ -1231,32 +1385,6 @@ function saveBlog() {
             );
 
         }
-
-
-        /*
-           Only allow the two intended
-           blogs to appear as Featured.
-        */
-
-        blogs.forEach(blog => {
-
-            if (
-                blog.title !== "Graduation Day" &&
-                blog.title !== "OJT Experience"
-            ) {
-
-                /*
-                   User-created blogs can still
-                   be marked featured if desired.
-                   This does not affect the
-                   Featured section because that
-                   section only displays the two
-                   intended blogs.
-                */
-
-            }
-
-        });
 
 
         saveBlogs();
@@ -1367,14 +1495,13 @@ function editBlog(index) {
         );
 
 
-    if (blog.image) {
+    if (
+        blog.image &&
+        preview
+    ) {
 
-        if (preview) {
-
-            preview.src =
-                blog.image;
-
-        }
+        preview.src =
+            blog.image;
 
 
         if (previewContainer) {
@@ -1490,7 +1617,11 @@ function applySearchAndFilter() {
     if (
         !searchInput ||
         !categorySelect
-    ) return;
+    ) {
+
+        return;
+
+    }
 
 
     const searchText =
@@ -1509,7 +1640,8 @@ function applySearchAndFilter() {
         );
 
 
-    let visibleCount = 0;
+    let visibleCount =
+        0;
 
 
     cards.forEach(
@@ -1517,9 +1649,12 @@ function applySearchAndFilter() {
 
             const title =
                 card
-                    .querySelector("h2")
+                    .querySelector(
+                        "h2"
+                    )
                     ?.textContent
-                    .toLowerCase() || "";
+                    .toLowerCase() ||
+                "";
 
 
             const category =
@@ -1534,9 +1669,12 @@ function applySearchAndFilter() {
 
 
             const matchesCategory =
-                selectedCategory === "All" ||
-                selectedCategory === "" ||
-                category === selectedCategory;
+                selectedCategory ===
+                    "All" ||
+                selectedCategory ===
+                    "" ||
+                category ===
+                    selectedCategory;
 
 
             if (
@@ -1591,7 +1729,11 @@ document.addEventListener(
         if (
             event.target.id !==
             "image"
-        ) return;
+        ) {
+
+            return;
+
+        }
 
 
         const file =
@@ -1638,7 +1780,9 @@ document.addEventListener(
             };
 
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(
+            file
+        );
 
     }
 );
@@ -1659,7 +1803,8 @@ window.addEventListener(
 
 
         if (
-            event.target === modal
+            event.target ===
+            modal
         ) {
 
             closeModal();
@@ -1679,7 +1824,8 @@ document.addEventListener(
     function (event) {
 
         if (
-            event.key === "Escape"
+            event.key ===
+            "Escape"
         ) {
 
             closePreview();
