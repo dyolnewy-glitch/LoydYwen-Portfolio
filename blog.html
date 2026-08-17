@@ -13,7 +13,6 @@
 
 </head>
 
-
 <body>
 
 
@@ -28,9 +27,7 @@
 <div class="logo">
 
 <a href="index.html">
-
 <img src="logo.png" alt="Logo">
-
 </a>
 
 </div>
@@ -104,9 +101,15 @@ Contact
 <section class="blog">
 
 
-<!-- BLOG HEADING -->
+<!-- =====================================
+     BLOG HEADER
+===================================== -->
 
 <div class="blog-heading">
+
+<div class="blog-title-row">
+
+<div class="blog-title-text">
 
 <h1>
 My Blog
@@ -119,9 +122,6 @@ Sharing my experiences, projects, achievements, and ideas.
 </div>
 
 
-
-<!-- ADD BLOG BUTTON -->
-
 <button
 class="add-btn"
 onclick="openModal()">
@@ -129,6 +129,10 @@ onclick="openModal()">
 + Add Blog
 
 </button>
+
+</div>
+
+</div>
 
 
 
@@ -213,7 +217,6 @@ Latest Blogs
 <div
 class="blog-container"
 id="blogContainer">
-
 </div>
 
 
@@ -238,9 +241,7 @@ No Blog Found
 class="modal"
 id="blogModal">
 
-
 <div class="modal-box">
-
 
 <h2 id="modalTitle">
 Add New Blog
@@ -290,7 +291,6 @@ Other
 </select>
 
 
-
 <label>
 Blog Date:
 </label>
@@ -301,7 +301,6 @@ type="date"
 id="blogDate">
 
 
-
 <textarea
 id="content"
 placeholder="Write your blog explanation...
@@ -310,29 +309,24 @@ Leave one blank line between paragraphs.">
 </textarea>
 
 
-
 <input
 type="file"
 id="image"
 accept="image/*">
 
 
-
 <div
 class="image-preview-container"
 id="imagePreviewContainer">
-
 
 <img
 id="imagePreview"
 alt="Image Preview">
 
-
 </div>
 
 
-
-<label>
+<label class="featured-check">
 
 <input
 type="checkbox"
@@ -343,9 +337,7 @@ Featured Blog
 </label>
 
 
-
 <div class="modal-actions">
-
 
 <button
 class="save-btn"
@@ -364,9 +356,7 @@ Cancel
 
 </button>
 
-
 </div>
-
 
 </div>
 
@@ -381,15 +371,9 @@ Cancel
 <div
 class="blog-overlay"
 id="blogOverlay"
-style="display:none;"
-onclick="closePreview()">
+style="display:none;">
 </div>
 
-
-
-<!-- =====================================
-     BLOG PREVIEW
-===================================== -->
 
 <div
 class="blog-preview"
@@ -417,27 +401,21 @@ style="display:none;">
 <a
 href="https://www.facebook.com/LoydieeWen"
 target="_blank">
-
 Facebook
-
 </a>
 
 
 <a
 href="https://www.instagram.com/ywen_masangcay"
 target="_blank">
-
 Instagram
-
 </a>
 
 
 <a
 href="https://www.tiktok.com/@wehn_26"
 target="_blank">
-
 TikTok
-
 </a>
 
 </div>
@@ -449,7 +427,7 @@ TikTok
 
 
 <!-- =====================================
-     HEADER MENU SCRIPT
+     HEADER MENU
 ===================================== -->
 
 <script>
@@ -490,7 +468,7 @@ menu.classList.remove("active");
 
 
 <!-- =====================================
-     BLOG SCRIPT
+     BLOG JS
 ===================================== -->
 
 <script src="blog.js"></script>
