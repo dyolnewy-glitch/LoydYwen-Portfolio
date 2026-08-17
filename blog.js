@@ -1,20 +1,19 @@
 /* =========================================================
    BLOG.JS
-========================================================= */
+   ========================================================= */
 
 
 /* =========================================================
    BLOG DATA
-========================================================= */
+   ========================================================= */
 
 let blogs = [];
-
 let editingIndex = -1;
 
 
 /* =========================================================
    DEFAULT BLOGS
-========================================================= */
+   ========================================================= */
 
 const defaultBlogs = [
 
@@ -30,7 +29,8 @@ const defaultBlogs = [
         image: "com.jpg",
         featured: false,
 
-        content: `When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
+        content: `
+When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
 
 Sometimes, I edit posters and pictures. I enjoy choosing colors, fonts, images, and other elements to create a design that looks clean and visually appealing. There are times when I also edit videos, especially when I want to try something different from my usual designs. Even simple editing projects can be enjoyable because I get to explore new styles and techniques.
 
@@ -40,7 +40,8 @@ I also spend some of my free time working on this personal website. Creating the
 
 Most of the time, I do these activities while listening to music. Music makes the experience more enjoyable and helps me stay focused while I work. Sometimes I can spend a long time editing without noticing how much time has passed because I am enjoying both the music and the process of creating.
 
-For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.`
+For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.
+`
     },
 
 
@@ -56,7 +57,8 @@ For me, having free time does not always mean doing nothing. It can also be an o
         image: "leaves.jpg",
         featured: false,
 
-        content: `Spoken Word Poetry
+        content: `
+Spoken Word Poetry
 
 Alam mo... para sa akin, dalawa ang ibig sabihin ng linyang “Just Leaves.”
 
@@ -204,7 +206,8 @@ may mas magandang dahon nang naghihintay.
 
 🌱 Just leave.
 
-📖 And then, let the story continue.`
+📖 And then, let the story continue.
+`
     },
 
 
@@ -220,7 +223,8 @@ may mas magandang dahon nang naghihintay.
         image: "profilepic.jpg",
         featured: true,
 
-        content: `June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
+        content: `
+June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
 
 After years of studying, completing projects, attending classes, working on requirements, taking examinations, preparing presentations, and facing different challenges, I finally reached one of the biggest milestones in my life — graduation.
 
@@ -242,7 +246,8 @@ Graduation was not the end of my journey. It was the beginning of a new chapter 
 
 I hope to use everything I have learned to create meaningful projects, improve my skills, and build a successful career in the future.
 
-June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓`
+June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓
+`
     },
 
 
@@ -258,7 +263,8 @@ June 24, 2026 will always be a special date for me — the day I officially beca
         image: "ojt.jpg",
         featured: true,
 
-        content: `My On-the-Job Training experience was one of the important parts of my college journey.
+        content: `
+My On-the-Job Training experience was one of the important parts of my college journey.
 
 During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
 
@@ -282,15 +288,170 @@ Overall, my OJT experience gave me valuable lessons that I can use in my future 
 
 It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
 
-I am thankful for the people who guided me and for the experiences that became part of my college journey.`
+I am thankful for the people who guided me and for the experiences that became part of my college journey.
+`
     }
 
 ];
 
 
 /* =========================================================
+   INITIALIZE BLOGS
+   ========================================================= */
+
+function initializeBlogs() {
+
+    const savedBlogs = localStorage.getItem("blogs");
+
+    if (!savedBlogs) {
+
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
+
+        return;
+    }
+
+
+    try {
+
+        blogs = JSON.parse(savedBlogs);
+
+    } catch (error) {
+
+        console.error("Invalid blog data:", error);
+
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
+
+        return;
+    }
+
+
+    if (!Array.isArray(blogs)) {
+
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
+
+        return;
+    }
+
+
+    /* =====================================================
+       IMPORTANT:
+       ADD MISSING DEFAULT BLOGS
+    ===================================================== */
+
+    defaultBlogs.forEach(defaultBlog => {
+
+        const existingIndex = blogs.findIndex(
+            blog => blog.title === defaultBlog.title
+        );
+
+
+        if (existingIndex === -1) {
+
+            blogs.push({
+                ...defaultBlog
+            });
+
+        } else {
+
+            /*
+             * Fix the important information of
+             * the four original blogs.
+             */
+
+            if (
+                defaultBlog.title ===
+                "Creating in My Free Time"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-08-18";
+
+                blogs[existingIndex].order =
+                    1;
+
+                blogs[existingIndex].category =
+                    "Personal";
+
+                blogs[existingIndex].image =
+                    "com.jpg";
+
+                blogs[existingIndex].featured =
+                    false;
+            }
+
+
+            if (
+                defaultBlog.title ===
+                "Just Leaves 🍂"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-08-18";
+
+                blogs[existingIndex].order =
+                    2;
+
+                blogs[existingIndex].category =
+                    "Personal";
+
+                blogs[existingIndex].image =
+                    "leaves.jpg";
+
+                blogs[existingIndex].featured =
+                    false;
+            }
+
+
+            if (
+                defaultBlog.title ===
+                "Graduation Day"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-06-24";
+
+                blogs[existingIndex].order =
+                    3;
+
+                blogs[existingIndex].featured =
+                    true;
+            }
+
+
+            if (
+                defaultBlog.title ===
+                "OJT Experience"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-05-28";
+
+                blogs[existingIndex].order =
+                    4;
+
+                blogs[existingIndex].featured =
+                    true;
+            }
+
+        }
+
+    });
+
+
+    saveBlogs();
+
+}
+
+
+/* =========================================================
    SAVE BLOGS
-========================================================= */
+   ========================================================= */
 
 function saveBlogs() {
 
@@ -303,179 +464,16 @@ function saveBlogs() {
 
 
 /* =========================================================
-   INITIALIZE BLOGS
-========================================================= */
-
-function initializeBlogs() {
-
-    let savedBlogs = null;
-
-
-    /* -----------------------------------------------------
-       TRY TO READ LOCAL STORAGE
-    ----------------------------------------------------- */
-
-    try {
-
-        savedBlogs =
-            localStorage.getItem("blogs");
-
-    } catch (error) {
-
-        console.warn(
-            "LocalStorage could not be accessed.",
-            error
-        );
-
-    }
-
-
-    /* -----------------------------------------------------
-       LOAD EXISTING BLOGS
-    ----------------------------------------------------- */
-
-    if (savedBlogs) {
-
-        try {
-
-            blogs =
-                JSON.parse(savedBlogs);
-
-        } catch (error) {
-
-            console.warn(
-                "Invalid blog storage. Resetting blogs."
-            );
-
-            blogs = [];
-
-        }
-
-    }
-
-
-    /* -----------------------------------------------------
-       MAKE SURE BLOGS IS AN ARRAY
-    ----------------------------------------------------- */
-
-    if (!Array.isArray(blogs)) {
-
-        blogs = [];
-
-    }
-
-
-    /* -----------------------------------------------------
-       ADD MISSING DEFAULT BLOGS
-       
-       THIS IS THE IMPORTANT PART.
-    ----------------------------------------------------- */
-
-    defaultBlogs.forEach(
-        defaultBlog => {
-
-            const existingIndex =
-                blogs.findIndex(
-                    blog =>
-                        blog.title ===
-                        defaultBlog.title
-                );
-
-
-            /* ---------------------------------------------
-               BLOG DOES NOT EXIST
-            --------------------------------------------- */
-
-            if (
-                existingIndex === -1
-            ) {
-
-                blogs.push({
-                    ...defaultBlog
-                });
-
-                return;
-
-            }
-
-
-            /* ---------------------------------------------
-               BLOG EXISTS
-               
-               Update only the important default settings.
-               Keep user-edited content.
-            --------------------------------------------- */
-
-            const existingBlog =
-                blogs[existingIndex];
-
-
-            existingBlog.date =
-                defaultBlog.date;
-
-
-            existingBlog.order =
-                defaultBlog.order;
-
-
-            existingBlog.category =
-                defaultBlog.category;
-
-
-            existingBlog.image =
-                defaultBlog.image;
-
-
-            existingBlog.featured =
-                defaultBlog.featured;
-
-
-            /*
-               If old blog has no content,
-               restore default content.
-            */
-
-            if (
-                !existingBlog.content ||
-                existingBlog.content.trim() === ""
-            ) {
-
-                existingBlog.content =
-                    defaultBlog.content;
-
-            }
-
-        }
-    );
-
-
-    /* -----------------------------------------------------
-       SAVE UPDATED BLOG LIST
-    ----------------------------------------------------- */
-
-    saveBlogs();
-
-}
-
-
-/* =========================================================
    DATE FORMAT
-========================================================= */
+   ========================================================= */
 
 function formatDate(date) {
 
-    if (!date) {
+    if (!date) return "";
 
-        return "";
-
-    }
-
-
-    const d =
-        new Date(
-            date + "T00:00:00"
-        );
-
+    const d = new Date(
+        date + "T00:00:00"
+    );
 
     return d.toLocaleDateString(
         "en-US",
@@ -491,56 +489,43 @@ function formatDate(date) {
 
 /* =========================================================
    SORT BLOGS
-   DATE: LATEST → OLDEST
-   SAME DATE: ORDER
-========================================================= */
+   ========================================================= */
 
 function sortBlogs() {
 
-    blogs.sort(
-        (a, b) => {
+    blogs.sort(function(a, b) {
 
-            const dateA =
-                new Date(
-                    a.date +
-                    "T00:00:00"
-                );
+        const dateA =
+            new Date(a.date + "T00:00:00");
 
-
-            const dateB =
-                new Date(
-                    b.date +
-                    "T00:00:00"
-                );
+        const dateB =
+            new Date(b.date + "T00:00:00");
 
 
-            const dateDifference =
-                dateB - dateA;
+        const dateDifference =
+            dateB - dateA;
 
 
-            if (
-                dateDifference !== 0
-            ) {
+        if (dateDifference !== 0) {
 
-                return dateDifference;
-
-            }
-
-
-            return (
-                (Number(a.order) || 999) -
-                (Number(b.order) || 999)
-            );
+            return dateDifference;
 
         }
-    );
+
+
+        return (
+            (a.order || 999) -
+            (b.order || 999)
+        );
+
+    });
 
 }
 
 
 /* =========================================================
    DISPLAY BLOGS
-========================================================= */
+   ========================================================= */
 
 function displayBlogs() {
 
@@ -559,21 +544,15 @@ function displayBlogs() {
         );
 
 
-    if (!container) {
-
-        return;
-
-    }
+    if (!container) return;
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
     if (featuredContainer) {
 
-        featuredContainer.innerHTML =
-            "";
+        featuredContainer.innerHTML = "";
 
     }
 
@@ -584,231 +563,172 @@ function displayBlogs() {
     ===================================================== */
 
     const latestBlogs =
-        blogs.slice(
-            0,
-            4
-        );
+        blogs.slice(0, 4);
 
 
-    latestBlogs.forEach(
-        blog => {
+    latestBlogs.forEach(function(blog) {
+
+        const originalIndex =
+            blogs.indexOf(blog);
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "blog-card";
+
+
+        card.dataset.category =
+            blog.category || "";
+
+
+        card.onclick = function() {
+
+            openBlog(originalIndex);
+
+        };
+
+
+        card.innerHTML = `
+
+            <img
+                class="blog-card-image"
+                src="${blog.image || "profilepic.jpg"}"
+                alt="${escapeHTML(blog.title)}"
+            >
+
+            <div class="blog-info">
+
+                <span class="blog-category">
+                    ${escapeHTML(blog.category || "Other")}
+                </span>
+
+                <h2>
+                    ${escapeHTML(blog.title)}
+                </h2>
+
+                <p>
+                    Blog Date:
+                    ${formatDate(blog.date)}
+                </p>
+
+            </div>
+
+            <div class="actions">
+
+                <button
+                    class="edit"
+                    type="button"
+                    onclick="
+                        event.stopPropagation();
+                        editBlog(${originalIndex});
+                    "
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="delete"
+                    type="button"
+                    onclick="
+                        event.stopPropagation();
+                        deleteBlog(${originalIndex});
+                    "
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+
+    /* =====================================================
+       FEATURED BLOGS
+       ONLY GRADUATION + OJT
+    ===================================================== */
+
+    if (featuredContainer) {
+
+        const featuredBlogs =
+            blogs.filter(function(blog) {
+
+                return (
+                    blog.featured === true &&
+                    (
+                        blog.title ===
+                            "Graduation Day" ||
+
+                        blog.title ===
+                            "OJT Experience"
+                    )
+                );
+
+            });
+
+
+        featuredBlogs.forEach(function(blog) {
 
             const originalIndex =
                 blogs.indexOf(blog);
 
 
             const card =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             card.className =
-                "blog-card";
+                "featured-card";
 
 
-            card.dataset.category =
-                blog.category || "";
+            card.onclick = function() {
 
+                openBlog(originalIndex);
 
-            card.onclick =
-                function () {
-
-                    openBlog(
-                        originalIndex
-                    );
-
-                };
+            };
 
 
             card.innerHTML = `
 
                 <img
-                    class="blog-card-image"
                     src="${blog.image || "profilepic.jpg"}"
                     alt="${escapeHTML(blog.title)}"
                 >
 
+                <span class="featured-badge">
+                    Featured
+                </span>
+
                 <div class="blog-info">
 
                     <span class="blog-category">
-
-                        ${escapeHTML(
-                            blog.category ||
-                            "Uncategorized"
-                        )}
-
+                        ${escapeHTML(blog.category || "Other")}
                     </span>
 
                     <h2>
-
-                        ${escapeHTML(
-                            blog.title
-                        )}
-
+                        ${escapeHTML(blog.title)}
                     </h2>
 
                     <p>
-
                         Blog Date:
-                        ${formatDate(
-                            blog.date
-                        )}
-
+                        ${formatDate(blog.date)}
                     </p>
-
-                </div>
-
-                <div class="actions">
-
-                    <button
-                        class="edit"
-                        onclick="
-                            event.stopPropagation();
-                            editBlog(${originalIndex});
-                        "
-                    >
-                        Edit
-                    </button>
-
-                    <button
-                        class="delete"
-                        onclick="
-                            event.stopPropagation();
-                            deleteBlog(${originalIndex});
-                        "
-                    >
-                        Delete
-                    </button>
 
                 </div>
 
             `;
 
 
-            container.appendChild(
-                card
-            );
+            featuredContainer.appendChild(card);
 
-        }
-    );
-
-
-    /* =====================================================
-       FEATURED BLOGS
-       ONLY 2
-    ===================================================== */
-
-    if (featuredContainer) {
-
-        const featuredTitles = [
-
-            "Graduation Day",
-
-            "OJT Experience"
-
-        ];
-
-
-        featuredTitles.forEach(
-            title => {
-
-                const blog =
-                    blogs.find(
-                        item =>
-                            item.title ===
-                            title
-                    );
-
-
-                if (
-                    !blog ||
-                    blog.featured !== true
-                ) {
-
-                    return;
-
-                }
-
-
-                const originalIndex =
-                    blogs.indexOf(
-                        blog
-                    );
-
-
-                const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                card.className =
-                    "featured-card";
-
-
-                card.onclick =
-                    function () {
-
-                        openBlog(
-                            originalIndex
-                        );
-
-                    };
-
-
-                card.innerHTML = `
-
-                    <img
-                        src="${blog.image || "profilepic.jpg"}"
-                        alt="${escapeHTML(blog.title)}"
-                    >
-
-                    <span class="featured-badge">
-
-                        Featured
-
-                    </span>
-
-                    <div class="blog-info">
-
-                        <span class="blog-category">
-
-                            ${escapeHTML(
-                                blog.category ||
-                                "Uncategorized"
-                            )}
-
-                        </span>
-
-                        <h2>
-
-                            ${escapeHTML(
-                                blog.title
-                            )}
-
-                        </h2>
-
-                        <p>
-
-                            Blog Date:
-                            ${formatDate(
-                                blog.date
-                            )}
-
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                featuredContainer.appendChild(
-                    card
-                );
-
-            }
-        );
+        });
 
     }
 
@@ -818,9 +738,7 @@ function displayBlogs() {
     ===================================================== */
 
     const noBlog =
-        document.getElementById(
-            "noBlog"
-        );
+        document.getElementById("noBlog");
 
 
     if (noBlog) {
@@ -840,58 +758,29 @@ function displayBlogs() {
 
 /* =========================================================
    ESCAPE HTML
-========================================================= */
+   ========================================================= */
 
 function escapeHTML(text) {
 
-    if (!text) {
-
-        return "";
-
-    }
-
+    if (!text) return "";
 
     return String(text)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================================================
    FORMAT BLOG CONTENT
-========================================================= */
+   ========================================================= */
 
 function formatContent(content) {
 
-    if (!content) {
-
-        return "";
-
-    }
+    if (!content) return "";
 
 
     const cleanContent =
@@ -900,34 +789,29 @@ function formatContent(content) {
 
     const paragraphs =
         cleanContent
-            .split(
-                /\n\s*\n/
-            )
-            .filter(
-                paragraph =>
-                    paragraph.trim() !== ""
-            );
+            .split(/\n\s*\n/)
+            .filter(function(paragraph) {
+
+                return paragraph.trim() !== "";
+
+            });
 
 
     return paragraphs
-        .map(
-            paragraph => {
+        .map(function(paragraph) {
 
-                return `
+            const text =
+                paragraph.trim();
 
-                    <p>
-                        ${escapeHTML(
-                            paragraph.trim()
-                        ).replace(
-                            /\n/g,
-                            "<br>"
-                        )}
-                    </p>
 
-                `;
+            return `
+                <p>
+                    ${escapeHTML(text)
+                        .replace(/\n/g, "<br>")}
+                </p>
+            `;
 
-            }
-        )
+        })
         .join("");
 
 }
@@ -935,7 +819,7 @@ function formatContent(content) {
 
 /* =========================================================
    OPEN BLOG
-========================================================= */
+   ========================================================= */
 
 function openBlog(index) {
 
@@ -951,25 +835,14 @@ function openBlog(index) {
         );
 
 
-    if (
-        !overlay ||
-        !preview
-    ) {
-
-        return;
-
-    }
+    if (!overlay || !preview) return;
 
 
     const blog =
         blogs[index];
 
 
-    if (!blog) {
-
-        return;
-
-    }
+    if (!blog) return;
 
 
     overlay.style.display =
@@ -990,35 +863,20 @@ function openBlog(index) {
             >
 
             <span class="blog-category">
-
-                ${escapeHTML(
-                    blog.category ||
-                    "Uncategorized"
-                )}
-
+                ${escapeHTML(blog.category || "Other")}
             </span>
 
             <h2>
-
-                ${escapeHTML(
-                    blog.title
-                )}
-
+                ${escapeHTML(blog.title)}
             </h2>
 
             <p class="preview-date">
-
-                ${formatDate(
-                    blog.date
-                )}
-
+                ${formatDate(blog.date)}
             </p>
 
             <div class="preview-description">
 
-                ${formatContent(
-                    blog.content
-                )}
+                ${formatContent(blog.content)}
 
             </div>
 
@@ -1027,20 +885,22 @@ function openBlog(index) {
     `;
 
 
-    preview.onclick =
-        function () {
+    /*
+     * Clicking the blog itself closes it.
+     */
 
-            closePreview();
+    preview.onclick = function() {
 
-        };
+        closePreview();
+
+    };
 
 
-    overlay.onclick =
-        function () {
+    overlay.onclick = function() {
 
-            closePreview();
+        closePreview();
 
-        };
+    };
 
 
     document.body.style.overflow =
@@ -1051,7 +911,7 @@ function openBlog(index) {
 
 /* =========================================================
    CLOSE BLOG
-========================================================= */
+   ========================================================= */
 
 function closePreview() {
 
@@ -1080,10 +940,8 @@ function closePreview() {
         preview.style.display =
             "none";
 
-
         preview.innerHTML =
             "";
-
 
         preview.onclick =
             null;
@@ -1099,7 +957,7 @@ function closePreview() {
 
 /* =========================================================
    OPEN ADD BLOG MODAL
-========================================================= */
+   ========================================================= */
 
 function openModal() {
 
@@ -1109,65 +967,105 @@ function openModal() {
         );
 
 
-    if (!modal) {
+    if (!modal) return;
 
-        return;
+
+    editingIndex = -1;
+
+
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
+
+
+    const title =
+        document.getElementById(
+            "title"
+        );
+
+
+    const category =
+        document.getElementById(
+            "category"
+        );
+
+
+    const blogDate =
+        document.getElementById(
+            "blogDate"
+        );
+
+
+    const content =
+        document.getElementById(
+            "content"
+        );
+
+
+    const featured =
+        document.getElementById(
+            "featured"
+        );
+
+
+    const image =
+        document.getElementById(
+            "image"
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            "Add New Blog";
 
     }
 
 
-    editingIndex =
-        -1;
+    if (title) {
+
+        title.value = "";
+
+    }
 
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        "Add New Blog";
+    if (category) {
+
+        category.value = "";
+
+    }
 
 
-    document.getElementById(
-        "title"
-    ).value =
-        "";
+    if (blogDate) {
+
+        blogDate.value =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+    }
 
 
-    document.getElementById(
-        "category"
-    ).value =
-        "";
+    if (content) {
+
+        content.value = "";
+
+    }
 
 
-    document.getElementById(
-        "blogDate"
-    ).value =
-        new Date()
-            .toISOString()
-            .split("T")[0];
+    if (featured) {
+
+        featured.checked = false;
+
+    }
 
 
-    document.getElementById(
-        "content"
-    ).value =
-        "";
+    if (image) {
 
+        image.value = "";
 
-    document.getElementById(
-        "featured"
-    ).checked =
-        false;
-
-
-    document.getElementById(
-        "image"
-    ).value =
-        "";
-
-
-    const preview =
-        document.getElementById(
-            "imagePreview"
-        );
+    }
 
 
     const previewContainer =
@@ -1176,18 +1074,23 @@ function openModal() {
         );
 
 
-    if (preview) {
-
-        preview.src =
-            "";
-
-    }
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
 
 
     if (previewContainer) {
 
         previewContainer.style.display =
             "none";
+
+    }
+
+
+    if (preview) {
+
+        preview.src = "";
 
     }
 
@@ -1200,7 +1103,7 @@ function openModal() {
 
 /* =========================================================
    CLOSE MODAL
-========================================================= */
+   ========================================================= */
 
 function closeModal() {
 
@@ -1218,46 +1121,45 @@ function closeModal() {
     }
 
 
-    editingIndex =
-        -1;
+    editingIndex = -1;
 
 }
 
 
 /* =========================================================
    SAVE BLOG
-========================================================= */
+   ========================================================= */
 
 function saveBlog() {
 
     const title =
         document.getElementById(
             "title"
-        ).value.trim();
+        )?.value.trim();
 
 
     const category =
         document.getElementById(
             "category"
-        ).value;
+        )?.value;
 
 
     const date =
         document.getElementById(
             "blogDate"
-        ).value;
+        )?.value;
 
 
     const content =
         document.getElementById(
             "content"
-        ).value.trim();
+        )?.value.trim();
 
 
     const featured =
         document.getElementById(
             "featured"
-        ).checked;
+        )?.checked;
 
 
     const imageInput =
@@ -1282,87 +1184,73 @@ function saveBlog() {
     }
 
 
-    function finishSave(
-        imageData
-    ) {
+    function finishSave(imageData) {
 
-        const maxOrder =
-            blogs.reduce(
-                (
-                    max,
-                    blog
-                ) => {
-
-                    return Math.max(
-                        max,
-                        Number(
-                            blog.order
-                        ) || 0
-                    );
-
-                },
-                0
-            );
+        let order;
 
 
-        const oldBlog =
-            editingIndex >= 0
-                ? blogs[
-                    editingIndex
-                ]
-                : null;
+        if (editingIndex >= 0) {
+
+            order =
+                blogs[editingIndex].order ||
+                999;
+
+        } else {
+
+            const maxOrder =
+                blogs.reduce(
+                    function(max, blog) {
+
+                        return Math.max(
+                            max,
+                            blog.order || 0
+                        );
+
+                    },
+                    0
+                );
+
+
+            order =
+                maxOrder + 1;
+
+        }
 
 
         const blogData = {
 
-            title:
-                title,
+            title: title,
 
-            category:
-                category,
+            category: category,
 
-            date:
-                date,
+            date: date,
 
-            order:
-                oldBlog
-                    ? oldBlog.order
-                    : maxOrder + 1,
+            order: order,
 
-            content:
-                content,
+            content: content,
 
             image:
                 imageData ||
                 (
-                    oldBlog &&
-                    oldBlog.image
-                        ? oldBlog.image
+                    editingIndex >= 0
+                        ? blogs[editingIndex].image
                         : "profilepic.jpg"
                 ),
 
             featured:
-                featured
+                featured === true
 
         };
 
 
-        if (
-            editingIndex >= 0
-        ) {
+        if (editingIndex >= 0) {
 
-            blogs[
-                editingIndex
-            ] =
+            blogs[editingIndex] =
                 blogData;
 
-        }
+        } else {
 
-        else {
-
-            blogs.push(
-                blogData
-            );
+            blogs.push(blogData);
 
         }
 
@@ -1377,6 +1265,7 @@ function saveBlog() {
 
 
     if (
+        imageInput &&
         imageInput.files &&
         imageInput.files[0]
     ) {
@@ -1386,7 +1275,7 @@ function saveBlog() {
 
 
         reader.onload =
-            function (event) {
+            function(event) {
 
                 finishSave(
                     event.target.result
@@ -1399,9 +1288,7 @@ function saveBlog() {
             imageInput.files[0]
         );
 
-    }
-
-    else {
+    } else {
 
         finishSave();
 
@@ -1412,7 +1299,7 @@ function saveBlog() {
 
 /* =========================================================
    EDIT BLOG
-========================================================= */
+   ========================================================= */
 
 function editBlog(index) {
 
@@ -1420,51 +1307,101 @@ function editBlog(index) {
         blogs[index];
 
 
-    if (!blog) {
-
-        return;
-
-    }
+    if (!blog) return;
 
 
     editingIndex =
         index;
 
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        "Edit Blog";
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
 
 
-    document.getElementById(
-        "title"
-    ).value =
-        blog.title;
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
 
 
-    document.getElementById(
-        "category"
-    ).value =
-        blog.category;
+    const title =
+        document.getElementById(
+            "title"
+        );
 
 
-    document.getElementById(
-        "blogDate"
-    ).value =
-        blog.date;
+    const category =
+        document.getElementById(
+            "category"
+        );
 
 
-    document.getElementById(
-        "content"
-    ).value =
-        blog.content;
+    const blogDate =
+        document.getElementById(
+            "blogDate"
+        );
 
 
-    document.getElementById(
-        "featured"
-    ).checked =
-        blog.featured === true;
+    const content =
+        document.getElementById(
+            "content"
+        );
+
+
+    const featured =
+        document.getElementById(
+            "featured"
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            "Edit Blog";
+
+    }
+
+
+    if (title) {
+
+        title.value =
+            blog.title || "";
+
+    }
+
+
+    if (category) {
+
+        category.value =
+            blog.category || "";
+
+    }
+
+
+    if (blogDate) {
+
+        blogDate.value =
+            blog.date || "";
+
+    }
+
+
+    if (content) {
+
+        content.value =
+            blog.content || "";
+
+    }
+
+
+    if (featured) {
+
+        featured.checked =
+            blog.featured === true;
+
+    }
 
 
     const preview =
@@ -1481,40 +1418,32 @@ function editBlog(index) {
 
     if (
         blog.image &&
-        preview
+        preview &&
+        previewContainer
     ) {
 
         preview.src =
             blog.image;
 
-
-        if (previewContainer) {
-
-            previewContainer.style.display =
-                "block";
-
-        }
+        previewContainer.style.display =
+            "block";
 
     }
 
 
-    document.getElementById(
-        "image"
-    ).value =
-        "";
+    if (modal) {
 
+        modal.style.display =
+            "block";
 
-    document.getElementById(
-        "blogModal"
-    ).style.display =
-        "block";
+    }
 
 }
 
 
 /* =========================================================
    DELETE BLOG
-========================================================= */
+   ========================================================= */
 
 function deleteBlog(index) {
 
@@ -1522,11 +1451,7 @@ function deleteBlog(index) {
         blogs[index];
 
 
-    if (!blog) {
-
-        return;
-
-    }
+    if (!blog) return;
 
 
     const confirmed =
@@ -1535,11 +1460,7 @@ function deleteBlog(index) {
         );
 
 
-    if (!confirmed) {
-
-        return;
-
-    }
+    if (!confirmed) return;
 
 
     blogs.splice(
@@ -1557,7 +1478,7 @@ function deleteBlog(index) {
 
 /* =========================================================
    SEARCH
-========================================================= */
+   ========================================================= */
 
 function searchBlog() {
 
@@ -1568,7 +1489,7 @@ function searchBlog() {
 
 /* =========================================================
    CATEGORY FILTER
-========================================================= */
+   ========================================================= */
 
 function filterCategory() {
 
@@ -1579,7 +1500,7 @@ function filterCategory() {
 
 /* =========================================================
    SEARCH + CATEGORY FILTER
-========================================================= */
+   ========================================================= */
 
 function applySearchAndFilter() {
 
@@ -1598,11 +1519,7 @@ function applySearchAndFilter() {
     if (
         !searchInput ||
         !categorySelect
-    ) {
-
-        return;
-
-    }
+    ) return;
 
 
     const searchText =
@@ -1625,60 +1542,47 @@ function applySearchAndFilter() {
         0;
 
 
-    cards.forEach(
-        card => {
+    cards.forEach(function(card) {
 
-            const title =
-                card
-                    .querySelector(
-                        "h2"
-                    )
-                    ?.textContent
-                    .toLowerCase() ||
+        const title =
+            card
+                .querySelector("h2")
+                ?.textContent
+                .toLowerCase() || "";
+
+
+        const category =
+            card.dataset.category ||
+            "";
+
+
+        const matchesSearch =
+            title.includes(searchText);
+
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            category === selectedCategory;
+
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            card.style.display =
                 "";
 
+            visibleCount++;
 
-            const category =
-                card.dataset.category ||
-                "";
+        } else {
 
-
-            const matchesSearch =
-                title.includes(
-                    searchText
-                );
-
-
-            const matchesCategory =
-                selectedCategory ===
-                    "All" ||
-                selectedCategory ===
-                    "" ||
-                category ===
-                    selectedCategory;
-
-
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
-
-                card.style.display =
-                    "";
-
-                visibleCount++;
-
-            }
-
-            else {
-
-                card.style.display =
-                    "none";
-
-            }
+            card.style.display =
+                "none";
 
         }
-    );
+
+    });
 
 
     const noBlog =
@@ -1701,31 +1605,23 @@ function applySearchAndFilter() {
 
 /* =========================================================
    IMAGE PREVIEW
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "change",
-    function (event) {
+    function(event) {
 
         if (
             event.target.id !==
             "image"
-        ) {
-
-            return;
-
-        }
+        ) return;
 
 
         const file =
             event.target.files[0];
 
 
-        if (!file) {
-
-            return;
-
-        }
+        if (!file) return;
 
 
         const reader =
@@ -1733,7 +1629,7 @@ document.addEventListener(
 
 
         reader.onload =
-            function (e) {
+            function(e) {
 
                 const preview =
                     document.getElementById(
@@ -1765,9 +1661,7 @@ document.addEventListener(
             };
 
 
-        reader.readAsDataURL(
-            file
-        );
+        reader.readAsDataURL(file);
 
     }
 );
@@ -1775,11 +1669,11 @@ document.addEventListener(
 
 /* =========================================================
    CLOSE MODAL OUTSIDE
-========================================================= */
+   ========================================================= */
 
 window.addEventListener(
     "click",
-    function (event) {
+    function(event) {
 
         const modal =
             document.getElementById(
@@ -1788,8 +1682,7 @@ window.addEventListener(
 
 
         if (
-            event.target ===
-            modal
+            event.target === modal
         ) {
 
             closeModal();
@@ -1802,11 +1695,11 @@ window.addEventListener(
 
 /* =========================================================
    ESC KEY
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function (event) {
+    function(event) {
 
         if (
             event.key ===
@@ -1825,11 +1718,11 @@ document.addEventListener(
 
 /* =========================================================
    INITIALIZE
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
         initializeBlogs();
 
