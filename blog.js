@@ -82,77 +82,31 @@ const ojtBlog = {
     category: "OJT Experience",
 
     content: `
-My On-the-Job Training (OJT) at the LGU Urdaneta City – City Library Department was one of the most memorable and meaningful experiences I had during my college journey.
+My On-the-Job Training at the LGU Urdaneta City – City Library Department was one of the memorable experiences of my college journey.
 
-During my OJT, I was assigned to different tasks that allowed me to experience an actual workplace environment. It gave me the opportunity to apply some of the knowledge and skills that I learned during my years as an Information Technology student.
+During my OJT, I was assigned to different tasks that allowed me to experience an actual workplace environment. One of my main responsibilities was encoding information from the library's Vertical Files and Clippings Section.
 
-One of my main responsibilities was encoding information from the library's Vertical File and Clippings Section.
+I encoded article titles, dates, authors, page numbers, and newspaper sources. I organized these records using Google Sheets so that the information could be properly documented and managed.
 
-I encoded different pieces of information such as article titles, dates, authors, page numbers, and newspaper sources. Some of the newspaper sources included Manila Bulletin and other newspapers.
+Although encoding may seem simple, working with a large amount of information required patience, focus, and accuracy. I learned to carefully check every detail because even a small mistake could affect the records.
 
-I organized these records using Google Sheets so that the information could be properly documented and managed.
+I also assisted with different activities of the R.E.A.D. Library Summer Program 2026. I helped participants during orientation, Book Booth activities, storytelling, online sessions, Canva activities, and other educational activities.
 
-Although data encoding may seem like a simple task, working with a large amount of information required patience, focus, consistency, and accuracy. I learned to carefully check every detail because even a small mistake could affect the accuracy and organization of the records.
-
-The task also helped me understand the importance of proper information management. Since libraries handle a large amount of information, every record needs to be organized properly so that it can be easily accessed and maintained.
-
-Aside from encoding, I also assisted with different activities of the R.E.A.D. Library Summer Program 2026.
-
-The R.E.A.D. Library Summer Program 2026 was one of the activities where I had the opportunity to assist participants and help during different educational and creative activities.
-
-During the program, I assisted participants during the orientation and different activities conducted throughout the program.
-
-One of the activities was the Book Booth, where participants were able to interact with books and different reading-related activities.
-
-I also assisted during online sessions and storytelling activities. These activities allowed me to interact with participants and observe how educational programs are organized and conducted.
-
-Another activity involved Canva. I assisted participants during the Canva activity and helped them understand the basic process of creating digital designs.
-
-This was also meaningful to me because I have an interest in graphic design and digital creativity. It allowed me to use some of the skills that I already had while also helping other participants complete their activities.
-
-I also experienced an activity involving a Wacom Drawing Tablet. The activity introduced participants to digital drawing and allowed them to experience creating artwork using a drawing tablet.
-
-There were also other educational activities such as Math Market Madness. This activity allowed participants to learn while participating in an interactive and enjoyable activity.
-
-Another activity included a lecture about Solid Waste Management. The lecture helped participants understand the importance of proper waste disposal, environmental responsibility, and keeping the community clean.
-
-The Bureau of Fire Protection also participated in one of the activities. They provided important information about fire safety and taught participants about what they should do during emergencies involving fire.
-
-Assisting in these activities gave me a different experience compared to the technical tasks I normally encountered as an IT student.
-
-My OJT was not only about completing assigned tasks. It was also about learning how to work with other people and how to behave in a professional workplace.
+One of the activities I experienced was using a Wacom Drawing Tablet. I also assisted during Math Market Madness and a lecture about Solid Waste Management. The Bureau of Fire Protection also participated in one of the activities and provided important information about fire safety.
 
 Through my OJT, I learned that working in a professional environment requires more than technical skills. I also needed to practice communication, teamwork, patience, responsibility, time management, and professionalism.
 
-There were times when the work became tiring, especially when there were many records to encode or several activities that needed assistance. However, completing every task gave me a sense of accomplishment.
+There were times when the work became tiring, especially when there were many records to encode or activities to assist with. However, completing every task gave me a sense of accomplishment.
 
-I learned how important it is to stay focused even when doing repetitive tasks. Encoding records required attention to detail, while assisting participants required patience and good communication.
-
-My OJT also helped me become more organized when handling information. I became more careful when recording details and learned to double-check my work before considering a task completed.
-
-Another important lesson I learned was responsibility. When someone gives you a task in a workplace, you need to make sure that you complete it properly and within the expected time.
-
-I also learned that asking questions when I do not understand something is important. Instead of guessing, it is better to ask for clarification so that the task can be completed correctly.
-
-My OJT gave me an opportunity to experience what it feels like to be part of an actual organization.
-
-It also helped me improve my confidence when communicating with other people. At first, I was not always comfortable interacting with people in a professional environment, but as the days passed, I became more comfortable and confident.
-
-The experience also taught me the value of teamwork. Some tasks were easier to accomplish when everyone worked together and helped one another.
+My OJT helped me become more organized when handling information and taught me the importance of accuracy and responsibility.
 
 My final day of OJT was May 28, 2026. Completing my training was a meaningful moment because it marked the end of one important part of my college journey.
 
-Looking back, my OJT was more than just a requirement for graduation. It gave me valuable workplace experience, memories, confidence, and lessons that I can bring with me into my future career.
+Looking back, my OJT was more than just a requirement for graduation. It gave me valuable experience, memories, confidence, and lessons that I can bring with me into my future career.
 
-I am grateful to the people who guided and supported me during my OJT at the LGU Urdaneta City – City Library Department.
-
-I am also thankful for the opportunity to participate in the different library activities and to experience different responsibilities during my training.
-
-My OJT helped me understand that learning does not only happen inside the classroom. Some of the most valuable lessons can also be learned by experiencing actual situations, working with other people, making mistakes, solving problems, and taking responsibility for assigned tasks.
+I am grateful for the people who guided and supported me during my OJT at the LGU Urdaneta City – City Library Department.
 
 The experience ended on May 28, 2026, but the lessons I learned will remain an important part of my journey as an IT graduate.
-
-My OJT became one of the experiences that prepared me for the next chapter of my life after college. It gave me a better understanding of workplace responsibilities and helped me become more prepared for my future career.
 `,
 
     image: "ojt.jpg",
@@ -169,18 +123,14 @@ My OJT became one of the experiences that prepared me for the next chapter of my
 
 
 /* =====================================
-   ADD GRADUATION BLOG
-   ONLY IF IT DOES NOT EXIST
+   ADD DEFAULT BLOGS
 ===================================== */
 
-let graduationExists =
-    blogs.some(
-        blog =>
-            blog.title === "Graduation Day"
-    );
-
-
-if(!graduationExists){
+if (
+    !blogs.some(
+        blog => blog.title === "Graduation Day"
+    )
+) {
 
     blogs.unshift(
         graduationBlog
@@ -189,19 +139,11 @@ if(!graduationExists){
 }
 
 
-/* =====================================
-   ADD OJT BLOG
-   ONLY IF IT DOES NOT EXIST
-===================================== */
-
-let ojtExists =
-    blogs.some(
-        blog =>
-            blog.title === "OJT Experience"
-    );
-
-
-if(!ojtExists){
+if (
+    !blogs.some(
+        blog => blog.title === "OJT Experience"
+    )
+) {
 
     blogs.push(
         ojtBlog
@@ -251,9 +193,7 @@ blogs = blogs.map(blog => {
 });
 
 
-/* =====================================
-   SAVE UPDATED BLOGS
-===================================== */
+/* SAVE */
 
 localStorage.setItem(
     "blogs",
@@ -267,7 +207,7 @@ localStorage.setItem(
 
 window.addEventListener(
     "load",
-    function(){
+    function () {
 
         displayBlogs();
 
@@ -279,38 +219,33 @@ window.addEventListener(
    OPEN ADD BLOG MODAL
 ===================================== */
 
-function openModal(){
+function openModal() {
 
     const modal =
         document.getElementById(
             "blogModal"
         );
 
-
     const modalTitle =
         document.getElementById(
             "modalTitle"
         );
 
-
-    if(!modal){
+    if (!modal) {
 
         return;
 
     }
 
-
     modal.style.display =
         "block";
 
-
-    if(modalTitle){
+    if (modalTitle) {
 
         modalTitle.innerHTML =
             "Add New Blog";
 
     }
-
 
     editIndex = -1;
 
@@ -323,21 +258,19 @@ function openModal(){
    CLOSE ADD / EDIT MODAL
 ===================================== */
 
-function closeModal(){
+function closeModal() {
 
     const modal =
         document.getElementById(
             "blogModal"
         );
 
-
-    if(modal){
+    if (modal) {
 
         modal.style.display =
             "none";
 
     }
-
 
     clearForm();
 
@@ -348,109 +281,101 @@ function closeModal(){
    IMAGE UPLOAD
 ===================================== */
 
-const imageInput =
-    document.getElementById(
-        "image"
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
+        const imageInput =
+            document.getElementById(
+                "image"
+            );
 
-if(imageInput){
+        if (imageInput) {
 
-    imageInput.addEventListener(
-        "change",
-        function(){
+            imageInput.addEventListener(
+                "change",
+                function () {
 
-            const file =
-                this.files[0];
+                    const file =
+                        this.files[0];
 
+                    if (!file) {
 
-            if(!file){
-
-                return;
-
-            }
-
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function(event){
-
-                    selectedImage =
-                        event.target.result;
-
-
-                    const preview =
-                        document.getElementById(
-                            "imagePreview"
-                        );
-
-
-                    const previewContainer =
-                        document.getElementById(
-                            "imagePreviewContainer"
-                        );
-
-
-                    if(preview){
-
-                        preview.src =
-                            selectedImage;
+                        return;
 
                     }
 
+                    const reader =
+                        new FileReader();
 
-                    if(previewContainer){
+                    reader.onload =
+                        function (event) {
 
-                        previewContainer.style.display =
-                            "block";
+                            selectedImage =
+                                event.target.result;
 
-                    }
+                            const preview =
+                                document.getElementById(
+                                    "imagePreview"
+                                );
 
-                };
+                            const previewContainer =
+                                document.getElementById(
+                                    "imagePreviewContainer"
+                                );
 
+                            if (preview) {
 
-            reader.readAsDataURL(
-                file
+                                preview.src =
+                                    selectedImage;
+
+                            }
+
+                            if (previewContainer) {
+
+                                previewContainer.style.display =
+                                    "block";
+
+                            }
+
+                        };
+
+                    reader.readAsDataURL(file);
+
+                }
             );
 
         }
-    );
 
-}
+    }
+);
 
 
 /* =====================================
    SAVE BLOG
 ===================================== */
 
-function saveBlog(){
+function saveBlog() {
 
     const title =
         document.getElementById(
             "title"
         ).value.trim();
 
-
     const category =
         document.getElementById(
             "category"
         ).value;
-
 
     const content =
         document.getElementById(
             "content"
         ).value.trim();
 
-
     const blogDate =
         document.getElementById(
             "blogDate"
         ).value;
-
 
     const featured =
         document.getElementById(
@@ -458,12 +383,12 @@ function saveBlog(){
         ).checked;
 
 
-    if(
+    if (
         title === "" ||
         category === "" ||
         content === "" ||
         blogDate === ""
-    ){
+    ) {
 
         alert(
             "Please complete all fields."
@@ -485,11 +410,9 @@ function saveBlog(){
         );
 
 
-    /* =================================
-       FEATURED LIMIT
-    ================================= */
+    /* FEATURED LIMIT */
 
-    if(featured){
+    if (featured) {
 
         const featuredCount =
             blogs.filter(
@@ -498,10 +421,10 @@ function saveBlog(){
             ).length;
 
 
-        if(
+        if (
             editIndex === -1 &&
             featuredCount >= 4
-        ){
+        ) {
 
             alert(
                 "Maximum of 4 Featured Blogs only."
@@ -512,11 +435,11 @@ function saveBlog(){
         }
 
 
-        if(
+        if (
             editIndex !== -1 &&
             !blogs[editIndex].featured &&
             featuredCount >= 4
-        ){
+        ) {
 
             alert(
                 "Maximum of 4 Featured Blogs only."
@@ -529,9 +452,7 @@ function saveBlog(){
     }
 
 
-    /* =================================
-       BLOG OBJECT
-    ================================= */
+    /* BLOG OBJECT */
 
     const blog = {
 
@@ -563,20 +484,16 @@ function saveBlog(){
     };
 
 
-    /* =================================
-       EDIT EXISTING BLOG
-    ================================= */
+    /* EDIT */
 
-    if(editIndex !== -1){
+    if (editIndex !== -1) {
 
         blog.publishedDate =
             blogs[editIndex]
-            .publishedDate;
-
+                .publishedDate;
 
         blog.updatedDate =
             today;
-
 
         blogs[editIndex] =
             blog;
@@ -584,11 +501,9 @@ function saveBlog(){
     }
 
 
-    /* =================================
-       ADD NEW BLOG
-    ================================= */
+    /* ADD */
 
-    else{
+    else {
 
         blogs.push(
             blog
@@ -597,7 +512,7 @@ function saveBlog(){
     }
 
 
-    /* SAVE */
+    /* SAVE TO LOCALSTORAGE */
 
     localStorage.setItem(
         "blogs",
@@ -616,19 +531,17 @@ function saveBlog(){
    DISPLAY ALL BLOGS
 ===================================== */
 
-function displayBlogs(){
+function displayBlogs() {
 
     const container =
         document.getElementById(
             "blogContainer"
         );
 
-
     const featuredContainer =
         document.getElementById(
             "featuredContainer"
         );
-
 
     const noBlog =
         document.getElementById(
@@ -636,7 +549,7 @@ function displayBlogs(){
         );
 
 
-    if(!container){
+    if (!container) {
 
         return;
 
@@ -647,7 +560,7 @@ function displayBlogs(){
         "";
 
 
-    if(featuredContainer){
+    if (featuredContainer) {
 
         featuredContainer.innerHTML =
             "";
@@ -655,13 +568,9 @@ function displayBlogs(){
     }
 
 
-    /* =================================
-       NO BLOG
-    ================================= */
+    if (blogs.length === 0) {
 
-    if(blogs.length === 0){
-
-        if(noBlog){
+        if (noBlog) {
 
             noBlog.style.display =
                 "block";
@@ -673,7 +582,7 @@ function displayBlogs(){
     }
 
 
-    if(noBlog){
+    if (noBlog) {
 
         noBlog.style.display =
             "none";
@@ -682,7 +591,7 @@ function displayBlogs(){
 
 
     /* =================================
-       FEATURED BLOGS
+       FEATURED
     ================================= */
 
     const featuredBlogs =
@@ -692,73 +601,61 @@ function displayBlogs(){
         );
 
 
-    if(featuredContainer){
+    if (featuredContainer) {
 
         featuredBlogs
-        .slice(0,4)
-        .forEach(
-            blog => {
+            .slice(0, 4)
+            .forEach(
+                blog => {
 
-                const index =
-                    blogs.indexOf(
-                        blog
-                    );
-
-
-                featuredContainer.innerHTML += `
-
-                    <div
-                    class="featured-card"
-                    onclick="openBlog(${index})">
+                    const index =
+                        blogs.indexOf(
+                            blog
+                        );
 
 
-                        <img
-                        src="${blog.image}"
-                        alt="${blog.title}">
-
-
-                        <span
-                        class="featured-badge">
-
-                            Featured
-
-                        </span>
-
+                    featuredContainer.innerHTML += `
 
                         <div
-                        class="blog-info">
+                            class="featured-card"
+                            onclick="openBlog(${index})"
+                        >
 
+                            <img
+                                src="${blog.image}"
+                                alt="${blog.title}"
+                            >
 
-                            <h2>
+                            <span
+                                class="featured-badge"
+                            >
+                                Featured
+                            </span>
 
-                                ${blog.title}
+                            <div
+                                class="blog-info"
+                            >
 
-                            </h2>
+                                <h2>
+                                    ${blog.title}
+                                </h2>
 
+                                <p>
+                                    ${blog.category}
+                                </p>
 
-                            <p>
+                                <p>
+                                    ${blog.publishedDate}
+                                </p>
 
-                                ${blog.category}
-
-                            </p>
-
-
-                            <p>
-
-                                ${blog.publishedDate}
-
-                            </p>
-
+                            </div>
 
                         </div>
 
+                    `;
 
-                    </div>
-
-                `;
-
-            }
-        );
+                }
+            );
 
     }
 
@@ -768,107 +665,88 @@ function displayBlogs(){
     ================================= */
 
     blogs.forEach(
-        (blog,index) => {
+        (blog, index) => {
 
             container.innerHTML += `
 
                 <div
-                class="blog-card"
-                data-category="${blog.category}">
-
+                    class="blog-card"
+                    data-category="${blog.category}"
+                >
 
                     <img
-                    class="blog-card-image"
-                    src="${blog.image}"
-                    alt="${blog.title}"
-                    onclick="openBlog(${index})">
-
+                        class="blog-card-image"
+                        src="${blog.image}"
+                        alt="${blog.title}"
+                        onclick="openBlog(${index})"
+                    >
 
                     <div
-                    class="blog-info">
-
+                        class="blog-info"
+                    >
 
                         <span
-                        class="blog-category">
-
+                            class="blog-category"
+                        >
                             ${blog.category}
-
                         </span>
 
-
                         <h2
-                        onclick="openBlog(${index})">
-
+                            onclick="openBlog(${index})"
+                        >
                             ${blog.title}
-
                         </h2>
 
-
                         <p>
-
                             Blog Date:
                             ${blog.blogDate}
-
                         </p>
-
 
                         <p>
-
                             Published:
                             ${blog.publishedDate}
-
                         </p>
-
 
                         ${
                             blog.updatedDate
                             ?
                             `
-                            <p>
-
-                                Updated:
-                                ${blog.updatedDate}
-
-                            </p>
+                                <p>
+                                    Updated:
+                                    ${blog.updatedDate}
+                                </p>
                             `
                             :
                             ""
                         }
 
-
                     </div>
-
 
                     <div
-                    class="actions">
-
+                        class="actions"
+                    >
 
                         <button
-                        class="edit"
-                        onclick="
-                        event.stopPropagation();
-                        editBlog(${index});
-                        ">
-
+                            class="edit"
+                            onclick="
+                                event.stopPropagation();
+                                editBlog(${index});
+                            "
+                        >
                             Edit
-
                         </button>
-
 
                         <button
-                        class="delete"
-                        onclick="
-                        event.stopPropagation();
-                        deleteBlog(${index});
-                        ">
-
+                            class="delete"
+                            onclick="
+                                event.stopPropagation();
+                                deleteBlog(${index});
+                            "
+                        >
                             Delete
-
                         </button>
-
 
                     </div>
-
 
                 </div>
 
@@ -884,18 +762,16 @@ function displayBlogs(){
    EDIT BLOG
 ===================================== */
 
-function editBlog(index){
+function editBlog(index) {
 
     const blog =
         blogs[index];
 
-
-    if(!blog){
+    if (!blog) {
 
         return;
 
     }
-
 
     editIndex =
         index;
@@ -953,15 +829,14 @@ function editBlog(index){
         );
 
 
-    if(
+    if (
         blog.image &&
         preview &&
         previewContainer
-    ){
+    ) {
 
         preview.src =
             blog.image;
-
 
         previewContainer.style.display =
             "block";
@@ -981,25 +856,23 @@ function editBlog(index){
    DELETE BLOG
 ===================================== */
 
-function deleteBlog(index){
+function deleteBlog(index) {
 
-    if(
+    if (
         confirm(
             "Delete this blog?"
         )
-    ){
+    ) {
 
         blogs.splice(
             index,
             1
         );
 
-
         localStorage.setItem(
             "blogs",
             JSON.stringify(blogs)
         );
-
 
         displayBlogs();
 
@@ -1012,13 +885,12 @@ function deleteBlog(index){
    SEARCH BLOG
 ===================================== */
 
-function searchBlog(){
+function searchBlog() {
 
     const searchInput =
         document.getElementById(
             "search"
         );
-
 
     const categoryInput =
         document.getElementById(
@@ -1026,7 +898,7 @@ function searchBlog(){
         );
 
 
-    if(!searchInput){
+    if (!searchInput) {
 
         return;
 
@@ -1034,9 +906,8 @@ function searchBlog(){
 
 
     const search =
-        searchInput
-        .value
-        .toLowerCase();
+        searchInput.value
+            .toLowerCase();
 
 
     const category =
@@ -1084,17 +955,17 @@ function searchBlog(){
                 cardCategory === category;
 
 
-            if(
+            if (
                 searchMatch &&
                 categoryMatch
-            ){
+            ) {
 
                 card.style.display =
                     "block";
 
             }
 
-            else{
+            else {
 
                 card.style.display =
                     "none";
@@ -1111,7 +982,7 @@ function searchBlog(){
    FILTER CATEGORY
 ===================================== */
 
-function filterCategory(){
+function filterCategory() {
 
     searchBlog();
 
@@ -1122,7 +993,7 @@ function filterCategory(){
    OPEN BLOG PREVIEW
 ===================================== */
 
-function openBlog(index){
+function openBlog(index) {
 
     const blog =
         blogs[index];
@@ -1140,25 +1011,23 @@ function openBlog(index){
         );
 
 
-    if(
+    if (
         !blog ||
         !overlay ||
         !preview
-    ){
+    ) {
 
         return;
 
     }
 
 
-    /* =================================
-       IF SAME PREVIEW IS ALREADY OPEN
-    ================================= */
+    /* SAME BLOG OPEN = CLOSE */
 
-    if(
+    if (
         preview.style.display ===
         "block"
-    ){
+    ) {
 
         closePreview();
 
@@ -1166,8 +1035,6 @@ function openBlog(index){
 
     }
 
-
-    /* SHOW */
 
     overlay.style.display =
         "block";
@@ -1178,106 +1045,101 @@ function openBlog(index){
 
 
     /* =================================
-       CREATE PARAGRAPHS
+       IMPORTANT:
+       PARAGRAPH SEPARATOR
+       
+       ONLY A BLANK LINE CREATES
+       A NEW PARAGRAPH.
+       
+       A SINGLE ENTER DOES NOT.
     ================================= */
 
     const paragraphs =
         blog.content
-        .split(/\n+/)
-        .filter(
-            paragraph =>
-                paragraph.trim() !== ""
-        )
-        .map(
-            paragraph => {
+            .trim()
+            .split(/\r?\n\s*\r?\n+/)
+            .filter(
+                paragraph =>
+                    paragraph.trim() !== ""
+            )
+            .map(
+                paragraph => {
 
-                return `
+                    return `
+                        <p>
+                            ${paragraph
+                                .trim()
+                                .replace(
+                                    /\r?\n/g,
+                                    " "
+                                )}
+                        </p>
+                    `;
 
-                    <p>
-
-                        ${paragraph.trim()}
-
-                    </p>
-
-                `;
-
-            }
-        )
-        .join("");
+                }
+            )
+            .join("");
 
 
     /* =================================
-       PREVIEW CONTENT
+       PREVIEW
     ================================= */
 
     preview.innerHTML = `
 
         <div
-        class="preview-content">
-
+            class="preview-content"
+        >
 
             <img
-            src="${blog.image}"
-            alt="${blog.title}">
+                src="${blog.image}"
+                alt="${blog.title}"
+            >
 
 
             <span
-            class="blog-category">
-
+                class="blog-category"
+            >
                 ${blog.category}
-
             </span>
 
 
             <h2>
-
                 ${blog.title}
-
             </h2>
 
 
             <p
-            class="preview-date">
-
+                class="preview-date"
+            >
                 Blog Date:
                 ${blog.blogDate}
-
             </p>
 
 
             <div
-            class="preview-description">
+                class="preview-description"
+            >
 
                 ${paragraphs}
 
             </div>
-
 
         </div>
 
     `;
 
 
-    /* =================================
-       PREVENT PAGE SCROLL
-    ================================= */
-
     document.body.style.overflow =
         "hidden";
 
-
-    /*
-       Small delay prevents the SAME
-       click that opened the blog from
-       closing it immediately.
-    */
 
     preview.dataset.ready =
         "false";
 
 
     setTimeout(
-        function(){
+        function () {
 
             preview.dataset.ready =
                 "true";
@@ -1293,7 +1155,7 @@ function openBlog(index){
    CLOSE BLOG PREVIEW
 ===================================== */
 
-function closePreview(){
+function closePreview() {
 
     const overlay =
         document.getElementById(
@@ -1307,7 +1169,7 @@ function closePreview(){
         );
 
 
-    if(overlay){
+    if (overlay) {
 
         overlay.style.display =
             "none";
@@ -1315,7 +1177,7 @@ function closePreview(){
     }
 
 
-    if(preview){
+    if (preview) {
 
         preview.style.display =
             "none";
@@ -1333,12 +1195,12 @@ function closePreview(){
 
 
 /* =====================================
-   CLICK SCREEN TO CLOSE BLOG
+   CLICK SCREEN TO CLOSE
 ===================================== */
 
 document.addEventListener(
     "click",
-    function(event){
+    function (event) {
 
         const preview =
             document.getElementById(
@@ -1346,21 +1208,21 @@ document.addEventListener(
             );
 
 
-        if(
+        if (
             !preview ||
             preview.style.display !==
             "block"
-        ){
+        ) {
 
             return;
 
         }
 
 
-        if(
+        if (
             preview.dataset.ready !==
             "true"
-        ){
+        ) {
 
             return;
 
@@ -1368,11 +1230,19 @@ document.addEventListener(
 
 
         /*
-           Any click after the blog has
-           opened will close it.
+           Clicking outside the
+           opened blog closes it.
         */
 
-        closePreview();
+        if (
+            !preview.contains(
+                event.target
+            )
+        ) {
+
+            closePreview();
+
+        }
 
     }
 );
@@ -1382,7 +1252,7 @@ document.addEventListener(
    CLEAR FORM
 ===================================== */
 
-function clearForm(){
+function clearForm() {
 
     const title =
         document.getElementById(
@@ -1414,7 +1284,7 @@ function clearForm(){
         );
 
 
-    if(title){
+    if (title) {
 
         title.value =
             "";
@@ -1422,7 +1292,7 @@ function clearForm(){
     }
 
 
-    if(category){
+    if (category) {
 
         category.value =
             "";
@@ -1430,7 +1300,7 @@ function clearForm(){
     }
 
 
-    if(content){
+    if (content) {
 
         content.value =
             "";
@@ -1438,7 +1308,7 @@ function clearForm(){
     }
 
 
-    if(blogDate){
+    if (blogDate) {
 
         blogDate.value =
             "";
@@ -1446,7 +1316,7 @@ function clearForm(){
     }
 
 
-    if(featured){
+    if (featured) {
 
         featured.checked =
             false;
@@ -1476,7 +1346,7 @@ function clearForm(){
         );
 
 
-    if(preview){
+    if (preview) {
 
         preview.src =
             "";
@@ -1484,7 +1354,7 @@ function clearForm(){
     }
 
 
-    if(previewContainer){
+    if (previewContainer) {
 
         previewContainer.style.display =
             "none";
@@ -1492,7 +1362,7 @@ function clearForm(){
     }
 
 
-    if(image){
+    if (image) {
 
         image.value =
             "";
@@ -1507,12 +1377,12 @@ function clearForm(){
 
 
 /* =====================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
+   CLOSE MODAL / OVERLAY
 ===================================== */
 
 window.addEventListener(
     "click",
-    function(event){
+    function (event) {
 
         const modal =
             document.getElementById(
@@ -1526,12 +1396,10 @@ window.addEventListener(
             );
 
 
-        /* MODAL */
-
-        if(
+        if (
             modal &&
             event.target === modal
-        ){
+        ) {
 
             closeModal();
 
@@ -1540,12 +1408,10 @@ window.addEventListener(
         }
 
 
-        /* OVERLAY */
-
-        if(
+        if (
             overlay &&
             event.target === overlay
-        ){
+        ) {
 
             closePreview();
 
@@ -1561,12 +1427,12 @@ window.addEventListener(
 
 document.addEventListener(
     "keydown",
-    function(event){
+    function (event) {
 
-        if(
+        if (
             event.key ===
             "Escape"
-        ){
+        ) {
 
             closePreview();
 
