@@ -1,547 +1,754 @@
-/* =====================================
-   BLOG SYSTEM
-===================================== */
+/* =========================================================
+   BLOG.JS
+========================================================= */
 
 
-/* =====================================
+/* =========================================================
    BLOG DATA
-===================================== */
+========================================================= */
 
-let blogs =
-    JSON.parse(localStorage.getItem("blogs")) || [];
+let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
 
-
-let selectedImage = "";
-
-let editIndex = -1;
+let editingIndex = -1;
 
 
-/* =====================================
-   DEFAULT GRADUATION DAY BLOG
-===================================== */
+/* =========================================================
+   DEFAULT BLOGS
+   4 LATEST BLOGS
+   2 FEATURED BLOGS
+========================================================= */
 
-const graduationBlog = {
+const defaultBlogs = [
 
-    title: "Graduation Day",
+    /* =====================================================
+       CREATING IN MY FREE TIME
+    ===================================================== */
 
-    category: "School Experience",
+    {
+        title: "Creating in My Free Time",
+        category: "Personal",
+        date: "2026-08-18",
+        order: 1,
+        image: "com.jpg",
+        featured: false,
 
-    content: `
-June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
+        content: `When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
 
-After years of studying, completing projects, attending classes, preparing requirements, taking examinations, and facing different challenges, I finally reached one of the biggest milestones in my life.
+Sometimes, I edit posters and pictures. I enjoy choosing colors, fonts, images, and other elements to create a design that looks clean and visually appealing. There are times when I also edit videos, especially when I want to try something different from my usual designs. Even simple editing projects can be enjoyable because I get to explore new styles and techniques.
 
-The graduation ceremony was a very special moment for me. Wearing my graduation attire and receiving my diploma made me realize how far I had come. All the hard work, sleepless nights, deadlines, projects, presentations, and challenges throughout college were finally worth it.
+Another thing I like doing is creating photo strip layouts. I enjoy designing different themes and arranging the elements so that the final layout looks balanced and attractive. I like thinking about what colors, decorations, fonts, and backgrounds would match a certain theme. It may look like a simple activity, but for me, it is a fun way to express my creativity.
 
-I am very thankful to my family, friends, classmates, instructors, and everyone who supported me throughout my college journey. Their encouragement helped me continue even during difficult times.
+I also spend some of my free time working on this personal website. Creating the website gives me another opportunity to be creative while also learning along the way. I can organize my work, share some of the things I have created, and experiment with how I want everything to look. It feels different from simply making a poster or editing a picture because I am creating something that combines both design and technology.
 
-Graduation also made me remember all the experiences I had during my years at Urdaneta City University. I learned not only about Information Technology but also about responsibility, patience, teamwork, problem-solving, communication, and perseverance.
+Most of the time, I do these activities while listening to music. Music makes the experience more enjoyable and helps me stay focused while I work. Sometimes I can spend a long time editing without noticing how much time has passed because I am enjoying both the music and the process of creating.
 
-During my college journey, I developed different skills related to technology and creativity. I learned about web development, UI/UX design, graphic design, programming, and different digital technologies. These experiences helped me understand what kind of career I want to pursue in the future.
+For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.`
+    },
 
-After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day because I wanted to share this important achievement with him. Even though he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
 
-After visiting the cemetery, we went to eat together as a family. We talked, enjoyed our food, and celebrated my graduation. It was a simple celebration, but it made the day even more meaningful and memorable.
+    /* =====================================================
+       JUST LEAVES
+    ===================================================== */
 
-After eating, we went home and finally ended the day. It was a simple ending to a very special and unforgettable day.
+    {
+        title: "Just Leaves 🍂",
+        category: "Personal",
+        date: "2026-08-18",
+        order: 2,
+        image: "leaves.jpg",
+        featured: false,
+
+        content: `Spoken Word Poetry
+
+Alam mo... para sa akin, dalawa ang ibig sabihin ng linyang “Just Leaves.”
+
+Ang una... mga dahon lang naman 'yan. Walang kwenta. Tinatapak-tapakan. Patay, at tuyo.
+
+Ang pangalawa... iwan mo na ako. Isang pag-alis. Isang pagbitaw. Isang paglayas nang walang paalam.
+
+Pero kapag pinagsama mo ang dalawang kahulugang 'yan... doon mo makikita ang totoong ganda ng buhay.
+
+Oo, dahon lang 'yan. At oo, iniwan ka ng dahong tuyo. Pero hindi ba't kaya lang naman nahulog at natuyo ang dahong 'yan... ay dahil tapos na ang papel niya sa sanga ng buhay mo?
+
+Huwag mong kaawaan ang sarili mo kung may umalis. Hindi natin kailangang makulong sa iisang tao lang habangbuhay. Minsan, kailangan natin ng bagong mukha. Bagong simula. Bagong pag-asa.
+
+Hindi naman natin kakalimutan ang luma, eh. Dahil kung wala ang lumang dahon, walang basehan ang bago. Ang luma ang nagturo sa atin kung paano kumapit... at ang bago ang magtuturo sa atin kung paano muling sumibol.
+
+Kaya sa susunod na titingnan mo ang buhay mo, huwag kang maiyak sa mga nalagas.
+
+Dahil ang totoo...
+
+Hindi mo makikita ang susunod na magandang dahon ng kwento mo... kung hindi mo muna hinayaang mahulog at umalis... ang mga tuyong dahon ng kahapon.
+
+— 🆆🅴🅷🅽🅽 🅻🅷🅴🅴
+
+---
+
+My Thoughts Behind “Just Leaves”
+
+Ang “Just Leaves” ay nagsimula sa isang simpleng paglalaro ng salita, pero habang iniisip ko ang dalawang kahulugan nito, mas nakita ko na may mas malalim pala itong koneksyon sa buhay.
+
+Kapag sinabi mong “just leaves,” puwede itong mangahulugan na mga dahon lang. Mga bagay na minsan ay nasa puno, pero dumating ang panahon na nalaglag, natuyo, at tuluyang nawala.
+
+Pero kapag narinig mo naman ang “just leave,” iba na ang ibig sabihin.
+
+Umalis ka na. Iwan mo na ako.
+
+At doon nagsimula yung idea ng poetry na ito.
+
+🍂 Ang mga dahon ay parang mga tao at karanasan sa buhay
+
+May mga taong dumarating sa buhay natin na parang bagong dahon sa isang puno. Sa simula, hindi natin alam kung gaano sila katagal mananatili.
+
+May ilan na matagal.
+
+May ilan na sandali lang.
+
+At may ilan na darating sa panahon na kailangan natin sila.
+
+Pero hindi lahat ng dahon ay mananatili sa puno habambuhay.
+
+Darating ang panahon na may mga dahong kailangang malaglag.
+
+At minsan, masakit iyon.
+
+Dahil habang nakatingala tayo sa puno, ang nakikita natin ay yung puwang na iniwan ng dahon.
+
+Hindi natin agad nakikita na may dahilan kung bakit ito nahulog.
+
+🌱 Hindi lahat ng pag-alis ay pagkatalo
+
+Madalas, kapag may taong umaalis sa buhay natin, iniisip natin na may nawala sa atin.
+
+At oo, may nawala.
+
+Pero hindi ibig sabihin na tayo mismo ay nawala.
+
+May mga taong bahagi lang ng isang chapter. May mga karanasan na hindi para manatili habang buhay. At may mga bagay na kailangang matapos para magkaroon ng espasyo para sa susunod.
+
+Hindi ibig sabihin na walang halaga ang nauna.
+
+Sa katunayan, mahalaga sila dahil may itinuro sila sa atin.
+
+Kung walang lumang dahon, hindi natin malalaman kung paano naging ganito ang puno.
+
+🌳 Ang puno ay hindi namamatay dahil nalalaglag ang dahon
+
+Ito siguro ang pinakaimportanteng idea sa Just Leaves.
+
+Kapag nalaglag ang isang dahon, hindi ibig sabihin na tapos na ang buhay ng puno.
+
+Patuloy itong nabubuhay.
+
+Patuloy itong lumalaki.
+
+At darating ang panahon na magkakaroon ulit ito ng mga bagong dahon.
+
+Ganito rin siguro tayo.
+
+May mga bagay na mawawala. May mga taong aalis. May mga pangarap na magbabago. May mga chapter na matatapos.
+
+Pero hindi ibig sabihin na doon na rin nagtatapos ang buhay natin.
+
+🍃 Hindi kailangang kalimutan ang nakaraan
+
+Hindi ko rin ibig sabihin na kailangan nating kalimutan ang mga lumang dahon.
+
+Hindi naman ganoon ang buhay.
+
+Ang mga taong naging bahagi ng buhay natin ay maaaring hindi na kasama sa susunod na chapter, pero hindi nito binubura ang naging papel nila sa mga naunang chapter.
+
+May mga taong nagturo sa atin kung paano magmahal.
+
+May mga taong nagturo sa atin kung paano masaktan.
+
+May mga taong nagturo sa atin kung paano bumangon.
+
+At may mga taong nagturo sa atin kung sino talaga tayo.
+
+Kaya hindi kailangang kamuhian ang mga bagay na natapos.
+
+Minsan, sapat nang sabihin:
+
+“Salamat sa pagiging bahagi ng chapter na iyon.”
+
+At pagkatapos...
+
+ituloy ang kwento.
+
+🌱 May bagong dahon pagkatapos ng luma
+
+Siguro iyon ang gusto kong maiwan na mensahe ng Just Leaves.
+
+Kapag may nalagas sa buhay mo, huwag mong isipin na wala nang susunod.
+
+Baka hindi mo pa lang nakikita.
+
+Baka nasa panahon ka pa ng paghihintay.
+
+Baka kailangan mo munang bigyan ng pagkakataon ang sarili mong gumaling.
+
+At baka kailangan mo munang tanggapin na may mga dahon talagang kailangang mahulog.
+
+Dahil minsan, habang nakatingin tayo sa mga dahong nawala, hindi natin napapansin na may bagong dahon nang unti-unting tumutubo.
+
+Kaya kung may umalis man sa buhay mo, huwag mong isipin na nabawasan ang halaga mo.
+
+Kung may isang chapter na natapos, hindi ibig sabihin na tapos na ang buong libro.
+
+May susunod pang pahina.
+
+At baka sa susunod na pahinang iyon...
+
+may mas magandang dahon nang naghihintay.
+
+🍂 Just leaves.
+
+🌱 Just leave.
+
+📖 And then, let the story continue.`
+    },
+
+
+    /* =====================================================
+       GRADUATION DAY
+    ===================================================== */
+
+    {
+        title: "Graduation Day",
+        category: "School Experience",
+        date: "2026-06-24",
+        order: 3,
+        image: "profilepic.jpg",
+        featured: true,
+
+        content: `June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
+
+After years of studying, completing projects, attending classes, working on requirements, taking examinations, preparing presentations, and facing different challenges, I finally reached one of the biggest milestones in my life — graduation.
+
+The day was filled with happiness, excitement, and a little bit of sadness because it marked the end of my college journey. Looking back, there were many moments when I felt tired and stressed because of deadlines, projects, school activities, and other responsibilities. There were also times when I doubted myself, but I continued to move forward.
+
+During the graduation ceremony, I felt proud seeing myself wearing my graduation attire and finally receiving my diploma. It was a special moment because I knew that all the hard work and sacrifices I made throughout my college years had finally paid off.
+
+I am also thankful for my family, friends, classmates, instructors, and everyone who supported and encouraged me throughout my journey. Their support helped me continue even during difficult times.
+
+Graduation was not only about receiving a diploma. It was also a reminder of all the experiences and lessons that I gained during my college years. I learned how to manage my time, work with different people, solve problems, communicate my ideas, and become more responsible with my work.
+
+After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day. I wanted to visit him and somehow share this important achievement with him. Although he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
+
+After visiting the cemetery, we went to eat together as a family. We spent some time talking, enjoying our meal, and celebrating the achievement together. It was a simple celebration, but it made the day even more memorable.
+
+After eating, we went home and finally ended the day. It was a simple ending to a very meaningful and unforgettable day.
 
 Graduation was not the end of my journey. It was the beginning of a new chapter in my life. As a BSIT graduate, I want to continue improving my skills in Graphic Design, Web Development, UI/UX Design, and Digital Creativity.
 
-I want to continue creating visual designs, editing photos and videos, developing websites, exploring new technologies, and creating digital projects that combine technology and creativity.
+I hope to use everything I have learned to create meaningful projects, improve my skills, and build a successful career in the future.
 
-I also hope to use the knowledge and experiences I gained during college to build a successful career and become a skilled professional in the future.
-
-Looking back, my college journey was not always easy, but every challenge taught me something valuable. Every project, deadline, examination, presentation, and difficult moment became part of the experience that helped me grow.
-
-June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate.
-
-This graduation is not the end of my story. It is the beginning of a new chapter, new opportunities, new challenges, and new dreams.
-`,
-
-    image: "profilepic.jpg",
-
-    blogDate: "2026-06-24",
-
-    publishedDate: "June 24, 2026",
-
-    updatedDate: "",
-
-    featured: true
-
-};
+June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓`
+    },
 
 
-/* =====================================
-   DEFAULT OJT BLOG
-===================================== */
+    /* =====================================================
+       OJT EXPERIENCE
+    ===================================================== */
 
-const ojtBlog = {
+    {
+        title: "OJT Experience",
+        category: "OJT Experience",
+        date: "2026-05-28",
+        order: 4,
+        image: "ojt.jpg",
+        featured: true,
 
-    title: "OJT Experience",
+        content: `My On-the-Job Training experience was one of the important parts of my college journey.
 
-    category: "OJT Experience",
+During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
 
-    content: `
-My On-the-Job Training at the LGU Urdaneta City – City Library Department was one of the memorable experiences of my college journey.
+One of the tasks I worked on was encoding information for the Vertical File and Clippings Section. I recorded information such as the article title, date, author, page number, and source newspaper.
 
-During my OJT, I was assigned to different tasks that allowed me to experience an actual workplace environment. One of my main responsibilities was encoding information from the library's Vertical Files and Clippings Section.
+I also used Google Sheets to organize and record the information. This helped me become more familiar with organizing data and maintaining accurate records.
 
-I encoded article titles, dates, authors, page numbers, and newspaper sources. I organized these records using Google Sheets so that the information could be properly documented and managed.
+Aside from the technical tasks, I also learned the importance of being responsible, patient, organized, and attentive when doing work.
 
-Although encoding may seem simple, working with a large amount of information required patience, focus, and accuracy. I learned to carefully check every detail because even a small mistake could affect the records.
+My OJT experience helped me understand that working in an actual organization is different from simply completing activities in school.
 
-I also assisted with different activities of the R.E.A.D. Library Summer Program 2026. I helped participants during orientation, Book Booth activities, storytelling, online sessions, Canva activities, and other educational activities.
+There were also different activities and programs that I was able to assist with during my OJT experience.
 
-One of the activities I experienced was using a Wacom Drawing Tablet. I also assisted during Math Market Madness and a lecture about Solid Waste Management. The Bureau of Fire Protection also participated in one of the activities and provided important information about fire safety.
+One of these was the R.E.A.D. Library Summer Program 2026. I assisted participants during different activities throughout the program.
 
-Through my OJT, I learned that working in a professional environment requires more than technical skills. I also needed to practice communication, teamwork, patience, responsibility, time management, and professionalism.
+The activities included orientation, Book Booth activities, online sessions, storytelling, Canva activities, Wacom Drawing Tablet activities, Math Market Madness, a lecture about Solid Waste Management, and participation from the Bureau of Fire Protection.
 
-There were times when the work became tiring, especially when there were many records to encode or activities to assist with. However, completing every task gave me a sense of accomplishment.
+I also helped with the preparation and documentation of different activities and completed weekly reports.
 
-My OJT helped me become more organized when handling information and taught me the importance of accuracy and responsibility.
+Overall, my OJT experience gave me valuable lessons that I can use in my future career.
 
-My final day of OJT was May 28, 2026. Completing my training was a meaningful moment because it marked the end of one important part of my college journey.
+It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
 
-Looking back, my OJT was more than just a requirement for graduation. It gave me valuable experience, memories, confidence, and lessons that I can bring with me into my future career.
-
-I am grateful for the people who guided and supported me during my OJT at the LGU Urdaneta City – City Library Department.
-
-The experience ended on May 28, 2026, but the lessons I learned will remain an important part of my journey as an IT graduate.
-`,
-
-    image: "ojt.jpg",
-
-    blogDate: "2026-05-28",
-
-    publishedDate: "May 28, 2026",
-
-    updatedDate: "",
-
-    featured: true
-
-};
-
-
-/* =====================================
-   ADD DEFAULT BLOGS
-===================================== */
-
-if (
-    !blogs.some(
-        blog => blog.title === "Graduation Day"
-    )
-) {
-
-    blogs.unshift(
-        graduationBlog
-    );
-
-}
-
-
-if (
-    !blogs.some(
-        blog => blog.title === "OJT Experience"
-    )
-) {
-
-    blogs.push(
-        ojtBlog
-    );
-
-}
-
-
-/* =====================================
-   FIX SAVED BLOG DATA
-===================================== */
-
-blogs = blogs.map(blog => {
-
-    return {
-
-        ...blog,
-
-        category:
-            blog.category ||
-            "Other",
-
-        image:
-            blog.image ||
-            "profilepic.jpg",
-
-        publishedDate:
-            blog.publishedDate ||
-            new Date().toLocaleDateString(
-                "en-US",
-                {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric"
-                }
-            ),
-
-        updatedDate:
-            blog.updatedDate ||
-            "",
-
-        featured:
-            blog.featured === true
-
-    };
-
-});
-
-
-/* SAVE */
-
-localStorage.setItem(
-    "blogs",
-    JSON.stringify(blogs)
-);
-
-
-/* =====================================
-   PAGE LOAD
-===================================== */
-
-window.addEventListener(
-    "load",
-    function () {
-
-        displayBlogs();
-
+I am thankful for the people who guided me and for the experiences that became part of my college journey.`
     }
-);
+
+];
 
 
-/* =====================================
-   OPEN ADD BLOG MODAL
-===================================== */
+/* =========================================================
+   INITIALIZE BLOGS
+========================================================= */
 
-function openModal() {
+function initializeBlogs() {
 
-    const modal =
-        document.getElementById(
-            "blogModal"
-        );
+    /*
+       If there are no saved blogs,
+       use the default blogs.
+    */
 
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
+    if (!localStorage.getItem("blogs")) {
 
-    if (!modal) {
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
 
         return;
-
     }
 
-    modal.style.display =
-        "block";
 
-    if (modalTitle) {
+    /*
+       Load existing blogs.
+    */
 
-        modalTitle.innerHTML =
-            "Add New Blog";
+    try {
 
-    }
-
-    editIndex = -1;
-
-    clearForm();
-
-}
-
-
-/* =====================================
-   CLOSE ADD / EDIT MODAL
-===================================== */
-
-function closeModal() {
-
-    const modal =
-        document.getElementById(
-            "blogModal"
+        blogs = JSON.parse(
+            localStorage.getItem("blogs")
         );
 
-    if (modal) {
+    } catch (error) {
 
-        modal.style.display =
-            "none";
+        blogs = [...defaultBlogs];
 
-    }
-
-    clearForm();
-
-}
-
-
-/* =====================================
-   IMAGE UPLOAD
-===================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const imageInput =
-            document.getElementById(
-                "image"
-            );
-
-        if (imageInput) {
-
-            imageInput.addEventListener(
-                "change",
-                function () {
-
-                    const file =
-                        this.files[0];
-
-                    if (!file) {
-
-                        return;
-
-                    }
-
-                    const reader =
-                        new FileReader();
-
-                    reader.onload =
-                        function (event) {
-
-                            selectedImage =
-                                event.target.result;
-
-                            const preview =
-                                document.getElementById(
-                                    "imagePreview"
-                                );
-
-                            const previewContainer =
-                                document.getElementById(
-                                    "imagePreviewContainer"
-                                );
-
-                            if (preview) {
-
-                                preview.src =
-                                    selectedImage;
-
-                            }
-
-                            if (previewContainer) {
-
-                                previewContainer.style.display =
-                                    "block";
-
-                            }
-
-                        };
-
-                    reader.readAsDataURL(file);
-
-                }
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================
-   SAVE BLOG
-===================================== */
-
-function saveBlog() {
-
-    const title =
-        document.getElementById(
-            "title"
-        ).value.trim();
-
-    const category =
-        document.getElementById(
-            "category"
-        ).value;
-
-    const content =
-        document.getElementById(
-            "content"
-        ).value.trim();
-
-    const blogDate =
-        document.getElementById(
-            "blogDate"
-        ).value;
-
-    const featured =
-        document.getElementById(
-            "featured"
-        ).checked;
-
-
-    if (
-        title === "" ||
-        category === "" ||
-        content === "" ||
-        blogDate === ""
-    ) {
-
-        alert(
-            "Please complete all fields."
-        );
+        saveBlogs();
 
         return;
-
     }
 
 
-    const today =
-        new Date().toLocaleDateString(
-            "en-US",
-            {
-                month: "long",
-                day: "numeric",
-                year: "numeric"
-            }
+    /*
+       Make sure blogs is an array.
+    */
+
+    if (!Array.isArray(blogs)) {
+
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
+
+        return;
+    }
+
+
+    /*
+       Add missing default blogs.
+
+       This prevents old localStorage data
+       from removing newly added blogs.
+    */
+
+    defaultBlogs.forEach(defaultBlog => {
+
+        const existingBlog = blogs.find(
+            blog =>
+                blog.title === defaultBlog.title
         );
 
 
-    /* FEATURED LIMIT */
+        if (!existingBlog) {
 
-    if (featured) {
-
-        const featuredCount =
-            blogs.filter(
-                blog =>
-                    blog.featured === true
-            ).length;
-
-
-        if (
-            editIndex === -1 &&
-            featuredCount >= 4
-        ) {
-
-            alert(
-                "Maximum of 4 Featured Blogs only."
-            );
-
-            return;
+            blogs.push({
+                ...defaultBlog
+            });
 
         }
 
-
-        if (
-            editIndex !== -1 &&
-            !blogs[editIndex].featured &&
-            featuredCount >= 4
-        ) {
-
-            alert(
-                "Maximum of 4 Featured Blogs only."
-            );
-
-            return;
-
-        }
-
-    }
+    });
 
 
-    /* BLOG OBJECT */
+    /*
+       Always keep the correct information
+       for the four original blogs.
+    */
 
-    const blog = {
+    const freeTime = blogs.find(
+        blog =>
+            blog.title === "Creating in My Free Time"
+    );
 
-        title:
-            title,
+    if (freeTime) {
 
-        category:
-            category,
-
-        content:
-            content,
-
-        image:
-            selectedImage ||
-            "profilepic.jpg",
-
-        blogDate:
-            blogDate,
-
-        publishedDate:
-            today,
-
-        updatedDate:
-            "",
-
-        featured:
-            featured
-
-    };
-
-
-    /* EDIT */
-
-    if (editIndex !== -1) {
-
-        blog.publishedDate =
-            blogs[editIndex]
-                .publishedDate;
-
-        blog.updatedDate =
-            today;
-
-        blogs[editIndex] =
-            blog;
+        freeTime.date = "2026-08-18";
+        freeTime.order = 1;
+        freeTime.category = "Personal";
+        freeTime.image = "com.jpg";
 
     }
 
 
-    /* ADD */
+    const justLeaves = blogs.find(
+        blog =>
+            blog.title === "Just Leaves 🍂"
+    );
 
-    else {
+    if (justLeaves) {
 
-        blogs.push(
-            blog
-        );
+        justLeaves.date = "2026-08-18";
+        justLeaves.order = 2;
+        justLeaves.category = "Personal";
+        justLeaves.image = "leaves.jpg";
 
     }
 
 
-    /* SAVE TO LOCALSTORAGE */
+    const graduation = blogs.find(
+        blog =>
+            blog.title === "Graduation Day"
+    );
+
+    if (graduation) {
+
+        graduation.date = "2026-06-24";
+        graduation.order = 3;
+        graduation.featured = true;
+        graduation.image = "profilepic.jpg";
+
+    }
+
+
+    const ojt = blogs.find(
+        blog =>
+            blog.title === "OJT Experience"
+    );
+
+    if (ojt) {
+
+        ojt.date = "2026-05-28";
+        ojt.order = 4;
+        ojt.featured = true;
+        ojt.image = "ojt.jpg";
+
+    }
+
+
+    saveBlogs();
+
+}
+
+
+/* =========================================================
+   SAVE BLOGS
+========================================================= */
+
+function saveBlogs() {
 
     localStorage.setItem(
         "blogs",
         JSON.stringify(blogs)
     );
 
+}
 
-    closeModal();
 
-    displayBlogs();
+/* =========================================================
+   DATE FORMAT
+========================================================= */
+
+function formatDate(date) {
+
+    if (!date) return "";
+
+    const d =
+        new Date(date + "T00:00:00");
+
+    return d.toLocaleDateString(
+        "en-US",
+        {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }
+    );
 
 }
 
 
-/* =====================================
-   DISPLAY ALL BLOGS
-===================================== */
+/* =========================================================
+   SORT BLOGS
+   DATE LATEST → OLDEST
+   SAME DATE → ORDER
+========================================================= */
+
+function sortBlogs() {
+
+    blogs.sort(
+        (a, b) => {
+
+            const dateA =
+                new Date(a.date + "T00:00:00");
+
+            const dateB =
+                new Date(b.date + "T00:00:00");
+
+
+            const dateDifference =
+                dateB - dateA;
+
+
+            if (dateDifference !== 0) {
+
+                return dateDifference;
+
+            }
+
+
+            return (
+                (a.order || 999) -
+                (b.order || 999)
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DISPLAY BLOGS
+========================================================= */
 
 function displayBlogs() {
+
+    sortBlogs();
+
 
     const container =
         document.getElementById(
             "blogContainer"
         );
 
+
     const featuredContainer =
         document.getElementById(
             "featuredContainer"
         );
+
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    if (featuredContainer) {
+
+        featuredContainer.innerHTML = "";
+
+    }
+
+
+    /* =====================================================
+       LATEST BLOGS
+       ONLY 4
+    ===================================================== */
+
+    const latestBlogs =
+        blogs.slice(0, 4);
+
+
+    latestBlogs.forEach(
+        blog => {
+
+            const originalIndex =
+                blogs.indexOf(blog);
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "blog-card";
+
+
+            card.dataset.category =
+                blog.category || "";
+
+
+            /*
+               CLICK CARD
+               Except buttons.
+            */
+
+            card.onclick = function () {
+
+                openBlog(originalIndex);
+
+            };
+
+
+            card.innerHTML = `
+
+                <img
+                    class="blog-card-image"
+                    src="${blog.image || "profilepic.jpg"}"
+                    alt="${escapeHTML(blog.title)}"
+                >
+
+                <div class="blog-info">
+
+                    <span class="blog-category">
+                        ${escapeHTML(blog.category || "Uncategorized")}
+                    </span>
+
+                    <h2>
+                        ${escapeHTML(blog.title)}
+                    </h2>
+
+                    <p>
+                        Blog Date:
+                        ${formatDate(blog.date)}
+                    </p>
+
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="edit"
+                        onclick="
+                            event.stopPropagation();
+                            editBlog(${originalIndex});
+                        "
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        class="delete"
+                        onclick="
+                            event.stopPropagation();
+                            deleteBlog(${originalIndex});
+                        "
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
+
+        }
+    );
+
+
+    /* =====================================================
+       FEATURED BLOGS
+       ONLY 2
+       GRADUATION + OJT
+    ===================================================== */
+
+    if (featuredContainer) {
+
+        const featuredTitles = [
+            "Graduation Day",
+            "OJT Experience"
+        ];
+
+
+        const featuredBlogs =
+            featuredTitles
+                .map(title =>
+                    blogs.find(
+                        blog =>
+                            blog.title === title &&
+                            blog.featured === true
+                    )
+                )
+                .filter(Boolean);
+
+
+        featuredBlogs.forEach(
+            blog => {
+
+                const originalIndex =
+                    blogs.indexOf(blog);
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "featured-card";
+
+
+                card.onclick =
+                    function () {
+
+                        openBlog(
+                            originalIndex
+                        );
+
+                    };
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${blog.image || "profilepic.jpg"}"
+                        alt="${escapeHTML(blog.title)}"
+                    >
+
+                    <span class="featured-badge">
+                        Featured
+                    </span>
+
+                    <div class="blog-info">
+
+                        <span class="blog-category">
+                            ${escapeHTML(blog.category || "Uncategorized")}
+                        </span>
+
+                        <h2>
+                            ${escapeHTML(blog.title)}
+                        </h2>
+
+                        <p>
+                            Blog Date:
+                            ${formatDate(blog.date)}
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                featuredContainer.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       NO BLOG
+    ===================================================== */
 
     const noBlog =
         document.getElementById(
@@ -549,455 +756,90 @@ function displayBlogs() {
         );
 
 
-    if (!container) {
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        "";
-
-
-    if (featuredContainer) {
-
-        featuredContainer.innerHTML =
-            "";
-
-    }
-
-
-    if (blogs.length === 0) {
-
-        if (noBlog) {
-
-            noBlog.style.display =
-                "block";
-
-        }
-
-        return;
-
-    }
-
-
     if (noBlog) {
 
         noBlog.style.display =
-            "none";
+            latestBlogs.length === 0
+                ? "block"
+                : "none";
 
     }
 
 
-    /* =================================
-       FEATURED
-    ================================= */
+    applySearchAndFilter();
 
-    const featuredBlogs =
-        blogs.filter(
-            blog =>
-                blog.featured === true
-        );
+}
 
 
-    if (featuredContainer) {
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
-        featuredBlogs
-            .slice(0, 4)
-            .forEach(
-                blog => {
+function escapeHTML(text) {
 
-                    const index =
-                        blogs.indexOf(
-                            blog
-                        );
+    if (!text) return "";
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
 
 
-                    featuredContainer.innerHTML += `
+/* =========================================================
+   FORMAT BLOG CONTENT
+   BLANK LINE = NEW PARAGRAPH
+   SINGLE LINE = SAME PARAGRAPH
+========================================================= */
 
-                        <div
-                            class="featured-card"
-                            onclick="openBlog(${index})"
-                        >
+function formatContent(content) {
 
-                            <img
-                                src="${blog.image}"
-                                alt="${blog.title}"
-                            >
+    if (!content) return "";
 
-                            <span
-                                class="featured-badge"
-                            >
-                                Featured
-                            </span>
 
-                            <div
-                                class="blog-info"
-                            >
+    const cleanContent =
+        content.trim();
 
-                                <h2>
-                                    ${blog.title}
-                                </h2>
 
-                                <p>
-                                    ${blog.category}
-                                </p>
-
-                                <p>
-                                    ${blog.publishedDate}
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }
+    const paragraphs =
+        cleanContent
+            .split(/\n\s*\n/)
+            .filter(
+                paragraph =>
+                    paragraph.trim() !== ""
             );
 
-    }
+
+    return paragraphs
+        .map(
+            paragraph => {
+
+                const text =
+                    paragraph.trim();
 
 
-    /* =================================
-       ALL BLOGS
-    ================================= */
+                return `
+                    <p>
+                        ${escapeHTML(text)
+                            .replace(/\n/g, "<br>")}
+                    </p>
+                `;
 
-    blogs.forEach(
-        (blog, index) => {
-
-            container.innerHTML += `
-
-                <div
-                    class="blog-card"
-                    data-category="${blog.category}"
-                >
-
-                    <img
-                        class="blog-card-image"
-                        src="${blog.image}"
-                        alt="${blog.title}"
-                        onclick="openBlog(${index})"
-                    >
-
-                    <div
-                        class="blog-info"
-                    >
-
-                        <span
-                            class="blog-category"
-                        >
-                            ${blog.category}
-                        </span>
-
-                        <h2
-                            onclick="openBlog(${index})"
-                        >
-                            ${blog.title}
-                        </h2>
-
-                        <p>
-                            Blog Date:
-                            ${blog.blogDate}
-                        </p>
-
-                        <p>
-                            Published:
-                            ${blog.publishedDate}
-                        </p>
-
-                        ${
-                            blog.updatedDate
-                            ?
-                            `
-                                <p>
-                                    Updated:
-                                    ${blog.updatedDate}
-                                </p>
-                            `
-                            :
-                            ""
-                        }
-
-                    </div>
-
-                    <div
-                        class="actions"
-                    >
-
-                        <button
-                            class="edit"
-                            onclick="
-                                event.stopPropagation();
-                                editBlog(${index});
-                            "
-                        >
-                            Edit
-                        </button>
-
-                        <button
-                            class="delete"
-                            onclick="
-                                event.stopPropagation();
-                                deleteBlog(${index});
-                            "
-                        >
-                            Delete
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-}
-
-
-/* =====================================
-   EDIT BLOG
-===================================== */
-
-function editBlog(index) {
-
-    const blog =
-        blogs[index];
-
-    if (!blog) {
-
-        return;
-
-    }
-
-    editIndex =
-        index;
-
-
-    document.getElementById(
-        "modalTitle"
-    ).innerHTML =
-        "Edit Blog";
-
-
-    document.getElementById(
-        "title"
-    ).value =
-        blog.title;
-
-
-    document.getElementById(
-        "category"
-    ).value =
-        blog.category;
-
-
-    document.getElementById(
-        "content"
-    ).value =
-        blog.content;
-
-
-    document.getElementById(
-        "blogDate"
-    ).value =
-        blog.blogDate;
-
-
-    document.getElementById(
-        "featured"
-    ).checked =
-        blog.featured;
-
-
-    selectedImage =
-        blog.image;
-
-
-    const preview =
-        document.getElementById(
-            "imagePreview"
-        );
-
-
-    const previewContainer =
-        document.getElementById(
-            "imagePreviewContainer"
-        );
-
-
-    if (
-        blog.image &&
-        preview &&
-        previewContainer
-    ) {
-
-        preview.src =
-            blog.image;
-
-        previewContainer.style.display =
-            "block";
-
-    }
-
-
-    document.getElementById(
-        "blogModal"
-    ).style.display =
-        "block";
-
-}
-
-
-/* =====================================
-   DELETE BLOG
-===================================== */
-
-function deleteBlog(index) {
-
-    if (
-        confirm(
-            "Delete this blog?"
+            }
         )
-    ) {
-
-        blogs.splice(
-            index,
-            1
-        );
-
-        localStorage.setItem(
-            "blogs",
-            JSON.stringify(blogs)
-        );
-
-        displayBlogs();
-
-    }
+        .join("");
 
 }
 
 
-/* =====================================
-   SEARCH BLOG
-===================================== */
-
-function searchBlog() {
-
-    const searchInput =
-        document.getElementById(
-            "search"
-        );
-
-    const categoryInput =
-        document.getElementById(
-            "filterCategory"
-        );
-
-
-    if (!searchInput) {
-
-        return;
-
-    }
-
-
-    const search =
-        searchInput.value
-            .toLowerCase();
-
-
-    const category =
-        categoryInput
-        ? categoryInput.value
-        : "All";
-
-
-    const cards =
-        document.querySelectorAll(
-            ".blog-card"
-        );
-
-
-    cards.forEach(
-        card => {
-
-            const titleElement =
-                card.querySelector(
-                    "h2"
-                );
-
-
-            const title =
-                titleElement
-                ? titleElement.innerText
-                    .toLowerCase()
-                : "";
-
-
-            const cardCategory =
-                card.getAttribute(
-                    "data-category"
-                );
-
-
-            const searchMatch =
-                title.includes(
-                    search
-                );
-
-
-            const categoryMatch =
-                category === "All" ||
-                cardCategory === category;
-
-
-            if (
-                searchMatch &&
-                categoryMatch
-            ) {
-
-                card.style.display =
-                    "block";
-
-            }
-
-            else {
-
-                card.style.display =
-                    "none";
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================
-   FILTER CATEGORY
-===================================== */
-
-function filterCategory() {
-
-    searchBlog();
-
-}
-
-
-/* =====================================
-   OPEN BLOG PREVIEW
-===================================== */
+/* =========================================================
+   OPEN BLOG
+========================================================= */
 
 function openBlog(index) {
-
-    const blog =
-        blogs[index];
-
 
     const overlay =
         document.getElementById(
@@ -1011,29 +853,14 @@ function openBlog(index) {
         );
 
 
-    if (
-        !blog ||
-        !overlay ||
-        !preview
-    ) {
-
-        return;
-
-    }
+    if (!overlay || !preview) return;
 
 
-    /* SAME BLOG OPEN = CLOSE */
+    const blog =
+        blogs[index];
 
-    if (
-        preview.style.display ===
-        "block"
-    ) {
 
-        closePreview();
-
-        return;
-
-    }
+    if (!blog) return;
 
 
     overlay.style.display =
@@ -1044,84 +871,30 @@ function openBlog(index) {
         "block";
 
 
-    /* =================================
-       IMPORTANT:
-       PARAGRAPH SEPARATOR
-       
-       ONLY A BLANK LINE CREATES
-       A NEW PARAGRAPH.
-       
-       A SINGLE ENTER DOES NOT.
-    ================================= */
-
-    const paragraphs =
-        blog.content
-            .trim()
-            .split(/\r?\n\s*\r?\n+/)
-            .filter(
-                paragraph =>
-                    paragraph.trim() !== ""
-            )
-            .map(
-                paragraph => {
-
-                    return `
-                        <p>
-                            ${paragraph
-                                .trim()
-                                .replace(
-                                    /\r?\n/g,
-                                    " "
-                                )}
-                        </p>
-                    `;
-
-                }
-            )
-            .join("");
-
-
-    /* =================================
-       PREVIEW
-    ================================= */
-
     preview.innerHTML = `
 
-        <div
-            class="preview-content"
-        >
+        <div class="preview-content">
 
             <img
-                src="${blog.image}"
-                alt="${blog.title}"
+                src="${blog.image || "profilepic.jpg"}"
+                alt="${escapeHTML(blog.title)}"
             >
 
-
-            <span
-                class="blog-category"
-            >
-                ${blog.category}
+            <span class="blog-category">
+                ${escapeHTML(blog.category || "Uncategorized")}
             </span>
 
-
             <h2>
-                ${blog.title}
+                ${escapeHTML(blog.title)}
             </h2>
 
-
-            <p
-                class="preview-date"
-            >
-                Blog Date:
-                ${blog.blogDate}
+            <p class="preview-date">
+                ${formatDate(blog.date)}
             </p>
 
+            <div class="preview-description">
 
-            <div
-                class="preview-description"
-            >
-
-                ${paragraphs}
+                ${formatContent(blog.content)}
 
             </div>
 
@@ -1130,30 +903,43 @@ function openBlog(index) {
     `;
 
 
+    /*
+       CLICK ANYWHERE INSIDE OPENED BLOG
+       = CLOSE BLOG
+    */
+
+    preview.onclick = function () {
+
+        closePreview();
+
+    };
+
+
+    /*
+       CLICK OVERLAY
+       = CLOSE BLOG
+    */
+
+    overlay.onclick = function () {
+
+        closePreview();
+
+    };
+
+
+    /*
+       Prevent body scrolling.
+    */
+
     document.body.style.overflow =
         "hidden";
-
-
-    preview.dataset.ready =
-        "false";
-
-
-    setTimeout(
-        function () {
-
-            preview.dataset.ready =
-                "true";
-
-        },
-        150
-    );
 
 }
 
 
-/* =====================================
-   CLOSE BLOG PREVIEW
-===================================== */
+/* =========================================================
+   CLOSE BLOG
+========================================================= */
 
 function closePreview() {
 
@@ -1182,8 +968,13 @@ function closePreview() {
         preview.style.display =
             "none";
 
-        preview.dataset.ready =
-            "false";
+
+        preview.innerHTML =
+            "";
+
+
+        preview.onclick =
+            null;
 
     }
 
@@ -1194,138 +985,374 @@ function closePreview() {
 }
 
 
-/* =====================================
-   CLICK SCREEN TO CLOSE
-===================================== */
+/* =========================================================
+   OPEN ADD BLOG MODAL
+========================================================= */
 
-document.addEventListener(
-    "click",
-    function (event) {
+function openModal() {
 
-        const preview =
-            document.getElementById(
-                "blogPreview"
-            );
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
 
 
-        if (
-            !preview ||
-            preview.style.display !==
-            "block"
-        ) {
-
-            return;
-
-        }
+    if (!modal) return;
 
 
-        if (
-            preview.dataset.ready !==
-            "true"
-        ) {
-
-            return;
-
-        }
+    editingIndex = -1;
 
 
-        /*
-           Clicking outside the
-           opened blog closes it.
-        */
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Add New Blog";
 
-        if (
-            !preview.contains(
-                event.target
-            )
-        ) {
 
-            closePreview();
+    document.getElementById(
+        "title"
+    ).value =
+        "";
 
-        }
+
+    document.getElementById(
+        "category"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "blogDate"
+    ).value =
+        new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+    document.getElementById(
+        "content"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "featured"
+    ).checked =
+        false;
+
+
+    document.getElementById(
+        "image"
+    ).value =
+        "";
+
+
+    const previewContainer =
+        document.getElementById(
+            "imagePreviewContainer"
+        );
+
+
+    if (previewContainer) {
+
+        previewContainer.style.display =
+            "none";
 
     }
-);
 
 
-/* =====================================
-   CLEAR FORM
-===================================== */
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
 
-function clearForm() {
+
+    if (preview) {
+
+        preview.src = "";
+
+    }
+
+
+    modal.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal() {
+
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
+
+
+    if (modal) {
+
+        modal.style.display =
+            "none";
+
+    }
+
+
+    editingIndex = -1;
+
+}
+
+
+/* =========================================================
+   SAVE BLOG
+========================================================= */
+
+function saveBlog() {
 
     const title =
         document.getElementById(
             "title"
-        );
+        ).value.trim();
 
 
     const category =
         document.getElementById(
             "category"
-        );
+        ).value;
+
+
+    const date =
+        document.getElementById(
+            "blogDate"
+        ).value;
 
 
     const content =
         document.getElementById(
             "content"
-        );
-
-
-    const blogDate =
-        document.getElementById(
-            "blogDate"
-        );
+        ).value.trim();
 
 
     const featured =
         document.getElementById(
             "featured"
+        ).checked;
+
+
+    const imageInput =
+        document.getElementById(
+            "image"
         );
 
 
-    if (title) {
+    if (
+        !title ||
+        !category ||
+        !date ||
+        !content
+    ) {
 
-        title.value =
-            "";
+        alert(
+            "Please complete all required fields."
+        );
 
-    }
-
-
-    if (category) {
-
-        category.value =
-            "";
-
-    }
-
-
-    if (content) {
-
-        content.value =
-            "";
+        return;
 
     }
 
 
-    if (blogDate) {
+    function finishSave(imageData) {
 
-        blogDate.value =
-            "";
+        /*
+           New blogs get a new order number.
+        */
+
+        const maxOrder =
+            blogs.reduce(
+                (max, blog) =>
+                    Math.max(
+                        max,
+                        Number(blog.order) || 0
+                    ),
+                0
+            );
+
+
+        const existingBlog =
+            editingIndex >= 0
+                ? blogs[editingIndex]
+                : null;
+
+
+        const blogData = {
+
+            title: title,
+
+            category: category,
+
+            date: date,
+
+            order:
+                existingBlog
+                    ? (
+                        existingBlog.order ||
+                        maxOrder + 1
+                    )
+                    : maxOrder + 1,
+
+            content: content,
+
+            image:
+                imageData ||
+                (
+                    existingBlog
+                        ? existingBlog.image
+                        : "profilepic.jpg"
+                ),
+
+            featured: featured
+
+        };
+
+
+        if (editingIndex >= 0) {
+
+            blogs[editingIndex] =
+                blogData;
+
+        }
+
+        else {
+
+            blogs.push(
+                blogData
+            );
+
+        }
+
+
+        /*
+           Only allow the two intended
+           blogs to appear as Featured.
+        */
+
+        blogs.forEach(blog => {
+
+            if (
+                blog.title !== "Graduation Day" &&
+                blog.title !== "OJT Experience"
+            ) {
+
+                /*
+                   User-created blogs can still
+                   be marked featured if desired.
+                   This does not affect the
+                   Featured section because that
+                   section only displays the two
+                   intended blogs.
+                */
+
+            }
+
+        });
+
+
+        saveBlogs();
+
+        displayBlogs();
+
+        closeModal();
 
     }
 
 
-    if (featured) {
+    if (
+        imageInput.files &&
+        imageInput.files[0]
+    ) {
 
-        featured.checked =
-            false;
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (event) {
+
+                finishSave(
+                    event.target.result
+                );
+
+            };
+
+
+        reader.readAsDataURL(
+            imageInput.files[0]
+        );
 
     }
 
+    else {
 
-    selectedImage =
-        "";
+        finishSave();
+
+    }
+
+}
+
+
+/* =========================================================
+   EDIT BLOG
+========================================================= */
+
+function editBlog(index) {
+
+    const blog =
+        blogs[index];
+
+
+    if (!blog) return;
+
+
+    editingIndex =
+        index;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Edit Blog";
+
+
+    document.getElementById(
+        "title"
+    ).value =
+        blog.title;
+
+
+    document.getElementById(
+        "category"
+    ).value =
+        blog.category;
+
+
+    document.getElementById(
+        "blogDate"
+    ).value =
+        blog.date;
+
+
+    document.getElementById(
+        "content"
+    ).value =
+        blog.content;
+
+
+    document.getElementById(
+        "featured"
+    ).checked =
+        blog.featured === true;
 
 
     const preview =
@@ -1340,45 +1367,286 @@ function clearForm() {
         );
 
 
-    const image =
-        document.getElementById(
-            "image"
-        );
+    if (blog.image) {
+
+        if (preview) {
+
+            preview.src =
+                blog.image;
+
+        }
 
 
-    if (preview) {
+        if (previewContainer) {
 
-        preview.src =
-            "";
+            previewContainer.style.display =
+                "block";
+
+        }
+
+    }
+
+    else {
+
+        if (previewContainer) {
+
+            previewContainer.style.display =
+                "none";
+
+        }
 
     }
 
 
-    if (previewContainer) {
-
-        previewContainer.style.display =
-            "none";
-
-    }
+    document.getElementById(
+        "image"
+    ).value =
+        "";
 
 
-    if (image) {
-
-        image.value =
-            "";
-
-    }
-
-
-    editIndex =
-        -1;
+    document.getElementById(
+        "blogModal"
+    ).style.display =
+        "block";
 
 }
 
 
-/* =====================================
-   CLOSE MODAL / OVERLAY
-===================================== */
+/* =========================================================
+   DELETE BLOG
+========================================================= */
+
+function deleteBlog(index) {
+
+    const blog =
+        blogs[index];
+
+
+    if (!blog) return;
+
+
+    const confirmed =
+        confirm(
+            `Delete "${blog.title}"?`
+        );
+
+
+    if (!confirmed) return;
+
+
+    blogs.splice(
+        index,
+        1
+    );
+
+
+    saveBlogs();
+
+    displayBlogs();
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchBlog() {
+
+    applySearchAndFilter();
+
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+function filterCategory() {
+
+    applySearchAndFilter();
+
+}
+
+
+/* =========================================================
+   SEARCH + CATEGORY FILTER
+========================================================= */
+
+function applySearchAndFilter() {
+
+    const searchInput =
+        document.getElementById(
+            "search"
+        );
+
+
+    const categorySelect =
+        document.getElementById(
+            "filterCategory"
+        );
+
+
+    if (
+        !searchInput ||
+        !categorySelect
+    ) return;
+
+
+    const searchText =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+    const selectedCategory =
+        categorySelect.value;
+
+
+    const cards =
+        document.querySelectorAll(
+            "#blogContainer .blog-card"
+        );
+
+
+    let visibleCount = 0;
+
+
+    cards.forEach(
+        card => {
+
+            const title =
+                card
+                    .querySelector("h2")
+                    ?.textContent
+                    .toLowerCase() || "";
+
+
+            const category =
+                card.dataset.category ||
+                "";
+
+
+            const matchesSearch =
+                title.includes(
+                    searchText
+                );
+
+
+            const matchesCategory =
+                selectedCategory === "All" ||
+                selectedCategory === "" ||
+                category === selectedCategory;
+
+
+            if (
+                matchesSearch &&
+                matchesCategory
+            ) {
+
+                card.style.display =
+                    "";
+
+                visibleCount++;
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    const noBlog =
+        document.getElementById(
+            "noBlog"
+        );
+
+
+    if (noBlog) {
+
+        noBlog.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+document.addEventListener(
+    "change",
+    function (event) {
+
+        if (
+            event.target.id !==
+            "image"
+        ) return;
+
+
+        const file =
+            event.target.files[0];
+
+
+        if (!file) return;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (e) {
+
+                const preview =
+                    document.getElementById(
+                        "imagePreview"
+                    );
+
+
+                const container =
+                    document.getElementById(
+                        "imagePreviewContainer"
+                    );
+
+
+                if (preview) {
+
+                    preview.src =
+                        e.target.result;
+
+                }
+
+
+                if (container) {
+
+                    container.style.display =
+                        "block";
+
+                }
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MODAL OUTSIDE
+========================================================= */
 
 window.addEventListener(
     "click",
@@ -1390,30 +1658,11 @@ window.addEventListener(
             );
 
 
-        const overlay =
-            document.getElementById(
-                "blogOverlay"
-            );
-
-
         if (
-            modal &&
             event.target === modal
         ) {
 
             closeModal();
-
-            return;
-
-        }
-
-
-        if (
-            overlay &&
-            event.target === overlay
-        ) {
-
-            closePreview();
 
         }
 
@@ -1421,17 +1670,16 @@ window.addEventListener(
 );
 
 
-/* =====================================
-   ESCAPE KEY
-===================================== */
+/* =========================================================
+   ESC KEY
+========================================================= */
 
 document.addEventListener(
     "keydown",
     function (event) {
 
         if (
-            event.key ===
-            "Escape"
+            event.key === "Escape"
         ) {
 
             closePreview();
@@ -1439,6 +1687,22 @@ document.addEventListener(
             closeModal();
 
         }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeBlogs();
+
+        displayBlogs();
 
     }
 );
