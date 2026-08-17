@@ -1,571 +1,469 @@
-/* =====================================
-   ABOUT SECTION
-===================================== */
+<!DOCTYPE html>
+<html lang="en">
 
-.about-section {
-    padding: 120px 20px 70px;
-    background: #f5f7fa;
-}
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.about-container {
-    max-width: 1100px;
-    margin: auto;
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
+<title>About Me - Loyd Ywen Masangcay</title>
 
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="about.css">
 
+</head>
 
-/* =====================================
-   TITLE
-===================================== */
 
-.about-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
+<body>
 
 
-.about-title h1 {
-    font-size: 38px;
-    color: #008080;
-    margin: 0;
-    font-weight: 700;
-}
+<!-- HEADER -->
 
+<header>
 
+<div class="container">
 
-.edit-btn {
 
-    background: #008080;
-    color: white;
+<div class="logo">
 
-    border: none;
+<a href="index.html">
 
-    padding: 10px 18px;
+<img src="logo.png" alt="Logo">
 
-    border-radius: 8px;
+</a>
 
-    cursor: pointer;
+</div>
 
-    font-size: 15px;
 
-    transition: .3s;
+<!-- MOBILE MENU BUTTON -->
 
-}
+<div class="menu-toggle" onclick="toggleMenu(this)">
 
+<span></span>
+<span></span>
+<span></span>
 
-.edit-btn:hover {
+</div>
 
-    background:#006666;
 
-}
+<nav>
 
+<ul>
 
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
 
 
+<li>
+<a href="about.html" class="active">
+About Me
+</a>
+</li>
 
-/* =====================================
-   IMAGE + TEXT
-===================================== */
 
+<li>
+<a href="skills.html">
+Skills
+</a>
+</li>
 
-.about-main {
 
-    display:flex;
+<li>
+<a href="portfolio.html">
+Portfolio
+</a>
+</li>
 
-    gap:45px;
 
-    align-items:flex-start;
+<li>
+<a href="blog.html">
+Blog
+</a>
+</li>
 
-}
 
+<li>
+<a href="contact.html">
+Contact
+</a>
+</li>
 
+</ul>
 
+</nav>
 
 
-/* =====================================
-   IMAGE
-===================================== */
+</div>
 
+</header>
 
-.about-image {
 
-    width:280px;
 
-    text-align:center;
 
-    flex-shrink:0;
 
-}
+<!-- ABOUT SECTION -->
 
+<section class="about-section">
 
 
-.about-image img {
+<div class="about-container">
 
-    width:250px;
 
-    height:330px;
+<!-- ABOUT TITLE -->
 
-    object-fit:cover;
+<div class="about-title">
 
-    object-position:center;
 
-    border-radius:18px;
+<h1>
+About Me
+</h1>
 
-    border:5px solid white;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+<button
+class="edit-btn"
+id="editBtn">
 
-}
+✏ Edit
 
+</button>
 
 
+</div>
 
-/* =====================================
-   CHANGE PHOTO BUTTON
-===================================== */
 
 
-.change-photo-btn {
 
-    display:inline-block;
 
-    margin-top:15px;
+<!-- ABOUT MAIN -->
 
-    width:250px;
+<div class="about-main">
 
-    padding:10px 18px;
 
+<!-- PROFILE IMAGE -->
 
-    background:#008080;
+<div class="about-image">
 
-    color:white;
 
+<img
+id="profileImage"
+src="profilepic.jpg"
+alt="Loyd Ywen Masangcay">
 
-    border:none;
 
-    border-radius:8px;
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+hidden>
 
 
-    cursor:pointer;
+<button
+class="change-photo-btn"
+id="changePhotoBtn">
 
+📷 Change Photo
 
-    font-size:15px;
+</button>
 
 
-    transition:.3s;
+</div>
 
-}
 
 
 
-.change-photo-btn:hover {
 
-    background:#006666;
+<!-- ABOUT TEXT -->
 
-}
+<div class="about-text">
 
 
+<div id="aboutDisplay">
 
 
+<p>
 
+Hi! I'm <strong>Loyd Ywen Masangcay</strong>. I was born on
+<strong>February 26, 2003</strong>, and I am from
+<strong>Nancalobasaan, Urdaneta City, Pangasinan</strong>.
+I am a passionate and creative individual who enjoys exploring
+digital technology and creating meaningful designs.
 
+</p>
 
-/* =====================================
-   ABOUT TEXT
-===================================== */
 
+<p>
 
-.about-text {
+I am a graduate of
+<strong>Bachelor of Science in Information Technology (BSIT)</strong>
+from <strong>Urdaneta City University (UCU)</strong>, where I
+completed my degree on <strong>June 24, 2026</strong>.
+Throughout my academic journey, I developed skills in web design,
+UI/UX design, graphic design, and different digital technologies.
 
-    flex:1;
+</p>
 
-}
 
+<p>
 
+During my On-the-Job Training (OJT) at the
+<strong>LGU Urdaneta City – City Library Department</strong>,
+I gained experience in data encoding, organizing digital records,
+and assisting with library information management.
 
-.about-text p {
+</p>
 
-    font-size:17px;
 
-    line-height:1.8;
+<p>
 
-    color:#333;
+I have a strong interest in
+<strong>Graphic Design, Web Development, and Digital Creativity</strong>.
+I enjoy editing photos and videos, creating visual designs,
+and continuously learning new skills that help me grow as an
+IT professional.
 
-    margin-bottom:20px;
+</p>
 
-}
 
+<p>
 
+My goal is to become a skilled professional who combines
+technology and creativity to create useful and visually engaging
+digital solutions.
 
-.about-text strong {
+</p>
 
-    color:#008080;
 
-}
+</div>
 
 
+</div>
 
 
+</div>
 
-/* =====================================
-   FUN FACTS
-===================================== */
 
 
-.funfacts {
 
-    margin-top:50px;
 
-    padding-top:30px;
+<!-- FUN FACTS SECTION -->
 
-    border-top:2px solid #eeeeee;
+<div class="funfacts">
 
-}
 
+<h2>
+Fun Facts About Me
+</h2>
 
 
-.funfacts h2 {
- font-size: 38px;
-    color: #008080;
-    margin: 0;
-    font-weight: 700;
-}
+<div id="funFactsDisplay">
 
 
+<p>
 
-.funfacts p {
+My first name <strong>"Loyd"</strong> was originally supposed to
+be spelled <strong>"Lloyd"</strong> with double L, but it was
+changed to a single L so that it would be different and less
+common. The name <strong>"Ywen"</strong> has a special meaning
+because it was created from my parents' names and their call sign.
 
-    font-size:17px;
+</p>
 
-    line-height:1.9;
 
-    color:#333;
+<p>
 
-}
+I have a noticeable <strong>dimple</strong> and a small patch of
+white skin on my stomach that I was born with. My hobbies include
+editing pictures and videos, cooking, watching movies, and
+listening to music.
 
+</p>
 
 
+<p>
 
+One of my achievements is graduating with a
+<strong>Bachelor of Science in Information Technology</strong>
+from <strong>Urdaneta City University</strong> on
+<strong>June 24, 2026</strong>.
 
-/* =====================================
-   EDIT OVERLAY
-===================================== */
+</p>
 
 
-.edit-overlay {
+</div>
 
-    display:none;
 
+</div>
 
-    position:fixed;
 
+</div>
 
-    top:0;
 
-    left:0;
+</section>
 
 
-    width:100%;
 
-    height:100%;
 
 
-    background:rgba(0,0,0,.55);
+<!-- EDIT OVERLAY -->
 
+<div
+class="edit-overlay"
+id="editOverlay">
 
-    justify-content:center;
 
+<div class="edit-modal">
 
-    align-items:center;
 
+<h2>
+Edit About Me
+</h2>
 
-    z-index:9999;
 
-}
+<textarea
+id="aboutInput"></textarea>
 
 
+<h2>
+Edit Fun Facts
+</h2>
 
 
+<textarea
+id="funFactsInput"></textarea>
 
-.edit-modal {
 
-    width:90%;
+<div class="modal-buttons">
 
-    max-width:750px;
 
+<button
+class="save-btn"
+id="saveBtn">
 
-    background:white;
+Save
 
+</button>
 
-    padding:35px;
 
+<button
+class="cancel-btn"
+id="cancelBtn">
 
-    border-radius:18px;
+Cancel
 
+</button>
 
-    max-height:90vh;
 
+</div>
 
-    overflow-y:auto;
 
-}
+</div>
 
 
+</div>
 
 
-.edit-modal h2 {
 
-    color:#222;
 
-    margin-bottom:15px;
 
-}
+<!-- FOOTER -->
 
+<footer>
 
 
+<div class="container footer-container">
 
-.edit-modal textarea {
 
+<p>
 
-    width:100%;
+&copy; 2026 Loyd Ywen Masangcay. All rights reserved.
 
+</p>
 
-    min-height:180px;
 
+<div class="social-links">
 
-    padding:15px;
 
+<a
+href="https://www.facebook.com/LoydieeWen"
+target="_blank">
 
-    border:1px solid #ccc;
+Facebook
 
+</a>
 
-    border-radius:10px;
 
+<a
+href="https://www.instagram.com/ywen_masangcay"
+target="_blank">
 
-    resize:vertical;
+Instagram
 
+</a>
 
-    font-size:16px;
 
+<a
+href="https://www.tiktok.com/@wehn_26"
+target="_blank">
 
-    line-height:1.7;
+TikTok
 
+</a>
 
-    margin-bottom:25px;
 
-}
+</div>
 
 
+</div>
 
+</footer>
 
 
 
-/* =====================================
-   MODAL BUTTONS
-===================================== */
 
 
-.modal-buttons {
+<!-- MENU SCRIPT -->
 
-    display:flex;
+<script>
 
-    justify-content:flex-end;
+function toggleMenu(menu) {
 
-    gap:15px;
+const nav = document.querySelector("header nav");
 
-}
+nav.classList.toggle("show");
 
-
-
-.save-btn,
-.cancel-btn {
-
-
-    padding:11px 25px;
-
-
-    border:none;
-
-
-    border-radius:8px;
-
-
-    color:white;
-
-
-    cursor:pointer;
-
-
-    font-size:15px;
-
-}
-
-
-
-.save-btn {
-
-    background:#008080;
-
-}
-
-
-
-.save-btn:hover {
-
-    background:#006666;
-
-}
-
-
-
-
-.cancel-btn {
-
-    background:#dc3545;
-
-}
-
-
-
-.cancel-btn:hover {
-
-    background:#b52a37;
-
-}
-
-
-
-
-
-
-/* =====================================
-   RESPONSIVE TABLET
-===================================== */
-
-
-@media(max-width:850px){
-
-
-.about-main {
-
-    flex-direction:column;
-
-    align-items:center;
+menu.classList.toggle("active");
 
 }
 
 
+document.querySelectorAll("nav ul li a").forEach(link => {
 
-.about-text {
+link.addEventListener("click", () => {
 
-    width:100%;
+document.querySelector("header nav")
+.classList.remove("show");
 
-}
+document.querySelector(".menu-toggle")
+.classList.remove("active");
 
+});
 
+});
 
-.about-container {
+</script>
 
-    padding:25px;
 
-}
 
 
-}
 
+<!-- ABOUT JS -->
 
+<script src="about.js"></script>
 
 
+</body>
 
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-
-@media(max-width:500px){
-
-
-.about-section {
-
-    padding:100px 15px 50px;
-
-}
-
-
-
-.about-container {
-
-    padding:20px;
-
-}
-
-
-
-.about-title h1 {
-
-    font-size:28px;
-
-}
-
-
-
-.edit-btn {
-
-    padding:8px 12px;
-
-}
-
-
-
-.about-image img {
-
-    width:210px;
-
-    height:280px;
-
-}
-
-
-
-.change-photo-btn {
-
-    width:210px;
-
-}
-
-
-
-.edit-modal {
-
-    padding:20px;
-
-}
-
-
-
-.modal-buttons {
-
-    flex-direction:column;
-
-}
-
-
-
-.save-btn,
-.cancel-btn {
-
-    width:100%;
-
-}
-
-
-}
+</html>
