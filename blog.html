@@ -17,12 +17,13 @@
 <body>
 
 
-<!-- HEADER -->
+<!-- =====================================
+     HEADER
+===================================== -->
 
 <header>
 
 <div class="container">
-
 
 
 <div class="logo">
@@ -34,9 +35,6 @@
 </a>
 
 </div>
-
-
-
 
 
 <!-- HAMBURGER MENU -->
@@ -52,14 +50,9 @@
 </div>
 
 
-
-
-
-
 <nav>
 
 <ul>
-
 
 <li>
 
@@ -70,7 +63,6 @@ Home
 </a>
 
 </li>
-
 
 
 <li>
@@ -84,7 +76,6 @@ About Me
 </li>
 
 
-
 <li>
 
 <a href="skills.html">
@@ -94,7 +85,6 @@ Skills
 </a>
 
 </li>
-
 
 
 <li>
@@ -108,7 +98,6 @@ Portfolio
 </li>
 
 
-
 <li>
 
 <a href="blog.html" class="active">
@@ -118,7 +107,6 @@ Blog
 </a>
 
 </li>
-
 
 
 <li>
@@ -131,12 +119,9 @@ Contact
 
 </li>
 
-
-
 </ul>
 
 </nav>
-
 
 
 </div>
@@ -147,21 +132,16 @@ Contact
 
 
 
-
-
-
-
-<!-- BLOG SECTION -->
-
+<!-- =====================================
+     BLOG SECTION
+===================================== -->
 
 <section class="blog">
 
 
-
-
+<!-- BLOG HEADING -->
 
 <div class="blog-heading">
-
 
 <h1>
 
@@ -170,14 +150,11 @@ My Blog
 </h1>
 
 
-
 <p>
 
-Sharing my experiences, projects, and ideas.
+Sharing my experiences, projects, achievements, and ideas.
 
 </p>
-
-
 
 </div>
 
@@ -185,9 +162,9 @@ Sharing my experiences, projects, and ideas.
 
 
 
+<!-- ADD BLOG BUTTON -->
 
-
-<button 
+<button
 class="add-btn"
 onclick="openModal()">
 
@@ -199,15 +176,11 @@ onclick="openModal()">
 
 
 
-
-
-
-
-<!-- SEARCH AND FILTER -->
-
+<!-- =====================================
+     SEARCH AND FILTER
+===================================== -->
 
 <div class="blog-tools">
-
 
 
 <input
@@ -221,15 +194,11 @@ placeholder="Search Blog..."
 onkeyup="searchBlog()">
 
 
-
-
-
 <select
 
 id="filterCategory"
 
 onchange="filterCategory()">
-
 
 
 <option value="All">
@@ -239,13 +208,11 @@ All Category
 </option>
 
 
-
 <option value="School Experience">
 
 School Experience
 
 </option>
-
 
 
 <option value="Projects">
@@ -255,13 +222,11 @@ Projects
 </option>
 
 
-
 <option value="Technology">
 
 Technology
 
 </option>
-
 
 
 <option value="Design & Creativity">
@@ -271,13 +236,11 @@ Design & Creativity
 </option>
 
 
-
 <option value="OJT Experience">
 
 OJT Experience
 
 </option>
-
 
 
 <option value="Personal">
@@ -287,7 +250,6 @@ Personal
 </option>
 
 
-
 <option value="Other">
 
 Other
@@ -295,9 +257,7 @@ Other
 </option>
 
 
-
 </select>
-
 
 
 </div>
@@ -306,20 +266,15 @@ Other
 
 
 
-
-
-
-
-<!-- FEATURED BLOG -->
-
+<!-- =====================================
+     FEATURED BLOG
+===================================== -->
 
 <h2 class="section-title">
 
 Featured Blog
 
 </h2>
-
-
 
 
 <div id="featuredContainer">
@@ -330,12 +285,9 @@ Featured Blog
 
 
 
-
-
-
-
-<!-- LATEST BLOG -->
-
+<!-- =====================================
+     LATEST BLOG
+===================================== -->
 
 <h2 class="section-title">
 
@@ -344,14 +296,82 @@ Latest Blogs
 </h2>
 
 
-
-
-
-<div 
-
+<div
 class="blog-container"
-
 id="blogContainer">
+
+
+<!--
+    GRADUATION DAY BLOG
+
+    This is the default blog.
+    The complete content appears
+    when the card is clicked.
+-->
+
+
+<div
+class="blog-card"
+data-category="School Experience">
+
+
+<img
+
+class="blog-card-image"
+
+src="profilepic.jpg"
+
+alt="Graduation Day"
+
+onclick="openGraduationBlog()">
+
+
+<div class="blog-info">
+
+
+<span class="blog-category">
+
+School Experience
+
+</span>
+
+
+<h2
+onclick="openGraduationBlog()">
+
+Graduation Day
+
+</h2>
+
+
+<p>
+
+Blog Date:
+
+June 24, 2026
+
+</p>
+
+
+</div>
+
+
+<div class="actions">
+
+
+<button
+class="edit"
+onclick="openGraduationBlog()">
+
+View
+
+</button>
+
+
+</div>
+
+
+</div>
 
 
 </div>
@@ -361,33 +381,30 @@ id="blogContainer">
 
 
 <div
-
 id="noBlog"
-
 style="display:none;">
 
-
 No Blog Found
-
 
 </div>
 
 
-
-
-
 </section>
-<!-- ADD / EDIT BLOG MODAL -->
 
 
-<div 
+
+
+
+<!-- =====================================
+     ADD / EDIT BLOG MODAL
+===================================== -->
+
+<div
 class="modal"
 id="blogModal">
 
 
-
 <div class="modal-box">
-
 
 
 <h2 id="modalTitle">
@@ -395,9 +412,6 @@ id="blogModal">
 Add New Blog
 
 </h2>
-
-
-
 
 
 <input
@@ -412,10 +426,7 @@ placeholder="Blog Title">
 
 
 
-
-
 <select id="category">
-
 
 
 <option value="">
@@ -425,13 +436,11 @@ Select Category
 </option>
 
 
-
 <option value="School Experience">
 
 School Experience
 
 </option>
-
 
 
 <option value="Projects">
@@ -441,13 +450,11 @@ Projects
 </option>
 
 
-
 <option value="Technology">
 
 Technology
 
 </option>
-
 
 
 <option value="Design & Creativity">
@@ -457,13 +464,11 @@ Design & Creativity
 </option>
 
 
-
 <option value="OJT Experience">
 
 OJT Experience
 
 </option>
-
 
 
 <option value="Personal">
@@ -473,7 +478,6 @@ Personal
 </option>
 
 
-
 <option value="Other">
 
 Other
@@ -481,12 +485,7 @@ Other
 </option>
 
 
-
 </select>
-
-
-
-
 
 
 
@@ -499,14 +498,11 @@ Blog Date:
 </label>
 
 
-
 <input
 
 type="date"
 
 id="blogDate">
-
-
 
 
 
@@ -524,10 +520,6 @@ placeholder="Write your blog explanation...">
 
 
 
-
-
-
-
 <input
 
 type="file"
@@ -540,8 +532,6 @@ accept="image/*">
 
 
 
-
-
 <div
 
 class="image-preview-container"
@@ -549,11 +539,11 @@ class="image-preview-container"
 id="imagePreviewContainer">
 
 
-
 <img
 
-id="imagePreview">
+id="imagePreview"
 
+alt="Image Preview">
 
 
 </div>
@@ -562,12 +552,7 @@ id="imagePreview">
 
 
 
-
-
-
-
 <label>
-
 
 <input
 
@@ -575,17 +560,9 @@ type="checkbox"
 
 id="featured">
 
-
-
 Featured Blog
 
-
-
 </label>
-
-
-
-
 
 
 
@@ -594,23 +571,15 @@ Featured Blog
 <div class="modal-actions">
 
 
-
 <button
 
 class="save-btn"
 
 onclick="saveBlog()">
 
-
 Save
 
-
 </button>
-
-
-
-
-
 
 
 <button
@@ -619,13 +588,15 @@ class="cancel-btn"
 
 onclick="closeModal()">
 
-
 Cancel
-
 
 </button>
 
 
+</div>
+
+
+</div>
 
 </div>
 
@@ -633,23 +604,9 @@ Cancel
 
 
 
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- BLOG PREVIEW OVERLAY -->
-
+<!-- =====================================
+     BLOG PREVIEW OVERLAY
+===================================== -->
 
 <div
 
@@ -661,21 +618,15 @@ style="display:none;"
 
 onclick="closePreview()">
 
-
-
 </div>
 
 
 
 
 
-
-
-
-
-
-<!-- BLOG PREVIEW -->
-
+<!-- =====================================
+     BLOG PREVIEW
+===================================== -->
 
 <div
 
@@ -685,20 +636,15 @@ id="blogPreview"
 
 style="display:none;">
 
-
-
 </div>
 
 
 
 
 
-
-
-
-
-<!-- FOOTER -->
-
+<!-- =====================================
+     FOOTER
+===================================== -->
 
 <footer>
 
@@ -713,34 +659,30 @@ style="display:none;">
 </p>
 
 
-
-
-
-
 <div class="social-links">
 
 
-<a href="https://www.facebook.com/LoydieeWen" target="_blank">
+<a
+href="https://www.facebook.com/LoydieeWen"
+target="_blank">
 
 Facebook
 
 </a>
 
 
-
-
-
-<a href="https://www.instagram.com/ywen_masangcay" target="_blank">
+<a
+href="https://www.instagram.com/ywen_masangcay"
+target="_blank">
 
 Instagram
 
 </a>
 
 
-
-
-
-<a href="https://www.tiktok.com/@wehn_26" target="_blank">
+<a
+href="https://www.tiktok.com/@wehn_26"
+target="_blank">
 
 TikTok
 
@@ -750,11 +692,7 @@ TikTok
 </div>
 
 
-
-
-
 </div>
-
 
 </footer>
 
@@ -762,61 +700,43 @@ TikTok
 
 
 
-
-
-
-
-<!-- HEADER MENU SCRIPT -->
-
+<!-- =====================================
+     HEADER MENU SCRIPT
+===================================== -->
 
 <script>
 
+function toggleMenu(menu) {
 
-function toggleMenu(menu){
-
-
-const nav = document.querySelector("header nav");
-
+const nav =
+document.querySelector("header nav");
 
 nav.classList.toggle("show");
 
-
 menu.classList.toggle("active");
-
 
 }
 
 
-
-
-
-
 document.querySelectorAll("nav ul li a")
-.forEach(link=>{
+.forEach(link => {
 
+link.addEventListener("click", () => {
 
-link.addEventListener("click",()=>{
+const nav =
+document.querySelector("header nav");
 
-
-const nav = document.querySelector("header nav");
-
-const menu = document.querySelector(".menu-toggle");
-
+const menu =
+document.querySelector(".menu-toggle");
 
 
 nav.classList.remove("show");
 
-
 menu.classList.remove("active");
 
-
-
 });
 
-
 });
-
-
 
 </script>
 
@@ -824,17 +744,183 @@ menu.classList.remove("active");
 
 
 
+<!-- =====================================
+     GRADUATION BLOG
+===================================== -->
+
+<script>
+
+function openGraduationBlog() {
+
+
+const overlay =
+document.getElementById("blogOverlay");
+
+
+const preview =
+document.getElementById("blogPreview");
+
+
+overlay.style.display = "block";
+
+preview.style.display = "block";
+
+
+preview.innerHTML = `
+
+
+<div class="preview-content">
+
+
+<button
+class="preview-close"
+onclick="closePreview()">
+
+×
+
+</button>
+
+
+<img
+src="profilepic.jpg"
+alt="Graduation Day">
+
+
+<span class="blog-category">
+
+School Experience
+
+</span>
+
+
+<h2>
+
+Graduation Day
+
+</h2>
+
+
+<p class="preview-date">
+
+June 24, 2026
+
+</p>
+
+
+<div class="preview-description">
+
+
+<p>
+
+June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
+
+</p>
+
+
+<p>
+
+After years of studying, completing projects, attending classes, working on requirements, taking examinations, preparing presentations, and facing different challenges, I finally reached one of the biggest milestones in my life — graduation.
+
+</p>
+
+
+<p>
+
+The day was filled with happiness, excitement, and a little bit of sadness because it marked the end of my college journey. Looking back, there were many moments when I felt tired and stressed because of deadlines, projects, school activities, and other responsibilities. There were also times when I doubted myself, but I continued to move forward.
+
+</p>
+
+
+<p>
+
+During the graduation ceremony, I felt proud seeing myself wearing my graduation attire and finally receiving my diploma. It was a special moment because I knew that all the hard work and sacrifices I made throughout my college years had finally paid off.
+
+</p>
+
+
+<p>
+
+I am also thankful for my family, friends, classmates, instructors, and everyone who supported and encouraged me throughout my journey. Their support helped me continue even during difficult times.
+
+</p>
+
+
+<p>
+
+Graduation was not only about receiving a diploma. It was also a reminder of all the experiences and lessons that I gained during my college years. I learned how to manage my time, work with different people, solve problems, communicate my ideas, and become more responsible with my work.
+
+</p>
+
+
+<p>
+
+After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day. I wanted to visit him and somehow share this important achievement with him. Although he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
+
+</p>
+
+
+<p>
+
+After visiting the cemetery, we went to eat together as a family. We spent some time talking, enjoying our meal, and celebrating the achievement together. It was a simple celebration, but it made the day even more memorable.
+
+</p>
+
+
+<p>
+
+After eating, we went home and finally ended the day. It was a simple ending to a very meaningful and unforgettable day.
+
+</p>
+
+
+<p>
+
+Graduation was not the end of my journey. It was the beginning of a new chapter in my life. As a BSIT graduate, I want to continue improving my skills in Graphic Design, Web Development, UI/UX Design, and Digital Creativity.
+
+</p>
+
+
+<p>
+
+I hope to use everything I have learned to create meaningful projects, improve my skills, and build a successful career in the future.
+
+</p>
+
+
+<p>
+
+June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓
+
+</p>
+
+
+</div>
+
+
+</div>
+
+`;
+
+}
+
+
+function closeGraduationBlog() {
+
+closePreview();
+
+}
+
+</script>
 
 
 
 
-<!-- BLOG SCRIPT -->
 
+<!-- =====================================
+     BLOG SCRIPT
+===================================== -->
 
 <script src="blog.js"></script>
-
-
-
 
 
 </body>
