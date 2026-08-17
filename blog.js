@@ -14,7 +14,6 @@ let editingIndex = -1;
 
 /* =========================================================
    DEFAULT BLOGS
-   THESE WILL BE ADDED IF MISSING
 ========================================================= */
 
 const defaultBlogs = [
@@ -290,216 +289,6 @@ I am thankful for the people who guided me and for the experiences that became p
 
 
 /* =========================================================
-   INITIALIZE BLOGS
-========================================================= */
-
-function initializeBlogs() {
-
-    const savedBlogs =
-        localStorage.getItem("blogs");
-
-
-    /*
-       FIRST VISIT
-       No localStorage yet.
-    */
-
-    if (!savedBlogs) {
-
-        blogs =
-            defaultBlogs.map(blog => ({
-                ...blog
-            }));
-
-        saveBlogs();
-
-        return;
-    }
-
-
-    /*
-       LOAD SAVED BLOGS
-    */
-
-    try {
-
-        blogs =
-            JSON.parse(savedBlogs);
-
-    } catch (error) {
-
-        blogs =
-            defaultBlogs.map(blog => ({
-                ...blog
-            }));
-
-        saveBlogs();
-
-        return;
-    }
-
-
-    /*
-       MAKE SURE BLOGS IS AN ARRAY
-    */
-
-    if (!Array.isArray(blogs)) {
-
-        blogs =
-            defaultBlogs.map(blog => ({
-                ...blog
-            }));
-
-        saveBlogs();
-
-        return;
-    }
-
-
-    /*
-       ADD MISSING DEFAULT BLOGS.
-
-       IMPORTANT:
-       Existing custom blogs are NOT deleted.
-    */
-
-    defaultBlogs.forEach(defaultBlog => {
-
-        const existing =
-            blogs.find(
-                blog =>
-                    blog.title === defaultBlog.title
-            );
-
-
-        if (!existing) {
-
-            blogs.push({
-                ...defaultBlog
-            });
-
-        }
-
-    });
-
-
-    /*
-       UPDATE THE ORIGINAL BLOG INFORMATION
-       WITHOUT REMOVING OTHER BLOGS.
-    */
-
-    const freeTime =
-        blogs.find(
-            blog =>
-                blog.title ===
-                "Creating in My Free Time"
-        );
-
-
-    if (freeTime) {
-
-        freeTime.date =
-            "2026-08-18";
-
-        freeTime.order =
-            1;
-
-        freeTime.category =
-            "Personal";
-
-        freeTime.image =
-            "com.jpg";
-
-        freeTime.featured =
-            false;
-
-    }
-
-
-    const justLeaves =
-        blogs.find(
-            blog =>
-                blog.title ===
-                "Just Leaves 🍂"
-        );
-
-
-    if (justLeaves) {
-
-        justLeaves.date =
-            "2026-08-18";
-
-        justLeaves.order =
-            2;
-
-        justLeaves.category =
-            "Personal";
-
-        justLeaves.image =
-            "leaves.jpg";
-
-        justLeaves.featured =
-            false;
-
-    }
-
-
-    const graduation =
-        blogs.find(
-            blog =>
-                blog.title ===
-                "Graduation Day"
-        );
-
-
-    if (graduation) {
-
-        graduation.date =
-            "2026-06-24";
-
-        graduation.order =
-            3;
-
-        graduation.image =
-            "profilepic.jpg";
-
-        graduation.featured =
-            true;
-
-    }
-
-
-    const ojt =
-        blogs.find(
-            blog =>
-                blog.title ===
-                "OJT Experience"
-        );
-
-
-    if (ojt) {
-
-        ojt.date =
-            "2026-05-28";
-
-        ojt.order =
-            4;
-
-        ojt.image =
-            "ojt.jpg";
-
-        ojt.featured =
-            true;
-
-    }
-
-
-    saveBlogs();
-
-}
-
-
-/* =========================================================
    SAVE BLOGS
 ========================================================= */
 
@@ -514,12 +303,173 @@ function saveBlogs() {
 
 
 /* =========================================================
+   INITIALIZE BLOGS
+========================================================= */
+
+function initializeBlogs() {
+
+    let savedBlogs = null;
+
+
+    /* -----------------------------------------------------
+       TRY TO READ LOCAL STORAGE
+    ----------------------------------------------------- */
+
+    try {
+
+        savedBlogs =
+            localStorage.getItem("blogs");
+
+    } catch (error) {
+
+        console.warn(
+            "LocalStorage could not be accessed.",
+            error
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       LOAD EXISTING BLOGS
+    ----------------------------------------------------- */
+
+    if (savedBlogs) {
+
+        try {
+
+            blogs =
+                JSON.parse(savedBlogs);
+
+        } catch (error) {
+
+            console.warn(
+                "Invalid blog storage. Resetting blogs."
+            );
+
+            blogs = [];
+
+        }
+
+    }
+
+
+    /* -----------------------------------------------------
+       MAKE SURE BLOGS IS AN ARRAY
+    ----------------------------------------------------- */
+
+    if (!Array.isArray(blogs)) {
+
+        blogs = [];
+
+    }
+
+
+    /* -----------------------------------------------------
+       ADD MISSING DEFAULT BLOGS
+       
+       THIS IS THE IMPORTANT PART.
+    ----------------------------------------------------- */
+
+    defaultBlogs.forEach(
+        defaultBlog => {
+
+            const existingIndex =
+                blogs.findIndex(
+                    blog =>
+                        blog.title ===
+                        defaultBlog.title
+                );
+
+
+            /* ---------------------------------------------
+               BLOG DOES NOT EXIST
+            --------------------------------------------- */
+
+            if (
+                existingIndex === -1
+            ) {
+
+                blogs.push({
+                    ...defaultBlog
+                });
+
+                return;
+
+            }
+
+
+            /* ---------------------------------------------
+               BLOG EXISTS
+               
+               Update only the important default settings.
+               Keep user-edited content.
+            --------------------------------------------- */
+
+            const existingBlog =
+                blogs[existingIndex];
+
+
+            existingBlog.date =
+                defaultBlog.date;
+
+
+            existingBlog.order =
+                defaultBlog.order;
+
+
+            existingBlog.category =
+                defaultBlog.category;
+
+
+            existingBlog.image =
+                defaultBlog.image;
+
+
+            existingBlog.featured =
+                defaultBlog.featured;
+
+
+            /*
+               If old blog has no content,
+               restore default content.
+            */
+
+            if (
+                !existingBlog.content ||
+                existingBlog.content.trim() === ""
+            ) {
+
+                existingBlog.content =
+                    defaultBlog.content;
+
+            }
+
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       SAVE UPDATED BLOG LIST
+    ----------------------------------------------------- */
+
+    saveBlogs();
+
+}
+
+
+/* =========================================================
    DATE FORMAT
 ========================================================= */
 
 function formatDate(date) {
 
-    if (!date) return "";
+    if (!date) {
+
+        return "";
+
+    }
+
 
     const d =
         new Date(
@@ -541,8 +491,8 @@ function formatDate(date) {
 
 /* =========================================================
    SORT BLOGS
-   LATEST → OLDEST
-   SAME DATE → ORDER
+   DATE: LATEST → OLDEST
+   SAME DATE: ORDER
 ========================================================= */
 
 function sortBlogs() {
@@ -552,13 +502,15 @@ function sortBlogs() {
 
             const dateA =
                 new Date(
-                    a.date + "T00:00:00"
+                    a.date +
+                    "T00:00:00"
                 );
 
 
             const dateB =
                 new Date(
-                    b.date + "T00:00:00"
+                    b.date +
+                    "T00:00:00"
                 );
 
 
@@ -607,7 +559,11 @@ function displayBlogs() {
         );
 
 
-    if (!container) return;
+    if (!container) {
+
+        return;
+
+    }
 
 
     container.innerHTML =
@@ -622,12 +578,16 @@ function displayBlogs() {
     }
 
 
-    /*
-       LATEST 4
-    */
+    /* =====================================================
+       LATEST BLOGS
+       ONLY 4
+    ===================================================== */
 
     const latestBlogs =
-        blogs.slice(0, 4);
+        blogs.slice(
+            0,
+            4
+        );
 
 
     latestBlogs.forEach(
@@ -672,23 +632,29 @@ function displayBlogs() {
                 <div class="blog-info">
 
                     <span class="blog-category">
+
                         ${escapeHTML(
                             blog.category ||
                             "Uncategorized"
                         )}
+
                     </span>
 
                     <h2>
+
                         ${escapeHTML(
                             blog.title
                         )}
+
                     </h2>
 
                     <p>
+
                         Blog Date:
                         ${formatDate(
                             blog.date
                         )}
+
                     </p>
 
                 </div>
@@ -728,10 +694,10 @@ function displayBlogs() {
     );
 
 
-    /*
-       FEATURED ONLY:
-       GRADUATION + OJT
-    */
+    /* =====================================================
+       FEATURED BLOGS
+       ONLY 2
+    ===================================================== */
 
     if (featuredContainer) {
 
@@ -744,26 +710,31 @@ function displayBlogs() {
         ];
 
 
-        const featuredBlogs =
-            featuredTitles
-                .map(
-                    title =>
-                        blogs.find(
-                            blog =>
-                                blog.title ===
-                                    title &&
-                                blog.featured ===
-                                    true
-                        )
-                )
-                .filter(Boolean);
+        featuredTitles.forEach(
+            title => {
+
+                const blog =
+                    blogs.find(
+                        item =>
+                            item.title ===
+                            title
+                    );
 
 
-        featuredBlogs.forEach(
-            blog => {
+                if (
+                    !blog ||
+                    blog.featured !== true
+                ) {
+
+                    return;
+
+                }
+
 
                 const originalIndex =
-                    blogs.indexOf(blog);
+                    blogs.indexOf(
+                        blog
+                    );
 
 
                 const card =
@@ -794,29 +765,37 @@ function displayBlogs() {
                     >
 
                     <span class="featured-badge">
+
                         Featured
+
                     </span>
 
                     <div class="blog-info">
 
                         <span class="blog-category">
+
                             ${escapeHTML(
                                 blog.category ||
                                 "Uncategorized"
                             )}
+
                         </span>
 
                         <h2>
+
                             ${escapeHTML(
                                 blog.title
                             )}
+
                         </h2>
 
                         <p>
+
                             Blog Date:
                             ${formatDate(
                                 blog.date
                             )}
+
                         </p>
 
                     </div>
@@ -834,9 +813,9 @@ function displayBlogs() {
     }
 
 
-    /*
+    /* =====================================================
        NO BLOG
-    */
+    ===================================================== */
 
     const noBlog =
         document.getElementById(
@@ -865,7 +844,12 @@ function displayBlogs() {
 
 function escapeHTML(text) {
 
-    if (!text) return "";
+    if (!text) {
+
+        return "";
+
+    }
+
 
     return String(text)
 
@@ -903,7 +887,11 @@ function escapeHTML(text) {
 
 function formatContent(content) {
 
-    if (!content) return "";
+    if (!content) {
+
+        return "";
+
+    }
 
 
     const cleanContent =
@@ -922,19 +910,14 @@ function formatContent(content) {
 
 
     return paragraphs
-
         .map(
             paragraph => {
-
-                const text =
-                    paragraph.trim();
-
 
                 return `
 
                     <p>
                         ${escapeHTML(
-                            text
+                            paragraph.trim()
                         ).replace(
                             /\n/g,
                             "<br>"
@@ -945,7 +928,6 @@ function formatContent(content) {
 
             }
         )
-
         .join("");
 
 }
@@ -983,7 +965,11 @@ function openBlog(index) {
         blogs[index];
 
 
-    if (!blog) return;
+    if (!blog) {
+
+        return;
+
+    }
 
 
     overlay.style.display =
@@ -1041,10 +1027,6 @@ function openBlog(index) {
     `;
 
 
-    /*
-       CLICK BLOG = CLOSE
-    */
-
     preview.onclick =
         function () {
 
@@ -1052,10 +1034,6 @@ function openBlog(index) {
 
         };
 
-
-    /*
-       CLICK OVERLAY = CLOSE
-    */
 
     overlay.onclick =
         function () {
@@ -1131,7 +1109,11 @@ function openModal() {
         );
 
 
-    if (!modal) return;
+    if (!modal) {
+
+        return;
+
+    }
 
 
     editingIndex =
@@ -1323,7 +1305,7 @@ function saveBlog() {
             );
 
 
-        const existingBlog =
+        const oldBlog =
             editingIndex >= 0
                 ? blogs[
                     editingIndex
@@ -1343,11 +1325,8 @@ function saveBlog() {
                 date,
 
             order:
-                existingBlog
-                    ? (
-                        existingBlog.order ||
-                        maxOrder + 1
-                    )
+                oldBlog
+                    ? oldBlog.order
                     : maxOrder + 1,
 
             content:
@@ -1356,8 +1335,9 @@ function saveBlog() {
             image:
                 imageData ||
                 (
-                    existingBlog
-                        ? existingBlog.image
+                    oldBlog &&
+                    oldBlog.image
+                        ? oldBlog.image
                         : "profilepic.jpg"
                 ),
 
@@ -1440,7 +1420,11 @@ function editBlog(index) {
         blogs[index];
 
 
-    if (!blog) return;
+    if (!blog) {
+
+        return;
+
+    }
 
 
     editingIndex =
@@ -1513,17 +1497,6 @@ function editBlog(index) {
 
     }
 
-    else {
-
-        if (previewContainer) {
-
-            previewContainer.style.display =
-                "none";
-
-        }
-
-    }
-
 
     document.getElementById(
         "image"
@@ -1549,7 +1522,11 @@ function deleteBlog(index) {
         blogs[index];
 
 
-    if (!blog) return;
+    if (!blog) {
+
+        return;
+
+    }
 
 
     const confirmed =
@@ -1558,7 +1535,11 @@ function deleteBlog(index) {
         );
 
 
-    if (!confirmed) return;
+    if (!confirmed) {
+
+        return;
+
+    }
 
 
     blogs.splice(
@@ -1740,7 +1721,11 @@ document.addEventListener(
             event.target.files[0];
 
 
-        if (!file) return;
+        if (!file) {
+
+            return;
+
+        }
 
 
         const reader =
