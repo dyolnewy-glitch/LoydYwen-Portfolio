@@ -1,233 +1,436 @@
-/* =====================================
-   PORTFOLIO.JS
-===================================== */
+/* =========================================
+   PORTFOLIO DATA
+========================================= */
 
-
-/* =====================================
-   PROJECT DATA
-===================================== */
-
-let projects = JSON.parse(
-    localStorage.getItem("projects")
-) || [];
-
+let projects =
+    JSON.parse(localStorage.getItem("projects")) || [];
 
 let editIndex = null;
-
 let imageData = "";
 
 
+/* =========================================
+   ELEMENTS
+========================================= */
 
-/* =====================================
-   TEST PROJECT
-   TEMPORARY ONLY
-===================================== */
+const projectContainer =
+    document.getElementById("projectContainer");
 
-const testProject = {
+const noProject =
+    document.getElementById("noProject");
 
-    image: "assets/default-project.png",
+const modal =
+    document.getElementById("projectModal");
 
-    title: "TEST PROJECT",
+const imageInput =
+    document.getElementById("projectImage");
 
-    category: "Testing",
+const imagePreview =
+    document.getElementById("imagePreview");
 
-    status: "Testing",
+
+/* =========================================
+   PHOTO STRIPS PROJECT
+========================================= */
+
+const photoStripProject = {
+
+    image: "pts.jpg",
+
+    title: "Photo Strips",
+
+    category: "Graphic Design",
+
+    status: "Ongoing",
 
     description:
-        "This is a temporary placeholder project to test if the latest portfolio JavaScript is being deployed correctly on GitHub and Netlify.",
+        "A collection of creative photo strip designs created using Canva. Click the card to see each design and its description.",
 
-    tools:
-        "HTML, CSS, JavaScript",
+    tools: "Canva",
 
-    link: "#"
+    link:
+        "https://www.canva.com/design/DAHRMQEwvuw/3gEuly4qMC0gZP21feLHCQ/edit?continue_in_browser=true",
+
+    photoStrips: [
+
+        {
+            title: "🌊 Sea Memories",
+            image: "seamemories.jpg",
+            description:
+                "Soft blue tones, seaside elements, and relaxing ocean-inspired details create a fresh coastal look that feels like a collection of memories by the sea."
+        },
+
+        {
+            title: "🎋 Bamboo Shoots",
+            image: "bambooshoots.jpg",
+            description:
+                "Natural bamboo patterns, earthy details, and fresh green accents give the strip a clean, tropical, and calming appearance."
+        },
+
+        {
+            title: "🍓 Picnic Strawberry",
+            image: "picnicstrawberry.jpg",
+            description:
+                "Cute strawberry illustrations, picnic-inspired details, and fresh red and green accents create a cheerful and sweet outdoor-inspired look."
+        },
+
+        {
+            title: "🍊 Citrus Zest",
+            image: "citruszest.jpg",
+            description:
+                "Bright citrus elements, orange-inspired accents, and refreshing colors give the strip a lively and sunny appearance."
+        },
+
+        {
+            title: "🎧 Vintage Music",
+            image: "vintagemusic.jpg",
+            description:
+                "Retro music elements, classic decorative details, and nostalgic tones create a vintage-inspired strip with an old-school music aesthetic."
+        },
+
+        {
+            title: "🌳 Forest Glade",
+            image: "forestglade.jpg",
+            description:
+                "Soft greenery, woodland elements, tiny natural details, and forest-inspired decorations create a peaceful and cozy nature-filled appearance."
+        },
+
+        {
+            title: "🍵 Matcha Breeze",
+            image: "matchabreeze.jpg",
+            description:
+                "Soft matcha green tones, delicate tea-inspired elements, and simple decorative details give the strip a fresh, clean, and calming look."
+        },
+
+        {
+            title: "🪻 Lavender Hush",
+            image: "lavenderhush.jpg",
+            description:
+                "Soft lavender shades, delicate floral accents, and subtle decorative elements create a gentle, dreamy, and elegant appearance."
+        },
+
+        {
+            title: "🍀 Clover Luck",
+            image: "cloverluck.jpg",
+            description:
+                "Green clover details, playful accents, and fresh natural tones give the strip a cheerful and lucky-inspired appearance."
+        },
+
+        {
+            title: "🎡 Carnival Pop",
+            image: "carnivalpop.jpg",
+            description:
+                "Colorful carnival decorations, playful patterns, and vibrant accents create a fun and energetic photo strip that feels like a day at the fair."
+        },
+
+        {
+            title: "🎀 Ribbon & Lace",
+            image: "ribbonlace.jpg",
+            description:
+                "Decorative ribbons, lace-inspired patterns, and delicate accents create a soft, elegant, and charming appearance with a pretty decorative feel."
+        },
+
+        {
+            title: "🍦 Mint Choco Ice Cream",
+            image: "mintchocoicecream.jpg",
+            description:
+                "Mint green and chocolate tones, ice cream-inspired elements, and sweet decorative details create a cool and playful dessert-themed look."
+        },
+
+        {
+            title: "🍕 Pizza Party",
+            image: "pizzaparty.jpg",
+            description:
+                "Pizza illustrations, fun food details, and playful accents create a colorful and casual strip with a lively party-inspired appearance."
+        },
+
+        {
+            title: "🌙 Starlight Dreams",
+            image: "starlightdreams.jpg",
+            description:
+                "Deep nighttime tones, stars, moon-inspired details, and subtle glowing accents create a dreamy photo strip with a magical evening atmosphere."
+        },
+
+        {
+            title: "🌿🫖 Tea Garden",
+            image: "teagarden.jpg",
+            description:
+                "Botanical details, tea-inspired elements, soft greenery, and delicate decorations create a peaceful garden setting with a cozy and elegant feel."
+        },
+
+        {
+            title: "🍬 Candy Land",
+            image: "candyland.jpg",
+            description:
+                "Colorful candy details, sweet illustrations, and playful decorative elements create a bright, cheerful, and whimsical appearance."
+        },
+
+        {
+            title: "🎞️ Retro Snap",
+            image: "retrosnap.jpg",
+            description:
+                "Film-inspired details, vintage decorations, and classic tones give the strip a nostalgic photography look reminiscent of old snapshots."
+        },
+
+        {
+            title: "🫙 Jam & Joy",
+            image: "jamjoy.jpg",
+            description:
+                "Jam jars, fruity details, warm accents, and playful decorations create a cozy homemade look filled with colorful and cheerful details."
+        },
+
+        {
+            title: "🌸 Sakura Bloom",
+            image: "sakurabloom.jpg",
+            description:
+                "Soft cherry blossom details, pink floral accents, and delicate decorations create a graceful spring-inspired appearance with a gentle and elegant feel."
+        },
+
+        {
+            title: "🫐 Blueberry Bliss",
+            image: "blueberrybliss.jpg",
+            description:
+                "Blueberry illustrations, cool blue and purple tones, and playful berry-inspired details create a fresh and sweet-looking photo strip."
+        },
+
+        {
+            title: "🍉 Watermelon Splash",
+            image: "watermelon.jpg",
+            description:
+                "Watermelon slices, fresh green and red accents, and playful summer details create a bright and refreshing seasonal appearance."
+        },
+
+        {
+            title: "🌈 Rainbow Blast",
+            image: "rainbowblast.jpg",
+            description:
+                "Colorful rainbow accents, playful shapes, and vibrant decorative details create a cheerful photo strip with a lively and energetic look."
+        },
+
+        {
+            title: "💎🌪️ Brilyante ng Hangin",
+            image: "brilyantedhangin.jpg",
+            description:
+                "Sparkling diamond details, flowing wind-inspired elements, and light decorative accents create a unique and whimsical appearance with a sense of movement."
+        },
+
+        {
+            title: "🐼 Panda Vibe",
+            image: "pandavibe.jpg",
+            description:
+                "Cute panda illustrations, simple contrasting tones, and playful decorative details create a fun, relaxed, and adorable photo strip."
+        },
+
+        {
+            title: "🧋 Boba Break",
+            image: "bobabreak.jpg",
+            description:
+                "Bubble tea cups, boba pearls, soft colors, and cute drink-inspired decorations create a fun and refreshing photo strip with a youthful look."
+        },
+
+        {
+            title: "🐝 Sweet Moments",
+            image: "sweetmoments.jpg",
+            description:
+                "Cute bee and honey-inspired details, warm yellow accents, and sweet decorative elements create a cheerful photo strip with a cozy and charming appearance."
+        }
+
+    ]
+};
+
+
+/* =========================================
+   GABI STREET EATS AFTER DARK
+========================================= */
+
+const gabiStreetProject = {
+
+    image: "gabi.jpg",
+
+    title: "Gabi Street Eats After Dark",
+
+    category: "UI/UX Design",
+
+    status: "Ongoing",
+
+    description:
+        "A Figma food application concept focused on discovering street food and late-night eats through a simple, modern, and user-friendly interface.",
+
+    tools: "Figma",
+
+    link:
+        "https://www.figma.com/design/liI5ev1Z9hZf4Pc2Gv5vBH/Gabi-Food-app?m=auto&t=pUtlbdgaZRpGiXw7-6"
 
 };
 
 
-/*
-   Add TEST PROJECT only once.
+/* =========================================
+   CLEAN PORTFOLIO
+   KEEP ONLY:
+   1. Photo Strips
+   2. Gabi Street Eats After Dark
+   3. User-created projects
+========================================= */
 
-   This makes sure that even if there are
-   already projects saved in localStorage,
-   the test project will still appear.
-*/
+projects = projects.filter(project => {
 
-if (
-    !projects.some(
-        project =>
-            project.title === "TEST PROJECT"
-    )
-) {
+    if (!project.title) {
+        return false;
+    }
 
-    projects.push(testProject);
+    const title =
+        project.title.trim().toLowerCase();
 
-    localStorage.setItem(
-        "projects",
-        JSON.stringify(projects)
-    );
+    if (title === "test project") {
+        return false;
+    }
 
-}
+    if (
+        title === "gabi" ||
+        title === "gabi street eats" ||
+        title === "gabi street eats after dark"
+    ) {
+        return false;
+    }
 
+    if (
+        title === "photo strip" ||
+        title === "photo strips"
+    ) {
+        return false;
+    }
 
+    return true;
 
-/* =====================================
-   ELEMENTS
-===================================== */
-
-const projectContainer =
-    document.getElementById(
-        "projectContainer"
-    );
-
-
-const noProject =
-    document.getElementById(
-        "noProject"
-    );
-
-
-const modal =
-    document.getElementById(
-        "projectModal"
-    );
+});
 
 
-const imageInput =
-    document.getElementById(
-        "projectImage"
-    );
+/* =========================================
+   PUT PROJECTS IN LATEST-FIRST ORDER
+========================================= */
+
+projects.unshift(gabiStreetProject);
+projects.unshift(photoStripProject);
 
 
-const imagePreview =
-    document.getElementById(
-        "imagePreview"
-    );
+/* =========================================
+   SAVE CLEAN DATA
+========================================= */
+
+localStorage.setItem(
+    "projects",
+    JSON.stringify(projects)
+);
 
 
-
-/* =====================================
-   OPEN MODAL
-===================================== */
+/* =========================================
+   OPEN ADD PROJECT MODAL
+========================================= */
 
 function openProjectModal() {
 
-    if (!modal) return;
-
+    if (!modal) {
+        return;
+    }
 
     modal.style.display = "flex";
 
+    const modalTitle =
+        document.getElementById("modalTitle");
 
-    document.getElementById(
-        "modalTitle"
-    ).innerHTML =
-        "Add Project";
-
+    if (modalTitle) {
+        modalTitle.textContent = "Add Project";
+    }
 
     editIndex = null;
 
-
     clearForm();
 
 }
 
 
-
-/* =====================================
-   CLOSE MODAL
-===================================== */
+/* =========================================
+   CLOSE PROJECT MODAL
+========================================= */
 
 function closeProjectModal() {
 
-    if (!modal) return;
-
+    if (!modal) {
+        return;
+    }
 
     modal.style.display = "none";
-
 
     clearForm();
 
 }
 
 
-
-/* =====================================
+/* =========================================
    CLEAR FORM
-===================================== */
+========================================= */
 
 function clearForm() {
 
     const title =
-        document.getElementById(
-            "projectTitle"
-        );
+        document.getElementById("projectTitle");
 
     const category =
-        document.getElementById(
-            "projectCategory"
-        );
+        document.getElementById("projectCategory");
 
     const status =
-        document.getElementById(
-            "projectStatus"
-        );
+        document.getElementById("projectStatus");
 
     const description =
-        document.getElementById(
-            "projectDescription"
-        );
+        document.getElementById("projectDescription");
 
     const tools =
-        document.getElementById(
-            "projectTools"
-        );
+        document.getElementById("projectTools");
 
     const link =
-        document.getElementById(
-            "projectLink"
-        );
+        document.getElementById("projectLink");
 
 
-    if (title)
+    if (title) {
         title.value = "";
+    }
 
-
-    if (category)
+    if (category) {
         category.value = "";
+    }
 
-
-    if (status)
+    if (status) {
         status.value = "";
+    }
 
-
-    if (description)
+    if (description) {
         description.value = "";
+    }
 
-
-    if (tools)
+    if (tools) {
         tools.value = "";
+    }
 
-
-    if (link)
+    if (link) {
         link.value = "";
+    }
 
-
-    if (imagePreview)
-        imagePreview.src = "";
-
-
-    if (imageInput)
+    if (imageInput) {
         imageInput.value = "";
+    }
 
+    if (imagePreview) {
+        imagePreview.src = "";
+    }
 
     imageData = "";
 
 }
 
 
-
-/* =====================================
+/* =========================================
    IMAGE PREVIEW
-===================================== */
+========================================= */
 
 if (imageInput) {
 
@@ -238,13 +441,12 @@ if (imageInput) {
             const file =
                 this.files[0];
 
-
-            if (!file) return;
-
+            if (!file) {
+                return;
+            }
 
             const reader =
                 new FileReader();
-
 
             reader.onload =
                 function (event) {
@@ -252,16 +454,12 @@ if (imageInput) {
                     imageData =
                         event.target.result;
 
-
                     if (imagePreview) {
-
                         imagePreview.src =
                             imageData;
-
                     }
 
                 };
-
 
             reader.readAsDataURL(file);
 
@@ -271,48 +469,41 @@ if (imageInput) {
 }
 
 
-
-/* =====================================
+/* =========================================
    SAVE PROJECT
-===================================== */
+========================================= */
 
 function saveProject() {
 
     const title =
         document.getElementById(
             "projectTitle"
-        ).value.trim();
-
+        )?.value.trim() || "";
 
     const category =
         document.getElementById(
             "projectCategory"
-        ).value;
-
+        )?.value || "";
 
     const status =
         document.getElementById(
             "projectStatus"
-        ).value;
-
+        )?.value || "";
 
     const description =
         document.getElementById(
             "projectDescription"
-        ).value.trim();
-
+        )?.value.trim() || "";
 
     const tools =
         document.getElementById(
             "projectTools"
-        ).value.trim();
-
+        )?.value.trim() || "";
 
     const link =
         document.getElementById(
             "projectLink"
-        ).value.trim();
-
+        )?.value.trim() || "";
 
 
     if (
@@ -327,7 +518,6 @@ function saveProject() {
         return;
 
     }
-
 
 
     const project = {
@@ -357,14 +547,23 @@ function saveProject() {
     };
 
 
-
     if (editIndex === null) {
 
-        projects.push(project);
+        projects.unshift(project);
 
     }
 
     else {
+
+        if (
+            projects[editIndex] &&
+            projects[editIndex].photoStrips
+        ) {
+
+            project.photoStrips =
+                projects[editIndex].photoStrips;
+
+        }
 
         projects[editIndex] =
             project;
@@ -372,167 +571,228 @@ function saveProject() {
     }
 
 
-
     localStorage.setItem(
         "projects",
         JSON.stringify(projects)
     );
 
-
-
     displayProjects();
-
 
     closeProjectModal();
 
 }
 
 
-
-/* =====================================
+/* =========================================
    DISPLAY PROJECTS
-===================================== */
+========================================= */
 
 function displayProjects() {
 
-    if (!projectContainer) return;
-
+    if (!projectContainer) {
+        return;
+    }
 
     projectContainer.innerHTML = "";
-
 
 
     if (projects.length === 0) {
 
         if (noProject) {
-
-            noProject.style.display =
-                "block";
-
+            noProject.style.display = "block";
         }
+
+        return;
 
     }
 
-    else {
 
-        if (noProject) {
-
-            noProject.style.display =
-                "none";
-
-        }
-
+    if (noProject) {
+        noProject.style.display = "none";
     }
-
 
 
     projects.forEach(
-        function (project, index) {
+        (project, index) => {
 
             const card =
-                document.createElement(
-                    "div"
-                );
-
+                document.createElement("div");
 
             card.className =
                 "project-card";
 
-
+            card.dataset.projectIndex =
+                index;
 
             card.innerHTML = `
 
                 <img
-                    src="${project.image || "assets/default-project.png"}"
+                    src="${project.image}"
                     alt="${project.title}"
                 >
 
-
                 <div class="project-content">
 
+                    <div class="project-labels">
 
-                    <span class="category">
+                        <span class="category">
+                            ${project.category || "Project"}
+                        </span>
 
-                        ${project.category || ""}
-
-                    </span>
-
-
-                    <span class="status">
-
-                        ${project.status || ""}
-
-                    </span>
-
-
-                    <h2>
-
-                        ${project.title}
-
-                    </h2>
-
-
-                    <p>
-
-                        ${project.description}
-
-                    </p>
-
-
-                    <div class="tools-used">
-
-                        🛠 Tools Used:
-
-                        ${project.tools || "N/A"}
+                        <span class="status">
+                            ${project.status || "Ongoing"}
+                        </span>
 
                     </div>
 
+                    <h2>
+                        ${project.title}
+                    </h2>
+
+                    <p>
+                        ${project.description}
+                    </p>
+
+                    <div class="tools-used">
+                        🛠 Tools Used:
+                        ${project.tools || "N/A"}
+                    </div>
 
                     <div class="project-buttons">
 
-
-                        <a
-                            href="${project.link || "#"}"
-                            target="_blank"
-                            class="view-btn"
-                        >
-
-                            View Project
-
-                        </a>
-
+                        ${
+                            project.link
+                            ?
+                            `
+                            <a
+                                href="${project.link}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="view-btn"
+                            >
+                                View Project
+                            </a>
+                            `
+                            :
+                            ""
+                        }
 
                         <button
+                            type="button"
                             class="edit-btn"
-                            onclick="editProject(${index})"
                         >
-
                             Edit
-
                         </button>
-
 
                         <button
+                            type="button"
                             class="delete-btn"
-                            onclick="deleteProject(${index})"
                         >
-
                             Delete
-
                         </button>
-
 
                     </div>
-
 
                 </div>
 
             `;
 
+            projectContainer.appendChild(card);
+
+        }
+    );
+
+}
 
 
-            projectContainer.appendChild(
-                card
+/* =========================================
+   CARD CLICK
+   CLICK ANYWHERE ON CARD
+========================================= */
+
+if (projectContainer) {
+
+    projectContainer.addEventListener(
+        "click",
+        function (event) {
+
+            const editButton =
+                event.target.closest(".edit-btn");
+
+            const deleteButton =
+                event.target.closest(".delete-btn");
+
+            const viewButton =
+                event.target.closest(".view-btn");
+
+
+            if (editButton) {
+
+                event.preventDefault();
+
+                const card =
+                    editButton.closest(".project-card");
+
+                if (!card) {
+                    return;
+                }
+
+                editProject(
+                    Number(card.dataset.projectIndex)
+                );
+
+                return;
+
+            }
+
+
+            if (deleteButton) {
+
+                event.preventDefault();
+
+                const card =
+                    deleteButton.closest(".project-card");
+
+                if (!card) {
+                    return;
+                }
+
+                deleteProject(
+                    Number(card.dataset.projectIndex)
+                );
+
+                return;
+
+            }
+
+
+            if (viewButton) {
+                return;
+            }
+
+
+            const card =
+                event.target.closest(".project-card");
+
+            if (!card) {
+                return;
+            }
+
+
+            const index =
+                Number(card.dataset.projectIndex);
+
+
+            if (
+                Number.isNaN(index) ||
+                !projects[index]
+            ) {
+                return;
+            }
+
+
+            openProjectPreview(
+                projects[index]
             );
 
         }
@@ -541,129 +801,127 @@ function displayProjects() {
 }
 
 
-
-/* =====================================
+/* =========================================
    EDIT PROJECT
-===================================== */
+========================================= */
 
 function editProject(index) {
+
+    if (
+        index < 0 ||
+        index >= projects.length
+    ) {
+        return;
+    }
+
+    editIndex = index;
 
     const project =
         projects[index];
 
 
-    if (!project) return;
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    if (modalTitle) {
+        modalTitle.textContent =
+            "Edit Project";
+    }
 
 
-    editIndex =
-        index;
+    const title =
+        document.getElementById("projectTitle");
+
+    const category =
+        document.getElementById("projectCategory");
+
+    const status =
+        document.getElementById("projectStatus");
+
+    const description =
+        document.getElementById("projectDescription");
+
+    const tools =
+        document.getElementById("projectTools");
+
+    const link =
+        document.getElementById("projectLink");
 
 
+    if (title) {
+        title.value =
+            project.title || "";
+    }
 
-    document.getElementById(
-        "modalTitle"
-    ).innerHTML =
-        "Edit Project";
+    if (category) {
+        category.value =
+            project.category || "";
+    }
 
+    if (status) {
+        status.value =
+            project.status || "";
+    }
 
+    if (description) {
+        description.value =
+            project.description || "";
+    }
 
-    document.getElementById(
-        "projectTitle"
-    ).value =
-        project.title || "";
+    if (tools) {
+        tools.value =
+            project.tools || "";
+    }
 
-
-
-    document.getElementById(
-        "projectCategory"
-    ).value =
-        project.category || "";
-
-
-
-    document.getElementById(
-        "projectStatus"
-    ).value =
-        project.status || "";
-
-
-
-    document.getElementById(
-        "projectDescription"
-    ).value =
-        project.description || "";
-
-
-
-    document.getElementById(
-        "projectTools"
-    ).value =
-        project.tools || "";
-
-
-
-    document.getElementById(
-        "projectLink"
-    ).value =
-        project.link || "";
-
+    if (link) {
+        link.value =
+            project.link || "";
+    }
 
 
     imageData =
         project.image || "";
 
 
-
     if (imagePreview) {
-
         imagePreview.src =
             project.image || "";
-
     }
 
 
-
     if (modal) {
-
-        modal.style.display =
-            "flex";
-
+        modal.style.display = "flex";
     }
 
 }
 
 
-
-/* =====================================
+/* =========================================
    DELETE PROJECT
-===================================== */
+========================================= */
 
 function deleteProject(index) {
 
-    const project =
-        projects[index];
-
-
-    if (!project) return;
-
+    if (
+        index < 0 ||
+        index >= projects.length
+    ) {
+        return;
+    }
 
 
     const confirmDelete =
         confirm(
-            `Are you sure you want to delete "${project.title}"?`
+            "Are you sure you want to delete this project?"
         );
 
 
+    if (!confirmDelete) {
+        return;
+    }
 
-    if (!confirmDelete) return;
 
-
-
-    projects.splice(
-        index,
-        1
-    );
-
+    projects.splice(index, 1);
 
 
     localStorage.setItem(
@@ -672,16 +930,331 @@ function deleteProject(index) {
     );
 
 
-
     displayProjects();
 
 }
 
 
+/* =========================================
+   PROJECT PREVIEW
+========================================= */
 
-/* =====================================
-   CLOSE MODAL OUTSIDE CLICK
-===================================== */
+function openProjectPreview(project) {
+
+    const oldPreview =
+        document.getElementById(
+            "projectPreviewOverlay"
+        );
+
+
+    if (oldPreview) {
+        oldPreview.remove();
+    }
+
+
+    const overlay =
+        document.createElement("div");
+
+
+    overlay.id =
+        "projectPreviewOverlay";
+
+    overlay.className =
+        "project-preview-overlay";
+
+
+    const photoStripCount =
+        project.photoStrips
+            ? project.photoStrips.length
+            : 0;
+
+
+    let photoStripHTML = "";
+
+
+    /* =====================================
+       PHOTO STRIPS
+    ===================================== */
+
+    if (
+        project.photoStrips &&
+        project.photoStrips.length > 0
+    ) {
+
+        photoStripHTML = `
+
+            <div class="photo-strip-section">
+
+                <h2>
+                    Photo Strip Designs
+                </h2>
+
+                <p class="photo-strip-intro">
+                    Explore all ${photoStripCount}
+                    photo strip designs below.
+                    Click the card to see the design
+                    and its description.
+                </p>
+
+                <div class="photo-strip-grid">
+
+                    ${
+                        project.photoStrips
+                            .map(
+                                (strip, stripIndex) => `
+
+                                    <div
+                                        class="photo-strip-item"
+                                    >
+
+                                        <div
+                                            class="photo-strip-number"
+                                        >
+                                            ${stripIndex + 1}
+                                        </div>
+
+                                        <img
+                                            src="${strip.image}"
+                                            alt="${strip.title}"
+                                            class="photo-strip-image"
+                                        >
+
+                                        <h3>
+                                            ${strip.title}
+                                        </h3>
+
+                                        <p>
+                                            ${strip.description}
+                                        </p>
+
+                                    </div>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================
+       PREVIEW
+    ===================================== */
+
+    overlay.innerHTML = `
+
+        <div class="project-preview-box">
+
+            <button
+                type="button"
+                class="project-preview-close"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <img
+                class="project-preview-cover"
+                src="${project.image}"
+                alt="${project.title}"
+            >
+
+
+            <div class="project-preview-content">
+
+                <div class="project-preview-labels">
+
+                    <span class="category">
+                        ${project.category || "Project"}
+                    </span>
+
+                    <span class="status">
+                        ${project.status || "Ongoing"}
+                    </span>
+
+                </div>
+
+
+                <h1>
+                    ${project.title}
+                </h1>
+
+
+                <p class="project-preview-description">
+                    ${project.description}
+                </p>
+
+
+                <div class="project-preview-tools">
+
+                    🛠
+
+                    <strong>
+                        Tools Used:
+                    </strong>
+
+                    ${project.tools || "N/A"}
+
+                </div>
+
+
+                ${photoStripHTML}
+
+
+                <div class="project-preview-actions">
+
+                    ${
+                        project.link
+                        ?
+                        `
+                        <a
+                            href="${project.link}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="view-btn"
+                        >
+                            View Project
+                        </a>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    <button
+                        type="button"
+                        class="close-preview-btn"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        overlay
+    );
+
+
+    /* =====================================
+       CLOSE BUTTON
+    ===================================== */
+
+    const closeButton =
+        overlay.querySelector(
+            ".project-preview-close"
+        );
+
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
+            "click",
+            closeProjectPreview
+        );
+
+    }
+
+
+    const bottomClose =
+        overlay.querySelector(
+            ".close-preview-btn"
+        );
+
+
+    if (bottomClose) {
+
+        bottomClose.addEventListener(
+            "click",
+            closeProjectPreview
+        );
+
+    }
+
+
+    /* =====================================
+       CLICK OUTSIDE
+    ===================================== */
+
+    overlay.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === overlay
+            ) {
+
+                closeProjectPreview();
+
+            }
+
+        }
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =========================================
+   CLOSE PREVIEW
+========================================= */
+
+function closeProjectPreview() {
+
+    const overlay =
+        document.getElementById(
+            "projectPreviewOverlay"
+        );
+
+
+    if (overlay) {
+        overlay.remove();
+    }
+
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeProjectPreview();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   CLOSE ADD/EDIT MODAL OUTSIDE CLICK
+========================================= */
 
 window.addEventListener(
     "click",
@@ -700,9 +1273,8 @@ window.addEventListener(
 );
 
 
-
-/* =====================================
-   LOAD PROJECTS
-===================================== */
+/* =========================================
+   INITIAL DISPLAY
+========================================= */
 
 displayProjects();
