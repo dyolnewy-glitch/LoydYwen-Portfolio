@@ -429,7 +429,7 @@ I wish we could have spent more time talking, laughing, practicing for events, e
 
 If I had known that those days would become some of the best memories of my life, maybe I would have appreciated every single moment even more.
 
-Our OJT was supposed to be about completing 400 hours and gaining work experience.
+Our OJT was supposed to be about completing 486 hours and gaining work experience.
 
 But for me, it became so much more than that.
 
