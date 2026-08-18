@@ -7,7 +7,8 @@
    BLOG DATA
 ========================================================= */
 
-let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+let blogs =
+    JSON.parse(localStorage.getItem("blogs")) || [];
 
 let editingIndex = -1;
 
@@ -257,46 +258,6 @@ June 24, 2026 will always be a special date for me — the day I officially beca
 
 
     /* =====================================================
-       OJT EXPERIENCE
-    ===================================================== */
-
-    {
-        title: "OJT Experience",
-        category: "OJT Experience",
-        date: "2026-05-28",
-        order: 4,
-        image: "ojt.jpg",
-        featured: true,
-
-        content: `My On-the-Job Training experience was one of the important parts of my college journey.
-
-During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
-
-One of the tasks I worked on was encoding information for the Vertical File and Clippings Section. I recorded information such as the article title, date, author, page number, and source newspaper.
-
-I also used Google Sheets to organize and record the information. This helped me become more familiar with organizing data and maintaining accurate records.
-
-Aside from the technical tasks, I also learned the importance of being responsible, patient, organized, and attentive when doing work.
-
-My OJT experience helped me understand that working in an actual organization is different from simply completing activities in school.
-
-There were also different activities and programs that I was able to assist with during my OJT experience.
-
-One of these was the R.E.A.D. Library Summer Program 2026. I assisted participants during different activities throughout the program.
-
-The activities included orientation, Book Booth activities, online sessions, storytelling, Canva activities, Wacom Drawing Tablet activities, Math Market Madness, a lecture about Solid Waste Management, and participation from the Bureau of Fire Protection.
-
-I also helped with the preparation and documentation of different activities and completed weekly reports.
-
-Overall, my OJT experience gave me valuable lessons that I can use in my future career.
-
-It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
-
-I am thankful for the people who guided me and for the experiences that became part of my college journey.`
-    },
-
-
-    /* =====================================================
        THE PEOPLE I MET DURING MY OJT
     ===================================================== */
 
@@ -304,7 +265,7 @@ I am thankful for the people who guided me and for the experiences that became p
         title: "The People I Met During My OJT",
         category: "OJT Experience",
         date: "2026-06-10",
-        order: 5,
+        order: 4,
         image: "ojts.jpg",
         featured: false,
 
@@ -321,10 +282,6 @@ There were also four students from LNL who had already been assigned to the libr
 At first, I was shy around everyone. I did not really know how to start conversations or become comfortable with people I had just met.
 
 After a few days, however, we slowly started to become more comfortable with each other.
-
-The LNL students were also part of our early OJT experience, but we were not able to become very close because they finished their OJT and left earlier, around March. Even though our time together was short, they were still part of the beginning of our experience at the library.
-
-Eventually, the group became more comfortable with each other.
 
 The people who were initially strangers slowly became friends and companions that I looked forward to seeing every day.
 
@@ -563,6 +520,46 @@ I miss you all.
 And honestly...
 
 I wish our OJT never had to end.`
+    },
+
+
+    /* =====================================================
+       OJT EXPERIENCE
+    ===================================================== */
+
+    {
+        title: "OJT Experience",
+        category: "OJT Experience",
+        date: "2026-05-28",
+        order: 5,
+        image: "ojt.jpg",
+        featured: true,
+
+        content: `My On-the-Job Training experience was one of the important parts of my college journey.
+
+During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
+
+One of the tasks I worked on was encoding information for the Vertical File and Clippings Section. I recorded information such as the article title, date, author, page number, and source newspaper.
+
+I also used Google Sheets to organize and record the information. This helped me become more familiar with organizing data and maintaining accurate records.
+
+Aside from the technical tasks, I also learned the importance of being responsible, patient, organized, and attentive when doing work.
+
+My OJT experience helped me understand that working in an actual organization is different from simply completing activities in school.
+
+There were also different activities and programs that I was able to assist with during my OJT experience.
+
+One of these was the R.E.A.D. Library Summer Program 2026. I assisted participants during different activities throughout the program.
+
+The activities included orientation, Book Booth activities, online sessions, storytelling, Canva activities, Wacom Drawing Tablet activities, Math Market Madness, a lecture about Solid Waste Management, and participation from the Bureau of Fire Protection.
+
+I also helped with the preparation and documentation of different activities and completed weekly reports.
+
+Overall, my OJT experience gave me valuable lessons that I can use in my future career.
+
+It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
+
+I am thankful for the people who guided me and for the experiences that became part of my college journey.`
     }
 
 ];
@@ -576,7 +573,9 @@ function initializeBlogs() {
 
     if (!localStorage.getItem("blogs")) {
 
-        blogs = defaultBlogs;
+        blogs = defaultBlogs.map(blog => ({
+            ...blog
+        }));
 
         saveBlogs();
 
@@ -586,94 +585,172 @@ function initializeBlogs() {
             localStorage.getItem("blogs")
         );
 
+
+        /* =================================================
+           ADD MISSING DEFAULT BLOGS
+        ================================================= */
+
         defaultBlogs.forEach(defaultBlog => {
 
-            const exists = blogs.some(
-                blog =>
-                    blog.title === defaultBlog.title
-            );
+            const exists =
+                blogs.some(
+                    blog =>
+                        blog.title ===
+                        defaultBlog.title
+                );
+
 
             if (!exists) {
 
-                blogs.push(defaultBlog);
+                blogs.push({
+                    ...defaultBlog
+                });
 
             }
 
         });
 
 
-        /* FIX EXISTING BLOG DATES */
+        /* =================================================
+           FIX EXISTING BLOG DATA
+        ================================================= */
 
-        const freeTime = blogs.find(
-            blog =>
-                blog.title === "Creating in My Free Time"
-        );
+        const freeTime =
+            blogs.find(
+                blog =>
+                    blog.title ===
+                    "Creating in My Free Time"
+            );
+
 
         if (freeTime) {
 
-            freeTime.date = "2026-08-18";
-            freeTime.order = 1;
-            freeTime.category = "Personal";
-            freeTime.image = "com.jpg";
+            freeTime.date =
+                "2026-08-18";
+
+            freeTime.order =
+                1;
+
+            freeTime.category =
+                "Personal";
+
+            freeTime.image =
+                "com.jpg";
+
+            freeTime.featured =
+                false;
 
         }
 
 
-        const justLeaves = blogs.find(
-            blog =>
-                blog.title === "Just Leaves 🍂"
-        );
+        const justLeaves =
+            blogs.find(
+                blog =>
+                    blog.title ===
+                    "Just Leaves 🍂"
+            );
+
 
         if (justLeaves) {
 
-            justLeaves.date = "2026-08-18";
-            justLeaves.order = 2;
-            justLeaves.category = "Personal";
-            justLeaves.image = "leaves.jpg";
+            justLeaves.date =
+                "2026-08-18";
+
+            justLeaves.order =
+                2;
+
+            justLeaves.category =
+                "Personal";
+
+            justLeaves.image =
+                "leaves.jpg";
+
+            justLeaves.featured =
+                false;
 
         }
 
 
-        const graduation = blogs.find(
-            blog =>
-                blog.title === "Graduation Day"
-        );
+        const graduation =
+            blogs.find(
+                blog =>
+                    blog.title ===
+                    "Graduation Day"
+            );
+
 
         if (graduation) {
 
-            graduation.date = "2026-06-24";
-            graduation.order = 3;
-            graduation.featured = true;
+            graduation.date =
+                "2026-06-24";
+
+            graduation.order =
+                3;
+
+            graduation.category =
+                "School Experience";
+
+            graduation.image =
+                "profilepic.jpg";
+
+            graduation.featured =
+                true;
 
         }
 
 
-        const ojt = blogs.find(
-            blog =>
-                blog.title === "OJT Experience"
-        );
+        const peopleOJT =
+            blogs.find(
+                blog =>
+                    blog.title ===
+                    "The People I Met During My OJT"
+            );
 
-        if (ojt) {
-
-            ojt.date = "2026-05-28";
-            ojt.order = 4;
-            ojt.featured = true;
-
-        }
-
-
-        const peopleOJT = blogs.find(
-            blog =>
-                blog.title === "The People I Met During My OJT"
-        );
 
         if (peopleOJT) {
 
-            peopleOJT.date = "2026-06-10";
-            peopleOJT.order = 5;
-            peopleOJT.category = "OJT Experience";
-            peopleOJT.image = "ojts.jpg";
-            peopleOJT.featured = false;
+            peopleOJT.date =
+                "2026-06-10";
+
+            peopleOJT.order =
+                4;
+
+            peopleOJT.category =
+                "OJT Experience";
+
+            peopleOJT.image =
+                "ojts.jpg";
+
+            peopleOJT.featured =
+                false;
+
+        }
+
+
+        const ojt =
+            blogs.find(
+                blog =>
+                    blog.title ===
+                    "OJT Experience"
+            );
+
+
+        if (ojt) {
+
+            ojt.date =
+                "2026-05-28";
+
+            ojt.order =
+                5;
+
+            ojt.category =
+                "OJT Experience";
+
+            ojt.image =
+                "ojt.jpg";
+
+            ojt.featured =
+                true;
 
         }
 
@@ -708,7 +785,10 @@ function formatDate(date) {
     if (!date) return "";
 
     const d =
-        new Date(date + "T00:00:00");
+        new Date(
+            date + "T00:00:00"
+        );
+
 
     return d.toLocaleDateString(
         "en-US",
@@ -724,8 +804,7 @@ function formatDate(date) {
 
 /* =========================================================
    SORT BLOGS
-   DATE LATEST → OLDEST
-   SAME DATE → ORDER
+   LATEST → OLDEST
 ========================================================= */
 
 function sortBlogs() {
@@ -733,15 +812,31 @@ function sortBlogs() {
     blogs.sort(
         (a, b) => {
 
-            const dateDifference =
-                new Date(b.date) -
-                new Date(a.date);
+            const dateA =
+                new Date(
+                    a.date ||
+                    "1900-01-01"
+                );
 
-            if (dateDifference !== 0) {
+            const dateB =
+                new Date(
+                    b.date ||
+                    "1900-01-01"
+                );
+
+
+            const dateDifference =
+                dateB - dateA;
+
+
+            if (
+                dateDifference !== 0
+            ) {
 
                 return dateDifference;
 
             }
+
 
             return (
                 (a.order || 999) -
@@ -762,34 +857,41 @@ function displayBlogs() {
 
     sortBlogs();
 
+
     const container =
         document.getElementById(
             "blogContainer"
         );
+
 
     const featuredContainer =
         document.getElementById(
             "featuredContainer"
         );
 
+
     if (!container) return;
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
+
 
     if (featuredContainer) {
 
-        featuredContainer.innerHTML = "";
+        featuredContainer.innerHTML =
+            "";
 
     }
 
 
     /* =====================================================
-       LATEST BLOGS
-       ONLY 4
+       ALL BLOGS
+       LATEST → OLDEST
     ===================================================== */
 
     const latestBlogs =
-        blogs.slice(0, 4);
+        blogs;
 
 
     latestBlogs.forEach(
@@ -798,23 +900,30 @@ function displayBlogs() {
             const originalIndex =
                 blogs.indexOf(blog);
 
+
             const card =
                 document.createElement(
                     "div"
                 );
 
+
             card.className =
                 "blog-card";
 
+
             card.dataset.category =
-                blog.category;
+                blog.category ||
+                "";
 
 
-            card.onclick = function () {
+            card.onclick =
+                function () {
 
-                openBlog(originalIndex);
+                    openBlog(
+                        originalIndex
+                    );
 
-            };
+                };
 
 
             card.innerHTML = `
@@ -828,16 +937,23 @@ function displayBlogs() {
                 <div class="blog-info">
 
                     <span class="blog-category">
-                        ${escapeHTML(blog.category)}
+                        ${escapeHTML(
+                            blog.category ||
+                            "Personal"
+                        )}
                     </span>
 
                     <h2>
-                        ${escapeHTML(blog.title)}
+                        ${escapeHTML(
+                            blog.title
+                        )}
                     </h2>
 
                     <p>
                         Blog Date:
-                        ${formatDate(blog.date)}
+                        ${formatDate(
+                            blog.date
+                        )}
                     </p>
 
                 </div>
@@ -845,6 +961,7 @@ function displayBlogs() {
                 <div class="actions">
 
                     <button
+                        type="button"
                         class="edit"
                         onclick="
                             event.stopPropagation();
@@ -855,6 +972,7 @@ function displayBlogs() {
                     </button>
 
                     <button
+                        type="button"
                         class="delete"
                         onclick="
                             event.stopPropagation();
@@ -869,7 +987,9 @@ function displayBlogs() {
             `;
 
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
 
         }
     );
@@ -877,7 +997,6 @@ function displayBlogs() {
 
     /* =====================================================
        FEATURED BLOGS
-       GRADUATION + OJT
     ===================================================== */
 
     if (featuredContainer) {
@@ -885,14 +1004,7 @@ function displayBlogs() {
         const featuredBlogs =
             blogs.filter(
                 blog =>
-                    blog.featured === true &&
-                    (
-                        blog.title ===
-                            "Graduation Day" ||
-
-                        blog.title ===
-                            "OJT Experience"
-                    )
+                    blog.featured === true
             );
 
 
@@ -902,13 +1014,16 @@ function displayBlogs() {
                 const originalIndex =
                     blogs.indexOf(blog);
 
+
                 const card =
                     document.createElement(
                         "div"
                     );
 
+
                 card.className =
                     "featured-card";
+
 
                 card.onclick =
                     function () {
@@ -934,16 +1049,23 @@ function displayBlogs() {
                     <div class="blog-info">
 
                         <span class="blog-category">
-                            ${escapeHTML(blog.category)}
+                            ${escapeHTML(
+                                blog.category ||
+                                "Personal"
+                            )}
                         </span>
 
                         <h2>
-                            ${escapeHTML(blog.title)}
+                            ${escapeHTML(
+                                blog.title
+                            )}
                         </h2>
 
                         <p>
                             Blog Date:
-                            ${formatDate(blog.date)}
+                            ${formatDate(
+                                blog.date
+                            )}
                         </p>
 
                     </div>
@@ -970,6 +1092,7 @@ function displayBlogs() {
             "noBlog"
         );
 
+
     if (noBlog) {
 
         noBlog.style.display =
@@ -993,31 +1116,50 @@ function escapeHTML(text) {
 
     if (!text) return "";
 
+
     return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 /* =========================================================
    FORMAT BLOG CONTENT
-   BLANK LINE = NEW PARAGRAPH
 ========================================================= */
 
 function formatContent(content) {
 
     if (!content) return "";
 
+
     const cleanContent =
         content.trim();
 
+
     const paragraphs =
         cleanContent
-            .split(/\n\s*\n/)
+            .split(
+                /\n\s*\n/
+            )
             .filter(
                 paragraph =>
                     paragraph.trim() !== ""
@@ -1031,10 +1173,15 @@ function formatContent(content) {
                 const text =
                     paragraph.trim();
 
+
                 return `
                     <p>
-                        ${escapeHTML(text)
-                            .replace(/\n/g, "<br>")}
+                        ${escapeHTML(
+                            text
+                        ).replace(
+                            /\n/g,
+                            "<br>"
+                        )}
                     </p>
                 `;
 
@@ -1056,21 +1203,29 @@ function openBlog(index) {
             "blogOverlay"
         );
 
+
     const preview =
         document.getElementById(
             "blogPreview"
         );
 
-    if (!overlay || !preview) return;
+
+    if (
+        !overlay ||
+        !preview
+    ) return;
+
 
     const blog =
         blogs[index];
+
 
     if (!blog) return;
 
 
     overlay.style.display =
         "block";
+
 
     preview.style.display =
         "block";
@@ -1082,24 +1237,35 @@ function openBlog(index) {
 
             <img
                 src="${blog.image || "profilepic.jpg"}"
-                alt="${escapeHTML(blog.title)}"
+                alt="${escapeHTML(
+                    blog.title
+                )}"
             >
 
             <span class="blog-category">
-                ${escapeHTML(blog.category)}
+                ${escapeHTML(
+                    blog.category ||
+                    "Personal"
+                )}
             </span>
 
             <h2>
-                ${escapeHTML(blog.title)}
+                ${escapeHTML(
+                    blog.title
+                )}
             </h2>
 
             <p class="preview-date">
-                ${formatDate(blog.date)}
+                ${formatDate(
+                    blog.date
+                )}
             </p>
 
             <div class="preview-description">
 
-                ${formatContent(blog.content)}
+                ${formatContent(
+                    blog.content
+                )}
 
             </div>
 
@@ -1108,18 +1274,20 @@ function openBlog(index) {
     `;
 
 
-    preview.onclick = function () {
+    preview.onclick =
+        function () {
 
-        closePreview();
+            closePreview();
 
-    };
+        };
 
 
-    overlay.onclick = function () {
+    overlay.onclick =
+        function () {
 
-        closePreview();
+            closePreview();
 
-    };
+        };
 
 
     document.body.style.overflow =
@@ -1139,10 +1307,12 @@ function closePreview() {
             "blogOverlay"
         );
 
+
     const preview =
         document.getElementById(
             "blogPreview"
         );
+
 
     if (overlay) {
 
@@ -1150,6 +1320,7 @@ function closePreview() {
             "none";
 
     }
+
 
     if (preview) {
 
@@ -1163,6 +1334,7 @@ function closePreview() {
             null;
 
     }
+
 
     document.body.style.overflow =
         "";
@@ -1181,9 +1353,13 @@ function openModal() {
             "blogModal"
         );
 
+
     if (!modal) return;
 
-    editingIndex = -1;
+
+    editingIndex =
+        -1;
+
 
     document.getElementById(
         "modalTitle"
@@ -1234,6 +1410,7 @@ function openModal() {
             "imagePreviewContainer"
         );
 
+
     if (previewContainer) {
 
         previewContainer.style.display =
@@ -1259,6 +1436,7 @@ function closeModal() {
             "blogModal"
         );
 
+
     if (modal) {
 
         modal.style.display =
@@ -1266,7 +1444,9 @@ function closeModal() {
 
     }
 
-    editingIndex = -1;
+
+    editingIndex =
+        -1;
 
 }
 
@@ -1329,14 +1509,20 @@ function saveBlog() {
     }
 
 
-    function finishSave(imageData) {
+    function finishSave(
+        imageData
+    ) {
 
         const maxOrder =
             blogs.reduce(
-                (max, blog) =>
+                (
+                    max,
+                    blog
+                ) =>
                     Math.max(
                         max,
-                        blog.order || 0
+                        blog.order ||
+                        0
                     ),
                 0
             );
@@ -1344,38 +1530,51 @@ function saveBlog() {
 
         const blogData = {
 
-            title: title,
+            title:
+                title,
 
-            category: category,
+            category:
+                category,
 
-            date: date,
+            date:
+                date,
 
             order:
                 editingIndex >= 0
                     ? (
-                        blogs[editingIndex].order ||
+                        blogs[
+                            editingIndex
+                        ].order ||
                         maxOrder + 1
                     )
                     : maxOrder + 1,
 
-            content: content,
+            content:
+                content,
 
             image:
                 imageData ||
                 (
                     editingIndex >= 0
-                        ? blogs[editingIndex].image
+                        ? blogs[
+                            editingIndex
+                        ].image
                         : "profilepic.jpg"
                 ),
 
-            featured: featured
+            featured:
+                featured
 
         };
 
 
-        if (editingIndex >= 0) {
+        if (
+            editingIndex >= 0
+        ) {
 
-            blogs[editingIndex] =
+            blogs[
+                editingIndex
+            ] =
                 blogData;
 
         }
@@ -1441,7 +1640,9 @@ function editBlog(index) {
     const blog =
         blogs[index];
 
+
     if (!blog) return;
+
 
     editingIndex =
         index;
@@ -1456,25 +1657,25 @@ function editBlog(index) {
     document.getElementById(
         "title"
     ).value =
-        blog.title;
+        blog.title || "";
 
 
     document.getElementById(
         "category"
     ).value =
-        blog.category;
+        blog.category || "";
 
 
     document.getElementById(
         "blogDate"
     ).value =
-        blog.date;
+        blog.date || "";
 
 
     document.getElementById(
         "content"
     ).value =
-        blog.content;
+        blog.content || "";
 
 
     document.getElementById(
@@ -1495,7 +1696,11 @@ function editBlog(index) {
         );
 
 
-    if (blog.image) {
+    if (
+        blog.image &&
+        preview &&
+        previewContainer
+    ) {
 
         preview.src =
             blog.image;
@@ -1528,6 +1733,7 @@ function deleteBlog(index) {
 
     const blog =
         blogs[index];
+
 
     if (!blog) return;
 
@@ -1616,7 +1822,8 @@ function applySearchAndFilter() {
         );
 
 
-    let visibleCount = 0;
+    let visibleCount =
+        0;
 
 
     cards.forEach(
@@ -1624,9 +1831,12 @@ function applySearchAndFilter() {
 
             const title =
                 card
-                    .querySelector("h2")
+                    .querySelector(
+                        "h2"
+                    )
                     ?.textContent
-                    .toLowerCase() || "";
+                    .toLowerCase() ||
+                "";
 
 
             const category =
@@ -1642,7 +1852,9 @@ function applySearchAndFilter() {
 
             const matchesCategory =
                 selectedCategory === "All" ||
-                category === selectedCategory;
+                selectedCategory === "" ||
+                category ===
+                    selectedCategory;
 
 
             if (
@@ -1744,7 +1956,9 @@ document.addEventListener(
             };
 
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(
+            file
+        );
 
     }
 );
@@ -1765,7 +1979,8 @@ window.addEventListener(
 
 
         if (
-            event.target === modal
+            event.target ===
+            modal
         ) {
 
             closeModal();
@@ -1785,7 +2000,8 @@ document.addEventListener(
     function (event) {
 
         if (
-            event.key === "Escape"
+            event.key ===
+            "Escape"
         ) {
 
             closePreview();
