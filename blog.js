@@ -269,7 +269,7 @@ June 24, 2026 will always be a special date for me — the day I officially beca
         image: "ojts.jpg",
         featured: false,
 
-        content: `My OJT experience was not only about the tasks I completed, the things I learned, or the 400 hours that I needed to finish. One of the most memorable parts of my OJT was the people I met along the way.
+        content: `My OJT experience was not only about the tasks I completed, the things I learned, or the 486 hours that I needed to finish. One of the most memorable parts of my OJT was the people I met along the way.
 
 When we were deployed at the library, there were students from different schools who were also completing their OJT. There were students from Urdaneta City University (UCU), Pangasinan State University (PSU), and LNL.
 
