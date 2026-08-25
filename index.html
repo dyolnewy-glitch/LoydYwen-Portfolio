@@ -1,164 +1,75 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Home - Loyd Ywen Masangcay</title>
 
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="hero.css">
-
     <link rel="stylesheet" href="home.css">
-
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
 
     <div class="container">
 
-
-        <!-- LOGO -->
-
         <div class="logo">
-
             <a href="index.html">
-
-                <img
-                    src="logo.png"
-                    alt="Loyd Ywen Masangcay Logo"
-                >
-
+                <img src="logo.png" alt="Logo">
             </a>
-
         </div>
 
-
-
-        <!-- =================================================
-             MOBILE MENU BUTTON
-        ================================================== -->
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
-
+        <div class="menu-toggle" onclick="toggleMenu(this)">
             <span></span>
-
             <span></span>
-
             <span></span>
+        </div>
 
-        </button>
-
-
-
-        <!-- =================================================
-             NAVIGATION
-        ================================================== -->
-
-        <nav id="mainNav">
-
+        <nav>
             <ul>
 
                 <li>
-
-                    <a
-                        href="index.html"
-                        class="active"
-                    >
-                        Home
-                    </a>
-
+                    <a href="index.html" class="active">Home</a>
                 </li>
 
-
                 <li>
-
-                    <a href="about.html">
-                        About Me
-                    </a>
-
+                    <a href="about.html">About Me</a>
                 </li>
 
-
                 <li>
-
-                    <a href="skills.html">
-                        Skills
-                    </a>
-
+                    <a href="skills.html">Skills</a>
                 </li>
 
-
                 <li>
-
-                    <a href="portfolio.html">
-                        Portfolio
-                    </a>
-
+                    <a href="portfolio.html">Portfolio</a>
                 </li>
 
-
                 <li>
-
-                    <a href="blog.html">
-                        Blog
-                    </a>
-
+                    <a href="blog.html">Blog</a>
                 </li>
 
-
                 <li>
-
-                    <a href="contact.html">
-                        Contact
-                    </a>
-
+                    <a href="contact.html">Contact</a>
                 </li>
 
             </ul>
-
         </nav>
-
 
     </div>
 
 </header>
 
 
-
-
-<!-- =====================================================
-     HERO SECTION
-===================================================== -->
+<!-- HERO -->
 
 <section class="hero">
 
     <div class="hero-container">
-
-
-        <!-- HERO TEXT -->
 
         <div class="hero-text">
 
@@ -166,43 +77,25 @@
                 Hi, I'm Loyd Ywen Masangcay
             </h1>
 
-
             <h2>
-
                 BS Information Technology Graduate
-
                 <br>
-
                 Aspiring Graphic Designer
-
             </h2>
 
-
             <p>
-
-                I create digital designs, UI/UX concepts,
-                graphic designs, posters, photo and video
-                edits, and technology-based projects by
-                combining creativity and problem-solving skills.
-
+                I create digital designs, UI/UX concepts, graphic designs,
+                posters, photo and video edits, and technology-based projects
+                by combining creativity and problem-solving skills.
             </p>
-
 
             <div class="hero-buttons">
 
-                <a
-                    href="portfolio.html"
-                    class="btn"
-                >
+                <a href="portfolio.html" class="btn">
                     View Portfolio
                 </a>
 
-
-                <a
-                    href="Loyd Ywen Resume.pdf"
-                    class="btn secondary"
-                    download
-                >
+                <a href="Loyd Ywen Resume.pdf" class="btn secondary" download>
                     Download Resume
                 </a>
 
@@ -211,37 +104,27 @@
         </div>
 
 
-
-        <!-- =================================================
-             HERO IMAGE SLIDESHOW
-        ================================================== -->
+        <!-- HERO IMAGE SLIDESHOW -->
 
         <div class="hero-image">
 
             <img
                 id="heroProfileImage"
                 src="profile.jpg"
-                alt="Loyd Ywen Masangcay"
-            >
+                alt="Loyd Ywen Masangcay">
 
         </div>
-
 
     </div>
 
 </section>
 
 
-
-
-<!-- =====================================================
-     ABOUT PREVIEW
-===================================================== -->
+<!-- ABOUT PREVIEW -->
 
 <section class="about-preview">
 
     <div class="home-container">
-
 
         <div class="section-title">
 
@@ -251,35 +134,22 @@
 
         </div>
 
-
         <div class="about-preview-content">
 
             <p>
-
-                I am a Bachelor of Science in Information
-                Technology graduate from Urdaneta City
-                University. I enjoy creating digital designs,
-                editing multimedia content, and exploring
-                technology through different creative and
-                technical projects.
-
+                I am a Bachelor of Science in Information Technology
+                graduate from Urdaneta City University. I enjoy creating
+                digital designs, editing multimedia content, and exploring
+                technology through different creative and technical projects.
             </p>
-
 
             <p>
-
-                My goal is to become a Graphic Designer who
-                creates meaningful visual experiences while
-                continuously improving my skills in design
-                and technology.
-
+                My goal is to become a Graphic Designer who creates meaningful
+                visual experiences while continuously improving my skills in
+                design and technology.
             </p>
 
-
-            <a
-                href="about.html"
-                class="btn"
-            >
+            <a href="about.html" class="btn">
                 Read More
             </a>
 
@@ -290,23 +160,17 @@
 </section>
 
 
-
-
-<!-- =====================================================
-     I CREATE / I DESIGN
-===================================================== -->
+<!-- I CREATE / I DESIGN -->
 
 <section class="create-design">
 
     <div class="home-container">
-
 
         <div class="section-title">
 
             <h2>
                 I Create / I Design
             </h2>
-
 
             <p>
                 Creative work and digital projects that I enjoy creating.
@@ -315,11 +179,7 @@
         </div>
 
 
-
         <div class="create-grid">
-
-
-            <!-- UI / UX -->
 
             <div class="create-card">
 
@@ -327,25 +187,18 @@
                     🎯
                 </div>
 
-
                 <h3>
                     UI/UX Design
                 </h3>
 
-
                 <p>
-
-                    Creating user interface concepts and
-                    layouts that focus on clean design,
-                    organization, and user experience.
-
+                    Creating user interface concepts and layouts
+                    that focus on clean design, organization,
+                    and user experience.
                 </p>
 
             </div>
 
-
-
-            <!-- GRAPHIC DESIGN -->
 
             <div class="create-card">
 
@@ -353,25 +206,18 @@
                     🎨
                 </div>
 
-
                 <h3>
                     Graphic Design
                 </h3>
 
-
                 <p>
-
-                    Creating posters, layouts, social media
-                    graphics, banners, and other creative
-                    visual materials for different projects.
-
+                    Creating posters, layouts, social media graphics,
+                    banners, and other creative visual materials
+                    for different projects.
                 </p>
 
             </div>
 
-
-
-            <!-- PHOTO EDITING -->
 
             <div class="create-card">
 
@@ -379,25 +225,18 @@
                     🖼️
                 </div>
 
-
                 <h3>
                     Photo Editing
                 </h3>
 
-
                 <p>
-
                     Editing and enhancing photos through
                     retouching, color adjustments, effects,
                     and creative image editing.
-
                 </p>
 
             </div>
 
-
-
-            <!-- VIDEO EDITING -->
 
             <div class="create-card">
 
@@ -405,25 +244,18 @@
                     🎬
                 </div>
 
-
                 <h3>
                     Video Editing
                 </h3>
 
-
                 <p>
-
-                    Editing videos using transitions,
-                    effects, text, music, and other elements
-                    to create engaging visual content.
-
+                    Editing videos using transitions, effects,
+                    text, music, and other elements to create
+                    engaging visual content.
                 </p>
 
             </div>
 
-
-
-            <!-- WEB DESIGN -->
 
             <div class="create-card">
 
@@ -431,25 +263,18 @@
                     💻
                 </div>
 
-
                 <h3>
                     Web Design
                 </h3>
 
-
                 <p>
-
                     Creating clean and responsive websites
                     using HTML, CSS, and basic JavaScript
                     with attention to layout and presentation.
-
                 </p>
 
             </div>
 
-
-
-            <!-- DIGITAL CONTENT -->
 
             <div class="create-card">
 
@@ -457,22 +282,17 @@
                     ✨
                 </div>
 
-
                 <h3>
                     Digital Content
                 </h3>
 
-
                 <p>
-
                     Creating creative digital materials for
                     personal projects, academic work, portfolio
                     content, and other digital needs.
-
                 </p>
 
             </div>
-
 
         </div>
 
@@ -481,16 +301,11 @@
 </section>
 
 
-
-
-<!-- =====================================================
-     FEATURED PROJECTS
-===================================================== -->
+<!-- FEATURED PROJECTS -->
 
 <section class="featured-projects">
 
     <div class="home-container">
-
 
         <div class="section-title">
 
@@ -498,13 +313,11 @@
                 Featured Projects
             </h2>
 
-
             <p>
                 Some of my selected works and academic projects.
             </p>
 
         </div>
-
 
 
         <div class="project-grid">
@@ -516,37 +329,26 @@
 
                 <img
                     src="dinezy.png"
-                    alt="Dinezy Project"
-                >
-
+                    alt="Dinezy Project">
 
                 <h3>
                     Dinezy
                 </h3>
 
-
                 <h4>
                     Restaurant Booking App
                 </h4>
 
-
                 <p>
-
                     UI/UX Mockup project designed to improve
                     restaurant reservation experience.
-
                 </p>
 
-
-                <a
-                    href="portfolio.html"
-                    class="project-btn"
-                >
+                <a href="portfolio.html" class="project-btn">
                     View Project
                 </a>
 
             </div>
-
 
 
             <!-- GABAYMATA -->
@@ -555,37 +357,26 @@
 
                 <img
                     src="gabaymata.png"
-                    alt="GabayMata Project"
-                >
-
+                    alt="GabayMata Project">
 
                 <h3>
                     GabayMata
                 </h3>
 
-
                 <h4>
                     Smart Assistive System
                 </h4>
 
-
                 <p>
-
                     A capstone project focused on creating
                     technology solutions for visually impaired users.
-
                 </p>
 
-
-                <a
-                    href="portfolio.html"
-                    class="project-btn"
-                >
+                <a href="portfolio.html" class="project-btn">
                     View Project
                 </a>
 
             </div>
-
 
 
             <!-- BOARD2GO -->
@@ -594,38 +385,27 @@
 
                 <img
                     src="board2go.png"
-                    alt="Board2Go Project"
-                >
-
+                    alt="Board2Go Project">
 
                 <h3>
                     Board2Go
                 </h3>
 
-
                 <h4>
                     Apartment Finder Near UCU
                 </h4>
 
-
                 <p>
-
                     A web/mobile application mockup designed
                     to help students find nearby apartments.
-
                 </p>
 
-
-                <a
-                    href="portfolio.html"
-                    class="project-btn"
-                >
+                <a href="portfolio.html" class="project-btn">
                     View Project
                 </a>
 
             </div>
 
-
         </div>
 
     </div>
@@ -633,224 +413,108 @@
 </section>
 
 
-
-
-<!-- =====================================================
-     CONTACT CTA
-===================================================== -->
+<!-- CONTACT CTA -->
 
 <section class="contact-cta">
 
     <div class="home-container">
 
-
         <h2>
             Have a project idea?
         </h2>
-
 
         <p>
             Let's create something meaningful together.
         </p>
 
-
-        <a
-            href="contact.html"
-            class="btn"
-        >
+        <a href="contact.html" class="btn">
             Contact Me
         </a>
-
 
     </div>
 
 </section>
 
 
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- FOOTER -->
 
 <footer>
 
     <div class="container footer-container">
 
-
         <p>
-            &copy; 2026 Loyd Ywen Masangcay.
-            All rights reserved.
+            &copy; 2026 Loyd Ywen Masangcay. All rights reserved.
         </p>
 
-
         <div class="social-links">
-
 
             <a
                 href="https://www.facebook.com/LoydieeWen"
                 target="_blank"
-                rel="noopener noreferrer"
-            >
+                rel="noopener noreferrer">
                 Facebook
             </a>
-
 
             <a
                 href="https://www.instagram.com/ywen_masangcay"
                 target="_blank"
-                rel="noopener noreferrer"
-            >
+                rel="noopener noreferrer">
                 Instagram
             </a>
-
 
             <a
                 href="https://www.tiktok.com/@wehn_26"
                 target="_blank"
-                rel="noopener noreferrer"
-            >
+                rel="noopener noreferrer">
                 TikTok
             </a>
 
-
         </div>
-
 
     </div>
 
 </footer>
 
 
-
-
-<!-- =====================================================
-     MOBILE NAVIGATION JAVASCRIPT
-===================================================== -->
+<!-- MENU SCRIPT -->
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
+function toggleMenu(menu) {
+
+    const nav = document.querySelector("header nav");
+
+    nav.classList.toggle("show");
+
+    menu.classList.toggle("active");
+
+}
 
 
-    const menuToggle =
-        document.getElementById("menuToggle");
+document.querySelectorAll("nav ul li a").forEach(link => {
 
+    link.addEventListener("click", () => {
 
-    const mainNav =
-        document.getElementById("mainNav");
+        document
+            .querySelector("header nav")
+            .classList.remove("show");
 
-
-
-    /* =========================
-       OPEN / CLOSE MENU
-    ========================= */
-
-    menuToggle.addEventListener("click", function () {
-
-        const isOpen =
-            mainNav.classList.toggle("show");
-
-
-        menuToggle.classList.toggle(
-            "active",
-            isOpen
-        );
-
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-        );
+        document
+            .querySelector(".menu-toggle")
+            .classList.remove("active");
 
     });
-
-
-
-    /* =========================
-       CLOSE MENU WHEN LINK
-       IS CLICKED
-    ========================= */
-
-    const navLinks =
-        mainNav.querySelectorAll("a");
-
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            mainNav.classList.remove("show");
-
-            menuToggle.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
-
-        });
-
-    });
-
-
-
-    /* =========================
-       CLOSE MENU WHEN
-       SCREEN BECOMES DESKTOP
-    ========================= */
-
-    window.addEventListener("resize", function () {
-
-        if (window.innerWidth > 768) {
-
-            mainNav.classList.remove("show");
-
-            menuToggle.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
-
-        }
-
-    });
-
 
 });
 
 </script>
 
 
-
-
-<!-- =====================================================
-     HERO SLIDESHOW
-===================================================== -->
+<!-- HERO SLIDESHOW -->
 
 <script src="hero.js"></script>
-
 
 </body>
 
 </html>
-```
+:::
