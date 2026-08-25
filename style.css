@@ -3,618 +3,814 @@
 ========================= */
 
 * {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
 html {
-  scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
 
 body {
-
-  font-family:Arial, sans-serif;
-
-  line-height:1.6;
-
-  color:#333;
-
-  background:#f4f4f4;
-
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f4f4f4;
 }
-
 
 
 /* =========================
    HEADER
 ========================= */
 
-
 header {
+    background-color: #008080;
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 
-  background-color:#008080;
-
-  color:white;
-
-  padding:15px 0;
-
-  position:sticky;
-
-  top:0;
-
-  z-index:1000;
-
-  box-shadow:0 2px 5px rgba(0,0,0,0.3);
-
+    /* Star effect */
+    overflow: hidden;
 }
 
 
+/* =====================================
+   SILVER STAR SKY
+   RANDOM / SCATTERED
+===================================== */
+
+header::before {
+    content: "";
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    background:
+
+        /* =========================
+           SMALL SILVER STARS
+        ========================= */
+
+        radial-gradient(
+            ellipse 1px 7px at 4% 28%,
+            rgba(245,248,248,.85),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 7px 1px at 4% 28%,
+            rgba(245,248,248,.85),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 5px at 11% 76%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 5px 1px at 11% 76%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 8px at 18% 43%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 8px 1px at 18% 43%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 5px at 25% 18%,
+            rgba(220,225,225,.8),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 5px 1px at 25% 18%,
+            rgba(220,225,225,.8),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 9px at 32% 82%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 9px 1px at 32% 82%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 6px at 39% 34%,
+            rgba(210,216,216,.8),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 6px 1px at 39% 34%,
+            rgba(210,216,216,.8),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 10px at 47% 68%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 10px 1px at 47% 68%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 5px at 54% 17%,
+            rgba(215,220,220,.85),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 5px 1px at 54% 17%,
+            rgba(215,220,220,.85),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 8px at 61% 51%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 8px 1px at 61% 51%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 6px at 68% 84%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 6px 1px at 68% 84%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 9px at 74% 25%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 9px 1px at 74% 25%,
+            rgba(255,255,255,.9),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 5px at 81% 63%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 5px 1px at 81% 63%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 10px at 88% 38%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 10px 1px at 88% 38%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+
+        radial-gradient(
+            ellipse 1px 6px at 95% 72%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 6px 1px at 95% 72%,
+            rgba(215,220,220,.8),
+            transparent 70%
+        );
+
+
+    opacity: .8;
+
+    animation: starsFloat 10s ease-in-out infinite alternate;
+}
+
+
+/* =====================================
+   EXTRA RANDOM STAR LAYER
+===================================== */
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    background:
+
+        /* STAR 1 */
+        radial-gradient(
+            ellipse 1.5px 12px at 8% 55%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 12px 1.5px at 8% 55%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+
+        /* STAR 2 */
+        radial-gradient(
+            ellipse 1.5px 9px at 16% 12%,
+            rgba(220,225,225,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 9px 1.5px at 16% 12%,
+            rgba(220,225,225,.9),
+            transparent 70%
+        ),
+
+
+        /* STAR 3 */
+        radial-gradient(
+            ellipse 1.5px 13px at 29% 56%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 13px 1.5px at 29% 56%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+
+        /* STAR 4 */
+        radial-gradient(
+            ellipse 1.5px 8px at 43% 91%,
+            rgba(215,220,220,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 8px 1.5px at 43% 91%,
+            rgba(215,220,220,.9),
+            transparent 70%
+        ),
+
+
+        /* STAR 5 */
+        radial-gradient(
+            ellipse 1.5px 13px at 57% 39%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 13px 1.5px at 57% 39%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+
+        /* STAR 6 */
+        radial-gradient(
+            ellipse 1.5px 9px at 66% 9%,
+            rgba(215,220,220,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 9px 1.5px at 66% 9%,
+            rgba(215,220,220,.9),
+            transparent 70%
+        ),
+
+
+        /* STAR 7 */
+        radial-gradient(
+            ellipse 1.5px 12px at 79% 76%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 12px 1.5px at 79% 76%,
+            rgba(255,255,255,.95),
+            transparent 70%
+        ),
+
+
+        /* STAR 8 */
+        radial-gradient(
+            ellipse 1.5px 9px at 91% 15%,
+            rgba(220,225,225,.9),
+            transparent 70%
+        ),
+
+        radial-gradient(
+            ellipse 9px 1.5px at 91% 15%,
+            rgba(220,225,225,.9),
+            transparent 70%
+        );
+
+
+    opacity: .75;
+
+    animation: silverTwinkle 4.5s ease-in-out infinite alternate;
+}
+
+
+/* =====================================
+   HEADER CONTENT ABOVE STARS
+===================================== */
 
 header .container {
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 0 20px;
+}
 
 
-  display:flex;
+/* =====================================
+   STAR FLOAT ANIMATION
+===================================== */
 
-  justify-content:space-between;
+@keyframes starsFloat {
 
-  align-items:center;
+    0% {
+        transform: translate(-3px, 0);
+    }
 
-  max-width:1100px;
+    50% {
+        transform: translate(3px, -1px);
+    }
 
-  margin:auto;
-
-  padding:0 20px;
-
+    100% {
+        transform: translate(-3px, 1px);
+    }
 
 }
 
 
+/* =====================================
+   STAR TWINKLE ANIMATION
+===================================== */
+
+@keyframes silverTwinkle {
+
+    0% {
+        opacity: .35;
+        transform: scale(.88);
+    }
+
+    25% {
+        opacity: .6;
+    }
+
+    50% {
+        opacity: .95;
+        transform: scale(1.05);
+    }
+
+    75% {
+        opacity: .55;
+    }
+
+    100% {
+        opacity: .8;
+        transform: scale(.92);
+    }
+
+}
+
+
+/* =========================
+   LOGO
+========================= */
 
 header .logo img {
-
-
-  height:50px;
-
-  width:auto;
-
-
+    height: 50px;
+    width: auto;
 }
-
-
-
 
 
 /* =========================
    NAVIGATION
 ========================= */
 
-
 header nav ul {
-
-
-  display:flex;
-
-  list-style:none;
-
-
+    display: flex;
+    list-style: none;
 }
-
 
 
 header nav ul li {
-
-
-  margin-left:25px;
-
-
+    margin-left: 25px;
 }
-
 
 
 header nav ul li a {
+    color: white;
 
+    text-decoration: none;
 
-  color:white;
+    font-weight: bold;
 
-  text-decoration:none;
+    padding: 5px 10px;
 
-  font-weight:bold;
+    border-radius: 4px;
 
-  padding:5px 10px;
-
-  border-radius:4px;
-
-  transition:.3s;
-
-
+    transition: .3s;
 }
-
 
 
 header nav ul li a:hover {
-
-
-  background:#006666;
-
-
+    background: #006666;
 }
 
 
-
-
-/* ACTIVE LINK */
-
+/* =========================
+   ACTIVE LINK
+========================= */
 
 header nav ul li a.active {
-
-
-  background:#ffcc00;
-
-  color:#333;
-
-
+    background: #ffcc00;
+    color: #333;
 }
-
-
-
-
-
 
 
 /* =========================
    HAMBURGER MENU
 ========================= */
 
-
 .menu-toggle {
-
-
-  display:none;
-
-  cursor:pointer;
-
-
+    display: none;
+    cursor: pointer;
 }
-
 
 
 .menu-toggle span {
+    display: block;
 
+    width: 30px;
 
-  display:block;
+    height: 3px;
 
-  width:30px;
+    background: white;
 
-  height:3px;
+    margin: 6px 0;
 
-  background:white;
-
-  margin:6px 0;
-
-  transition:.3s;
-
-
+    transition: .3s;
 }
 
 
-
-
-
-.menu-toggle.active span:nth-child(1){
-
-  transform:rotate(45deg) translate(6px,6px);
-
+.menu-toggle.active span:nth-child(1) {
+    transform:
+        rotate(45deg)
+        translate(6px, 6px);
 }
 
 
-
-.menu-toggle.active span:nth-child(2){
-
-  opacity:0;
-
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
 }
 
 
-
-.menu-toggle.active span:nth-child(3){
-
-  transform:rotate(-45deg) translate(6px,-6px);
-
+.menu-toggle.active span:nth-child(3) {
+    transform:
+        rotate(-45deg)
+        translate(6px, -6px);
 }
-
-
-
-
-
 
 
 /* =========================
    SECTIONS
 ========================= */
 
-
 section {
+    padding: 80px 20px;
 
+    max-width: 1100px;
 
-  padding:80px 20px;
+    margin: auto;
 
-  max-width:1100px;
-
-  margin:auto;
-
-  text-align:center;
-
-
+    text-align: center;
 }
-
 
 
 section h2 {
-
-
-  font-size:30px;
-
-  margin-bottom:30px;
-
-
+    font-size: 30px;
+    margin-bottom: 30px;
 }
-
 
 
 section p {
+    font-size: 18px;
 
+    max-width: 800px;
 
-  font-size:18px;
-
-  max-width:800px;
-
-  margin:0 auto 20px;
-
-
+    margin: 0 auto 20px;
 }
-
-
-
-
-
 
 
 /* =========================
    BUTTONS
 ========================= */
 
-
 .btn {
+    text-decoration: none;
 
+    background: #008080;
 
-  text-decoration:none;
+    color: white;
 
-  background:#008080;
+    padding: 12px 25px;
 
-  color:white;
+    border-radius: 5px;
 
-  padding:12px 25px;
+    font-weight: bold;
 
-  border-radius:5px;
-
-  font-weight:bold;
-
-  transition:.3s;
-
-
+    transition: .3s;
 }
-
 
 
 .btn:hover {
+    background: #006666;
 
-
-  background:#006666;
-
-  transform:translateY(-2px);
-
-
+    transform: translateY(-2px);
 }
-
-
-
-
-
 
 
 /* =========================
    FOOTER
 ========================= */
 
-
 footer {
+    background: #008080;
 
+    color: white;
 
-  background:#008080;
+    padding: 30px 0;
 
-  color:white;
-
-  padding:30px 0;
-
-  text-align:center;
-
-
+    text-align: center;
 }
-
 
 
 footer .social-links a {
+    color: white;
 
+    text-decoration: none;
 
-  color:white;
+    margin: 0 10px;
 
-  text-decoration:none;
+    font-weight: bold;
 
-  margin:0 10px;
-
-  font-weight:bold;
-
-  transition:.3s;
-
-
+    transition: .3s;
 }
-
 
 
 footer .social-links a:hover {
-
-
-  color:#ffcc00;
-
-
+    color: #ffcc00;
 }
-
-
-
-
-
 
 
 /* =========================
    HEADER SCROLL EFFECT
 ========================= */
 
-
 header.scrolled {
+    padding: 10px 0;
 
-
-  padding:10px 0;
-
-  background:#006666;
-
-
+    background: #006666;
 }
-
-
-
-
-
 
 
 /* =========================
    ANIMATION
 ========================= */
 
-
 @keyframes fadeInUp {
 
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-from{
-
-opacity:0;
-
-transform:translateY(20px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
 }
-
-
-}
-
 
 
 section {
-
-
-animation:fadeInUp .8s ease forwards;
-
-
+    animation:
+        fadeInUp
+        .8s
+        ease
+        forwards;
 }
-
-
-
-
-
 
 
 /* =========================
    RESPONSIVE MOBILE
 ========================= */
 
+@media screen and (max-width: 768px) {
 
-@media screen and (max-width:768px){
+    header .container {
+        flex-direction: row;
+
+        justify-content: space-between;
+    }
 
 
+    .menu-toggle {
+        display: block;
+    }
 
-header .container {
+
+    header nav {
+        position: absolute;
+
+        top: 80px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: #008080;
+
+        display: none;
+    }
 
 
-  flex-direction:row;
+    header nav.show {
+        display: block;
+    }
 
-  justify-content:space-between;
 
+    header nav ul {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    header nav ul li {
+        margin: 0;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.3);
+    }
+
+
+    header nav ul li a {
+        display: block;
+
+        padding: 15px 20px;
+
+        border-radius: 0;
+    }
+
+
+    header nav ul li a.active {
+        background: #ffcc00;
+
+        color: #333;
+    }
+
+
+    section h2 {
+        font-size: 26px;
+    }
+
+
+    section p {
+        font-size: 16px;
+    }
+
+
+    /* =================================
+       MOBILE STARS
+       Still visible but softer
+    ================================= */
+
+    header::before {
+        opacity: .65;
+    }
+
+
+    header::after {
+        opacity: .65;
+    }
 
 }
 
 
+/* =========================
+   SMALL PHONE
+========================= */
 
+@media screen and (max-width: 480px) {
 
-.menu-toggle {
+    header .logo img {
+        height: 40px;
+    }
 
 
-  display:block;
+    section {
+        padding: 60px 15px;
+    }
 
 
-}
+    header::before {
+        opacity: .55;
+    }
 
 
-
-
-header nav {
-
-
-  position:absolute;
-
-  top:80px;
-
-  left:0;
-
-  width:100%;
-
-  background:#008080;
-
-  display:none;
-
-
-}
-
-
-
-
-header nav.show {
-
-
-  display:block;
-
-
-}
-
-
-
-
-
-header nav ul {
-
-
-  display:flex;
-
-  flex-direction:column;
-
-  width:100%;
-
-
-}
-
-
-
-
-header nav ul li {
-
-
-  margin:0;
-
-  border-bottom:1px solid rgba(255,255,255,.3);
-
-
-}
-
-
-
-
-header nav ul li a {
-
-
-  display:block;
-
-  padding:15px 20px;
-
-  border-radius:0;
-
-
-}
-
-
-
-
-header nav ul li a.active {
-
-
-  background:#ffcc00;
-
-  color:#333;
-
-
-}
-
-
-
-
-
-section h2 {
-
-
-  font-size:26px;
-
-
-}
-
-
-
-section p {
-
-
-  font-size:16px;
-
-
-}
-
-
-}
-
-
-
-
-
-
-/* SMALL PHONE */
-
-
-@media screen and (max-width:480px){
-
-
-header .logo img {
-
-
-  height:40px;
-
-
-}
-
-
-
-section {
-
-
-  padding:60px 15px;
-
-
-}
-
+    header::after {
+        opacity: .6;
+    }
 
 }
