@@ -30,6 +30,75 @@ const imagePreview =
 
 
 /* =========================================
+   DINEZY PROJECT
+========================================= */
+
+const dinezyProject = {
+
+    image: "dinezy.jpg",
+
+    title: "Dinezy",
+
+    category: "UI/UX Design",
+
+    status: "Completed",
+
+    description:
+        "A restaurant booking app mockup and UI design created in Figma. Dinezy focuses on providing a simple, modern, and user-friendly experience for browsing restaurants and making table reservations.",
+
+    tools: "Figma",
+
+    link:
+        "https://www.figma.com/design/m1J8ADeDC2FXIOQtVuc6US/Dinezy?node-id=14-237&t=KH9f8zN1jFzebkQP-0",
+
+    /* ADDED CONTENT */
+
+    highlights: [
+        {
+            icon: "📱",
+            title: "Mobile App",
+            text: "Designed as a mobile restaurant booking experience."
+        },
+        {
+            icon: "🎨",
+            title: "UI/UX Design",
+            text: "Focused on clean layouts and an easy user experience."
+        },
+        {
+            icon: "🍽️",
+            title: "Restaurant Booking",
+            text: "Designed around browsing restaurants and reserving tables."
+        },
+        {
+            icon: "🖥️",
+            title: "Figma Prototype",
+            text: "Created and organized using Figma."
+        }
+    ],
+
+    features: [
+        "Restaurant browsing",
+        "Restaurant menu viewing",
+        "Table reservation",
+        "Booking management",
+        "Reservation status",
+        "User profile"
+    ],
+
+    designConcept:
+        "Dinezy was designed with simplicity and convenience in mind. The interface focuses on making restaurant discovery and table reservation easier through clear navigation, organized information, and a modern mobile layout.",
+
+    role: [
+        "UI/UX Design",
+        "Interface Layout",
+        "Visual Design",
+        "Prototype Design"
+    ]
+
+};
+
+
+/* =========================================
    PHOTO STRIPS PROJECT
 ========================================= */
 
@@ -236,6 +305,7 @@ const photoStripProject = {
         }
 
     ]
+
 };
 
 
@@ -259,17 +329,57 @@ const gabiStreetProject = {
     tools: "Figma",
 
     link:
-        "https://www.figma.com/design/liI5ev1Z9hZf4Pc2Gv5vBH/Gabi-Food-app?m=auto&t=pUtlbdgaZRpGiXw7-6"
+        "https://www.figma.com/design/liI5ev1Z9hZf4Pc2Gv5vBH/Gabi-Food-app?m=auto&t=pUtlbdgaZRpGiXw7-6",
+
+    /* ADDED CONTENT */
+
+    highlights: [
+        {
+            icon: "🌙",
+            title: "Night Food",
+            text: "Focused on discovering food options during the evening and nighttime."
+        },
+        {
+            icon: "🍔",
+            title: "Food Discovery",
+            text: "Designed to help users explore different street food choices."
+        },
+        {
+            icon: "📱",
+            title: "Mobile Experience",
+            text: "Created as a mobile-focused food application concept."
+        },
+        {
+            icon: "🎨",
+            title: "Modern UI",
+            text: "Uses organized layouts for a clean and easy browsing experience."
+        }
+    ],
+
+    features: [
+        "Street food discovery",
+        "Food browsing",
+        "Food categories",
+        "Food and restaurant details",
+        "Search and browsing concept",
+        "Late-night food discovery"
+    ],
+
+    designConcept:
+        "Gabi Street Eats After Dark is designed around the lively atmosphere of street food at night. The concept combines a modern interface with an easy browsing experience to help users discover food options after dark.",
+
+    role: [
+        "UI/UX Design",
+        "Interface Layout",
+        "Visual Design",
+        "Prototype Design"
+    ]
 
 };
 
 
 /* =========================================
    CLEAN PORTFOLIO
-   KEEP ONLY:
-   1. Photo Strips
-   2. Gabi Street Eats After Dark
-   3. User-created projects
 ========================================= */
 
 projects = projects.filter(project => {
@@ -281,9 +391,15 @@ projects = projects.filter(project => {
     const title =
         project.title.trim().toLowerCase();
 
+
+    /* REMOVE TEST PROJECT */
+
     if (title === "test project") {
         return false;
     }
+
+
+    /* REMOVE OLD GABI COPIES */
 
     if (
         title === "gabi" ||
@@ -293,12 +409,25 @@ projects = projects.filter(project => {
         return false;
     }
 
+
+    /* REMOVE OLD PHOTO STRIP COPIES */
+
     if (
         title === "photo strip" ||
         title === "photo strips"
     ) {
         return false;
     }
+
+
+    /* REMOVE OLD DINEZY COPIES */
+
+    if (
+        title === "dinezy"
+    ) {
+        return false;
+    }
+
 
     return true;
 
@@ -310,7 +439,10 @@ projects = projects.filter(project => {
 ========================================= */
 
 projects.unshift(gabiStreetProject);
+
 projects.unshift(photoStripProject);
+
+projects.unshift(dinezyProject);
 
 
 /* =========================================
@@ -936,6 +1068,225 @@ function deleteProject(index) {
 
 
 /* =========================================
+   EXTRA PROJECT CONTENT
+========================================= */
+
+function createExtraProjectContent(project) {
+
+    /*
+       Only Dinezy and Gabi get
+       the additional sections.
+
+       Photo Strips stays unchanged.
+    */
+
+    if (
+        !project.highlights &&
+        !project.features &&
+        !project.designConcept &&
+        !project.role
+    ) {
+        return "";
+    }
+
+
+    let highlightsHTML = "";
+
+    if (
+        project.highlights &&
+        project.highlights.length > 0
+    ) {
+
+        highlightsHTML = `
+
+            <section class="project-extra-section">
+
+                <h2 class="project-extra-title">
+                    ✨ Project Highlights
+                </h2>
+
+                <div class="project-highlight-grid">
+
+                    ${
+                        project.highlights
+                            .map(
+                                highlight => `
+
+                                    <div
+                                        class="project-highlight-card"
+                                    >
+
+                                        <div
+                                            class="project-highlight-icon"
+                                        >
+                                            ${highlight.icon}
+                                        </div>
+
+                                        <div>
+
+                                            <h3>
+                                                ${highlight.title}
+                                            </h3>
+
+                                            <p>
+                                                ${highlight.text}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    let featuresHTML = "";
+
+    if (
+        project.features &&
+        project.features.length > 0
+    ) {
+
+        featuresHTML = `
+
+            <section class="project-extra-section">
+
+                <h2 class="project-extra-title">
+                    ⭐ Key Features
+                </h2>
+
+                <div class="project-feature-list">
+
+                    ${
+                        project.features
+                            .map(
+                                feature => `
+
+                                    <div
+                                        class="project-feature-item"
+                                    >
+
+                                        <span>
+                                            ✓
+                                        </span>
+
+                                        <p>
+                                            ${feature}
+                                        </p>
+
+                                    </div>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    let conceptHTML = "";
+
+    if (project.designConcept) {
+
+        conceptHTML = `
+
+            <section class="project-extra-section">
+
+                <h2 class="project-extra-title">
+                    🎨 Design Concept
+                </h2>
+
+                <div class="project-concept-box">
+
+                    <p>
+                        ${project.designConcept}
+                    </p>
+
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    let roleHTML = "";
+
+    if (
+        project.role &&
+        project.role.length > 0
+    ) {
+
+        roleHTML = `
+
+            <section class="project-extra-section">
+
+                <h2 class="project-extra-title">
+                    👨‍💻 My Role
+                </h2>
+
+                <div class="project-role-list">
+
+                    ${
+                        project.role
+                            .map(
+                                role => `
+
+                                    <span>
+                                        ${role}
+                                    </span>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    return `
+
+        <div class="project-extra-content">
+
+            ${highlightsHTML}
+
+            ${featuresHTML}
+
+            ${conceptHTML}
+
+            ${roleHTML}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
    PROJECT PREVIEW
 ========================================= */
 
@@ -990,10 +1341,12 @@ function openProjectPreview(project) {
                 </h2>
 
                 <p class="photo-strip-intro">
+
                     Explore all ${photoStripCount}
                     photo strip designs below.
                     Click the card to see the design
                     and its description.
+
                 </p>
 
                 <div class="photo-strip-grid">
@@ -1044,6 +1397,14 @@ function openProjectPreview(project) {
 
 
     /* =====================================
+       EXTRA CONTENT
+    ===================================== */
+
+    const extraProjectHTML =
+        createExtraProjectContent(project);
+
+
+    /* =====================================
        PREVIEW
     ===================================== */
 
@@ -1064,6 +1425,15 @@ function openProjectPreview(project) {
                 class="project-preview-cover"
                 src="${project.image}"
                 alt="${project.title}"
+                style="
+                    width:100%;
+                    height:auto;
+                    max-height:500px;
+                    object-fit:contain;
+                    object-position:center;
+                    display:block;
+                    background:#f4f6f8;
+                "
             >
 
 
@@ -1103,6 +1473,9 @@ function openProjectPreview(project) {
                     ${project.tools || "N/A"}
 
                 </div>
+
+
+                ${extraProjectHTML}
 
 
                 ${photoStripHTML}
