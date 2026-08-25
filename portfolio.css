@@ -4,10 +4,10 @@
  
 .portfolio{ 
     padding:80px 20px; 
-    background:#f4f6f8; 
+    background:#D6DEDC; 
 } 
  
- 
+
 /* ========================= 
    HEADER SECTION 
 ========================= */ 
@@ -33,7 +33,7 @@
     font-size:18px; 
 } 
  
- 
+
 /* ========================= 
    ADD BUTTON 
 ========================= */ 
@@ -54,7 +54,7 @@
     transform:translateY(-3px); 
 } 
  
- 
+
 /* ========================= 
    PROJECT GRID 
 ========================= */ 
@@ -67,13 +67,13 @@
     gap:30px; 
 } 
  
- 
+
 /* ========================= 
    CARD 
 ========================= */ 
  
 .project-card{ 
-    background:white; 
+    background:#E3E9E7; 
     border-radius:15px; 
     overflow:hidden; 
     box-shadow:0 8px 25px rgba(0,0,0,.1); 
@@ -85,7 +85,7 @@
     box-shadow:0 15px 35px rgba(0,0,0,.15); 
 } 
  
- 
+
 /* ========================= 
    PROJECT CARD IMAGE
    FULL IMAGE / NO CROPPING
@@ -98,10 +98,10 @@
     object-fit:contain; 
     object-position:center; 
     display:block; 
-    background:#f4f6f8; 
+    background:#D6DEDC; 
 } 
  
- 
+
 /* ========================= 
    CONTENT 
 ========================= */ 
@@ -122,7 +122,7 @@
     line-height:1.6; 
 } 
  
- 
+
 /* ========================= 
    BADGES 
 ========================= */ 
@@ -148,7 +148,7 @@
     color:white; 
 } 
  
- 
+
 /* ========================= 
    TOOLS 
 ========================= */ 
@@ -160,7 +160,7 @@
     font-weight:500; 
 } 
  
- 
+
 /* ========================= 
    BUTTONS 
 ========================= */ 
@@ -205,7 +205,7 @@
     opacity:.8; 
 } 
  
- 
+
 /* ========================= 
    NO PROJECT 
 ========================= */ 
@@ -217,7 +217,7 @@
     margin-top:30px; 
 } 
  
- 
+
 /* ========================= 
    ADD / EDIT MODAL 
 ========================= */ 
@@ -237,7 +237,7 @@
 } 
  
 .project-box{ 
-    background:white; 
+    background:#E3E9E7; 
     width:500px; 
     max-height:90vh; 
     overflow-y:auto; 
@@ -262,9 +262,10 @@
     width:100%; 
     padding:12px; 
     margin-top:5px; 
-    border:1px solid #ccc; 
+    border:1px solid #bfcac7; 
     border-radius:8px; 
     outline:none; 
+    background:#D6DEDC; 
 } 
  
 .project-box textarea{ 
@@ -272,7 +273,7 @@
     resize:none; 
 } 
  
- 
+
 /* ========================= 
    IMAGE PREVIEW 
 ========================= */ 
@@ -289,7 +290,7 @@
     object-fit:contain; 
 } 
  
- 
+
 /* ========================= 
    MODAL BUTTONS 
 ========================= */ 
@@ -318,7 +319,7 @@
     cursor:pointer; 
 } 
  
- 
+
 /* ===================================================== 
    PROJECT PREVIEW 
 ===================================================== */ 
@@ -337,7 +338,7 @@
  
 .project-preview-box{ 
     position:relative; 
-    background:white; 
+    background:#E3E9E7; 
     width:100%; 
     max-width:1000px; 
     max-height:92vh; 
@@ -362,7 +363,7 @@
     z-index:20; 
 } 
  
- 
+
 /* ===================================================== 
    PROJECT PREVIEW COVER
    SMALL + FULL IMAGE
@@ -375,7 +376,7 @@
     max-height:300px; 
     object-fit:contain; 
     object-position:center; 
-    background:#f4f6f8; 
+    background:#D6DEDC; 
     display:block; 
     margin:0 auto; 
 } 
@@ -405,12 +406,12 @@
 .project-preview-tools{ 
     margin-top:20px; 
     padding:15px; 
-    background:#f4f6f8; 
+    background:#D6DEDC; 
     border-radius:10px; 
     color:#333; 
 } 
  
- 
+
 /* ===================================================== 
    PHOTO STRIP SECTION 
 ===================================================== */ 
@@ -418,7 +419,7 @@
 .photo-strip-section{ 
     margin-top:40px; 
     padding-top:30px; 
-    border-top:2px solid #eee; 
+    border-top:2px solid #cbd5d2; 
 } 
  
 .photo-strip-section h2{ 
@@ -434,7 +435,7 @@
     line-height:1.6; 
 } 
  
- 
+
 /* ========================= 
    PHOTO STRIP GRID 
 ========================= */ 
@@ -445,21 +446,21 @@
     gap:25px; 
 } 
  
- 
+
 /* ========================= 
    PHOTO STRIP ITEM 
 ========================= */ 
  
 .photo-strip-item{ 
-    background:#f8f9fa; 
+    background:#E3E9E7; 
     border-radius:15px; 
     padding:15px; 
     text-align:center; 
-    border:1px solid #e5e5e5; 
+    border:1px solid #cbd5d2; 
     overflow:hidden; 
 } 
  
- 
+
 /* ========================= 
    PHOTO STRIP NUMBER 
 ========================= */ 
@@ -478,7 +479,7 @@
     font-weight:bold; 
 } 
  
- 
+
 /* ===================================================== 
    IMPORTANT: 
    SHOW THE WHOLE PHOTO STRIP 
@@ -490,12 +491,12 @@
     object-fit:contain; 
     object-position:center; 
     display:block; 
-    background:#fff; 
+    background:#D6DEDC; 
     border-radius:10px; 
     padding:5px; 
 } 
  
- 
+
 /* ========================= 
    PHOTO STRIP TITLE 
 ========================= */ 
@@ -507,7 +508,7 @@
     line-height:1.3; 
 } 
  
- 
+
 /* ========================= 
    PHOTO STRIP DESCRIPTION 
 ========================= */ 
@@ -519,7 +520,7 @@
     margin:0 5px 10px; 
 } 
  
- 
+
 /* ========================= 
    PREVIEW ACTIONS 
 ========================= */ 
@@ -530,7 +531,7 @@
     flex-wrap:wrap; 
     margin-top:35px; 
     padding-top:25px; 
-    border-top:1px solid #eee; 
+    border-top:1px solid #cbd5d2; 
 } 
  
 .close-preview-btn{ 
@@ -546,7 +547,7 @@
     opacity:.8; 
 } 
  
- 
+
 /* ========================= 
    FOOTER 
 ========================= */ 
@@ -559,7 +560,7 @@ footer{
     border-top:3px solid #00b3b3; 
 } 
  
- 
+
 /* ===================================================== 
    RESPONSIVE 
 ===================================================== */ 
@@ -630,6 +631,7 @@ footer{
         object-fit:contain; 
         object-position:center; 
         margin:0 auto; 
+        background:#D6DEDC;
     } 
  
     .project-preview-content{ 
@@ -653,10 +655,11 @@ footer{
         height:auto; 
         max-height:none; 
         object-fit:contain; 
+        background:#D6DEDC;
     } 
  
     .photo-strip-item{ 
         padding:15px; 
     } 
  
-}
+} 
