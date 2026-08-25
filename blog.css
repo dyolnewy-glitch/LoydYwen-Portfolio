@@ -1,11 +1,20 @@
 /* =====================================
-   BLOG SECTION
+   ABOUT SECTION
 ===================================== */
 
-.blog {
-    padding: 80px 20px;
-    background: #f4f6f8;
-    min-height: 100vh;
+.about-section {
+    padding: 120px 20px 70px;
+    background: #D6DEDC;
+}
+
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    background: #E3E9E7;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 
@@ -13,776 +22,409 @@
    TITLE
 ===================================== */
 
-.blog-heading {
-    text-align: center;
-    margin-bottom: 35px;
-    position: relative;
+.about-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
-.blog-heading h1 {
-    font-size: 42px;
+
+.about-title h1 {
+    font-size: 38px;
     color: #008080;
-    margin: 0 0 10px;
-}
-
-.blog-heading p {
-    color: #555;
     margin: 0;
+    font-weight: 700;
 }
 
 
-/* =====================================
-   ADD BLOG BUTTON
-===================================== */
-
-.add-btn {
-    position: fixed;
-    top: 100px;
-    right: 30px;
-
-    z-index: 1000;
-
+.edit-btn {
     background: #008080;
     color: white;
-
     border: none;
-
-    padding: 12px 22px;
-
-    border-radius: 30px;
-
+    padding: 10px 18px;
+    border-radius: 8px;
     cursor: pointer;
-
-    font-weight: bold;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
-
-    white-space: nowrap;
+    font-size: 15px;
+    transition: .3s;
 }
 
-.add-btn:hover {
+
+.edit-btn:hover {
     background: #006666;
 }
 
 
 /* =====================================
-   SEARCH AND FILTER
+   IMAGE + TEXT
 ===================================== */
 
-.blog-tools {
-    max-width: 1200px;
-
-    margin: 70px auto 35px;
-
+.about-main {
     display: flex;
-
-    gap: 15px;
-}
-
-.blog-tools input,
-.blog-tools select {
-    flex: 1;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-    border: 1px solid #ccc;
-
-    font-size: 15px;
-
-    background: white;
+    gap: 45px;
+    align-items: flex-start;
 }
 
 
 /* =====================================
-   SECTION TITLE
+   IMAGE
 ===================================== */
 
-.section-title {
-    max-width: 1200px;
-
-    margin: 30px auto 20px;
-
-    color: #008080;
-
-    font-size: 28px;
+.about-image {
+    width: min(28vw, 280px);
+    min-width: 180px;
+    text-align: center;
+    flex-shrink: 0;
 }
 
 
-/* =====================================
-   BLOG GRID
-===================================== */
-
-.blog-container {
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 30px;
-}
-
-
-/* =====================================
-   BLOG CARD
-===================================== */
-
-.blog-card {
-    background: white;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, .12);
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.blog-card:hover {
-    transform: translateY(-5px);
-}
-
-
-/* =====================================
-   BLOG IMAGE
-===================================== */
-
-.blog-card-image {
+.about-image img {
     width: 100%;
-
-    aspect-ratio: 1 / 1;
-
+    aspect-ratio: 250 / 330;
+    height: auto;
     object-fit: cover;
-
-    background: #eee;
+    object-position: center;
+    border-radius: 18px;
+    border: 5px solid #E3E9E7;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    display: block;
 }
 
 
 /* =====================================
-   BLOG INFO
+   CHANGE PHOTO BUTTON
 ===================================== */
 
-.blog-info {
-    padding: 20px;
-}
-
-.blog-category {
-    display: inline-block;
-
-    background: #e0f2f1;
-
-    color: #008080;
-
-    padding: 5px 12px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
-
-.blog-info h2 {
-    color: #008080;
-
-    font-size: 22px;
-
-    margin: 5px 0 10px;
-}
-
-.blog-info p {
-    color: #666;
-
-    font-size: 14px;
-
-    line-height: 1.5;
-}
-
-
-/* =====================================
-   ACTION BUTTONS
-===================================== */
-
-.actions {
-    display: flex;
-
-    gap: 10px;
-
-    padding: 0 20px 20px;
-}
-
-.actions button {
-    border: none;
-
-    padding: 8px 15px;
-
-    border-radius: 6px;
-
-    color: white;
-
-    cursor: pointer;
-}
-
-.edit {
-    background: #ff9800;
-}
-
-.delete {
-    background: #e53935;
-}
-
-
-/* =====================================
-   FEATURED BLOG
-===================================== */
-
-#featuredContainer {
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: flex;
-
-    gap: 20px;
-
-    overflow: hidden;
-}
-
-.featured-card {
-    background: white;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, .12);
-
-    cursor: pointer;
-
-    flex: 1;
-
-    min-width: 0;
-
-    transition: .3s;
-}
-
-.featured-card:hover {
-    transform: translateY(-5px);
-}
-
-.featured-card img {
+.change-photo-btn {
+    display: block;
+    margin: 15px auto 0;
     width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    object-fit: cover;
-}
-
-.featured-badge {
-    display: inline-block;
-
-    margin: 15px;
+    padding: 10px 18px;
 
     background: #008080;
-
     color: white;
 
-    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
 
-    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .3s;
+}
 
-    font-size: 13px;
 
-    font-weight: bold;
+.change-photo-btn:hover {
+    background: #006666;
 }
 
 
 /* =====================================
-   MODAL
+   ABOUT TEXT
 ===================================== */
 
-.modal {
+.about-text {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.about-text p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+.about-text strong {
+    color: #008080;
+}
+
+
+/* =====================================
+   FUN FACTS
+===================================== */
+
+.funfacts {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #cbd5d2;
+}
+
+
+.funfacts h2 {
+    font-size: 38px;
+    color: #008080;
+    margin: 0 0 20px;
+    font-weight: 700;
+}
+
+
+.funfacts p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #333;
+}
+
+
+/* =====================================
+   EDIT OVERLAY
+===================================== */
+
+.edit-overlay {
     display: none;
 
     position: fixed;
 
-    inset: 0;
+    top: 0;
+    left: 0;
 
-    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
 
-    z-index: 2000;
+    background: rgba(0,0,0,.55);
 
-    padding-top: 100px;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+
+/* =====================================
+   EDIT MODAL
+===================================== */
+
+.edit-modal {
+    width: 90%;
+    max-width: 750px;
+
+    background: #E3E9E7;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    max-height: 90vh;
 
     overflow-y: auto;
 }
 
-.modal-box {
-    background: white;
 
-    width: 90%;
-
-    max-width: 600px;
-
-    margin: 0 auto 50px;
-
-    padding: 30px;
-
-    border-radius: 15px;
+.edit-modal h2 {
+    color: #222;
+    margin-bottom: 15px;
 }
 
-.modal-box h2 {
-    color: #008080;
-}
 
-.modal-box input,
-.modal-box textarea,
-.modal-box select {
+.edit-modal textarea {
     width: 100%;
 
-    padding: 12px;
+    min-height: 180px;
 
-    margin: 8px 0;
+    padding: 15px;
 
-    border-radius: 8px;
+    border: 1px solid #bfcac7;
 
-    border: 1px solid #ccc;
-
-    box-sizing: border-box;
-}
-
-.modal-box textarea {
-    height: 180px;
+    border-radius: 10px;
 
     resize: vertical;
-}
-
-.modal-actions {
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 20px;
-}
-
-.save-btn {
-    background: #008080;
-
-    color: white;
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-}
-
-.cancel-btn {
-    background: #ccc;
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-}
-
-
-/* =====================================
-   IMAGE PREVIEW
-===================================== */
-
-.image-preview-container {
-    display: none;
-
-    margin-top: 10px;
-}
-
-.image-preview-container img {
-    width: 100%;
-
-    max-height: 250px;
-
-    object-fit: cover;
-
-    border-radius: 10px;
-}
-
-
-/* =====================================
-   BLOG PREVIEW OVERLAY
-===================================== */
-
-.blog-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0, 0, 0, .45);
-
-    z-index: 2500;
-}
-
-
-/* =====================================
-   BLOG PREVIEW
-===================================== */
-
-.blog-preview {
-    position: fixed;
-
-    top: 90px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 90%;
-
-    max-width: 900px;
-
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
-    z-index: 3000;
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, .3);
-
-    box-sizing: border-box;
-}
-
-
-/* =====================================
-   PREVIEW IMAGE
-===================================== */
-
-.blog-preview img {
-    width: 100%;
-
-    max-height: 450px;
-
-    object-fit: contain;
-
-    display: block;
-
-    margin-bottom: 25px;
-}
-
-
-/* =====================================
-   PREVIEW TITLE
-===================================== */
-
-.blog-preview h2 {
-    color: #008080;
-
-    font-size: 30px;
-
-    margin: 15px 0;
-}
-
-
-/* =====================================
-   PREVIEW CATEGORY
-===================================== */
-
-.blog-preview .blog-category {
-    display: inline-block;
-
-    background: #e0f2f1;
-
-    color: #008080;
-
-    padding: 6px 12px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
-
-
-/* =====================================
-   PREVIEW DATE
-===================================== */
-
-.preview-date {
-    color: #777;
-
-    font-size: 14px;
-
-    margin-bottom: 25px;
-}
-
-
-/* =====================================
-   PREVIEW DESCRIPTION
-===================================== */
-
-.preview-description {
-    margin-top: 20px;
-}
-
-.preview-description p {
-    color: #444;
 
     font-size: 16px;
 
-    line-height: 1.8;
+    line-height: 1.7;
 
-    margin-top: 0;
+    margin-bottom: 25px;
 
-    margin-bottom: 22px;
+    box-sizing: border-box;
 
-    text-align: justify;
-}
-
-.preview-description p:last-child {
-    margin-bottom: 0;
+    background: #D6DEDC;
 }
 
 
 /* =====================================
-   FOOTER
+   MODAL BUTTONS
 ===================================== */
 
-footer {
-    background: #008080;
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+
+.save-btn,
+.cancel-btn {
+    padding: 11px 25px;
+
+    border: none;
+
+    border-radius: 8px;
 
     color: white;
 
-    text-align: center;
+    cursor: pointer;
 
-    padding: 25px;
+    font-size: 15px;
+}
+
+
+.save-btn {
+    background: #008080;
+}
+
+
+.save-btn:hover {
+    background: #006666;
+}
+
+
+.cancel-btn {
+    background: #dc3545;
+}
+
+
+.cancel-btn:hover {
+    background: #b52a37;
 }
 
 
 /* =====================================
-   MOBILE
+   TABLET RESPONSIVE
 ===================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
 
-    .blog {
-        padding: 60px 15px;
-    }
-
-
-    /* ================================
-       BLOG TITLE
-    ================================= */
-
-    .blog-heading {
-        margin-bottom: 0;
-
-        padding-right: 0;
-    }
-
-    .blog-heading h1 {
-        font-size: 32px;
-
-        margin-bottom: 8px;
-    }
-
-    .blog-heading p {
-        font-size: 14px;
-
-        line-height: 1.6;
-    }
-
-
-    /* ================================
-       ADD BUTTON
-       
-       IMPORTANT:
-       HINDI NA FIXED SA MOBILE
-       SARILING ROW SIYA
-    ================================= */
-
-    .add-btn {
-        position: static;
-
-        display: block;
-
-        width: fit-content;
-
-        margin: 20px auto 25px;
-
-        padding: 11px 20px;
-
-        font-size: 14px;
-    }
-
-
-    /* ================================
-       SEARCH AND FILTER
-    ================================= */
-
-    .blog-tools {
-        width: 100%;
-
-        margin: 0 auto 30px;
-
-        display: flex;
-
+    .about-main {
         flex-direction: column;
-
-        gap: 10px;
+        align-items: center;
     }
 
-    .blog-tools input,
-    .blog-tools select {
+
+    .about-image {
+        width: min(55vw, 280px);
+        min-width: 0;
+    }
+
+
+    .about-text {
         width: 100%;
-
-        box-sizing: border-box;
     }
 
 
-    /* ================================
-       SECTION TITLE
-    ================================= */
+    .about-container {
+        padding: 25px;
+    }
 
-    .section-title {
-        font-size: 24px;
+}
 
-        margin-top: 30px;
 
-        margin-bottom: 18px;
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 500px) {
+
+    .about-section {
+        padding: 100px 15px 50px;
     }
 
 
-    /* ================================
-       LATEST BLOGS
-    ================================= */
-
-    .blog-container {
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-    }
-
-
-    /* ================================
-       FEATURED BLOG SLIDER
-    ================================= */
-
-    #featuredContainer {
-        overflow-x: auto;
-
-        scroll-snap-type: x mandatory;
-
-        scrollbar-width: none;
-
-        padding-bottom: 10px;
-    }
-
-    #featuredContainer::-webkit-scrollbar {
-        display: none;
-    }
-
-    .featured-card {
-        flex: 0 0 85%;
-
-        scroll-snap-align: start;
-    }
-
-
-    /* ================================
-       BLOG PREVIEW
-    ================================= */
-
-    .blog-preview {
-        top: 70px;
-
-        width: 94%;
-
-        max-height: 84vh;
-
+    .about-container {
         padding: 20px;
-
-        border-radius: 12px;
-    }
-
-    .blog-preview h2 {
-        font-size: 24px;
-
-        line-height: 1.3;
-    }
-
-    .blog-preview img {
-        max-height: 300px;
-
-        margin-bottom: 20px;
+        border-radius: 15px;
     }
 
 
-    /* ================================
-       PREVIEW PARAGRAPHS
-    ================================= */
+    .about-title h1 {
+        font-size: 28px;
+    }
 
-    .preview-description p {
-        font-size: 15px;
 
+    .edit-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+
+    /* RESPONSIVE PROFILE IMAGE */
+
+    .about-image {
+        width: min(70vw, 240px);
+    }
+
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 250 / 330;
+    }
+
+
+    .change-photo-btn {
+        width: 100%;
+    }
+
+
+    .about-text p {
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+
+    .funfacts h2 {
+        font-size: 28px;
+    }
+
+
+    .funfacts p {
+        font-size: 16px;
         line-height: 1.8;
-
-        margin-bottom: 22px;
-
-        text-align: left;
     }
 
 
-    /* ================================
-       MODAL
-    ================================= */
-
-    .modal {
-        padding-top: 70px;
-    }
-
-    .modal-box {
-        width: 94%;
-
-        padding: 22px;
-
-        margin-bottom: 30px;
-
-        box-sizing: border-box;
+    .edit-modal {
+        padding: 20px;
     }
 
 
-    /* ================================
-       ACTION BUTTONS
-    ================================= */
+    .modal-buttons {
+        flex-direction: column;
+    }
 
-    .actions {
-        flex-wrap: wrap;
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL PHONES
+===================================== */
+
+@media (max-width: 360px) {
+
+    .about-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    .about-container {
+        padding: 15px;
+    }
+
+
+    .about-title h1 {
+        font-size: 25px;
+    }
+
+
+    .about-image {
+        width: 65vw;
     }
 
 }
