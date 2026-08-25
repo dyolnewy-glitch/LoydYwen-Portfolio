@@ -1,50 +1,170 @@
 /* =========================
    HERO SECTION
 ========================= */
+
 .hero {
-  padding: 80px 20px;
-  background-color: #f4f4f4;
+    padding: 80px 20px;
+    background-color: #f4f4f4;
 }
 
 .hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: 0 auto;
-  gap: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero-text {
+    flex: 1;
 }
 
 .hero-text h1 {
-  font-size: 40px;
-  margin-bottom: 15px;
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
 .hero-text h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: #008080; /* teal subtitle */
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #008080;
 }
 
 .hero-text p {
-  font-size: 18px;
-  margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.hero-buttons .btn {
+    display: inline-block;
+}
+
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.hero-image {
+    flex-shrink: 0;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-image img {
-  width: 300px;
-  border-radius: 10px;
+    width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+
+    opacity: 1;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
-/* RESPONSIVE HERO */
-@media screen and (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .hero-image img {
-    width: 200px;
-    margin-top: 20px;
-  }
+/* =========================
+   IMAGE CHANGE EFFECT
+========================= */
+
+.hero-image img.changing {
+    opacity: 0;
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-text h2 {
+        font-size: 24px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 200px;
+        margin-top: 20px;
+    }
+
+    .hero-image img {
+        width: 200px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media screen and (max-width: 480px) {
+
+    .hero {
+        padding: 50px 15px;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text h2 {
+        font-size: 21px;
+    }
+
+    .hero-image {
+        width: 180px;
+    }
+
+    .hero-image img {
+        width: 180px;
+    }
+
 }
