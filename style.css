@@ -27,26 +27,112 @@ body {
 ========================= */
 
 header {
-    background-color: #008080;
-    color: white;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 
-    /* Star effect */
-    overflow: hidden;
+    background-color: #008080;
+
+    color: white;
+
+    padding: 15px 0;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.3);
+
+    overflow: visible;
+
 }
 
 
-/* =====================================
+/* =========================
    SILVER STAR SKY
-   RANDOM / SCATTERED
-===================================== */
+========================= */
 
 header::before {
+
     content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background-image:
+
+        radial-gradient(
+            circle at 8% 25%,
+            rgba(255,255,255,.9) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 18% 70%,
+            rgba(220,225,225,.85) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 30% 35%,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 42% 80%,
+            rgba(220,225,225,.8) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 54% 20%,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 67% 60%,
+            rgba(220,225,225,.85) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 78% 25%,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.8px
+        ),
+
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(220,225,225,.85) 0 1px,
+            transparent 1.8px
+        );
+
+    opacity: .75;
+
+    animation:
+        starSkyMove
+        12s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* =========================
+   SILVER SPARKLE STARS
+========================= */
+
+header::after {
+
+    content: "";
+
     position: absolute;
 
     inset: 0;
@@ -57,341 +143,127 @@ header::before {
 
     background:
 
-        /* =========================
-           SMALL SILVER STARS
-        ========================= */
-
-        radial-gradient(
-            ellipse 1px 7px at 4% 28%,
-            rgba(245,248,248,.85),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 7px 1px at 4% 28%,
-            rgba(245,248,248,.85),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 5px at 11% 76%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 5px 1px at 11% 76%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 8px at 18% 43%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 8px 1px at 18% 43%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 5px at 25% 18%,
-            rgba(220,225,225,.8),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 5px 1px at 25% 18%,
-            rgba(220,225,225,.8),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 9px at 32% 82%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 9px 1px at 32% 82%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 6px at 39% 34%,
-            rgba(210,216,216,.8),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 6px 1px at 39% 34%,
-            rgba(210,216,216,.8),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 10px at 47% 68%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 10px 1px at 47% 68%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 5px at 54% 17%,
-            rgba(215,220,220,.85),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 5px 1px at 54% 17%,
-            rgba(215,220,220,.85),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 8px at 61% 51%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 8px 1px at 61% 51%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 6px at 68% 84%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 6px 1px at 68% 84%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 9px at 74% 25%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 9px 1px at 74% 25%,
-            rgba(255,255,255,.9),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 5px at 81% 63%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 5px 1px at 81% 63%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 10px at 88% 38%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 10px 1px at 88% 38%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
-
-
-        radial-gradient(
-            ellipse 1px 6px at 95% 72%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 6px 1px at 95% 72%,
-            rgba(215,220,220,.8),
-            transparent 70%
-        );
-
-
-    opacity: .8;
-
-    animation: starsFloat 10s ease-in-out infinite alternate;
-}
-
-
-/* =====================================
-   EXTRA RANDOM STAR LAYER
-===================================== */
-
-header::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 2;
-
-    background:
-
         /* STAR 1 */
-        radial-gradient(
-            ellipse 1.5px 12px at 8% 55%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
 
-        radial-gradient(
-            ellipse 12px 1.5px at 8% 55%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(255,255,255,.9) 50%,
+            transparent 55%
+        ) 12% 25% / 18px 2px no-repeat,
+
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(255,255,255,.9) 50%,
+            transparent 55%
+        ) 12% 25% / 2px 18px no-repeat,
 
 
         /* STAR 2 */
-        radial-gradient(
-            ellipse 1.5px 9px at 16% 12%,
-            rgba(220,225,225,.9),
-            transparent 70%
-        ),
 
-        radial-gradient(
-            ellipse 9px 1.5px at 16% 12%,
-            rgba(220,225,225,.9),
-            transparent 70%
-        ),
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 27% 70% / 14px 2px no-repeat,
+
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 27% 70% / 2px 14px no-repeat,
 
 
         /* STAR 3 */
-        radial-gradient(
-            ellipse 1.5px 13px at 29% 56%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
 
-        radial-gradient(
-            ellipse 13px 1.5px at 29% 56%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 48% 30% / 20px 2px no-repeat,
+
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 48% 30% / 2px 20px no-repeat,
 
 
         /* STAR 4 */
-        radial-gradient(
-            ellipse 1.5px 8px at 43% 91%,
-            rgba(215,220,220,.9),
-            transparent 70%
-        ),
 
-        radial-gradient(
-            ellipse 8px 1.5px at 43% 91%,
-            rgba(215,220,220,.9),
-            transparent 70%
-        ),
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(220,225,225,.9) 50%,
+            transparent 55%
+        ) 70% 72% / 15px 2px no-repeat,
+
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(220,225,225,.9) 50%,
+            transparent 55%
+        ) 70% 72% / 2px 15px no-repeat,
 
 
         /* STAR 5 */
-        radial-gradient(
-            ellipse 1.5px 13px at 57% 39%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
 
-        radial-gradient(
-            ellipse 13px 1.5px at 57% 39%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 87% 28% / 18px 2px no-repeat,
+
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 87% 28% / 2px 18px no-repeat,
 
 
         /* STAR 6 */
-        radial-gradient(
-            ellipse 1.5px 9px at 66% 9%,
-            rgba(215,220,220,.9),
-            transparent 70%
-        ),
 
-        radial-gradient(
-            ellipse 9px 1.5px at 66% 9%,
-            rgba(215,220,220,.9),
-            transparent 70%
-        ),
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 82% 82% / 12px 2px no-repeat,
 
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 82% 82% / 2px 12px no-repeat;
 
-        /* STAR 7 */
-        radial-gradient(
-            ellipse 1.5px 12px at 79% 76%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
+    opacity: .8;
 
-        radial-gradient(
-            ellipse 12px 1.5px at 79% 76%,
-            rgba(255,255,255,.95),
-            transparent 70%
-        ),
+    animation:
+        starTwinkle
+        4s
+        ease-in-out
+        infinite alternate;
 
-
-        /* STAR 8 */
-        radial-gradient(
-            ellipse 1.5px 9px at 91% 15%,
-            rgba(220,225,225,.9),
-            transparent 70%
-        ),
-
-        radial-gradient(
-            ellipse 9px 1.5px at 91% 15%,
-            rgba(220,225,225,.9),
-            transparent 70%
-        );
-
-
-    opacity: .75;
-
-    animation: silverTwinkle 4.5s ease-in-out infinite alternate;
 }
 
 
-/* =====================================
-   HEADER CONTENT ABOVE STARS
-===================================== */
+/* =========================
+   HEADER CONTAINER
+========================= */
 
 header .container {
+
     position: relative;
 
-    z-index: 5;
+    z-index: 10;
 
     display: flex;
 
@@ -404,58 +276,6 @@ header .container {
     margin: auto;
 
     padding: 0 20px;
-}
-
-
-/* =====================================
-   STAR FLOAT ANIMATION
-===================================== */
-
-@keyframes starsFloat {
-
-    0% {
-        transform: translate(-3px, 0);
-    }
-
-    50% {
-        transform: translate(3px, -1px);
-    }
-
-    100% {
-        transform: translate(-3px, 1px);
-    }
-
-}
-
-
-/* =====================================
-   STAR TWINKLE ANIMATION
-===================================== */
-
-@keyframes silverTwinkle {
-
-    0% {
-        opacity: .35;
-        transform: scale(.88);
-    }
-
-    25% {
-        opacity: .6;
-    }
-
-    50% {
-        opacity: .95;
-        transform: scale(1.05);
-    }
-
-    75% {
-        opacity: .55;
-    }
-
-    100% {
-        opacity: .8;
-        transform: scale(.92);
-    }
 
 }
 
@@ -464,9 +284,23 @@ header .container {
    LOGO
 ========================= */
 
+header .logo {
+
+    position: relative;
+
+    z-index: 20;
+
+}
+
+
 header .logo img {
+
     height: 50px;
+
     width: auto;
+
+    display: block;
+
 }
 
 
@@ -474,18 +308,33 @@ header .logo img {
    NAVIGATION
 ========================= */
 
+header nav {
+
+    position: relative;
+
+    z-index: 20;
+
+}
+
+
 header nav ul {
+
     display: flex;
+
     list-style: none;
+
 }
 
 
 header nav ul li {
+
     margin-left: 25px;
+
 }
 
 
 header nav ul li a {
+
     color: white;
 
     text-decoration: none;
@@ -497,65 +346,102 @@ header nav ul li a {
     border-radius: 4px;
 
     transition: .3s;
+
 }
 
 
 header nav ul li a:hover {
+
     background: #006666;
+
 }
 
-
-/* =========================
-   ACTIVE LINK
-========================= */
 
 header nav ul li a.active {
+
     background: #ffcc00;
+
     color: #333;
+
 }
 
 
 /* =========================
-   HAMBURGER MENU
+   MOBILE MENU BUTTON
 ========================= */
 
 .menu-toggle {
+
     display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 6px;
+
+    margin: 0;
+
+    background: transparent;
+
+    border: none;
+
     cursor: pointer;
+
+    position: relative;
+
+    z-index: 30;
+
 }
 
 
 .menu-toggle span {
+
     display: block;
 
     width: 30px;
 
     height: 3px;
 
+    margin: 5px auto;
+
     background: white;
 
-    margin: 6px 0;
+    border-radius: 3px;
 
-    transition: .3s;
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+
 }
 
 
+/* =========================
+   HAMBURGER → X
+========================= */
+
 .menu-toggle.active span:nth-child(1) {
+
     transform:
-        rotate(45deg)
-        translate(6px, 6px);
+        translateY(8px)
+        rotate(45deg);
+
 }
 
 
 .menu-toggle.active span:nth-child(2) {
+
     opacity: 0;
+
 }
 
 
 .menu-toggle.active span:nth-child(3) {
+
     transform:
-        rotate(-45deg)
-        translate(6px, -6px);
+        translateY(-8px)
+        rotate(-45deg);
+
 }
 
 
@@ -564,6 +450,7 @@ header nav ul li a.active {
 ========================= */
 
 section {
+
     padding: 80px 20px;
 
     max-width: 1100px;
@@ -571,21 +458,27 @@ section {
     margin: auto;
 
     text-align: center;
+
 }
 
 
 section h2 {
+
     font-size: 30px;
+
     margin-bottom: 30px;
+
 }
 
 
 section p {
+
     font-size: 18px;
 
     max-width: 800px;
 
     margin: 0 auto 20px;
+
 }
 
 
@@ -594,6 +487,7 @@ section p {
 ========================= */
 
 .btn {
+
     text-decoration: none;
 
     background: #008080;
@@ -607,13 +501,16 @@ section p {
     font-weight: bold;
 
     transition: .3s;
+
 }
 
 
 .btn:hover {
+
     background: #006666;
 
     transform: translateY(-2px);
+
 }
 
 
@@ -622,6 +519,7 @@ section p {
 ========================= */
 
 footer {
+
     background: #008080;
 
     color: white;
@@ -629,10 +527,12 @@ footer {
     padding: 30px 0;
 
     text-align: center;
+
 }
 
 
 footer .social-links a {
+
     color: white;
 
     text-decoration: none;
@@ -642,11 +542,14 @@ footer .social-links a {
     font-weight: bold;
 
     transition: .3s;
+
 }
 
 
 footer .social-links a:hover {
+
     color: #ffcc00;
+
 }
 
 
@@ -655,62 +558,159 @@ footer .social-links a:hover {
 ========================= */
 
 header.scrolled {
+
     padding: 10px 0;
 
     background: #006666;
+
 }
 
 
 /* =========================
-   ANIMATION
+   STAR ANIMATIONS
+========================= */
+
+@keyframes starSkyMove {
+
+    0% {
+
+        transform:
+            translateX(-4px);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(4px);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-4px);
+
+    }
+
+}
+
+
+@keyframes starTwinkle {
+
+    0% {
+
+        opacity: .35;
+
+        transform:
+            scale(.92);
+
+    }
+
+    50% {
+
+        opacity: .85;
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.05);
+
+    }
+
+}
+
+
+/* =========================
+   GENERAL ANIMATION
 ========================= */
 
 @keyframes fadeInUp {
 
     from {
+
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+            translateY(20px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
 
 
 section {
+
     animation:
         fadeInUp
         .8s
         ease
         forwards;
+
 }
 
 
 /* =========================
-   RESPONSIVE MOBILE
+   MOBILE
 ========================= */
 
 @media screen and (max-width: 768px) {
 
-    header .container {
-        flex-direction: row;
 
-        justify-content: space-between;
+    header {
+
+        padding: 12px 0;
+
     }
 
+
+    header .container {
+
+        min-height: 50px;
+
+        padding: 0 15px;
+
+    }
+
+
+    header .logo img {
+
+        height: 40px;
+
+    }
+
+
+    /* SHOW HAMBURGER */
 
     .menu-toggle {
+
         display: block;
+
     }
 
 
+    /* HIDE DESKTOP NAV */
+
     header nav {
+
+        display: none;
+
         position: absolute;
 
-        top: 80px;
+        top: 100%;
 
         left: 0;
 
@@ -718,71 +718,114 @@ section {
 
         background: #008080;
 
-        display: none;
+        box-shadow:
+            0 8px 15px rgba(0,0,0,.2);
+
+        z-index: 2000;
+
     }
 
 
+    /* SHOW MOBILE NAV */
+
     header nav.show {
+
         display: block;
+
     }
 
 
     header nav ul {
+
         display: flex;
 
         flex-direction: column;
 
         width: 100%;
+
+        padding: 0;
+
+        margin: 0;
+
     }
 
 
     header nav ul li {
+
+        width: 100%;
+
         margin: 0;
 
         border-bottom:
             1px solid
-            rgba(255,255,255,.3);
+            rgba(255,255,255,.2);
+
+    }
+
+
+    header nav ul li:last-child {
+
+        border-bottom: none;
+
     }
 
 
     header nav ul li a {
+
         display: block;
+
+        width: 100%;
 
         padding: 15px 20px;
 
         border-radius: 0;
+
+    }
+
+
+    header nav ul li a:hover {
+
+        background: #006666;
+
     }
 
 
     header nav ul li a.active {
+
         background: #ffcc00;
 
         color: #333;
+
     }
 
 
-    section h2 {
-        font-size: 26px;
-    }
-
-
-    section p {
-        font-size: 16px;
-    }
-
-
-    /* =================================
-       MOBILE STARS
-       Still visible but softer
-    ================================= */
+    /* STARS */
 
     header::before {
+
         opacity: .65;
+
     }
 
 
     header::after {
-        opacity: .65;
+
+        opacity: .7;
+
+    }
+
+
+    section h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    section p {
+
+        font-size: 16px;
+
     }
 
 }
@@ -794,23 +837,55 @@ section {
 
 @media screen and (max-width: 480px) {
 
+
+    header .container {
+
+        padding: 0 12px;
+
+    }
+
+
     header .logo img {
+
+        height: 38px;
+
+    }
+
+
+    .menu-toggle {
+
+        width: 40px;
+
         height: 40px;
+
+    }
+
+
+    .menu-toggle span {
+
+        width: 28px;
+
     }
 
 
     section {
+
         padding: 60px 15px;
+
     }
 
 
     header::before {
+
         opacity: .55;
+
     }
 
 
     header::after {
+
         opacity: .6;
+
     }
 
 }
