@@ -2,18 +2,19 @@
    SKILLS PAGE
 ===================================== */
 
-
 .skills {
 
     padding:120px 20px 70px;
-    background:#f5f7fa;
+    background:#D6DEDC;
     text-align:center;
 
 }
 
 
 
-/* TITLE */
+/* =====================================
+   TITLE
+===================================== */
 
 .title {
 
@@ -35,13 +36,9 @@
 
 
 
-
-
-
 /* =====================================
    SECTION
 ===================================== */
-
 
 .skill-section {
 
@@ -49,7 +46,6 @@
     margin:0 auto 80px;
 
 }
-
 
 
 .skill-section h2 {
@@ -62,14 +58,9 @@
 
 
 
-
-
-
-
 /* =====================================
    CREATIVE SKILLS
 ===================================== */
-
 
 .skill-cards {
 
@@ -81,12 +72,9 @@
 }
 
 
-
-
 .skill-card {
 
-
-    background:white;
+    background:#E3E9E7;
 
     width:300px;
 
@@ -94,42 +82,32 @@
 
     border-radius:20px;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
 
     transition:.3s;
 
-
 }
-
 
 
 .skill-card:hover {
 
-
     transform:translateY(-8px);
 
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 
 }
 
 
-
-
-
 .skill-icon {
-
 
     font-size:45px;
 
     margin-bottom:15px;
 
-
 }
 
 
-
-
 .skill-card h3 {
-
 
     color:#333;
 
@@ -137,40 +115,27 @@
 
     margin-bottom:8px;
 
-
 }
 
 
-
-
 .skill-card h4 {
-
 
     color:#008080;
 
     margin-bottom:15px;
 
-
 }
-
-
 
 
 .skill-card p {
 
-
-    color:#666;
+    color:#555;
 
     line-height:1.7;
 
     font-size:15px;
 
-
 }
-
-
-
-
 
 
 
@@ -178,9 +143,7 @@
    WEB DEVELOPMENT
 ===================================== */
 
-
 .progress-container {
-
 
     max-width:650px;
 
@@ -188,39 +151,30 @@
 
     text-align:left;
 
-
 }
-
 
 
 .bar {
 
-
     margin-bottom:25px;
-
 
 }
 
 
-
 .bar span {
-
 
     font-weight:600;
 
     color:#333;
 
-
 }
-
 
 
 .progress {
 
-
     height:12px;
 
-    background:#ddd;
+    background:#C4CFCC;
 
     border-radius:20px;
 
@@ -228,13 +182,10 @@
 
     margin-top:8px;
 
-
 }
 
 
-
 .progress div {
-
 
     height:100%;
 
@@ -244,9 +195,7 @@
 
     animation:load 2s ease;
 
-
 }
-
 
 
 .html {
@@ -256,7 +205,6 @@
 }
 
 
-
 .css {
 
     width:80%;
@@ -264,14 +212,11 @@
 }
 
 
-
 .web {
 
     width:75%;
 
 }
-
-
 
 
 @keyframes load {
@@ -286,18 +231,11 @@
 
 
 
-
-
-
-
-
 /* =====================================
    TOOLS
 ===================================== */
 
-
 .tool-grid {
-
 
     display:grid;
 
@@ -305,42 +243,29 @@
 
     gap:25px;
 
-
 }
-
 
 
 .tool-card {
 
-
-    background:white;
+    background:#E3E9E7;
 
     padding:30px 25px;
 
-
     border-radius:18px;
-
 
     text-decoration:none;
 
-
     color:#333;
 
-
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
-
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
 
     transition:.3s;
-
 
 }
 
 
-
-
-
 .tool-card:hover {
-
 
     background:#008080;
 
@@ -348,38 +273,27 @@
 
     transform:translateY(-8px);
 
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 
 }
 
 
-
-
-
 .tool-card h3 {
-
 
     margin-bottom:15px;
 
     font-size:22px;
 
-
 }
 
 
-
 .tool-card p {
-
 
     line-height:1.6;
 
     font-size:15px;
 
-
 }
-
-
-
-
 
 
 
@@ -387,57 +301,37 @@
    CURRENTLY IMPROVING
 ===================================== */
 
-
 .improve-grid {
-
 
     display:grid;
 
-
     grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-
 
     gap:25px;
 
-
 }
-
-
-
 
 
 .improve-grid a {
 
-
-    background:white;
-
+    background:#E3E9E7;
 
     padding:25px;
 
-
     border-radius:18px;
-
 
     text-decoration:none;
 
-
     color:#333;
 
-
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
-
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
 
     transition:.3s;
-
 
 }
 
 
-
-
-
 .improve-grid a:hover {
-
 
     background:#008080;
 
@@ -445,39 +339,25 @@
 
     transform:translateY(-8px);
 
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 
 }
-
-
-
 
 
 .improve-grid h3 {
 
-
     margin-bottom:12px;
-
 
 }
 
 
-
-
-
-
 .improve-grid p {
-
 
     line-height:1.6;
 
     font-size:15px;
 
-
 }
-
-
-
-
 
 
 
@@ -485,45 +365,33 @@
    LEARNING JOURNEY
 ===================================== */
 
-
 .learning-section {
-
 
     max-width:800px;
 
     margin:auto;
 
-
-    background:white;
-
+    background:#E3E9E7;
 
     padding:35px;
 
-
     border-radius:20px;
 
-
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
-
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
 
 }
 
 
-
 .learning-section h2 {
-
 
     color:#008080;
 
     margin-bottom:20px;
 
-
 }
 
 
-
 .learning-section p {
-
 
     color:#555;
 
@@ -531,12 +399,7 @@
 
     font-size:17px;
 
-
 }
-
-
-
-
 
 
 
@@ -544,9 +407,7 @@
    FOOTER
 ===================================== */
 
-
 footer {
-
 
     background:#008080;
 
@@ -558,35 +419,26 @@ footer {
 
     border-top:3px solid #00b3b3;
 
-
 }
 
 
-
 .footer-container p {
-
 
     margin:0;
 
     font-weight:500;
 
-
 }
-
 
 
 .social-links {
 
-
     margin-top:10px;
-
 
 }
 
 
-
 .social-links a {
-
 
     color:white;
 
@@ -594,22 +446,14 @@ footer {
 
     margin:0 10px;
 
-
 }
-
 
 
 .social-links a:hover {
 
-
     color:#ffd54f;
 
-
 }
-
-
-
-
 
 
 
@@ -617,56 +461,45 @@ footer {
    RESPONSIVE
 ===================================== */
 
+@media(max-width:768px) {
 
-@media(max-width:768px){
+    .title {
 
+        font-size:32px;
 
-.title {
-
-    font-size:32px;
-
-}
+    }
 
 
+    .skill-card {
 
-.skill-card {
+        width:90%;
 
-    width:90%;
-
-}
-
+    }
 
 
-.skill-section h2 {
+    .skill-section h2 {
 
-    font-size:26px;
+        font-size:26px;
+
+    }
 
 }
 
 
 
-}
+@media(max-width:500px) {
+
+    .skills {
+
+        padding:100px 15px 50px;
+
+    }
 
 
+    .learning-section {
 
-@media(max-width:500px){
+        padding:25px;
 
-
-.skills {
-
-    padding:100px 15px 50px;
-
-}
-
-
-
-.learning-section {
-
-
-    padding:25px;
-
-
-}
-
+    }
 
 }
