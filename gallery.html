@@ -51,31 +51,45 @@
 <ul>
 
 <li>
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 </li>
 
 <li>
-<a href="about.html">About Me</a>
+<a href="about.html">
+About Me
+</a>
 </li>
 
 <li>
-<a href="skills.html">Skills</a>
+<a href="skills.html">
+Skills
+</a>
 </li>
 
 <li>
-<a href="portfolio.html">Portfolio</a>
+<a href="portfolio.html">
+Portfolio
+</a>
 </li>
 
 <li>
-<a href="gallery.html" class="active">Gallery</a>
+<a href="gallery.html" class="active">
+Gallery
+</a>
 </li>
 
 <li>
-<a href="blog.html">Blog</a>
+<a href="blog.html">
+Blog
+</a>
 </li>
 
 <li>
-<a href="contact.html">Contact</a>
+<a href="contact.html">
+Contact
+</a>
 </li>
 
 </ul>
@@ -198,6 +212,15 @@ Digital Art
 
 <button
 class="category-option"
+data-category="drawing"
+type="button">
+
+Drawing
+
+</button>
+
+<button
+class="category-option"
 data-category="other"
 type="button">
 
@@ -212,8 +235,10 @@ Other
 </div>
 
 <!-- =========================
-     GALLERY
-     LATEST → OLDEST
+     GALLERY GRID
+     
+     NEWEST IMAGE = FIRST
+     OLDEST IMAGE = LAST
 ========================= -->
 
 <div class="gallery-content">
@@ -222,11 +247,52 @@ Other
 class="gallery-grid"
 id="galleryGrid">
 
-<!-- =========================
-     LATEST
-========================= -->
+<!-- =================================================
+     NEWEST
+     
+     Kapag may bagong image:
+     ILAGAY ITO SA PINAKA-UNAHAN
+================================================= -->
 
-<!-- 1. SONIC -->
+<!-- NEWEST #1 -->
+
+<div
+class="gallery-item"
+data-category="graphic">
+
+<img
+src="LYkha.png"
+alt="LYkha Graphic Design">
+
+</div>
+
+<!-- NEWEST #2 -->
+
+<div
+class="gallery-item"
+data-category="drawing">
+
+<img
+src="candle.jpg"
+alt="Candle Drawing">
+
+</div>
+
+<!-- NEWEST #3 -->
+
+<div
+class="gallery-item"
+data-category="drawing">
+
+<img
+src="chain.jpg"
+alt="Chain Drawing">
+
+</div>
+
+<!-- =================================================
+     PREVIOUS IMAGES
+================================================= -->
 
 <div
 class="gallery-item"
@@ -238,8 +304,6 @@ alt="Sonic Poster">
 
 </div>
 
-<!-- 2. MUNDO -->
-
 <div
 class="gallery-item"
 data-category="poster">
@@ -249,8 +313,6 @@ src="mundo.png"
 alt="Mundo Poster">
 
 </div>
-
-<!-- 3. USOK -->
 
 <div
 class="gallery-item"
@@ -262,12 +324,6 @@ alt="Usok Poster">
 
 </div>
 
-<!-- =========================
-     PREVIOUS
-========================= -->
-
-<!-- 4. OCEAN -->
-
 <div
 class="gallery-item"
 data-category="other">
@@ -277,8 +333,6 @@ src="ocean.png"
 alt="Ocean">
 
 </div>
-
-<!-- 5. GRAPHIC DESIGN WITH CANVA -->
 
 <div
 class="gallery-item"
@@ -290,8 +344,6 @@ alt="Graphic Design with Canva">
 
 </div>
 
-<!-- 6. DON'T -->
-
 <div
 class="gallery-item"
 data-category="other">
@@ -301,8 +353,6 @@ src="dont.png"
 alt="Don't">
 
 </div>
-
-<!-- 7. A -->
 
 <div
 class="gallery-item"
@@ -314,12 +364,6 @@ alt="Graphic Design">
 
 </div>
 
-<!-- =========================
-     OLDEST
-========================= -->
-
-<!-- 8. PRINTING -->
-
 <div
 class="gallery-item"
 data-category="poster">
@@ -330,8 +374,6 @@ alt="Printing Poster">
 
 </div>
 
-<!-- 9. GROW -->
-
 <div
 class="gallery-item"
 data-category="poster">
@@ -341,8 +383,6 @@ src="grow.png"
 alt="Grow Poster">
 
 </div>
-
-<!-- 10. XIETY -->
 
 <div
 class="gallery-item"
@@ -371,7 +411,9 @@ alt="Xiety Poster">
 <div class="container footer-container">
 
 <p>
-&copy; 2026 Loyd Ywen Masangcay. All rights reserved.
+
+© 2026 Loyd Ywen Masangcay. All rights reserved.
+
 </p>
 
 <div class="social-links">
@@ -441,7 +483,9 @@ function toggleMenu(menu) {
 const nav =
 document.querySelector("header nav");
 
+
 nav.classList.toggle("show");
+
 
 menu.classList.toggle("active");
 
@@ -452,17 +496,23 @@ document
 .querySelectorAll("nav ul li a")
 .forEach(function(link) {
 
+
 link.addEventListener("click", function() {
+
 
 const nav =
 document.querySelector("header nav");
 
+
 const menu =
 document.querySelector(".menu-toggle");
 
+
 nav.classList.remove("show");
 
+
 menu.classList.remove("active");
+
 
 });
 
@@ -471,48 +521,59 @@ menu.classList.remove("active");
 
 
 /* =========================
-   DROPDOWN
+   CATEGORY DROPDOWN
 ========================= */
 
 const dropdownButton =
 document.getElementById("categoryDropdownBtn");
 
+
 const dropdownMenu =
 document.getElementById("categoryDropdownMenu");
+
 
 const selectedCategory =
 document.getElementById("selectedCategory");
 
+
 const options =
 document.querySelectorAll(".category-option");
 
+
 const galleryItems =
 document.querySelectorAll(".gallery-item");
+
 
 
 dropdownButton.addEventListener(
 "click",
 function(event) {
 
+
 event.stopPropagation();
+
 
 dropdownMenu.classList.toggle("show");
 
+
 dropdownButton.classList.toggle("open");
+
 
 });
 
 
 
 /* =========================
-   FILTER
+   CATEGORY FILTER
 ========================= */
 
 options.forEach(function(option) {
 
+
 option.addEventListener(
 "click",
 function(event) {
+
 
 event.stopPropagation();
 
@@ -521,29 +582,39 @@ const category =
 this.getAttribute("data-category");
 
 
+
 options.forEach(function(item) {
 
+
 item.classList.remove("active");
+
 
 });
 
 
+
 this.classList.add("active");
+
 
 
 selectedCategory.textContent =
 this.textContent.trim();
 
 
+
 dropdownMenu.classList.remove("show");
+
 
 dropdownButton.classList.remove("open");
 
 
+
 galleryItems.forEach(function(item) {
+
 
 const itemCategory =
 item.getAttribute("data-category");
+
 
 
 if (
@@ -551,13 +622,18 @@ category === "all" ||
 itemCategory === category
 ) {
 
-item.style.display = "block";
+
+item.style.display = "";
+
 
 } else {
 
+
 item.style.display = "none";
 
+
 }
+
 
 });
 
@@ -575,14 +651,18 @@ document.addEventListener(
 "click",
 function(event) {
 
+
 if (
 !dropdownButton.contains(event.target) &&
 !dropdownMenu.contains(event.target)
 ) {
 
+
 dropdownMenu.classList.remove("show");
 
+
 dropdownButton.classList.remove("open");
+
 
 }
 
@@ -597,35 +677,48 @@ dropdownButton.classList.remove("open");
 const galleryGrid =
 document.getElementById("galleryGrid");
 
+
 const galleryOverlay =
 document.getElementById("galleryOverlay");
 
+
 const galleryPreview =
 document.getElementById("galleryPreview");
+
 
 
 galleryGrid.addEventListener(
 "click",
 function(event) {
 
+
 const image =
 event.target.closest(".gallery-item img");
 
 
+
 if (!image) {
+
 
 return;
 
+
 }
+
 
 
 galleryPreview.src =
 image.src;
 
+
+
 galleryPreview.alt =
 image.alt;
 
+
+
 galleryOverlay.classList.add("show");
+
 
 });
 
@@ -640,9 +733,12 @@ galleryPreview.addEventListener(
 "click",
 function() {
 
+
 galleryOverlay.classList.remove("show");
 
+
 galleryPreview.src = "";
+
 
 });
 
@@ -656,13 +752,41 @@ galleryOverlay.addEventListener(
 "click",
 function(event) {
 
+
 if (
 event.target === galleryOverlay
 ) {
 
+
 galleryOverlay.classList.remove("show");
 
+
 galleryPreview.src = "";
+
+
+}
+
+});
+
+
+
+/* =========================
+   ESCAPE KEY
+========================= */
+
+document.addEventListener(
+"keydown",
+function(event) {
+
+
+if (event.key === "Escape") {
+
+
+galleryOverlay.classList.remove("show");
+
+
+galleryPreview.src = "";
+
 
 }
 
