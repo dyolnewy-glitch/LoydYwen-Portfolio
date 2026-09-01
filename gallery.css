@@ -3,207 +3,138 @@ GALLERY SECTION
 ========================= */
 
 .gallery-section {
-
 padding: 60px 20px;
-
 background: #D6DEDC;
-
 min-height: 70vh;
-
 }
 
 .gallery-container {
-
 width: 100%;
-
 max-width: 1100px;
-
 margin: 0 auto;
-
 }
 
+/* =========================
+GALLERY HEADER
+========================= */
+
 .gallery-sidebar {
-
 width: 100%;
-
 margin-bottom: 25px;
-
+text-align: center;
 }
 
 .gallery-sidebar h1 {
-
+width: 100%;
 margin: 0 0 10px;
-
 text-align: center;
-
 color: #008080;
-
 font-size: 40px;
-
 line-height: 1.2;
-
 }
 
 .gallery-sidebar p {
-
-margin: 0;
-
+width: 100%;
+margin: 0 auto;
 text-align: center;
-
 color: #666;
-
 font-size: 16px;
-
 }
 
+/* =========================
+CATEGORY DROPDOWN
+========================= */
+
 .category-dropdown {
-
 position: relative;
-
 width: 230px;
-
 margin-top: 25px;
-
 margin-left: auto;
-
+margin-right: auto;
 }
 
 .category-dropdown-btn {
-
 width: 100%;
-
 min-height: 46px;
-
 padding: 11px 14px;
-
 display: flex;
-
 align-items: center;
-
 justify-content: space-between;
-
 gap: 10px;
-
 background: #fff;
-
 color: #333;
-
 border: 2px solid #008080;
-
 border-radius: 8px;
-
 font-size: 15px;
-
 font-weight: 600;
-
 font-family: inherit;
-
 cursor: pointer;
-
 box-sizing: border-box;
-
 }
 
 .dropdown-arrow {
-
 flex-shrink: 0;
-
 font-size: 18px;
-
 line-height: 1;
-
 transition: transform 0.2s ease;
-
 }
 
 .category-dropdown-btn.open .dropdown-arrow {
-
 transform: rotate(180deg);
-
 }
 
 .category-dropdown-menu {
-
 position: absolute;
-
 top: calc(100% + 4px);
-
+left: 0;
 right: 0;
-
 width: 100%;
-
 display: none;
-
 background: #fff;
-
 border: 2px solid #008080;
-
 border-radius: 8px;
-
 overflow: hidden;
-
 z-index: 9999;
-
 box-sizing: border-box;
-
 }
 
 .category-dropdown-menu.show {
-
 display: block;
-
 }
 
 .category-option {
-
 display: block;
-
 width: 100%;
-
 padding: 11px 14px;
-
 background: #fff;
-
 color: #333;
-
 border: none;
-
 text-align: left;
-
 font-family: inherit;
-
 font-size: 15px;
-
 cursor: pointer;
-
 box-sizing: border-box;
-
 }
 
 .category-option:hover {
-
 background: #e6f5f5;
-
 color: #008080;
-
 }
 
 .category-option.active {
-
 background: #008080;
-
 color: #fff;
-
 }
 
+/* =========================
+GALLERY CONTENT
+========================= */
+
 .gallery-content {
-
 width: 100%;
-
-margin: 0;
-
+max-width: 1100px;
+margin: 0 auto;
 padding: 0;
-
 }
 
 /* =========================
@@ -211,73 +142,42 @@ MASONRY GALLERY
 ========================= */
 
 .gallery-grid {
-
 width: 100%;
-
 column-count: 3;
-
 column-gap: 6px;
-
-margin: 0;
-
+margin: 0 auto;
 padding: 0;
-
 }
 
 .gallery-item {
-
 position: relative;
-
 display: inline-block;
-
 vertical-align: top;
-
 width: 100%;
-
 margin: 0 0 6px;
-
 padding: 0;
-
 overflow: hidden;
-
 background: transparent;
-
 cursor: pointer;
-
 break-inside: avoid;
-
 -webkit-column-break-inside: avoid;
-
 box-sizing: border-box;
-
 }
 
 .gallery-item img {
-
 display: block;
-
 width: 100%;
-
 height: auto;
-
 margin: 0;
-
 padding: 0;
-
 object-fit: contain;
-
 background: transparent;
-
 cursor: pointer;
-
 transition: transform 0.25s ease;
-
 }
 
 .gallery-item:hover img {
-
 transform: scale(1.02);
-
 }
 
 /* =========================
@@ -285,59 +185,34 @@ GALLERY OVERLAY
 ========================= */
 
 .gallery-overlay {
-
 position: fixed;
-
 top: 0;
-
 left: 0;
-
 width: 100%;
-
 height: 100%;
-
 display: none;
-
 align-items: center;
-
 justify-content: center;
-
 padding: 20px;
-
 background: rgba(0, 0, 0, 0.85);
-
 z-index: 99999;
-
 box-sizing: border-box;
-
 }
 
 .gallery-overlay.show {
-
 display: flex;
-
 }
 
 .gallery-preview {
-
 display: block;
-
 width: auto;
-
 height: auto;
-
 max-width: 70vw;
-
 max-height: 80vh;
-
 object-fit: contain;
-
 margin: 0;
-
 padding: 0;
-
 cursor: pointer;
-
 }
 
 /* =========================
@@ -346,58 +221,52 @@ TABLET
 
 @media screen and (max-width: 768px) {
 
+
 .gallery-section {
-
-padding: 50px 15px;
-
+    padding: 50px 15px;
 }
 
 .gallery-sidebar {
-
-margin-bottom: 22px;
-
+    margin-bottom: 22px;
+    text-align: center;
 }
 
 .gallery-sidebar h1 {
-
-font-size: 32px;
-
+    width: 100%;
+    font-size: 32px;
+    text-align: center;
 }
 
 .gallery-sidebar p {
-
-font-size: 14px;
-
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
 }
 
 .category-dropdown {
+    width: 220px;
+    margin-top: 22px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-width: 220px;
-
-margin-top: 22px;
-
+.gallery-content {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .gallery-grid {
-
-column-count: 2;
-
-column-gap: 6px;
-
+    column-count: 2;
+    column-gap: 6px;
 }
 
 .gallery-item {
-
-margin-bottom: 6px;
-
+    margin-bottom: 6px;
 }
 
 .gallery-preview {
-
-max-width: 78vw;
-
-max-height: 75vh;
-
+    max-width: 78vw;
+    max-height: 75vh;
 }
 
 }
@@ -409,65 +278,55 @@ MOBILE
 @media screen and (max-width: 480px) {
 
 .gallery-section {
-
-padding: 40px 10px;
-
+    padding: 40px 10px;
 }
 
 .gallery-sidebar {
-
-margin-bottom: 20px;
-
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .gallery-sidebar h1 {
-
-font-size: 28px;
-
+    width: 100%;
+    font-size: 28px;
+    text-align: center;
 }
 
 .gallery-sidebar p {
-
-font-size: 13px;
-
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
 }
 
 .category-dropdown {
+    width: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-width: 200px;
-
-margin-top: 20px;
-
+.gallery-content {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .gallery-grid {
-
-column-count: 2;
-
-column-gap: 6px;
-
+    column-count: 2;
+    column-gap: 6px;
 }
 
 .gallery-item {
-
-margin-bottom: 6px;
-
+    margin-bottom: 6px;
 }
 
 .gallery-item img {
-
-width: 100%;
-
-height: auto;
-
+    width: 100%;
+    height: auto;
 }
 
 .gallery-preview {
-
-max-width: 88vw;
-
-max-height: 72vh;
-
+    max-width: 88vw;
+    max-height: 72vh;
 }
 
 }
