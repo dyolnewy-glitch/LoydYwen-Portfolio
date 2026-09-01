@@ -1,890 +1,504 @@
-/* =========================
-   RESET DEFAULT STYLES
-========================= */
+/* =====================================
+   SKILLS PAGE
+===================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+.skills {
 
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #f4f4f4;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header {
-
-    background-color: #008080;
-
-    color: white;
-
-    padding: 15px 0;
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    box-shadow:
-        0 2px 5px rgba(0, 0, 0, 0.3);
-
-    overflow: visible;
+    padding:120px 20px 70px;
+    background:#D6DEDC;
+    text-align:center;
 
 }
 
 
-/* =========================
-   SILVER STAR SKY
-========================= */
 
-header::before {
+/* =====================================
+   TITLE
+===================================== */
 
-    content: "";
+.title {
 
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    background-image:
-
-        radial-gradient(
-            circle at 8% 25%,
-            rgba(255,255,255,.9) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 18% 70%,
-            rgba(220,225,225,.85) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 30% 35%,
-            rgba(255,255,255,.95) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 42% 80%,
-            rgba(220,225,225,.8) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 54% 20%,
-            rgba(255,255,255,.95) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 67% 60%,
-            rgba(220,225,225,.85) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 78% 25%,
-            rgba(255,255,255,.95) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle at 90% 70%,
-            rgba(220,225,225,.85) 0 1px,
-            transparent 1.8px
-        );
-
-    opacity: .75;
-
-    animation:
-        starSkyMove
-        12s
-        ease-in-out
-        infinite;
+    font-size:42px;
+    color:#008080;
+    font-weight:700;
+    margin-bottom:10px;
 
 }
 
 
-/* =========================
-   SILVER SPARKLE STARS
-========================= */
+.subtitle {
 
-header::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    background:
-
-        /* STAR 1 */
-
-        linear-gradient(
-            90deg,
-            transparent 45%,
-            rgba(255,255,255,.9) 50%,
-            transparent 55%
-        ) 12% 25% / 18px 2px no-repeat,
-
-        linear-gradient(
-            0deg,
-            transparent 45%,
-            rgba(255,255,255,.9) 50%,
-            transparent 55%
-        ) 12% 25% / 2px 18px no-repeat,
-
-
-        /* STAR 2 */
-
-        linear-gradient(
-            90deg,
-            transparent 45%,
-            rgba(220,225,225,.85) 50%,
-            transparent 55%
-        ) 27% 70% / 14px 2px no-repeat,
-
-        linear-gradient(
-            0deg,
-            transparent 45%,
-            rgba(220,225,225,.85) 50%,
-            transparent 55%
-        ) 27% 70% / 2px 14px no-repeat,
-
-
-        /* STAR 3 */
-
-        linear-gradient(
-            90deg,
-            transparent 45%,
-            rgba(255,255,255,.95) 50%,
-            transparent 55%
-        ) 48% 30% / 20px 2px no-repeat,
-
-        linear-gradient(
-            0deg,
-            transparent 45%,
-            rgba(255,255,255,.95) 50%,
-            transparent 55%
-        ) 48% 30% / 2px 20px no-repeat,
-
-
-        /* STAR 4 */
-
-        linear-gradient(
-            90deg,
-            transparent 45%,
-            rgba(220,225,225,.9) 50%,
-            transparent 55%
-        ) 70% 72% / 15px 2px no-repeat,
-
-        linear-gradient(
-            0deg,
-            transparent 45%,
-            rgba(220,225,225,.9) 50%,
-            transparent 55%
-        ) 70% 72% / 2px 15px no-repeat,
-
-
-        /* STAR 5 */
-
-        linear-gradient(
-            90deg,
-            transparent 45%,
-            rgba(255,255,255,.95) 50%,
-            transparent 55%
-        ) 87% 28% / 18px 2px no-repeat,
-
-        linear-gradient(
-            0deg,
-            transparent 45%,
-            rgba(255,255,255,.95) 50%,
-            transparent 55%
-        ) 87% 28% / 2px 18px no-repeat,
-
-
-        /* STAR 6 */
-
-        linear-gradient(
-            90deg,
-            transparent 45%,
-            rgba(220,225,225,.85) 50%,
-            transparent 55%
-        ) 82% 82% / 12px 2px no-repeat,
-
-        linear-gradient(
-            0deg,
-            transparent 45%,
-            rgba(220,225,225,.85) 50%,
-            transparent 55%
-        ) 82% 82% / 2px 12px no-repeat;
-
-    opacity: .8;
-
-    animation:
-        starTwinkle
-        4s
-        ease-in-out
-        infinite alternate;
+    color:#555;
+    font-size:17px;
+    margin-bottom:60px;
 
 }
 
 
-/* =========================
-   HEADER CONTAINER
-========================= */
 
-header .container {
+/* =====================================
+   SECTION
+===================================== */
 
-    position: relative;
+.skill-section {
 
-    z-index: 10;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 0 20px;
+    max-width:1100px;
+    margin:0 auto 80px;
 
 }
 
 
-/* =========================
-   LOGO
-========================= */
+.skill-section h2 {
 
-header .logo {
-
-    position: relative;
-
-    z-index: 20;
+    color:#008080;
+    font-size:30px;
+    margin-bottom:35px;
 
 }
 
 
-header .logo img {
 
-    height: 50px;
+/* =====================================
+   CREATIVE SKILLS
+===================================== */
 
-    width: auto;
+.skill-cards {
 
-    display: block;
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-header nav {
-
-    position: relative;
-
-    z-index: 20;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
 
 }
 
 
-header nav ul {
+.skill-card {
 
-    display: flex;
+    background:#E3E9E7;
 
-    list-style: none;
+    width:300px;
 
-}
+    padding:30px 25px;
 
+    border-radius:20px;
 
-header nav ul li {
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
 
-    margin-left: 25px;
-
-}
-
-
-header nav ul li a {
-
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    padding: 5px 10px;
-
-    border-radius: 4px;
-
-    transition: .3s;
+    transition:.3s;
 
 }
 
 
-header nav ul li a:hover {
+.skill-card:hover {
 
-    background: #006666;
+    transform:translateY(-8px);
 
-}
-
-
-header nav ul li a.active {
-
-    background: #ffcc00;
-
-    color: #333;
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 
 }
 
 
-/* =========================
-   MOBILE MENU BUTTON
-========================= */
+.skill-icon {
 
-.menu-toggle {
+    font-size:45px;
 
-    display: none;
-
-    width: 42px;
-
-    height: 42px;
-
-    padding: 6px;
-
-    margin: 0;
-
-    background: transparent;
-
-    border: none;
-
-    cursor: pointer;
-
-    position: relative;
-
-    z-index: 30;
+    margin-bottom:15px;
 
 }
 
 
-.menu-toggle span {
+.skill-card h3 {
 
-    display: block;
+    color:#333;
 
-    width: 30px;
+    font-size:22px;
 
-    height: 3px;
-
-    margin: 5px auto;
-
-    background: white;
-
-    border-radius: 3px;
-
-    transition:
-        transform .3s ease,
-        opacity .3s ease;
+    margin-bottom:8px;
 
 }
 
 
-/* =========================
-   HAMBURGER → X
-========================= */
+.skill-card h4 {
 
-.menu-toggle.active span:nth-child(1) {
+    color:#008080;
 
-    transform:
-        translateY(8px)
-        rotate(45deg);
+    margin-bottom:15px;
 
 }
 
 
-.menu-toggle.active span:nth-child(2) {
+.skill-card p {
 
-    opacity: 0;
+    color:#555;
 
-}
+    line-height:1.7;
 
-
-.menu-toggle.active span:nth-child(3) {
-
-    transform:
-        translateY(-8px)
-        rotate(-45deg);
+    font-size:15px;
 
 }
 
 
-/* =========================
-   SECTIONS
-========================= */
 
-section {
+/* =====================================
+   WEB DEVELOPMENT
+===================================== */
 
-    padding: 80px 20px;
+.progress-container {
 
-    max-width: 1100px;
+    max-width:650px;
 
-    margin: auto;
+    margin:auto;
 
-    text-align: center;
-
-}
-
-
-section h2 {
-
-    font-size: 30px;
-
-    margin-bottom: 30px;
+    text-align:left;
 
 }
 
 
-section p {
+.bar {
 
-    font-size: 18px;
-
-    max-width: 800px;
-
-    margin: 0 auto 20px;
+    margin-bottom:25px;
 
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+.bar span {
 
-.btn {
+    font-weight:600;
 
-    text-decoration: none;
-
-    background: #008080;
-
-    color: white;
-
-    padding: 12px 25px;
-
-    border-radius: 5px;
-
-    font-weight: bold;
-
-    transition: .3s;
+    color:#333;
 
 }
 
 
-.btn:hover {
+.progress {
 
-    background: #006666;
+    height:12px;
 
-    transform: translateY(-2px);
+    background:#C4CFCC;
 
-}
+    border-radius:20px;
 
+    overflow:hidden;
 
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-
-    background: #008080;
-
-    color: white;
-
-    padding: 30px 0;
-
-    text-align: center;
+    margin-top:8px;
 
 }
 
 
-footer .social-links a {
+.progress div {
 
-    color: white;
+    height:100%;
 
-    text-decoration: none;
+    background:#008080;
 
-    margin: 0 10px;
+    border-radius:20px;
 
-    font-weight: bold;
-
-    transition: .3s;
+    animation:load 2s ease;
 
 }
 
 
-footer .social-links a:hover {
+.html {
 
-    color: #ffcc00;
-
-}
-
-
-/* =========================
-   HEADER SCROLL EFFECT
-========================= */
-
-header.scrolled {
-
-    padding: 10px 0;
-
-    background: #006666;
+    width:85%;
 
 }
 
 
-/* =========================
-   STAR ANIMATIONS
-========================= */
+.css {
 
-@keyframes starSkyMove {
-
-    0% {
-
-        transform:
-            translateX(-4px);
-
-    }
-
-    50% {
-
-        transform:
-            translateX(4px);
-
-    }
-
-    100% {
-
-        transform:
-            translateX(-4px);
-
-    }
+    width:80%;
 
 }
 
 
-@keyframes starTwinkle {
+.web {
 
-    0% {
-
-        opacity: .35;
-
-        transform:
-            scale(.92);
-
-    }
-
-    50% {
-
-        opacity: .85;
-
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-            scale(1.05);
-
-    }
+    width:75%;
 
 }
 
 
-/* =========================
-   GENERAL ANIMATION
-========================= */
-
-@keyframes fadeInUp {
+@keyframes load {
 
     from {
 
-        opacity: 0;
-
-        transform:
-            translateY(20px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
+        width:0;
 
     }
 
 }
 
 
-section {
 
-    animation:
-        fadeInUp
-        .8s
-        ease
-        forwards;
+/* =====================================
+   TOOLS
+===================================== */
+
+.tool-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
 
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+.tool-card {
 
-@media screen and (max-width: 768px) {
+    background:#E3E9E7;
+
+    padding:30px 25px;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+
+    transition:.3s;
+
+}
 
 
-    header {
+.tool-card:hover {
 
-        padding: 12px 0;
+    background:#008080;
+
+    color:white;
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+}
+
+
+.tool-card h3 {
+
+    margin-bottom:15px;
+
+    font-size:22px;
+
+}
+
+
+.tool-card p {
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+
+
+/* =====================================
+   CURRENTLY IMPROVING
+===================================== */
+
+.improve-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+
+}
+
+
+.improve-grid a {
+
+    background:#E3E9E7;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+
+    transition:.3s;
+
+}
+
+
+.improve-grid a:hover {
+
+    background:#008080;
+
+    color:white;
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+}
+
+
+.improve-grid h3 {
+
+    margin-bottom:12px;
+
+}
+
+
+.improve-grid p {
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+
+
+/* =====================================
+   LEARNING JOURNEY
+===================================== */
+
+.learning-section {
+
+    max-width:800px;
+
+    margin:auto;
+
+    background:#E3E9E7;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+
+}
+
+
+.learning-section h2 {
+
+    color:#008080;
+
+    margin-bottom:20px;
+
+}
+
+
+.learning-section p {
+
+    color:#555;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+
+    background:#008080;
+
+    color:white;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    border-top:3px solid #00b3b3;
+
+}
+
+
+.footer-container p {
+
+    margin:0;
+
+    font-weight:500;
+
+}
+
+
+.social-links {
+
+    margin-top:10px;
+
+}
+
+
+.social-links a {
+
+    color:white;
+
+    text-decoration:none;
+
+    margin:0 10px;
+
+}
+
+
+.social-links a:hover {
+
+    color:#ffd54f;
+
+}
+
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:768px) {
+
+    .title {
+
+        font-size:32px;
 
     }
 
 
-    header .container {
+    .skill-card {
 
-        min-height: 50px;
-
-        padding: 0 15px;
+        width:90%;
 
     }
 
 
-    header .logo img {
+    .skill-section h2 {
 
-        height: 40px;
-
-    }
-
-
-    /* SHOW HAMBURGER */
-
-    .menu-toggle {
-
-        display: block;
-
-    }
-
-
-    /* HIDE DESKTOP NAV */
-
-    header nav {
-
-        display: none;
-
-        position: absolute;
-
-        top: 100%;
-
-        left: 0;
-
-        width: 100%;
-
-        background: #008080;
-
-        box-shadow:
-            0 8px 15px rgba(0,0,0,.2);
-
-        z-index: 2000;
-
-    }
-
-
-    /* SHOW MOBILE NAV */
-
-    header nav.show {
-
-        display: block;
-
-    }
-
-
-    header nav ul {
-
-        display: flex;
-
-        flex-direction: column;
-
-        width: 100%;
-
-        padding: 0;
-
-        margin: 0;
-
-    }
-
-
-    header nav ul li {
-
-        width: 100%;
-
-        margin: 0;
-
-        border-bottom:
-            1px solid
-            rgba(255,255,255,.2);
-
-    }
-
-
-    header nav ul li:last-child {
-
-        border-bottom: none;
-
-    }
-
-
-    header nav ul li a {
-
-        display: block;
-
-        width: 100%;
-
-        padding: 15px 20px;
-
-        border-radius: 0;
-
-    }
-
-
-    header nav ul li a:hover {
-
-        background: #006666;
-
-    }
-
-
-    header nav ul li a.active {
-
-        background: #ffcc00;
-
-        color: #333;
-
-    }
-
-
-    /* STARS */
-
-    header::before {
-
-        opacity: .65;
-
-    }
-
-
-    header::after {
-
-        opacity: .7;
-
-    }
-
-
-    section h2 {
-
-        font-size: 26px;
-
-    }
-
-
-    section p {
-
-        font-size: 16px;
+        font-size:26px;
 
     }
 
 }
 
 
-/* =========================
-   SMALL PHONE
-========================= */
 
-@media screen and (max-width: 480px) {
+@media(max-width:500px) {
 
+    .skills {
 
-    header .container {
-
-        padding: 0 12px;
+        padding:100px 15px 50px;
 
     }
 
 
-    header .logo img {
+    .learning-section {
 
-        height: 38px;
-
-    }
-
-
-    .menu-toggle {
-
-        width: 40px;
-
-        height: 40px;
-
-    }
-
-
-    .menu-toggle span {
-
-        width: 28px;
-
-    }
-
-
-    section {
-
-        padding: 60px 15px;
-
-    }
-
-
-    header::before {
-
-        opacity: .55;
-
-    }
-
-
-    header::after {
-
-        opacity: .6;
+        padding:25px;
 
     }
 
