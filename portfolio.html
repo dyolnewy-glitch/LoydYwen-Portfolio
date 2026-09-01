@@ -14,7 +14,558 @@
 </head>
 
 
+<body><!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio - Loyd Ywen Masangcay</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="portfolio.css">
+
+</head>
+
+
 <body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="container">
+
+
+<div class="logo">
+
+<a href="index.html">
+
+<img src="logo.png" alt="Logo">
+
+</a>
+
+</div>
+
+
+
+
+<!-- HAMBURGER -->
+
+<div class="menu-toggle" onclick="toggleMenu(this)">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+
+
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+
+<li>
+<a href="about.html">
+About Me
+</a>
+</li>
+
+
+<li>
+<a href="skills.html">
+Skills
+</a>
+</li>
+
+
+<li>
+<a href="portfolio.html" class="active">
+Portfolio
+</a>
+</li>
+
+
+<li>
+<a href="gallery.html">
+Gallery
+</a>
+</li>
+
+
+<li>
+<a href="blog.html">
+Blog
+</a>
+</li>
+
+
+<li>
+<a href="contact.html">
+Contact
+</a>
+</li>
+
+
+</ul>
+
+</nav>
+
+
+</div>
+
+</header>
+
+
+
+
+
+<!-- PORTFOLIO SECTION -->
+
+
+<section class="portfolio">
+
+
+
+
+
+<div class="portfolio-header">
+
+
+<div>
+
+<h1>
+My Portfolio
+</h1>
+
+
+<p>
+Projects, designs, and applications I created during my IT journey.
+</p>
+
+
+</div>
+
+
+
+
+
+<button 
+class="add-project-btn"
+onclick="openProjectModal()">
+
++ Add Project
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PROJECT DISPLAY -->
+
+
+<div 
+class="project-container"
+id="projectContainer">
+
+
+</div>
+
+
+
+
+
+<div id="noProject">
+
+No project added yet.
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ADD / EDIT PROJECT MODAL -->
+
+
+<div 
+class="project-modal"
+id="projectModal">
+
+
+
+<div class="project-box">
+
+
+
+<h2 id="modalTitle">
+
+Add Project
+
+</h2>
+
+
+
+
+
+<label>
+Project Image / Logo
+</label>
+
+
+<input 
+type="file"
+id="projectImage"
+accept="image/*">
+
+
+
+
+
+
+<div class="image-preview">
+
+<img id="imagePreview">
+
+</div>
+
+
+
+
+
+
+
+
+
+<label>
+Project Title
+</label>
+
+
+<input 
+type="text"
+id="projectTitle"
+placeholder="Project Name">
+
+
+
+
+
+
+
+
+
+<label>
+Category
+</label>
+
+
+<select id="projectCategory">
+
+
+<option value="">
+Select Category
+</option>
+
+
+<option>
+Mobile Application
+</option>
+
+
+<option>
+Web System
+</option>
+
+
+<option>
+UI/UX Design
+</option>
+
+
+<option>
+Graphic Design
+</option>
+
+
+<option>
+Capstone Project
+</option>
+
+
+<option>
+Other
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+
+
+<label>
+Project Status
+</label>
+
+
+<select id="projectStatus">
+
+
+<option value="">
+Select Status
+</option>
+
+
+<option>
+Completed
+</option>
+
+
+<option>
+Ongoing
+</option>
+
+
+<option>
+Concept
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+
+
+<label>
+Description
+</label>
+
+
+<textarea
+id="projectDescription"
+placeholder="Short project description">
+</textarea>
+
+
+
+
+
+
+
+
+
+<label>
+Tools Used / Technology
+</label>
+
+
+<input
+type="text"
+id="projectTools"
+placeholder="Example: Flutter, Dart, Firebase">
+
+
+
+
+
+
+
+
+
+
+<label>
+Project Link
+</label>
+
+
+<input
+type="url"
+id="projectLink"
+placeholder="https://example.com">
+
+
+
+
+
+
+<div class="modal-buttons">
+
+
+<button
+class="save-btn"
+onclick="saveProject()">
+
+Save
+
+</button>
+
+
+
+<button
+class="cancel-btn"
+onclick="closeProjectModal()">
+
+Cancel
+
+</button>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer-container">
+
+
+<p>
+&copy; 2026 Loyd Ywen Masangcay. All rights reserved.
+</p>
+
+
+
+<div class="social-links">
+
+
+<a href="https://www.facebook.com/LoydieeWen" target="_blank">
+Facebook
+</a>
+
+
+<a href="https://www.instagram.com/ywen_masangcay" target="_blank">
+Instagram
+</a>
+
+
+<a href="https://www.tiktok.com/@wehn_26" target="_blank">
+TikTok
+</a>
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+
+
+
+
+
+<!-- HEADER MENU SCRIPT -->
+
+
+<script>
+
+function toggleMenu(menu){
+
+
+const nav = document.querySelector("header nav");
+
+
+nav.classList.toggle("show");
+
+
+menu.classList.toggle("active");
+
+
+}
+
+
+
+
+document.querySelectorAll("nav ul li a")
+.forEach(link=>{
+
+
+link.addEventListener("click",()=>{
+
+
+document.querySelector("header nav")
+.classList.remove("show");
+
+
+
+document.querySelector(".menu-toggle")
+.classList.remove("active");
+
+
+
+});
+
+
+});
+
+</script>
+
+
+
+
+
+
+
+<!-- PORTFOLIO JS -->
+
+<script src="portfolio.js"></script>
+
+
+
+</body>
+
+</html>
 
 
 <!-- HEADER -->
