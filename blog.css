@@ -1,163 +1,754 @@
 /* =====================================
-   BLOG SECTION
+BLOG SECTION
 ===================================== */
 
 .blog {
-    padding: 80px 20px;
-    background: #f4f6f8;
-    min-height: 100vh;
+padding: 80px 20px;
+background: #f4f6f8;
+min-height: 100vh;
 }
 
-
 /* =====================================
-   TITLE
+TITLE
 ===================================== */
 
 .blog-heading {
-    text-align: center;
-    margin-bottom: 35px;
-    position: relative;
+width: 100%;
+text-align: center;
+margin-bottom: 35px;
+position: relative;
 }
 
 .blog-heading h1 {
-    font-size: 42px;
-    color: #008080;
-    margin: 0 0 10px;
+width: 100%;
+font-size: 42px;
+color: #008080;
+margin: 0 0 10px;
+text-align: center;
 }
 
 .blog-heading p {
-    color: #555;
-    margin: 0;
+width: 100%;
+color: #555;
+margin: 0 auto;
+text-align: center;
 }
 
-
 /* =====================================
-   ADD BLOG BUTTON
+ADD BLOG BUTTON
 ===================================== */
 
 .add-btn {
-    position: fixed;
-    top: 100px;
-    right: 30px;
+position: fixed;
+top: 100px;
+right: 30px;
 
-    z-index: 1000;
+z-index: 1000;
 
-    background: #008080;
-    color: white;
+background: #008080;
+color: white;
 
-    border: none;
+border: none;
 
-    padding: 12px 22px;
+padding: 12px 22px;
 
-    border-radius: 30px;
+border-radius: 30px;
 
-    cursor: pointer;
+cursor: pointer;
 
-    font-weight: bold;
+font-weight: bold;
 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 
-    white-space: nowrap;
+white-space: nowrap;
+
 }
 
 .add-btn:hover {
-    background: #006666;
+background: #006666;
 }
 
-
 /* =====================================
-   SEARCH AND FILTER
+SEARCH AND FILTER
 ===================================== */
 
 .blog-tools {
-    max-width: 1200px;
+max-width: 1200px;
 
-    margin: 70px auto 35px;
+margin: 70px auto 35px;
 
-    display: flex;
+display: flex;
 
-    gap: 15px;
+gap: 15px;
+
 }
 
 .blog-tools input,
 .blog-tools select {
-    flex: 1;
+flex: 1;
 
-    padding: 12px;
+padding: 12px;
 
-    border-radius: 10px;
+border-radius: 10px;
 
-    border: 1px solid #ccc;
+border: 1px solid #ccc;
 
-    font-size: 15px;
+font-size: 15px;
 
-    background: #E3EAE8;
+background: #E3EAE8;
+
 }
 
-
 /* =====================================
-   SECTION TITLE
+SECTION TITLE
 ===================================== */
 
 .section-title {
-    max-width: 1200px;
+max-width: 1200px;
 
-    margin: 30px auto 20px;
+margin: 30px auto 20px;
 
-    color: #008080;
+color: #008080;
 
-    font-size: 28px;
+font-size: 28px;
+
 }
 
-
 /* =====================================
-   BLOG GRID
+BLOG GRID
 ===================================== */
 
 .blog-container {
-    max-width: 1200px;
+max-width: 1200px;
 
-    margin: auto;
+margin: auto;
 
-    display: grid;
+display: grid;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
+grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
 
-    gap: 30px;
+gap: 30px;
+
 }
 
-
 /* =====================================
-   BLOG CARD
+BLOG CARD
 ===================================== */
 
 .blog-card {
-    background: #E3EAE8;
+background: #E3EAE8;
 
-    border-radius: 15px;
+border-radius: 15px;
 
-    overflow: hidden;
+overflow: hidden;
 
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, .12);
+box-shadow:
+    0 8px 20px rgba(0, 0, .12);
 
-    cursor: pointer;
+cursor: pointer;
 
-    transition: .3s;
+transition: .3s;
+
 }
 
 .blog-card:hover {
-    transform: translateY(-5px);
+transform: translateY(-5px);
 }
 
-
 /* =====================================
-   BLOG IMAGE
+BLOG IMAGE
 ===================================== */
 
 .blog-card-image {
+width: 100%;
+
+aspect-ratio: 1 / 1;
+
+object-fit: cover;
+
+object-position: center;
+
+display: block;
+
+background: #D6DFDC;
+
+}
+
+/* =====================================
+BLOG INFO
+===================================== */
+
+.blog-info {
+padding: 20px;
+}
+
+.blog-category {
+display: inline-block;
+
+background: #e0f2f1;
+
+color: #008080;
+
+padding: 5px 12px;
+
+border-radius: 20px;
+
+font-size: 12px;
+
+font-weight: bold;
+
+margin-bottom: 10px;
+
+}
+
+.blog-info h2 {
+color: #008080;
+
+font-size: 22px;
+
+margin: 5px 0 10px;
+
+}
+
+.blog-info p {
+color: #666;
+
+font-size: 14px;
+
+line-height: 1.5;
+
+}
+
+/* =====================================
+ACTION BUTTONS
+===================================== */
+
+.actions {
+display: flex;
+
+gap: 10px;
+
+padding: 0 20px 20px;
+
+}
+
+.actions button {
+border: none;
+
+padding: 8px 15px;
+
+border-radius: 6px;
+
+color: white;
+
+cursor: pointer;
+
+}
+
+.edit {
+background: #ff9800;
+}
+
+.delete {
+background: #e53935;
+}
+
+/* =====================================
+FEATURED BLOG
+===================================== */
+
+#featuredContainer {
+max-width: 1200px;
+
+margin: auto;
+
+display: flex;
+
+gap: 20px;
+
+overflow: hidden;
+
+}
+
+.featured-card {
+background: #E3EAE8;
+
+border-radius: 15px;
+
+overflow: hidden;
+
+box-shadow:
+    0 8px 20px rgba(0, 0, .12);
+
+cursor: pointer;
+
+flex: 1;
+
+min-width: 0;
+
+transition: .3s;
+
+}
+
+.featured-card:hover {
+transform: translateY(-5px);
+}
+
+.featured-card img {
+width: 100%;
+
+aspect-ratio: 16 / 9;
+
+object-fit: cover;
+
+object-position: center;
+
+display: block;
+
+}
+
+.featured-badge {
+display: inline-block;
+
+
+margin: 15px;
+
+background: #008080;
+
+color: white;
+
+padding: 6px 12px;
+
+border-radius: 20px;
+
+font-size: 13px;
+
+font-weight: bold;
+
+}
+
+/* =====================================
+MODAL
+===================================== */
+
+.modal {
+display: none;
+
+position: fixed;
+
+inset: 0;
+
+background: rgba(0, 0, .5);
+
+z-index: 2000;
+
+padding-top: 100px;
+
+overflow-y: auto;
+
+}
+
+.modal-box {
+background: #E3EAE8;
+
+width: 90%;
+
+max-width: 600px;
+
+margin: 0 auto 50px;
+
+padding: 30px;
+
+border-radius: 15px;
+
+}
+
+.modal-box h2 {
+color: #008080;
+}
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
+width: 100%;
+
+padding: 12px;
+
+margin: 8px 0;
+
+border-radius: 8px;
+
+border: 1px solid #B8C6C2;
+
+box-sizing: border-box;
+
+background: #D9E3E0;
+
+}
+
+.modal-box textarea {
+height: 180px;
+
+resize: vertical;
+
+}
+
+.modal-actions {
+display: flex;
+
+gap: 10px;
+
+margin-top: 20px;
+
+}
+
+.save-btn {
+background: #008080;
+
+color: white;
+
+border: none;
+
+padding: 12px 20px;
+
+border-radius: 8px;
+
+cursor: pointer;
+
+}
+
+.cancel-btn {
+background: #ccc;
+
+border: none;
+
+padding: 12px 20px;
+
+border-radius: 8px;
+
+cursor: pointer;
+
+}
+
+/* =====================================
+IMAGE PREVIEW
+===================================== */
+
+.image-preview-container {
+display: none;
+
+margin-top: 10px;
+
+}
+
+.image-preview-container img {
+width: 100%;
+
+max-height: 250px;
+
+object-fit: cover;
+
+border-radius: 10px;
+
+}
+
+/* =====================================
+BLOG PREVIEW OVERLAY
+===================================== */
+
+.blog-overlay {
+position: fixed;
+
+inset: 0;
+
+background: rgba(0, 0, .45);
+
+z-index: 2500;
+
+
+}
+
+/* =====================================
+BLOG PREVIEW
+===================================== */
+
+.blog-preview {
+position: fixed;
+
+top: 90px;
+
+left: 50%;
+
+transform: translateX(-50%);
+
+width: 90%;
+
+max-width: 900px;
+
+max-height: 80vh;
+
+overflow-y: auto;
+
+background: #E3EAE8;
+
+padding: 30px;
+
+border-radius: 15px;
+
+z-index: 3000;
+
+box-shadow:
+    0 10px 40px rgba(0, 0, .3);
+
+box-sizing: border-box;
+
+}
+
+/* =====================================
+PREVIEW IMAGE
+===================================== */
+
+.blog-preview img {
+width: 100%;
+
+
+max-height: 450px;
+
+object-fit: contain;
+
+display: block;
+
+margin-bottom: 25px;
+
+}
+
+/* =====================================
+PREVIEW TITLE
+===================================== */
+
+.blog-preview h2 {
+color: #008080;
+
+font-size: 30px;
+
+margin: 15px 0;
+
+}
+
+/* =====================================
+PREVIEW CATEGORY
+===================================== */
+
+.blog-preview .blog-category {
+display: inline-block;
+
+background: #e0f2f1;
+
+color: #008080;
+
+padding: 6px 12px;
+
+border-radius: 20px;
+
+font-size: 12px;
+
+font-weight: bold;
+
+margin-bottom: 10px;
+
+
+}
+
+/* =====================================
+PREVIEW DATE
+===================================== */
+
+.preview-date {
+color: #777;
+
+font-size: 14px;
+
+margin-bottom: 25px;
+
+}
+
+/* =====================================
+PREVIEW DESCRIPTION
+===================================== */
+
+.preview-description {
+margin-top: 20px;
+}
+
+.preview-description p {
+color: #444;
+
+font-size: 16px;
+
+line-height: 1.8;
+
+margin-top: 0;
+
+margin-bottom: 22px;
+
+text-align: justify;
+
+}
+
+.preview-description p:last-child {
+margin-bottom: 0;
+}
+
+/* =====================================
+FOOTER
+===================================== */
+
+footer {
+background: #008080;
+
+color: white;
+
+text-align: center;
+
+padding: 25px;
+
+}
+
+/* =====================================
+MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+.blog {
+    padding: 60px 15px;
+}
+
+
+/* ================================
+   BLOG TITLE
+================================= */
+
+.blog-heading {
     width: 100%;
+
+    margin-bottom: 0;
+
+    padding-right: 0;
+
+    text-align: center;
+}
+
+.blog-heading h1 {
+    width: 100%;
+
+    font-size: 32px;
+
+    margin-bottom: 8px;
+
+    text-align: center;
+}
+
+.blog-heading p {
+    width: 100%;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* ================================
+   ADD BUTTON
+================================= */
+
+.add-btn {
+    position: static;
+
+    display: block;
+
+    width: fit-content;
+
+    margin: 20px auto 25px;
+
+    padding: 11px 20px;
+
+    font-size: 14px;
+}
+
+
+/* ================================
+   SEARCH AND FILTER
+================================= */
+
+.blog-tools {
+    width: 100%;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.blog-tools input,
+.blog-tools select {
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   SECTION TITLE
+================================= */
+
+.section-title {
+    font-size: 24px;
+
+    margin-top: 30px;
+
+    margin-bottom: 18px;
+}
+
+
+/* ================================
+   LATEST BLOGS
+================================= */
+
+.blog-container {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+}
+
+
+/* ================================
+   BLOG CARD
+================================= */
+
+.blog-card {
+    width: 100%;
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   BLOG CARD IMAGE
+================================= */
+
+.blog-card-image {
+    width: 100%;
+
+    height: auto;
 
     aspect-ratio: 1 / 1;
 
@@ -166,128 +757,42 @@
     object-position: center;
 
     display: block;
-
-    background: #D6DFDC;
 }
 
 
-/* =====================================
-   BLOG INFO
-===================================== */
-
-.blog-info {
-    padding: 20px;
-}
-
-.blog-category {
-    display: inline-block;
-
-    background: #e0f2f1;
-
-    color: #008080;
-
-    padding: 5px 12px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
-
-.blog-info h2 {
-    color: #008080;
-
-    font-size: 22px;
-
-    margin: 5px 0 10px;
-}
-
-.blog-info p {
-    color: #666;
-
-    font-size: 14px;
-
-    line-height: 1.5;
-}
-
-
-/* =====================================
-   ACTION BUTTONS
-===================================== */
-
-.actions {
-    display: flex;
-
-    gap: 10px;
-
-    padding: 0 20px 20px;
-}
-
-.actions button {
-    border: none;
-
-    padding: 8px 15px;
-
-    border-radius: 6px;
-
-    color: white;
-
-    cursor: pointer;
-}
-
-.edit {
-    background: #ff9800;
-}
-
-.delete {
-    background: #e53935;
-}
-
-
-/* =====================================
-   FEATURED BLOG
-===================================== */
+/* ================================
+   FEATURED BLOG SLIDER
+================================= */
 
 #featuredContainer {
-    max-width: 1200px;
+    overflow-x: auto;
 
-    margin: auto;
+    scroll-snap-type: x mandatory;
 
-    display: flex;
+    scrollbar-width: none;
 
-    gap: 20px;
+    padding-bottom: 10px;
+}
 
-    overflow: hidden;
+#featuredContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .featured-card {
-    background: #E3EAE8;
+    flex: 0 0 85%;
 
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, .12);
-
-    cursor: pointer;
-
-    flex: 1;
-
-    min-width: 0;
-
-    transition: .3s;
+    scroll-snap-align: start;
 }
 
-.featured-card:hover {
-    transform: translateY(-5px);
-}
+
+/* ================================
+   FEATURED IMAGE
+================================= */
 
 .featured-card img {
     width: 100%;
+
+    height: auto;
 
     aspect-ratio: 16 / 9;
 
@@ -298,697 +803,223 @@
     display: block;
 }
 
-.featured-badge {
-    display: inline-block;
 
-    margin: 15px;
-
-    background: #008080;
-
-    color: white;
-
-    padding: 6px 12px;
-
-    border-radius: 20px;
-
-    font-size: 13px;
-
-    font-weight: bold;
-}
-
-
-/* =====================================
-   MODAL
-===================================== */
-
-.modal {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0, 0, 0, .5);
-
-    z-index: 2000;
-
-    padding-top: 100px;
-
-    overflow-y: auto;
-}
-
-.modal-box {
-    background: #E3EAE8;
-
-    width: 90%;
-
-    max-width: 600px;
-
-    margin: 0 auto 50px;
-
-    padding: 30px;
-
-    border-radius: 15px;
-}
-
-.modal-box h2 {
-    color: #008080;
-}
-
-.modal-box input,
-.modal-box textarea,
-.modal-box select {
-    width: 100%;
-
-    padding: 12px;
-
-    margin: 8px 0;
-
-    border-radius: 8px;
-
-    border: 1px solid #B8C6C2;
-
-    box-sizing: border-box;
-
-    background: #D9E3E0;
-}
-
-.modal-box textarea {
-    height: 180px;
-
-    resize: vertical;
-}
-
-.modal-actions {
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 20px;
-}
-
-.save-btn {
-    background: #008080;
-
-    color: white;
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-}
-
-.cancel-btn {
-    background: #ccc;
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-}
-
-
-/* =====================================
-   IMAGE PREVIEW
-===================================== */
-
-.image-preview-container {
-    display: none;
-
-    margin-top: 10px;
-}
-
-.image-preview-container img {
-    width: 100%;
-
-    max-height: 250px;
-
-    object-fit: cover;
-
-    border-radius: 10px;
-}
-
-
-/* =====================================
-   BLOG PREVIEW OVERLAY
-===================================== */
-
-.blog-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0, 0, 0, .45);
-
-    z-index: 2500;
-}
-
-
-/* =====================================
+/* ================================
    BLOG PREVIEW
-===================================== */
+================================= */
 
 .blog-preview {
-    position: fixed;
+    top: 70px;
 
-    top: 90px;
+    width: 94%;
 
-    left: 50%;
+    max-height: 84vh;
 
-    transform: translateX(-50%);
+    padding: 20px;
 
-    width: 90%;
-
-    max-width: 900px;
-
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-    background: #E3EAE8;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
-    z-index: 3000;
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, .3);
-
-    box-sizing: border-box;
+    border-radius: 12px;
 }
 
+.blog-preview h2 {
+    font-size: 24px;
 
-/* =====================================
-   PREVIEW IMAGE
-===================================== */
+    line-height: 1.3;
+}
 
 .blog-preview img {
     width: 100%;
 
-    max-height: 450px;
+    height: auto;
+
+    max-height: 300px;
 
     object-fit: contain;
 
-    display: block;
-
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 
-/* =====================================
-   PREVIEW TITLE
-===================================== */
-
-.blog-preview h2 {
-    color: #008080;
-
-    font-size: 30px;
-
-    margin: 15px 0;
-}
-
-
-/* =====================================
-   PREVIEW CATEGORY
-===================================== */
-
-.blog-preview .blog-category {
-    display: inline-block;
-
-    background: #e0f2f1;
-
-    color: #008080;
-
-    padding: 6px 12px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
-
-
-/* =====================================
-   PREVIEW DATE
-===================================== */
-
-.preview-date {
-    color: #777;
-
-    font-size: 14px;
-
-    margin-bottom: 25px;
-}
-
-
-/* =====================================
-   PREVIEW DESCRIPTION
-===================================== */
-
-.preview-description {
-    margin-top: 20px;
-}
+/* ================================
+   PREVIEW PARAGRAPHS
+================================= */
 
 .preview-description p {
-    color: #444;
-
-    font-size: 16px;
+    font-size: 15px;
 
     line-height: 1.8;
 
-    margin-top: 0;
-
     margin-bottom: 22px;
 
-    text-align: justify;
+    text-align: left;
 }
 
-.preview-description p:last-child {
-    margin-bottom: 0;
+
+/* ================================
+   MODAL
+================================= */
+
+.modal {
+    padding-top: 70px;
 }
 
+.modal-box {
+    width: 94%;
+
+    padding: 22px;
+
+    margin-bottom: 30px;
+
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   ACTION BUTTONS
+================================= */
+
+.actions {
+    flex-wrap: wrap;
+}
+
+}
 
 /* =====================================
-   FOOTER
-===================================== */
-
-footer {
-    background: #008080;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 25px;
-}
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-@media (max-width: 768px) {
-
-    .blog {
-        padding: 60px 15px;
-    }
-
-
-    /* ================================
-       BLOG TITLE
-    ================================= */
-
-    .blog-heading {
-        margin-bottom: 0;
-
-        padding-right: 0;
-    }
-
-    .blog-heading h1 {
-        font-size: 32px;
-
-        margin-bottom: 8px;
-    }
-
-    .blog-heading p {
-        font-size: 14px;
-
-        line-height: 1.6;
-    }
-
-
-    /* ================================
-       ADD BUTTON
-    ================================= */
-
-    .add-btn {
-        position: static;
-
-        display: block;
-
-        width: fit-content;
-
-        margin: 20px auto 25px;
-
-        padding: 11px 20px;
-
-        font-size: 14px;
-    }
-
-
-    /* ================================
-       SEARCH AND FILTER
-    ================================= */
-
-    .blog-tools {
-        width: 100%;
-
-        margin: 0 auto 30px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-    .blog-tools input,
-    .blog-tools select {
-        width: 100%;
-
-        box-sizing: border-box;
-    }
-
-
-    /* ================================
-       SECTION TITLE
-    ================================= */
-
-    .section-title {
-        font-size: 24px;
-
-        margin-top: 30px;
-
-        margin-bottom: 18px;
-    }
-
-
-    /* ================================
-       LATEST BLOGS
-    ================================= */
-
-    .blog-container {
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-    }
-
-
-    /* ================================
-       BLOG CARD
-    ================================= */
-
-    .blog-card {
-        width: 100%;
-
-        max-width: 100%;
-
-        box-sizing: border-box;
-    }
-
-
-    /* ================================
-       BLOG CARD IMAGE
-    ================================= */
-
-    .blog-card-image {
-        width: 100%;
-
-        height: auto;
-
-        aspect-ratio: 1 / 1;
-
-        object-fit: cover;
-
-        object-position: center;
-
-        display: block;
-    }
-
-
-    /* ================================
-       FEATURED BLOG SLIDER
-    ================================= */
-
-    #featuredContainer {
-        overflow-x: auto;
-
-        scroll-snap-type: x mandatory;
-
-        scrollbar-width: none;
-
-        padding-bottom: 10px;
-    }
-
-    #featuredContainer::-webkit-scrollbar {
-        display: none;
-    }
-
-    .featured-card {
-        flex: 0 0 85%;
-
-        scroll-snap-align: start;
-    }
-
-
-    /* ================================
-       FEATURED IMAGE
-    ================================= */
-
-    .featured-card img {
-        width: 100%;
-
-        height: auto;
-
-        aspect-ratio: 16 / 9;
-
-        object-fit: cover;
-
-        object-position: center;
-
-        display: block;
-    }
-
-
-    /* ================================
-       BLOG PREVIEW
-    ================================= */
-
-    .blog-preview {
-        top: 70px;
-
-        width: 94%;
-
-        max-height: 84vh;
-
-        padding: 20px;
-
-        border-radius: 12px;
-    }
-
-    .blog-preview h2 {
-        font-size: 24px;
-
-        line-height: 1.3;
-    }
-
-    .blog-preview img {
-        width: 100%;
-
-        height: auto;
-
-        max-height: 300px;
-
-        object-fit: contain;
-
-        margin-bottom: 20px;
-    }
-
-
-    /* ================================
-       PREVIEW PARAGRAPHS
-    ================================= */
-
-    .preview-description p {
-        font-size: 15px;
-
-        line-height: 1.8;
-
-        margin-bottom: 22px;
-
-        text-align: left;
-    }
-
-
-    /* ================================
-       MODAL
-    ================================= */
-
-    .modal {
-        padding-top: 70px;
-    }
-
-    .modal-box {
-        width: 94%;
-
-        padding: 22px;
-
-        margin-bottom: 30px;
-
-        box-sizing: border-box;
-    }
-
-
-    /* ================================
-       ACTION BUTTONS
-    ================================= */
-
-    .actions {
-        flex-wrap: wrap;
-    }
-
-}
-
-
-/* =====================================
-   SMALL PHONES
+SMALL PHONES
 ===================================== */
 
 @media (max-width: 500px) {
 
-    .blog {
-        padding: 50px 12px;
-    }
-
-
-    /* BLOG CARDS */
-
-    .blog-container {
-        width: 100%;
-
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-    }
-
-
-    .blog-card {
-        width: 100%;
-
-        border-radius: 12px;
-    }
-
-
-    /* IMAGE — FIT INSIDE CARD */
-
-    .blog-card-image {
-        width: 100%;
-
-        height: auto;
-
-        aspect-ratio: 1 / 1;
-
-        object-fit: cover;
-
-        object-position: center;
-
-        border-radius: 0;
-
-    }
-
-
-    .blog-info {
-        padding: 16px;
-    }
-
-
-    .blog-info h2 {
-        font-size: 20px;
-    }
-
-
-    .blog-info p {
-        font-size: 14px;
-    }
-
-
-    /* FEATURED */
-
-    .featured-card {
-        flex: 0 0 90%;
-    }
-
-
-    .featured-card img {
-        width: 100%;
-
-        aspect-ratio: 16 / 9;
-
-        height: auto;
-
-        object-fit: cover;
-    }
-
-
-    /* PREVIEW */
-
-    .blog-preview {
-        width: 95%;
-
-        padding: 18px;
-
-        top: 65px;
-    }
-
-
-    .blog-preview img {
-        width: 100%;
-
-        height: auto;
-
-        max-height: 260px;
-
-        object-fit: contain;
-    }
-
+.blog {
+    padding: 50px 12px;
 }
 
 
+/* BLOG CARDS */
+
+.blog-container {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+}
+
+
+.blog-card {
+    width: 100%;
+
+    border-radius: 12px;
+}
+
+
+/* IMAGE — FIT INSIDE CARD */
+
+.blog-card-image {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 0;
+}
+
+
+.blog-info {
+    padding: 16px;
+}
+
+
+.blog-info h2 {
+    font-size: 20px;
+}
+
+
+.blog-info p {
+    font-size: 14px;
+}
+
+
+/* FEATURED */
+
+.featured-card {
+    flex: 0 0 90%;
+}
+
+
+.featured-card img {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    height: auto;
+
+    object-fit: cover;
+}
+
+
+/* PREVIEW */
+
+.blog-preview {
+    width: 95%;
+
+    padding: 18px;
+
+    top: 65px;
+}
+
+
+.blog-preview img {
+    width: 100%;
+
+    height: auto;
+
+    max-height: 260px;
+
+    object-fit: contain;
+}
+
+
+}
+
 /* =====================================
-   VERY SMALL PHONES
+VERY SMALL PHONES
 ===================================== */
 
 @media (max-width: 360px) {
 
-    .blog {
-        padding-left: 10px;
+.blog {
+    padding-left: 10px;
 
-        padding-right: 10px;
-    }
-
-
-    .blog-card-image {
-        width: 100%;
-
-        aspect-ratio: 1 / 1;
-
-        object-fit: cover;
-    }
+    padding-right: 10px;
+}
 
 
-    .blog-info {
-        padding: 14px;
-    }
+.blog-card-image {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
 
 
-    .blog-info h2 {
-        font-size: 19px;
-    }
+.blog-info {
+    padding: 14px;
+}
 
 
-    .featured-card {
-        flex: 0 0 92%;
-    }
+.blog-info h2 {
+    font-size: 19px;
+}
+
+
+.featured-card {
+    flex: 0 0 92%;
+}
 
 }
