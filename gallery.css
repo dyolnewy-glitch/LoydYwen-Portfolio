@@ -50,7 +50,7 @@ position: relative;
 width: 230px;
 margin-top: 25px;
 margin-left: auto;
-margin-right: auto;
+margin-right: 0;
 }
 
 .category-dropdown-btn {
@@ -221,7 +221,6 @@ TABLET
 
 @media screen and (max-width: 768px) {
 
-
 .gallery-section {
     padding: 50px 15px;
 }
@@ -247,7 +246,7 @@ TABLET
     width: 220px;
     margin-top: 22px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0;
 }
 
 .gallery-content {
@@ -302,7 +301,7 @@ MOBILE
     width: 200px;
     margin-top: 20px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0;
 }
 
 .gallery-content {
