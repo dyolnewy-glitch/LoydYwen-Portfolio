@@ -1,504 +1,864 @@
-/* =====================================
-   SKILLS PAGE
-===================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.skills {
 
-    padding:120px 20px 70px;
-    background:#D6DEDC;
-    text-align:center;
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f4f4f4;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    background-color: #008080;
+
+    color: white;
+
+    padding: 15px 0;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.3);
+
+    overflow: visible;
 
 }
 
 
+/* =========================
+   SILVER STAR SKY
+========================= */
 
-/* =====================================
-   TITLE
-===================================== */
+header::before {
 
-.title {
+    content: "";
 
-    font-size:42px;
-    color:#008080;
-    font-weight:700;
-    margin-bottom:10px;
+    position: absolute;
 
-}
+    inset: 0;
 
+    pointer-events: none;
 
-.subtitle {
+    z-index: 0;
 
-    color:#555;
-    font-size:17px;
-    margin-bottom:60px;
+    background-image:
 
-}
+        radial-gradient(
+            circle at 8% 25%,
+            rgba(255,255,255,.9) 0 1px,
+            transparent 1.8px
+        ),
 
+        radial-gradient(
+            circle at 18% 70%,
+            rgba(220,225,225,.85) 0 1px,
+            transparent 1.8px
+        ),
 
+        radial-gradient(
+            circle at 30% 35%,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.8px
+        ),
 
-/* =====================================
-   SECTION
-===================================== */
+        radial-gradient(
+            circle at 42% 80%,
+            rgba(220,225,225,.8) 0 1px,
+            transparent 1.8px
+        ),
 
-.skill-section {
+        radial-gradient(
+            circle at 54% 20%,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.8px
+        ),
 
-    max-width:1100px;
-    margin:0 auto 80px;
+        radial-gradient(
+            circle at 67% 60%,
+            rgba(220,225,225,.85) 0 1px,
+            transparent 1.8px
+        ),
 
-}
+        radial-gradient(
+            circle at 78% 25%,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.8px
+        ),
 
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(220,225,225,.85) 0 1px,
+            transparent 1.8px
+        );
 
-.skill-section h2 {
+    opacity: .75;
 
-    color:#008080;
-    font-size:30px;
-    margin-bottom:35px;
-
-}
-
-
-
-/* =====================================
-   CREATIVE SKILLS
-===================================== */
-
-.skill-cards {
-
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-
-}
-
-
-.skill-card {
-
-    background:#E3E9E7;
-
-    width:300px;
-
-    padding:30px 25px;
-
-    border-radius:20px;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.10);
-
-    transition:.3s;
-
-}
-
-
-.skill-card:hover {
-
-    transform:translateY(-8px);
-
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
+    animation:
+        starSkyMove
+        12s
+        ease-in-out
+        infinite;
 
 }
 
 
-.skill-icon {
+/* =========================
+   SILVER SPARKLE STARS
+========================= */
 
-    font-size:45px;
+header::after {
 
-    margin-bottom:15px;
+    content: "";
 
-}
+    position: absolute;
 
+    inset: 0;
 
-.skill-card h3 {
+    pointer-events: none;
 
-    color:#333;
+    z-index: 1;
 
-    font-size:22px;
+    background:
 
-    margin-bottom:8px;
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(255,255,255,.9) 50%,
+            transparent 55%
+        ) 12% 25% / 18px 2px no-repeat,
 
-}
-
-
-.skill-card h4 {
-
-    color:#008080;
-
-    margin-bottom:15px;
-
-}
-
-
-.skill-card p {
-
-    color:#555;
-
-    line-height:1.7;
-
-    font-size:15px;
-
-}
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(255,255,255,.9) 50%,
+            transparent 55%
+        ) 12% 25% / 2px 18px no-repeat,
 
 
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 27% 70% / 14px 2px no-repeat,
 
-/* =====================================
-   WEB DEVELOPMENT
-===================================== */
-
-.progress-container {
-
-    max-width:650px;
-
-    margin:auto;
-
-    text-align:left;
-
-}
-
-
-.bar {
-
-    margin-bottom:25px;
-
-}
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 27% 70% / 2px 14px no-repeat,
 
 
-.bar span {
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 48% 30% / 20px 2px no-repeat,
 
-    font-weight:600;
-
-    color:#333;
-
-}
-
-
-.progress {
-
-    height:12px;
-
-    background:#C4CFCC;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    margin-top:8px;
-
-}
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 48% 30% / 2px 20px no-repeat,
 
 
-.progress div {
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(220,225,225,.9) 50%,
+            transparent 55%
+        ) 70% 72% / 15px 2px no-repeat,
 
-    height:100%;
-
-    background:#008080;
-
-    border-radius:20px;
-
-    animation:load 2s ease;
-
-}
-
-
-.html {
-
-    width:85%;
-
-}
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(220,225,225,.9) 50%,
+            transparent 55%
+        ) 70% 72% / 2px 15px no-repeat,
 
 
-.css {
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 87% 28% / 18px 2px no-repeat,
 
-    width:80%;
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(255,255,255,.95) 50%,
+            transparent 55%
+        ) 87% 28% / 2px 18px no-repeat,
 
-}
 
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 82% 82% / 12px 2px no-repeat,
 
-.web {
+        linear-gradient(
+            0deg,
+            transparent 45%,
+            rgba(220,225,225,.85) 50%,
+            transparent 55%
+        ) 82% 82% / 2px 12px no-repeat;
 
-    width:75%;
+    opacity: .8;
+
+    animation:
+        starTwinkle
+        4s
+        ease-in-out
+        infinite alternate;
 
 }
 
 
-@keyframes load {
+/* =========================
+   HEADER CONTAINER
+========================= */
 
-    from {
+header .container {
 
-        width:0;
+    position: relative;
 
-    }
+    z-index: 10;
 
-}
+    display: flex;
 
+    justify-content: space-between;
 
+    align-items: center;
 
-/* =====================================
-   TOOLS
-===================================== */
+    max-width: 1100px;
 
-.tool-grid {
+    margin: auto;
 
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:25px;
+    padding: 0 20px;
 
 }
 
 
-.tool-card {
+/* =========================
+   LOGO
+========================= */
 
-    background:#E3E9E7;
+header .logo {
 
-    padding:30px 25px;
+    position: relative;
 
-    border-radius:18px;
-
-    text-decoration:none;
-
-    color:#333;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.10);
-
-    transition:.3s;
+    z-index: 20;
 
 }
 
 
-.tool-card:hover {
+header .logo img {
 
-    background:#008080;
+    height: 50px;
 
-    color:white;
+    width: auto;
 
-    transform:translateY(-8px);
-
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
+    display: block;
 
 }
 
 
-.tool-card h3 {
+/* =========================
+   NAVIGATION
+========================= */
 
-    margin-bottom:15px;
+header nav {
 
-    font-size:22px;
+    position: relative;
 
-}
-
-
-.tool-card p {
-
-    line-height:1.6;
-
-    font-size:15px;
+    z-index: 20;
 
 }
 
 
+header nav ul {
 
-/* =====================================
-   CURRENTLY IMPROVING
-===================================== */
+    display: flex;
 
-.improve-grid {
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-
-    gap:25px;
+    list-style: none;
 
 }
 
 
-.improve-grid a {
+header nav ul li {
 
-    background:#E3E9E7;
-
-    padding:25px;
-
-    border-radius:18px;
-
-    text-decoration:none;
-
-    color:#333;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.10);
-
-    transition:.3s;
+    margin-left: 25px;
 
 }
 
 
-.improve-grid a:hover {
+header nav ul li a {
 
-    background:#008080;
+    color: white;
 
-    color:white;
+    text-decoration: none;
 
-    transform:translateY(-8px);
+    font-weight: bold;
 
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
+    padding: 5px 10px;
 
-}
+    border-radius: 4px;
 
-
-.improve-grid h3 {
-
-    margin-bottom:12px;
+    transition: .3s;
 
 }
 
 
-.improve-grid p {
+header nav ul li a:hover {
 
-    line-height:1.6;
-
-    font-size:15px;
+    background: #006666;
 
 }
 
 
+header nav ul li a.active {
 
-/* =====================================
-   LEARNING JOURNEY
-===================================== */
+    background: #ffcc00;
 
-.learning-section {
-
-    max-width:800px;
-
-    margin:auto;
-
-    background:#E3E9E7;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.10);
+    color: #333;
 
 }
 
 
-.learning-section h2 {
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
 
-    color:#008080;
+.menu-toggle {
 
-    margin-bottom:20px;
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 6px;
+
+    margin: 0;
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 30;
 
 }
 
 
-.learning-section p {
+.menu-toggle span {
 
-    color:#555;
+    display: block;
 
-    line-height:1.8;
+    width: 30px;
 
-    font-size:17px;
+    height: 3px;
+
+    margin: 5px auto;
+
+    background: white;
+
+    border-radius: 3px;
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
 
 }
 
 
+/* =========================
+   HAMBURGER → X
+========================= */
 
-/* =====================================
+.menu-toggle.active span:nth-child(1) {
+
+    transform:
+        translateY(8px)
+        rotate(45deg);
+
+}
+
+
+.menu-toggle.active span:nth-child(2) {
+
+    opacity: 0;
+
+}
+
+
+.menu-toggle.active span:nth-child(3) {
+
+    transform:
+        translateY(-8px)
+        rotate(-45deg);
+
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+
+    padding: 80px 20px;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+
+section h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 30px;
+
+}
+
+
+section p {
+
+    font-size: 18px;
+
+    max-width: 800px;
+
+    margin: 0 auto 20px;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+
+    text-decoration: none;
+
+    background: #008080;
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    transition: .3s;
+
+}
+
+
+.btn:hover {
+
+    background: #006666;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================
    FOOTER
-===================================== */
+========================= */
 
 footer {
 
-    background:#008080;
+    background: #008080;
 
-    color:white;
+    color: white;
 
-    padding:30px 20px;
+    padding: 30px 0;
 
-    text-align:center;
-
-    border-top:3px solid #00b3b3;
+    text-align: center;
 
 }
 
 
-.footer-container p {
+footer .social-links a {
 
-    margin:0;
+    color: white;
 
-    font-weight:500;
+    text-decoration: none;
 
-}
+    margin: 0 10px;
 
+    font-weight: bold;
 
-.social-links {
-
-    margin-top:10px;
-
-}
-
-
-.social-links a {
-
-    color:white;
-
-    text-decoration:none;
-
-    margin:0 10px;
+    transition: .3s;
 
 }
 
 
-.social-links a:hover {
+footer .social-links a:hover {
 
-    color:#ffd54f;
+    color: #ffcc00;
 
 }
 
 
+/* =========================
+   HEADER SCROLL EFFECT
+========================= */
 
-/* =====================================
-   RESPONSIVE
-===================================== */
+header.scrolled {
 
-@media(max-width:768px) {
+    padding: 10px 0;
 
-    .title {
+    background: #006666;
 
-        font-size:32px;
+}
+
+
+/* =========================
+   STAR ANIMATIONS
+========================= */
+
+@keyframes starSkyMove {
+
+    0% {
+
+        transform:
+            translateX(-4px);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(4px);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-4px);
+
+    }
+
+}
+
+
+@keyframes starTwinkle {
+
+    0% {
+
+        opacity: .35;
+
+        transform:
+            scale(.92);
+
+    }
+
+    50% {
+
+        opacity: .85;
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.05);
+
+    }
+
+}
+
+
+/* =========================
+   GENERAL ANIMATION
+========================= */
+
+@keyframes fadeInUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+section {
+
+    animation:
+        fadeInUp
+        .8s
+        ease
+        forwards;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    header {
+
+        padding: 12px 0;
 
     }
 
 
-    .skill-card {
+    header .container {
 
-        width:90%;
+        min-height: 50px;
+
+        padding: 0 15px;
 
     }
 
 
-    .skill-section h2 {
+    header .logo img {
 
-        font-size:26px;
+        height: 40px;
+
+    }
+
+
+    .menu-toggle {
+
+        display: block;
+
+    }
+
+
+    header nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        width: 100%;
+
+        background: #008080;
+
+        box-shadow:
+            0 8px 15px rgba(0,0,0,.2);
+
+        z-index: 2000;
+
+    }
+
+
+    header nav.show {
+
+        display: block;
+
+    }
+
+
+    header nav ul {
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        padding: 0;
+
+        margin: 0;
+
+    }
+
+
+    header nav ul li {
+
+        width: 100%;
+
+        margin: 0;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.2);
+
+    }
+
+
+    header nav ul li:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    header nav ul li a {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 15px 20px;
+
+        border-radius: 0;
+
+    }
+
+
+    header nav ul li a:hover {
+
+        background: #006666;
+
+    }
+
+
+    header nav ul li a.active {
+
+        background: #ffcc00;
+
+        color: #333;
+
+    }
+
+
+    header::before {
+
+        opacity: .65;
+
+    }
+
+
+    header::after {
+
+        opacity: .7;
+
+    }
+
+
+    section h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    section p {
+
+        font-size: 16px;
 
     }
 
 }
 
 
+/* =========================
+   SMALL PHONE
+========================= */
 
-@media(max-width:500px) {
+@media screen and (max-width: 480px) {
 
-    .skills {
+    header .container {
 
-        padding:100px 15px 50px;
+        padding: 0 12px;
 
     }
 
 
-    .learning-section {
+    header .logo img {
 
-        padding:25px;
+        height: 38px;
+
+    }
+
+
+    .menu-toggle {
+
+        width: 40px;
+
+        height: 40px;
+
+    }
+
+
+    .menu-toggle span {
+
+        width: 28px;
+
+    }
+
+
+    section {
+
+        padding: 60px 15px;
+
+    }
+
+
+    header::before {
+
+        opacity: .55;
+
+    }
+
+
+    header::after {
+
+        opacity: .6;
 
     }
 
