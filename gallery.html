@@ -100,7 +100,9 @@
 
 <div class="gallery-sidebar">
 
-<h1>Gallery</h1>
+<h1>
+Gallery
+</h1>
 
 <p>
 Explore my creative works and designs.
@@ -211,6 +213,7 @@ Other
 
 <!-- =========================
      GALLERY
+     LATEST → OLDEST
 ========================= -->
 
 <div class="gallery-content">
@@ -219,7 +222,51 @@ Other
 class="gallery-grid"
 id="galleryGrid">
 
-<!-- LATEST -->
+<!-- =========================
+     LATEST
+========================= -->
+
+<!-- 1. SONIC -->
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="sonic.png"
+alt="Sonic Poster">
+
+</div>
+
+<!-- 2. MUNDO -->
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="mundo.png"
+alt="Mundo Poster">
+
+</div>
+
+<!-- 3. USOK -->
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="usok.png"
+alt="Usok Poster">
+
+</div>
+
+<!-- =========================
+     PREVIOUS
+========================= -->
+
+<!-- 4. OCEAN -->
 
 <div
 class="gallery-item"
@@ -231,6 +278,8 @@ alt="Ocean">
 
 </div>
 
+<!-- 5. GRAPHIC DESIGN WITH CANVA -->
+
 <div
 class="gallery-item"
 data-category="graphic">
@@ -240,6 +289,8 @@ src="Graphic Design with Canva.png"
 alt="Graphic Design with Canva">
 
 </div>
+
+<!-- 6. DON'T -->
 
 <div
 class="gallery-item"
@@ -251,17 +302,23 @@ alt="Don't">
 
 </div>
 
+<!-- 7. A -->
+
 <div
 class="gallery-item"
 data-category="graphic">
 
 <img
-src="A.png"
+src="a.png"
 alt="Graphic Design">
 
 </div>
 
-<!-- OLDER -->
+<!-- =========================
+     OLDEST
+========================= -->
+
+<!-- 8. PRINTING -->
 
 <div
 class="gallery-item"
@@ -273,6 +330,8 @@ alt="Printing Poster">
 
 </div>
 
+<!-- 9. GROW -->
+
 <div
 class="gallery-item"
 data-category="poster">
@@ -282,6 +341,8 @@ src="grow.png"
 alt="Grow Poster">
 
 </div>
+
+<!-- 10. XIETY -->
 
 <div
 class="gallery-item"
@@ -393,17 +454,20 @@ document
 
 link.addEventListener("click", function() {
 
-document
-.querySelector("header nav")
-.classList.remove("show");
+const nav =
+document.querySelector("header nav");
 
-document
-.querySelector(".menu-toggle")
-.classList.remove("active");
+const menu =
+document.querySelector(".menu-toggle");
+
+nav.classList.remove("show");
+
+menu.classList.remove("active");
 
 });
 
 });
+
 
 
 /* =========================
@@ -439,6 +503,7 @@ dropdownButton.classList.toggle("open");
 });
 
 
+
 /* =========================
    FILTER
 ========================= */
@@ -450,6 +515,7 @@ option.addEventListener(
 function(event) {
 
 event.stopPropagation();
+
 
 const category =
 this.getAttribute("data-category");
@@ -485,7 +551,7 @@ category === "all" ||
 itemCategory === category
 ) {
 
-item.style.display = "inline-block";
+item.style.display = "block";
 
 } else {
 
@@ -498,6 +564,7 @@ item.style.display = "none";
 });
 
 });
+
 
 
 /* =========================
@@ -520,6 +587,7 @@ dropdownButton.classList.remove("open");
 }
 
 });
+
 
 
 /* =========================
@@ -562,6 +630,7 @@ galleryOverlay.classList.add("show");
 });
 
 
+
 /* =========================
    CLOSE PREVIEW
    CLICK IMAGE AGAIN
@@ -578,6 +647,7 @@ galleryPreview.src = "";
 });
 
 
+
 /* =========================
    CLOSE OUTSIDE
 ========================= */
@@ -586,7 +656,9 @@ galleryOverlay.addEventListener(
 "click",
 function(event) {
 
-if (event.target === galleryOverlay) {
+if (
+event.target === galleryOverlay
+) {
 
 galleryOverlay.classList.remove("show");
 
