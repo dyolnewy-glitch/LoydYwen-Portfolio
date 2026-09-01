@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery - Loyd Ywen Masangcay</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="gallery.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="container">
+
+<div class="logo">
+
+<a href="index.html">
+
+<img src="logo.png" alt="Logo">
+
+</a>
+
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu(this)">
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">Home</a>
+</li>
+
+<li>
+<a href="about.html">About Me</a>
+</li>
+
+<li>
+<a href="skills.html">Skills</a>
+</li>
+
+<li>
+<a href="portfolio.html">Portfolio</a>
+</li>
+
+<li>
+<a href="gallery.html" class="active">Gallery</a>
+</li>
+
+<li>
+<a href="blog.html">Blog</a>
+</li>
+
+<li>
+<a href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- =========================
+     GALLERY SECTION
+========================= -->
+
+<section class="gallery-section">
+
+<div class="gallery-container">
+
+<!-- =========================
+     TITLE
+========================= -->
+
+<div class="gallery-sidebar">
+
+<h1>Gallery</h1>
+
+<p>
+Explore my creative works and designs.
+</p>
+
+<!-- =========================
+     CATEGORY DROPDOWN
+========================= -->
+
+<div class="category-dropdown">
+
+<button
+class="category-dropdown-btn"
+id="categoryDropdownBtn"
+type="button">
+
+<span id="selectedCategory">
+All Categories
+</span>
+
+<span class="dropdown-arrow">
+▾
+</span>
+
+</button>
+
+<div
+class="category-dropdown-menu"
+id="categoryDropdownMenu">
+
+<button
+class="category-option active"
+data-category="all"
+type="button">
+
+All Categories
+
+</button>
+
+<button
+class="category-option"
+data-category="poster"
+type="button">
+
+Poster
+
+</button>
+
+<button
+class="category-option"
+data-category="uiux"
+type="button">
+
+UI/UX Design
+
+</button>
+
+<button
+class="category-option"
+data-category="graphic"
+type="button">
+
+Graphic Design
+
+</button>
+
+<button
+class="category-option"
+data-category="photo"
+type="button">
+
+Photo Editing
+
+</button>
+
+<button
+class="category-option"
+data-category="video"
+type="button">
+
+Video Editing
+
+</button>
+
+<button
+class="category-option"
+data-category="digital-art"
+type="button">
+
+Digital Art
+
+</button>
+
+<button
+class="category-option"
+data-category="other"
+type="button">
+
+Other
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<div class="gallery-content">
+
+<div
+class="gallery-grid"
+id="galleryGrid">
+
+<!-- LATEST -->
+
+<div
+class="gallery-item"
+data-category="other">
+
+<img
+src="ocean.png"
+alt="Ocean">
+
+</div>
+
+<div
+class="gallery-item"
+data-category="graphic">
+
+<img
+src="Graphic Design with Canva.png"
+alt="Graphic Design with Canva">
+
+</div>
+
+<div
+class="gallery-item"
+data-category="other">
+
+<img
+src="dont.png"
+alt="Don't">
+
+</div>
+
+<div
+class="gallery-item"
+data-category="graphic">
+
+<img
+src="a.png"
+alt="Graphic Design">
+
+</div>
+
+<!-- OLDER -->
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="printing.png"
+alt="Printing Poster">
+
+</div>
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="grow.png"
+alt="Grow Poster">
+
+</div>
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="xiety.png"
+alt="Xiety Poster">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="container footer-container">
+
+<p>
+&copy; 2026 Loyd Ywen Masangcay. All rights reserved.
+</p>
+
+<div class="social-links">
+
+<a
+href="https://www.facebook.com/LoydieeWen"
+target="_blank"
+rel="noopener noreferrer">
+
+Facebook
+
+</a>
+
+<a
+href="https://www.instagram.com/ywen_masangcay"
+target="_blank"
+rel="noopener noreferrer">
+
+Instagram
+
+</a>
+
+<a
+href="https://www.tiktok.com/@wehn_26"
+target="_blank"
+rel="noopener noreferrer">
+
+TikTok
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- =========================
+     IMAGE PREVIEW
+========================= -->
+
+<div
+class="gallery-overlay"
+id="galleryOverlay">
+
+<img
+class="gallery-preview"
+id="galleryPreview"
+src=""
+alt="Gallery Preview">
+
+</div>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(menu) {
+
+const nav =
+document.querySelector("header nav");
+
+nav.classList.toggle("show");
+
+menu.classList.toggle("active");
+
+}
+
+
+document
+.querySelectorAll("nav ul li a")
+.forEach(function(link) {
+
+link.addEventListener("click", function() {
+
+document
+.querySelector("header nav")
+.classList.remove("show");
+
+document
+.querySelector(".menu-toggle")
+.classList.remove("active");
+
+});
+
+});
+
+
+/* =========================
+   DROPDOWN
+========================= */
+
+const dropdownButton =
+document.getElementById("categoryDropdownBtn");
+
+const dropdownMenu =
+document.getElementById("categoryDropdownMenu");
+
+const selectedCategory =
+document.getElementById("selectedCategory");
+
+const options =
+document.querySelectorAll(".category-option");
+
+const galleryItems =
+document.querySelectorAll(".gallery-item");
+
+
+dropdownButton.addEventListener(
+"click",
+function(event) {
+
+event.stopPropagation();
+
+dropdownMenu.classList.toggle("show");
+
+dropdownButton.classList.toggle("open");
+
+});
+
+
+/* =========================
+   FILTER
+========================= */
+
+options.forEach(function(option) {
+
+option.addEventListener(
+"click",
+function(event) {
+
+event.stopPropagation();
+
+const category =
+this.getAttribute("data-category");
+
+
+options.forEach(function(item) {
+
+item.classList.remove("active");
+
+});
+
+
+this.classList.add("active");
+
+
+selectedCategory.textContent =
+this.textContent.trim();
+
+
+dropdownMenu.classList.remove("show");
+
+dropdownButton.classList.remove("open");
+
+
+galleryItems.forEach(function(item) {
+
+const itemCategory =
+item.getAttribute("data-category");
+
+
+if (
+category === "all" ||
+itemCategory === category
+) {
+
+item.style.display = "inline-block";
+
+} else {
+
+item.style.display = "none";
+
+}
+
+});
+
+});
+
+});
+
+
+/* =========================
+   CLOSE DROPDOWN
+========================= */
+
+document.addEventListener(
+"click",
+function(event) {
+
+if (
+!dropdownButton.contains(event.target) &&
+!dropdownMenu.contains(event.target)
+) {
+
+dropdownMenu.classList.remove("show");
+
+dropdownButton.classList.remove("open");
+
+}
+
+});
+
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+const galleryGrid =
+document.getElementById("galleryGrid");
+
+const galleryOverlay =
+document.getElementById("galleryOverlay");
+
+const galleryPreview =
+document.getElementById("galleryPreview");
+
+
+galleryGrid.addEventListener(
+"click",
+function(event) {
+
+const image =
+event.target.closest(".gallery-item img");
+
+
+if (!image) {
+
+return;
+
+}
+
+
+galleryPreview.src =
+image.src;
+
+galleryPreview.alt =
+image.alt;
+
+galleryOverlay.classList.add("show");
+
+});
+
+
+/* =========================
+   CLOSE PREVIEW
+   CLICK IMAGE AGAIN
+========================= */
+
+galleryPreview.addEventListener(
+"click",
+function() {
+
+galleryOverlay.classList.remove("show");
+
+galleryPreview.src = "";
+
+});
+
+
+/* =========================
+   CLOSE OUTSIDE
+========================= */
+
+galleryOverlay.addEventListener(
+"click",
+function(event) {
+
+if (event.target === galleryOverlay) {
+
+galleryOverlay.classList.remove("show");
+
+galleryPreview.src = "";
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+/* =========================
+   GALLERY SECTION
+========================= */
+
+.gallery-section {
+    padding: 60px 20px;
+    background: #D6DEDC;
+    min-height: 70vh;
+}
+
+.gallery-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   GALLERY TITLE
+========================= */
+
+.gallery-sidebar {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.gallery-sidebar h1 {
+    text-align: center;
+    color: #008080;
+    font-size: 40px;
+    margin: 0 0 10px;
+}
+
+.gallery-sidebar p {
+    text-align: center;
+    color: #666;
+    margin: 0;
+}
+
+
+/* =========================
+   CATEGORY DROPDOWN
+========================= */
+
+.category-dropdown {
+    position: relative;
+    width: 230px;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+.category-dropdown-btn {
+    width: 100%;
+    padding: 12px 15px;
+    background: white;
+    color: #333;
+    border: 2px solid #008080;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+}
+
+.dropdown-arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.category-dropdown-btn.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================
+   DROPDOWN MENU
+========================= */
+
+.category-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 3px);
+    right: 0;
+
+    width: 100%;
+
+    background: white;
+
+    border: 2px solid #008080;
+    border-radius: 8px;
+
+    display: none;
+
+    overflow: hidden;
+
+    z-index: 9999;
+
+    box-sizing: border-box;
+}
+
+.category-dropdown-menu.show {
+    display: block;
+}
+
+
+/* =========================
+   DROPDOWN OPTIONS
+========================= */
+
+.category-option {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px 15px;
+
+    background: white;
+    color: #333;
+
+    border: none;
+
+    text-align: left;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+}
+
+.category-option:hover {
+    background: #e6f5f5;
+    color: #008080;
+}
+
+.category-option.active {
+    background: #008080;
+    color: white;
+}
+
+
+/* =========================
+   GALLERY CONTENT
+========================= */
+
+.gallery-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   MASONRY GALLERY
+========================= */
+
+.gallery-grid {
+    width: 100%;
+
+    column-count: 3;
+    column-gap: 3px;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   GALLERY ITEM
+========================= */
+
+.gallery-item {
+    width: 100%;
+
+    display: inline-block;
+    vertical-align: top;
+
+    margin: 0 0 3px 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+}
+
+
+/* =========================
+   GALLERY IMAGE
+========================= */
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+
+    object-fit: contain;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.01);
+}
+
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.gallery-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+.gallery-overlay.show {
+    display: flex;
+}
+
+.gallery-preview {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 65vw;
+    max-height: 78vh;
+
+    object-fit: contain;
+
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    .gallery-section {
+        padding: 50px 15px;
+    }
+
+    .gallery-sidebar h1 {
+        font-size: 32px;
+    }
+
+    .gallery-sidebar p {
+        font-size: 14px;
+    }
+
+    .category-dropdown {
+        width: 220px;
+        margin-left: auto;
+    }
+
+    .gallery-grid {
+        column-count: 3;
+        column-gap: 3px;
+    }
+
+    .gallery-item {
+        margin-bottom: 3px;
+    }
+
+    .gallery-preview {
+        max-width: 75vw;
+        max-height: 75vh;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 480px) {
+
+    .gallery-section {
+        padding: 40px 10px;
+    }
+
+    .gallery-sidebar h1 {
+        font-size: 28px;
+    }
+
+    .gallery-sidebar p {
+        font-size: 13px;
+    }
+
+    .category-dropdown {
+        width: 200px;
+        margin-left: auto;
+    }
+
+    .gallery-grid {
+        column-count: 2;
+        column-gap: 3px;
+    }
+
+    .gallery-item {
+        margin-bottom: 3px;
+    }
+
+    .gallery-preview {
+        max-width: 85vw;
+        max-height: 70vh;
+    }
+}
