@@ -3,7 +3,8 @@
 ===================================== */
 
 .about-section {
-    padding: 120px 20px 70px;
+    margin-top: 80px;
+    padding: 80px 20px 70px;
     background: #D6DEDC;
 }
 
@@ -30,13 +31,23 @@
 }
 
 
+/* =====================================
+   ABOUT ME TITLE
+===================================== */
+
 .about-title h1 {
-    font-size: 38px;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
     color: #008080;
     margin: 0;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
+
+/* =====================================
+   EDIT BUTTON
+===================================== */
 
 .edit-btn {
     background: #008080;
@@ -45,6 +56,7 @@
     padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     transition: .3s;
 }
@@ -108,7 +120,10 @@
     border-radius: 8px;
 
     cursor: pointer;
+
+    font-family: 'DM Sans', sans-serif;
     font-size: 15px;
+
     transition: .3s;
 }
 
@@ -129,20 +144,31 @@
 
 
 .about-text p {
+    font-family: 'Quicksand', sans-serif;
     font-size: 17px;
+    font-weight: 500;
     line-height: 1.8;
     color: #333;
     margin-bottom: 20px;
 }
 
 
-.about-text strong {
+/* =====================================
+   HIGHLIGHTED TEXT
+   ABOUT ME + FUN FACTS
+===================================== */
+
+.about-text strong,
+.funfacts strong {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
     color: #008080;
+    letter-spacing: 0.3px;
 }
 
 
 /* =====================================
-   FUN FACTS
+   FUN FACTS SECTION
 ===================================== */
 
 .funfacts {
@@ -152,16 +178,28 @@
 }
 
 
+/* =====================================
+   FUN FACTS ABOUT ME TITLE
+===================================== */
+
 .funfacts h2 {
-    font-size: 38px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
     color: #008080;
     margin: 0 0 20px;
-    font-weight: 700;
 }
 
 
+/* =====================================
+   FUN FACTS TEXT
+===================================== */
+
 .funfacts p {
+    font-family: 'Nunito', sans-serif;
     font-size: 17px;
+    font-weight: 500;
     line-height: 1.9;
     color: #333;
 }
@@ -212,6 +250,7 @@
 
 
 .edit-modal h2 {
+    font-family: 'Raleway', sans-serif;
     color: #222;
     margin-bottom: 15px;
 }
@@ -230,6 +269,7 @@
 
     resize: vertical;
 
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
 
     line-height: 1.7;
@@ -265,6 +305,7 @@
 
     cursor: pointer;
 
+    font-family: 'DM Sans', sans-serif;
     font-size: 15px;
 }
 
@@ -294,6 +335,12 @@
 ===================================== */
 
 @media (max-width: 850px) {
+
+    .about-section {
+        margin-top: 60px;
+        padding: 70px 20px 60px;
+    }
+
 
     .about-main {
         flex-direction: column;
@@ -326,7 +373,8 @@
 @media (max-width: 500px) {
 
     .about-section {
-        padding: 100px 15px 50px;
+        margin-top: 50px;
+        padding: 60px 15px 50px;
     }
 
 
@@ -335,6 +383,10 @@
         border-radius: 15px;
     }
 
+
+    /* =================================
+       ABOUT ME MOBILE TITLE
+    ================================= */
 
     .about-title h1 {
         font-size: 28px;
@@ -347,7 +399,9 @@
     }
 
 
-    /* RESPONSIVE PROFILE IMAGE */
+    /* =================================
+       RESPONSIVE PROFILE IMAGE
+    ================================= */
 
     .about-image {
         width: min(70vw, 240px);
@@ -366,22 +420,40 @@
     }
 
 
+    /* =================================
+       ABOUT TEXT MOBILE
+    ================================= */
+
     .about-text p {
         font-size: 16px;
         line-height: 1.75;
     }
 
 
+    /* =================================
+       FUN FACTS ABOUT ME MOBILE TITLE
+    ================================= */
+
     .funfacts h2 {
         font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
     }
 
+
+    /* =================================
+       FUN FACTS TEXT MOBILE
+    ================================= */
 
     .funfacts p {
         font-size: 16px;
         line-height: 1.8;
     }
 
+
+    /* =================================
+       EDIT MODAL MOBILE
+    ================================= */
 
     .edit-modal {
         padding: 20px;
@@ -408,8 +480,8 @@
 @media (max-width: 360px) {
 
     .about-section {
-        padding-left: 10px;
-        padding-right: 10px;
+        margin-top: 40px;
+        padding: 50px 10px 45px;
     }
 
 
@@ -425,6 +497,11 @@
 
     .about-image {
         width: 65vw;
+    }
+
+
+    .funfacts h2 {
+        font-size: 25px;
     }
 
 }
