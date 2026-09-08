@@ -11,7 +11,7 @@ html {
 
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
     line-height: 1.6;
     color: #333;
     background: #f4f4f4;
@@ -323,7 +323,13 @@ header nav ul li a {
 
     text-decoration: none;
 
-    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: .2px;
 
     padding: 5px 10px;
 
@@ -448,7 +454,13 @@ section {
 
 section h2 {
 
+    font-family: 'Raleway', sans-serif;
+
     font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: .2px;
 
     margin-bottom: 30px;
 
@@ -457,7 +469,13 @@ section h2 {
 
 section p {
 
+    font-family: 'Nunito', sans-serif;
+
     font-size: 18px;
+
+    font-weight: 500;
+
+    line-height: 1.7;
 
     max-width: 800px;
 
@@ -482,7 +500,13 @@ section p {
 
     border-radius: 5px;
 
-    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: .2px;
 
     transition: .3s;
 
@@ -515,6 +539,17 @@ footer {
 }
 
 
+footer p {
+
+    font-family: 'DM Sans', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+}
+
+
 footer .social-links a {
 
     color: white;
@@ -523,7 +558,11 @@ footer .social-links a {
 
     margin: 0 10px;
 
-    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
 
     transition: .3s;
 
@@ -757,6 +796,12 @@ section {
 
         border-radius: 0;
 
+        font-family: 'DM Sans', sans-serif;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
     }
 
 
@@ -792,12 +837,16 @@ section {
 
     section h2 {
 
+        font-family: 'Raleway', sans-serif;
+
         font-size: 26px;
 
     }
 
 
     section p {
+
+        font-family: 'Nunito', sans-serif;
 
         font-size: 16px;
 
