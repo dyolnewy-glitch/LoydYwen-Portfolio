@@ -5,7 +5,7 @@
 ========================= */
 
 .hero {
-    padding: 0 20px 50px;
+    padding: 0 20px 40px;
     background-color: #f4f4f4;
 }
 
@@ -16,7 +16,6 @@
     max-width: 1100px;
     margin: 0 auto;
     gap: 40px;
-    min-height: 420px;
 }
 
 
@@ -126,7 +125,7 @@
 
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
 @media screen and (max-width: 768px) {
@@ -138,7 +137,6 @@
     .hero-container {
         flex-direction: column;
         text-align: center;
-        min-height: auto;
         gap: 25px;
     }
 
@@ -185,7 +183,7 @@
     .hero-image {
         width: 200px;
         height: 200px;
-        margin-top: 5px;
+        margin-top: 0;
     }
 
     .hero-image img {
@@ -205,7 +203,7 @@
 @media screen and (max-width: 480px) {
 
     .hero {
-        padding: 0 20px 50px;
+        padding: 0 20px 40px;
     }
 
     .hero-container {
