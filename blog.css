@@ -1,619 +1,648 @@
+
+
 /* =====================================
 BLOG SECTION
 ===================================== */
 
 .blog {
-padding: 80px 20px;
-background: #f4f6f8;
-min-height: 100vh;
+    margin-top: -45px;
+    padding: 45px 20px 80px;
+    background: #f4f6f8;
+    min-height: 100vh;
 }
+
 
 /* =====================================
 TITLE
 ===================================== */
 
 .blog-heading {
-width: 100%;
-text-align: center;
-margin-bottom: 35px;
-position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 35px;
+    position: relative;
 }
 
 .blog-heading h1 {
-width: 100%;
-font-size: 42px;
-color: #008080;
-margin: 0 0 10px;
-text-align: center;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: #008080;
+    margin: 0 0 10px;
+    text-align: center;
 }
 
 .blog-heading p {
-width: 100%;
-color: #555;
-margin: 0 auto;
-text-align: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 auto;
+    text-align: center;
 }
+
 
 /* =====================================
 ADD BLOG BUTTON
 ===================================== */
 
 .add-btn {
-position: fixed;
-top: 100px;
-right: 30px;
+    position: fixed;
+    top: 100px;
+    right: 30px;
 
-z-index: 1000;
+    z-index: 1000;
 
-background: #008080;
-color: white;
+    background: #008080;
+    color: white;
 
-border: none;
+    border: none;
 
-padding: 12px 22px;
+    padding: 12px 22px;
 
-border-radius: 30px;
+    border-radius: 30px;
 
-cursor: pointer;
+    cursor: pointer;
 
-font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
 
-box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 15px rgba(0, 0, .2);
 
-white-space: nowrap;
-
+    white-space: nowrap;
 }
 
 .add-btn:hover {
-background: #006666;
+    background: #006666;
 }
+
 
 /* =====================================
 SEARCH AND FILTER
 ===================================== */
 
 .blog-tools {
-max-width: 1200px;
+    max-width: 1200px;
 
-margin: 70px auto 35px;
+    margin: 45px auto 35px;
 
-display: flex;
+    display: flex;
 
-gap: 15px;
-
+    gap: 15px;
 }
 
 .blog-tools input,
 .blog-tools select {
-flex: 1;
+    flex: 1;
 
-padding: 12px;
+    padding: 12px;
 
-border-radius: 10px;
+    border-radius: 10px;
 
-border: 1px solid #ccc;
+    border: 1px solid #ccc;
 
-font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
 
-background: #E3EAE8;
-
+    background: #E3EAE8;
 }
+
 
 /* =====================================
 SECTION TITLE
 ===================================== */
 
 .section-title {
-max-width: 1200px;
+    max-width: 1200px;
 
-margin: 30px auto 20px;
+    margin: 30px auto 20px;
 
-color: #008080;
+    color: #008080;
 
-font-size: 28px;
-
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
 }
+
 
 /* =====================================
 BLOG GRID
 ===================================== */
 
 .blog-container {
-max-width: 1200px;
+    max-width: 1200px;
 
-margin: auto;
+    margin: auto;
 
-display: grid;
+    display: grid;
 
-grid-template-columns:
-    repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
 
-gap: 30px;
-
+    gap: 30px;
 }
+
 
 /* =====================================
 BLOG CARD
 ===================================== */
 
 .blog-card {
-background: #E3EAE8;
+    background: #E3EAE8;
 
-border-radius: 15px;
+    border-radius: 15px;
 
-overflow: hidden;
+    overflow: hidden;
 
-box-shadow:
-    0 8px 20px rgba(0, 0, .12);
+    box-shadow:
+        0 8px 20px rgba(0, 0, .12);
 
-cursor: pointer;
+    cursor: pointer;
 
-transition: .3s;
-
+    transition: .3s;
 }
 
 .blog-card:hover {
-transform: translateY(-5px);
+    transform: translateY(-5px);
 }
+
 
 /* =====================================
 BLOG IMAGE
 ===================================== */
 
 .blog-card-image {
-width: 100%;
+    width: 100%;
 
-aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1;
 
-object-fit: cover;
+    object-fit: cover;
 
-object-position: center;
+    object-position: center;
 
-display: block;
+    display: block;
 
-background: #D6DFDC;
-
+    background: #D6DFDC;
 }
+
 
 /* =====================================
 BLOG INFO
 ===================================== */
 
 .blog-info {
-padding: 20px;
+    padding: 20px;
 }
 
 .blog-category {
-display: inline-block;
+    display: inline-block;
 
-background: #e0f2f1;
+    background: #e0f2f1;
 
-color: #008080;
+    color: #008080;
 
-padding: 5px 12px;
+    padding: 5px 12px;
 
-border-radius: 20px;
+    border-radius: 20px;
 
-font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
 
-font-weight: bold;
-
-margin-bottom: 10px;
-
+    margin-bottom: 10px;
 }
 
 .blog-info h2 {
-color: #008080;
+    color: #008080;
 
-font-size: 22px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
 
-margin: 5px 0 10px;
+    letter-spacing: .3px;
 
+    margin: 5px 0 10px;
 }
 
 .blog-info p {
-color: #666;
+    color: #666;
 
-font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 
-line-height: 1.5;
-
+    line-height: 1.6;
 }
+
 
 /* =====================================
 ACTION BUTTONS
 ===================================== */
 
 .actions {
-display: flex;
+    display: flex;
 
-gap: 10px;
+    gap: 10px;
 
-padding: 0 20px 20px;
-
+    padding: 0 20px 20px;
 }
 
 .actions button {
-border: none;
+    border: none;
 
-padding: 8px 15px;
+    padding: 8px 15px;
 
-border-radius: 6px;
+    border-radius: 6px;
 
-color: white;
+    color: white;
 
-cursor: pointer;
+    cursor: pointer;
 
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
 }
 
 .edit {
-background: #ff9800;
+    background: #ff9800;
 }
 
 .delete {
-background: #e53935;
+    background: #e53935;
 }
+
 
 /* =====================================
 FEATURED BLOG
 ===================================== */
 
 #featuredContainer {
-max-width: 1200px;
+    max-width: 1200px;
 
-margin: auto;
+    margin: auto;
 
-display: flex;
+    display: flex;
 
-gap: 20px;
+    gap: 20px;
 
-overflow: hidden;
-
+    overflow: hidden;
 }
 
 .featured-card {
-background: #E3EAE8;
+    background: #E3EAE8;
 
-border-radius: 15px;
+    border-radius: 15px;
 
-overflow: hidden;
+    overflow: hidden;
 
-box-shadow:
-    0 8px 20px rgba(0, 0, .12);
+    box-shadow:
+        0 8px 20px rgba(0, 0, .12);
 
-cursor: pointer;
+    cursor: pointer;
 
-flex: 1;
+    flex: 1;
 
-min-width: 0;
+    min-width: 0;
 
-transition: .3s;
-
+    transition: .3s;
 }
 
 .featured-card:hover {
-transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .featured-card img {
-width: 100%;
+    width: 100%;
 
-aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 9;
 
-object-fit: cover;
+    object-fit: cover;
 
-object-position: center;
+    object-position: center;
 
-display: block;
-
+    display: block;
 }
 
 .featured-badge {
-display: inline-block;
+    display: inline-block;
 
+    margin: 15px;
 
-margin: 15px;
+    background: #008080;
 
-background: #008080;
+    color: white;
 
-color: white;
+    padding: 6px 12px;
 
-padding: 6px 12px;
+    border-radius: 20px;
 
-border-radius: 20px;
-
-font-size: 13px;
-
-font-weight: bold;
-
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
 }
+
 
 /* =====================================
 MODAL
 ===================================== */
 
 .modal {
-display: none;
+    display: none;
 
-position: fixed;
+    position: fixed;
 
-inset: 0;
+    inset: 0;
 
-background: rgba(0, 0, .5);
+    background: rgba(0, 0, .5);
 
-z-index: 2000;
+    z-index: 2000;
 
-padding-top: 100px;
+    padding-top: 100px;
 
-overflow-y: auto;
-
+    overflow-y: auto;
 }
 
 .modal-box {
-background: #E3EAE8;
+    background: #E3EAE8;
 
-width: 90%;
+    width: 90%;
 
-max-width: 600px;
+    max-width: 600px;
 
-margin: 0 auto 50px;
+    margin: 0 auto 50px;
 
-padding: 30px;
+    padding: 30px;
 
-border-radius: 15px;
-
+    border-radius: 15px;
 }
 
 .modal-box h2 {
-color: #008080;
+    color: #008080;
+
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
 }
 
 .modal-box input,
 .modal-box textarea,
 .modal-box select {
-width: 100%;
+    width: 100%;
 
-padding: 12px;
+    padding: 12px;
 
-margin: 8px 0;
+    margin: 8px 0;
 
-border-radius: 8px;
+    border-radius: 8px;
 
-border: 1px solid #B8C6C2;
+    border: 1px solid #B8C6C2;
 
-box-sizing: border-box;
+    box-sizing: border-box;
 
-background: #D9E3E0;
+    background: #D9E3E0;
 
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
 }
 
 .modal-box textarea {
-height: 180px;
+    height: 180px;
 
-resize: vertical;
-
+    resize: vertical;
 }
 
 .modal-actions {
-display: flex;
+    display: flex;
 
-gap: 10px;
+    gap: 10px;
 
-margin-top: 20px;
-
+    margin-top: 20px;
 }
 
 .save-btn {
-background: #008080;
+    background: #008080;
 
-color: white;
+    color: white;
 
-border: none;
+    border: none;
 
-padding: 12px 20px;
+    padding: 12px 20px;
 
-border-radius: 8px;
+    border-radius: 8px;
 
-cursor: pointer;
+    cursor: pointer;
 
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
 }
 
 .cancel-btn {
-background: #ccc;
+    background: #ccc;
 
-border: none;
+    border: none;
 
-padding: 12px 20px;
+    padding: 12px 20px;
 
-border-radius: 8px;
+    border-radius: 8px;
 
-cursor: pointer;
+    cursor: pointer;
 
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
 }
+
 
 /* =====================================
 IMAGE PREVIEW
 ===================================== */
 
 .image-preview-container {
-display: none;
+    display: none;
 
-margin-top: 10px;
-
+    margin-top: 10px;
 }
 
 .image-preview-container img {
-width: 100%;
+    width: 100%;
 
-max-height: 250px;
+    max-height: 250px;
 
-object-fit: cover;
+    object-fit: cover;
 
-border-radius: 10px;
-
+    border-radius: 10px;
 }
+
 
 /* =====================================
 BLOG PREVIEW OVERLAY
 ===================================== */
 
 .blog-overlay {
-position: fixed;
+    position: fixed;
 
-inset: 0;
+    inset: 0;
 
-background: rgba(0, 0, .45);
+    background: rgba(0, 0, .45);
 
-z-index: 2500;
-
-
+    z-index: 2500;
 }
+
 
 /* =====================================
 BLOG PREVIEW
 ===================================== */
 
 .blog-preview {
-position: fixed;
+    position: fixed;
 
-top: 90px;
+    top: 90px;
 
-left: 50%;
+    left: 50%;
 
-transform: translateX(-50%);
+    transform: translateX(-50%);
 
-width: 90%;
+    width: 90%;
 
-max-width: 900px;
+    max-width: 900px;
 
-max-height: 80vh;
+    max-height: 80vh;
 
-overflow-y: auto;
+    overflow-y: auto;
 
-background: #E3EAE8;
+    background: #E3EAE8;
 
-padding: 30px;
+    padding: 30px;
 
-border-radius: 15px;
+    border-radius: 15px;
 
-z-index: 3000;
+    z-index: 3000;
 
-box-shadow:
-    0 10px 40px rgba(0, 0, .3);
+    box-shadow:
+        0 10px 40px rgba(0, 0, .3);
 
-box-sizing: border-box;
-
+    box-sizing: border-box;
 }
+
 
 /* =====================================
 PREVIEW IMAGE
 ===================================== */
 
 .blog-preview img {
-width: 100%;
+    width: 100%;
 
+    max-height: 450px;
 
-max-height: 450px;
+    object-fit: contain;
 
-object-fit: contain;
+    display: block;
 
-display: block;
-
-margin-bottom: 25px;
-
+    margin-bottom: 25px;
 }
+
 
 /* =====================================
 PREVIEW TITLE
 ===================================== */
 
 .blog-preview h2 {
-color: #008080;
+    color: #008080;
 
-font-size: 30px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
 
-margin: 15px 0;
+    letter-spacing: .3px;
 
+    margin: 15px 0;
 }
+
 
 /* =====================================
 PREVIEW CATEGORY
 ===================================== */
 
 .blog-preview .blog-category {
-display: inline-block;
+    display: inline-block;
 
-background: #e0f2f1;
+    background: #e0f2f1;
 
-color: #008080;
+    color: #008080;
 
-padding: 6px 12px;
+    padding: 6px 12px;
 
-border-radius: 20px;
+    border-radius: 20px;
 
-font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
 
-font-weight: bold;
-
-margin-bottom: 10px;
-
-
+    margin-bottom: 10px;
 }
+
 
 /* =====================================
 PREVIEW DATE
 ===================================== */
 
 .preview-date {
-color: #777;
+    color: #777;
 
-font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 
-margin-bottom: 25px;
-
+    margin-bottom: 25px;
 }
+
 
 /* =====================================
 PREVIEW DESCRIPTION
 ===================================== */
 
 .preview-description {
-margin-top: 20px;
+    margin-top: 20px;
 }
 
 .preview-description p {
-color: #444;
+    color: #444;
 
-font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
 
-line-height: 1.8;
+    line-height: 1.8;
 
-margin-top: 0;
+    margin-top: 0;
 
-margin-bottom: 22px;
+    margin-bottom: 22px;
 
-text-align: justify;
-
+    text-align: justify;
 }
 
 .preview-description p:last-child {
-margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 
 /* =====================================
 FOOTER
 ===================================== */
 
 footer {
-background: #008080;
+    background: #008080;
 
-color: white;
+    color: white;
 
-text-align: center;
+    text-align: center;
 
-padding: 25px;
+    padding: 25px;
 
+    font-family: 'DM Sans', sans-serif;
 }
+
 
 /* =====================================
 MOBILE
@@ -621,267 +650,288 @@ MOBILE
 
 @media (max-width: 768px) {
 
-.blog {
-    padding: 60px 15px;
+    .blog {
+        margin-top: -30px;
+        padding: 40px 15px 60px;
+    }
+
+
+    /* ================================
+       BLOG TITLE
+    ================================= */
+
+    .blog-heading {
+        width: 100%;
+
+        margin-bottom: 0;
+
+        padding-right: 0;
+
+        text-align: center;
+    }
+
+    .blog-heading h1 {
+        width: 100%;
+
+        font-family: 'Playfair Display', serif;
+
+        font-size: 32px;
+        font-weight: 800;
+
+        margin-bottom: 8px;
+
+        text-align: center;
+    }
+
+    .blog-heading p {
+        width: 100%;
+
+        font-family: 'Quicksand', sans-serif;
+
+        font-size: 14px;
+        font-weight: 500;
+
+        line-height: 1.6;
+
+        text-align: center;
+    }
+
+
+    /* ================================
+       ADD BUTTON
+    ================================= */
+
+    .add-btn {
+        position: static;
+
+        display: block;
+
+        width: fit-content;
+
+        margin: 20px auto 25px;
+
+        padding: 11px 20px;
+
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+
+    /* ================================
+       SEARCH AND FILTER
+    ================================= */
+
+    .blog-tools {
+        width: 100%;
+
+        margin: 0 auto 30px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .blog-tools input,
+    .blog-tools select {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        font-family: 'DM Sans', sans-serif;
+    }
+
+
+    /* ================================
+       SECTION TITLE
+    ================================= */
+
+    .section-title {
+        font-family: 'Raleway', sans-serif;
+
+        font-size: 24px;
+        font-weight: 800;
+
+        margin-top: 30px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* ================================
+       LATEST BLOGS
+    ================================= */
+
+    .blog-container {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    /* ================================
+       BLOG CARD
+    ================================= */
+
+    .blog-card {
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ================================
+       BLOG CARD IMAGE
+    ================================= */
+
+    .blog-card-image {
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        display: block;
+    }
+
+
+    /* ================================
+       FEATURED BLOG SLIDER
+    ================================= */
+
+    #featuredContainer {
+        overflow-x: auto;
+
+        scroll-snap-type: x mandatory;
+
+        scrollbar-width: none;
+
+        padding-bottom: 10px;
+    }
+
+    #featuredContainer::-webkit-scrollbar {
+        display: none;
+    }
+
+    .featured-card {
+        flex: 0 0 85%;
+
+        scroll-snap-align: start;
+    }
+
+
+    /* ================================
+       FEATURED IMAGE
+    ================================= */
+
+    .featured-card img {
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        display: block;
+    }
+
+
+    /* ================================
+       BLOG PREVIEW
+    ================================= */
+
+    .blog-preview {
+        top: 70px;
+
+        width: 94%;
+
+        max-height: 84vh;
+
+        padding: 20px;
+
+        border-radius: 12px;
+    }
+
+    .blog-preview h2 {
+        font-family: 'Oswald', sans-serif;
+
+        font-size: 24px;
+        font-weight: 600;
+
+        line-height: 1.3;
+    }
+
+    .blog-preview img {
+        width: 100%;
+
+        height: auto;
+
+        max-height: 300px;
+
+        object-fit: contain;
+
+        margin-bottom: 20px;
+    }
+
+
+    /* ================================
+       PREVIEW PARAGRAPHS
+    ================================= */
+
+    .preview-description p {
+        font-family: 'Nunito', sans-serif;
+
+        font-size: 15px;
+        font-weight: 500;
+
+        line-height: 1.8;
+
+        margin-bottom: 22px;
+
+        text-align: left;
+    }
+
+
+    /* ================================
+       MODAL
+    ================================= */
+
+    .modal {
+        padding-top: 70px;
+    }
+
+    .modal-box {
+        width: 94%;
+
+        padding: 22px;
+
+        margin-bottom: 30px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ================================
+       ACTION BUTTONS
+    ================================= */
+
+    .actions {
+        flex-wrap: wrap;
+    }
+
 }
 
-
-/* ================================
-   BLOG TITLE
-================================= */
-
-.blog-heading {
-    width: 100%;
-
-    margin-bottom: 0;
-
-    padding-right: 0;
-
-    text-align: center;
-}
-
-.blog-heading h1 {
-    width: 100%;
-
-    font-size: 32px;
-
-    margin-bottom: 8px;
-
-    text-align: center;
-}
-
-.blog-heading p {
-    width: 100%;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    text-align: center;
-}
-
-
-/* ================================
-   ADD BUTTON
-================================= */
-
-.add-btn {
-    position: static;
-
-    display: block;
-
-    width: fit-content;
-
-    margin: 20px auto 25px;
-
-    padding: 11px 20px;
-
-    font-size: 14px;
-}
-
-
-/* ================================
-   SEARCH AND FILTER
-================================= */
-
-.blog-tools {
-    width: 100%;
-
-    margin: 0 auto 30px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-}
-
-.blog-tools input,
-.blog-tools select {
-    width: 100%;
-
-    box-sizing: border-box;
-}
-
-
-/* ================================
-   SECTION TITLE
-================================= */
-
-.section-title {
-    font-size: 24px;
-
-    margin-top: 30px;
-
-    margin-bottom: 18px;
-}
-
-
-/* ================================
-   LATEST BLOGS
-================================= */
-
-.blog-container {
-    grid-template-columns: 1fr;
-
-    gap: 20px;
-}
-
-
-/* ================================
-   BLOG CARD
-================================= */
-
-.blog-card {
-    width: 100%;
-
-    max-width: 100%;
-
-    box-sizing: border-box;
-}
-
-
-/* ================================
-   BLOG CARD IMAGE
-================================= */
-
-.blog-card-image {
-    width: 100%;
-
-    height: auto;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    display: block;
-}
-
-
-/* ================================
-   FEATURED BLOG SLIDER
-================================= */
-
-#featuredContainer {
-    overflow-x: auto;
-
-    scroll-snap-type: x mandatory;
-
-    scrollbar-width: none;
-
-    padding-bottom: 10px;
-}
-
-#featuredContainer::-webkit-scrollbar {
-    display: none;
-}
-
-.featured-card {
-    flex: 0 0 85%;
-
-    scroll-snap-align: start;
-}
-
-
-/* ================================
-   FEATURED IMAGE
-================================= */
-
-.featured-card img {
-    width: 100%;
-
-    height: auto;
-
-    aspect-ratio: 16 / 9;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    display: block;
-}
-
-
-/* ================================
-   BLOG PREVIEW
-================================= */
-
-.blog-preview {
-    top: 70px;
-
-    width: 94%;
-
-    max-height: 84vh;
-
-    padding: 20px;
-
-    border-radius: 12px;
-}
-
-.blog-preview h2 {
-    font-size: 24px;
-
-    line-height: 1.3;
-}
-
-.blog-preview img {
-    width: 100%;
-
-    height: auto;
-
-    max-height: 300px;
-
-    object-fit: contain;
-
-    margin-bottom: 20px;
-}
-
-
-/* ================================
-   PREVIEW PARAGRAPHS
-================================= */
-
-.preview-description p {
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    margin-bottom: 22px;
-
-    text-align: left;
-}
-
-
-/* ================================
-   MODAL
-================================= */
-
-.modal {
-    padding-top: 70px;
-}
-
-.modal-box {
-    width: 94%;
-
-    padding: 22px;
-
-    margin-bottom: 30px;
-
-    box-sizing: border-box;
-}
-
-
-/* ================================
-   ACTION BUTTONS
-================================= */
-
-.actions {
-    flex-wrap: wrap;
-}
-
-}
 
 /* =====================================
 SMALL PHONES
@@ -889,102 +939,108 @@ SMALL PHONES
 
 @media (max-width: 500px) {
 
-.blog {
-    padding: 50px 12px;
+    .blog {
+        margin-top: -20px;
+        padding: 35px 12px 50px;
+    }
+
+
+    /* BLOG CARDS */
+
+    .blog-container {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .blog-card {
+        width: 100%;
+
+        border-radius: 12px;
+    }
+
+
+    /* IMAGE — FIT INSIDE CARD */
+
+    .blog-card-image {
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        border-radius: 0;
+    }
+
+
+    .blog-info {
+        padding: 16px;
+    }
+
+
+    .blog-info h2 {
+        font-family: 'Oswald', sans-serif;
+
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+
+    .blog-info p {
+        font-family: 'Nunito', sans-serif;
+
+        font-size: 14px;
+    }
+
+
+    /* FEATURED */
+
+    .featured-card {
+        flex: 0 0 90%;
+    }
+
+
+    .featured-card img {
+        width: 100%;
+
+        aspect-ratio: 16 / 9;
+
+        height: auto;
+
+        object-fit: cover;
+    }
+
+
+    /* PREVIEW */
+
+    .blog-preview {
+        width: 95%;
+
+        padding: 18px;
+
+        top: 65px;
+    }
+
+
+    .blog-preview img {
+        width: 100%;
+
+        height: auto;
+
+        max-height: 260px;
+
+        object-fit: contain;
+    }
+
 }
 
-
-/* BLOG CARDS */
-
-.blog-container {
-    width: 100%;
-
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-}
-
-
-.blog-card {
-    width: 100%;
-
-    border-radius: 12px;
-}
-
-
-/* IMAGE — FIT INSIDE CARD */
-
-.blog-card-image {
-    width: 100%;
-
-    height: auto;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    border-radius: 0;
-}
-
-
-.blog-info {
-    padding: 16px;
-}
-
-
-.blog-info h2 {
-    font-size: 20px;
-}
-
-
-.blog-info p {
-    font-size: 14px;
-}
-
-
-/* FEATURED */
-
-.featured-card {
-    flex: 0 0 90%;
-}
-
-
-.featured-card img {
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    height: auto;
-
-    object-fit: cover;
-}
-
-
-/* PREVIEW */
-
-.blog-preview {
-    width: 95%;
-
-    padding: 18px;
-
-    top: 65px;
-}
-
-
-.blog-preview img {
-    width: 100%;
-
-    height: auto;
-
-    max-height: 260px;
-
-    object-fit: contain;
-}
-
-
-}
 
 /* =====================================
 VERY SMALL PHONES
@@ -992,34 +1048,41 @@ VERY SMALL PHONES
 
 @media (max-width: 360px) {
 
-.blog {
-    padding-left: 10px;
+    .blog {
+        margin-top: -15px;
 
-    padding-right: 10px;
-}
+        padding-left: 10px;
 
+        padding-right: 10px;
 
-.blog-card-image {
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-}
+        padding-bottom: 45px;
+    }
 
 
-.blog-info {
-    padding: 14px;
-}
+    .blog-card-image {
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+    }
 
 
-.blog-info h2 {
-    font-size: 19px;
-}
+    .blog-info {
+        padding: 14px;
+    }
 
 
-.featured-card {
-    flex: 0 0 92%;
-}
+    .blog-info h2 {
+        font-family: 'Oswald', sans-serif;
+
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+
+    .featured-card {
+        flex: 0 0 92%;
+    }
 
 }
