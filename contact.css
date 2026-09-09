@@ -1,5 +1,4 @@
 
-
 /* =========================
    CONTACT PAGE
 ========================= */
@@ -259,6 +258,152 @@ footer {
 
 .footer-container .social-links a:hover {
     color: #ffd54f;
+}
+
+
+/* =====================================================
+   DARK MODE
+   SAME PALETTE AS ABOUT & PORTFOLIO
+===================================================== */
+
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+html.dark-mode .contact {
+    background: #111827;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+html.dark-mode .title {
+    color: #60A5FA;
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+html.dark-mode .subtitle {
+    color: #D1D5DB;
+}
+
+
+/* =========================
+   CONTACT INFORMATION
+========================= */
+
+html.dark-mode .contact-info {
+    background: #1E293B;
+    color: #E2E8F0;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35);
+}
+
+html.dark-mode .contact-info:hover {
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.45);
+}
+
+html.dark-mode .contact-info h2,
+html.dark-mode .contact-info h3 {
+    color: #60A5FA;
+}
+
+html.dark-mode .contact-info p {
+    color: #E2E8F0;
+}
+
+html.dark-mode .contact-info a {
+    color: #60A5FA;
+}
+
+html.dark-mode .contact-info a:hover {
+    color: #93C5FD;
+}
+
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+html.dark-mode .contact-info .social-links a {
+    background: #60A5FA;
+    color: #172554;
+}
+
+html.dark-mode .contact-info .social-links a:hover {
+    background: #93C5FD;
+    color: #172554;
+}
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+html.dark-mode .contact-form {
+    background: #1E293B;
+    color: #E2E8F0;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35);
+}
+
+html.dark-mode .contact-form:hover {
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.45);
+}
+
+html.dark-mode .contact-form h2 {
+    color: #60A5FA;
+}
+
+html.dark-mode .contact-form label {
+    color: #E2E8F0;
+}
+
+
+/* =========================
+   FORM INPUTS
+========================= */
+
+html.dark-mode .contact-form input,
+html.dark-mode .contact-form textarea {
+    background: #111827;
+    color: #D1D5DB;
+    border-color: #475569;
+}
+
+html.dark-mode .contact-form input::placeholder,
+html.dark-mode .contact-form textarea::placeholder {
+    color: #94A3B8;
+}
+
+html.dark-mode .contact-form input:focus,
+html.dark-mode .contact-form textarea:focus {
+    border-color: #60A5FA;
+    box-shadow:
+        0 0 8px rgba(96,165,250,.25);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+html.dark-mode .contact-form button {
+    background: #60A5FA;
+    color: #172554;
+}
+
+html.dark-mode .contact-form button:hover {
+    background: #93C5FD;
+    color: #172554;
 }
 
 
