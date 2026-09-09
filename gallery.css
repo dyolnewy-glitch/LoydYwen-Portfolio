@@ -662,3 +662,175 @@
     }
 
 }
+
+
+/* =====================================================
+   DARK MODE
+   SAME COLORS AS ABOUT & PORTFOLIO
+===================================================== */
+
+
+/* =========================
+   GALLERY SECTION
+========================= */
+
+html.dark-mode .gallery-section {
+
+    background:#111827;
+
+}
+
+
+/* =========================
+   GALLERY HEADER
+========================= */
+
+html.dark-mode .gallery-sidebar h1 {
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .gallery-sidebar p {
+
+    color:#D1D5DB;
+
+}
+
+
+/* =========================
+   CATEGORY DROPDOWN
+========================= */
+
+html.dark-mode .category-dropdown-btn {
+
+    background:#1E293B;
+
+    color:#E2E8F0;
+
+    border-color:#475569;
+
+}
+
+
+html.dark-mode .category-dropdown-btn:hover {
+
+    background:#1E293B;
+
+    border-color:#60A5FA;
+
+}
+
+
+html.dark-mode .dropdown-arrow {
+
+    color:#E2E8F0;
+
+}
+
+
+/* =========================
+   DROPDOWN MENU
+========================= */
+
+html.dark-mode .category-dropdown-menu {
+
+    background:#1E293B;
+
+    border-color:#475569;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+}
+
+
+html.dark-mode .category-option {
+
+    background:#1E293B;
+
+    color:#E2E8F0;
+
+}
+
+
+html.dark-mode .category-option:hover {
+
+    background:#111827;
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .category-option.active {
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+/* =========================
+   GALLERY ITEMS
+========================= */
+
+html.dark-mode .gallery-item {
+
+    background:transparent;
+
+}
+
+
+html.dark-mode .gallery-item img {
+
+    background:transparent;
+
+}
+
+
+/* =========================
+   GALLERY OVERLAY
+========================= */
+
+html.dark-mode .gallery-overlay {
+
+    background:rgba(0,0,0,.82);
+
+}
+
+
+html.dark-mode .gallery-preview {
+
+    box-shadow:0 10px 40px rgba(0,0,0,.65);
+
+}
+
+
+/* =========================
+   DARK SCROLLBAR
+========================= */
+
+html.dark-mode .category-dropdown-menu::-webkit-scrollbar {
+
+    width:8px;
+
+}
+
+
+html.dark-mode .category-dropdown-menu::-webkit-scrollbar-track {
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .category-dropdown-menu::-webkit-scrollbar-thumb {
+
+    background:#475569;
+
+    border-radius:10px;
+
+}
+
