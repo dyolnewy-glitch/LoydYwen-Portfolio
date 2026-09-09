@@ -24,23 +24,34 @@
 
 <div class="container">
 
-<div class="logo">
+<!-- THEME TOGGLE -->
 
-<a href="index.html">
+<div class="logo theme-toggle" id="themeToggle">
 
-<img src="logo.png" alt="Logo">
+<img
+id="themeLogo"
+src="logo.png"
+alt="Theme Toggle">
 
-</a>
+<span id="themeLabel">
+Light Mode
+</span>
 
 </div>
+
 
 <!-- HAMBURGER MENU -->
 
-<div class="menu-toggle" onclick="toggleMenu(this)">
+<div
+class="menu-toggle"
+onclick="toggleMenu(this)">
 
-<span></span> <span></span> <span></span>
+<span></span>
+<span></span>
+<span></span>
 
 </div>
+
 
 <!-- NAVIGATION -->
 
@@ -98,6 +109,7 @@ Contact
 
 </header>
 
+
 <!-- =========================
      PORTFOLIO SECTION
 ========================= -->
@@ -118,6 +130,7 @@ Projects, designs, and applications I created during my IT journey.
 
 </div>
 
+
 <button
 class="add-project-btn"
 onclick="openProjectModal()">
@@ -128,6 +141,7 @@ onclick="openProjectModal()">
 
 </div>
 
+
 <!-- PROJECT DISPLAY -->
 
 <div
@@ -135,6 +149,7 @@ class="project-container"
 id="projectContainer">
 
 </div>
+
 
 <!-- NO PROJECT MESSAGE -->
 
@@ -145,6 +160,7 @@ No project added yet.
 </div>
 
 </section>
+
 
 <!-- =========================
      ADD / EDIT PROJECT MODAL
@@ -162,6 +178,7 @@ Add Project
 
 </h2>
 
+
 <!-- PROJECT IMAGE -->
 
 <label>
@@ -173,6 +190,7 @@ type="file"
 id="projectImage"
 accept="image/*">
 
+
 <div class="image-preview">
 
 <img
@@ -180,6 +198,7 @@ id="imagePreview"
 alt="Project Preview">
 
 </div>
+
 
 <!-- PROJECT TITLE -->
 
@@ -191,6 +210,7 @@ Project Title
 type="text"
 id="projectTitle"
 placeholder="Project Name">
+
 
 <!-- CATEGORY -->
 
@@ -230,6 +250,7 @@ Other
 
 </select>
 
+
 <!-- PROJECT STATUS -->
 
 <label>
@@ -256,6 +277,7 @@ Concept
 
 </select>
 
+
 <!-- DESCRIPTION -->
 
 <label>
@@ -266,6 +288,7 @@ Description
 id="projectDescription"
 placeholder="Short project description">
 </textarea>
+
 
 <!-- TOOLS -->
 
@@ -278,6 +301,7 @@ type="text"
 id="projectTools"
 placeholder="Example: Flutter, Dart, Firebase">
 
+
 <!-- PROJECT LINK -->
 
 <label>
@@ -288,6 +312,7 @@ Project Link
 type="url"
 id="projectLink"
 placeholder="https://example.com">
+
 
 <!-- MODAL BUTTONS -->
 
@@ -301,6 +326,7 @@ onclick="saveProject()">
 Save
 
 </button>
+
 
 <button
 type="button"
@@ -317,6 +343,7 @@ Cancel
 
 </div>
 
+
 <!-- =========================
      FOOTER
 ========================= -->
@@ -329,6 +356,7 @@ Cancel
 &copy; 2026 Loyd Ywen Masangcay. All rights reserved.
 </p>
 
+
 <div class="social-links">
 
 <a
@@ -340,6 +368,7 @@ Facebook
 
 </a>
 
+
 <a
 href="https://www.instagram.com/ywen_masangcay"
 target="_blank"
@@ -348,6 +377,7 @@ rel="noopener noreferrer">
 Instagram
 
 </a>
+
 
 <a
 href="https://www.tiktok.com/@wehn_26"
@@ -363,6 +393,7 @@ TikTok
 </div>
 
 </footer>
+
 
 <!-- =========================
      HEADER MENU SCRIPT
@@ -398,11 +429,20 @@ document.querySelector(".menu-toggle")
 
 </script>
 
+
 <!-- =========================
      PORTFOLIO JAVASCRIPT
 ========================= -->
 
 <script src="portfolio.js"></script>
+
+
+<!-- =========================
+     DARK MODE
+========================= -->
+
+<script src="darkmode.js"></script>
+
 
 </body>
 
