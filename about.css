@@ -1,10 +1,11 @@
+
 /* =====================================
    ABOUT SECTION
 ===================================== */
 
 .about-section {
-    margin-top: 80px;
-    padding: 80px 20px 70px;
+    margin-top: 0;
+    padding: 0 20px 70px;
     background: #D6DEDC;
 }
 
@@ -331,14 +332,178 @@
 
 
 /* =====================================
+   DARK MODE
+===================================== */
+
+html.dark-mode .about-section {
+    background: #111827;
+}
+
+
+html.dark-mode .about-container {
+    background: #1E293B;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =====================================
+   DARK MODE - TITLE
+===================================== */
+
+html.dark-mode .about-title h1 {
+    color: #60A5FA;
+}
+
+
+/* =====================================
+   DARK MODE - EDIT BUTTON
+===================================== */
+
+html.dark-mode .edit-btn {
+    background: #60A5FA;
+    color: #172554;
+}
+
+
+html.dark-mode .edit-btn:hover {
+    background: #93C5FD;
+    color: #172554;
+}
+
+
+/* =====================================
+   DARK MODE - PROFILE IMAGE
+===================================== */
+
+html.dark-mode .about-image img {
+    border-color: #334155;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =====================================
+   DARK MODE - CHANGE PHOTO
+===================================== */
+
+html.dark-mode .change-photo-btn {
+    background: #60A5FA;
+    color: #172554;
+}
+
+
+html.dark-mode .change-photo-btn:hover {
+    background: #93C5FD;
+    color: #172554;
+}
+
+
+/* =====================================
+   DARK MODE - ABOUT TEXT
+===================================== */
+
+html.dark-mode .about-text p {
+    color: #D1D5DB;
+}
+
+
+/* =====================================
+   DARK MODE - HIGHLIGHTED TEXT
+===================================== */
+
+html.dark-mode .about-text strong,
+html.dark-mode .funfacts strong {
+    color: #60A5FA;
+}
+
+
+/* =====================================
+   DARK MODE - FUN FACTS
+===================================== */
+
+html.dark-mode .funfacts {
+    border-top-color: #334155;
+}
+
+
+html.dark-mode .funfacts h2 {
+    color: #60A5FA;
+}
+
+
+html.dark-mode .funfacts p {
+    color: #D1D5DB;
+}
+
+
+/* =====================================
+   DARK MODE - EDIT MODAL
+===================================== */
+
+html.dark-mode .edit-modal {
+    background: #1E293B;
+}
+
+
+html.dark-mode .edit-modal h2 {
+    color: #E2E8F0;
+}
+
+
+/* =====================================
+   DARK MODE - TEXTAREA
+===================================== */
+
+html.dark-mode .edit-modal textarea {
+    background: #111827;
+    color: #D1D5DB;
+    border-color: #475569;
+}
+
+
+html.dark-mode .edit-modal textarea::placeholder {
+    color: #94A3B8;
+}
+
+
+/* =====================================
+   DARK MODE - SAVE BUTTON
+===================================== */
+
+html.dark-mode .save-btn {
+    background: #60A5FA;
+    color: #172554;
+}
+
+
+html.dark-mode .save-btn:hover {
+    background: #93C5FD;
+    color: #172554;
+}
+
+
+/* =====================================
+   DARK MODE - CANCEL BUTTON
+===================================== */
+
+html.dark-mode .cancel-btn {
+    background: #dc3545;
+}
+
+
+html.dark-mode .cancel-btn:hover {
+    background: #b52a37;
+}
+
+
+/* =====================================
    TABLET RESPONSIVE
 ===================================== */
 
 @media (max-width: 850px) {
 
     .about-section {
-        margin-top: 60px;
-        padding: 70px 20px 60px;
+        margin-top: 0;
+        padding: 0 20px 60px;
     }
 
 
@@ -373,8 +538,8 @@
 @media (max-width: 500px) {
 
     .about-section {
-        margin-top: 50px;
-        padding: 60px 15px 50px;
+        margin-top: 0;
+        padding: 0 15px 50px;
     }
 
 
@@ -421,7 +586,7 @@
 
 
     /* =================================
-       ABOUT TEXT MOBILE
+       ABOUT TEXT
     ================================= */
 
     .about-text p {
@@ -480,8 +645,8 @@
 @media (max-width: 360px) {
 
     .about-section {
-        margin-top: 40px;
-        padding: 50px 10px 45px;
+        margin-top: 0;
+        padding: 0 10px 45px;
     }
 
 
