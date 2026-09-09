@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +25,18 @@
 <div class="container">
 
 
-<div class="logo">
+<!-- DARK / LIGHT MODE LOGO -->
 
-<a href="index.html">
+<div class="logo theme-toggle" id="themeToggle">
 
-<img src="logo.png" alt="Logo">
+<img
+id="themeLogo"
+src="logo.png"
+alt="Light Mode Logo">
 
-</a>
+<span id="themeLabel">
+Light Mode
+</span>
 
 </div>
 
@@ -470,6 +476,11 @@ document.querySelector(".menu-toggle")
 <!-- ABOUT JS -->
 
 <script src="about.js"></script>
+
+
+<!-- DARK MODE JS -->
+
+<script src="darkmode.js"></script>
 
 
 </body>
