@@ -16,7 +16,9 @@
 
 </head>
 
+
 <body>
+
 
 <!-- =========================
      HEADER
@@ -26,25 +28,43 @@
 
 <div class="container">
 
-<div class="logo">
 
-<a href="index.html">
+<!-- =========================
+     DARK / LIGHT MODE
+========================= -->
 
-<img src="logo.png" alt="Logo">
+<div class="logo theme-toggle" id="themeToggle">
 
-</a>
+<img
+id="themeLogo"
+src="logo.png"
+alt="Theme Toggle">
+
+<span id="themeLabel">
+Light Mode
+</span>
+
+</div>
+
+
+<!-- =========================
+     MOBILE MENU
+========================= -->
+
+<div
+class="menu-toggle"
+onclick="toggleMenu(this)">
+
+<span></span>
+<span></span>
+<span></span>
 
 </div>
 
-<div class="menu-toggle" onclick="toggleMenu(this)">
 
-<span></span>
-
-<span></span>
-
-<span></span>
-
-</div>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -100,6 +120,8 @@ Contact
 
 </header>
 
+
+
 <!-- =========================
      GALLERY SECTION
 ========================= -->
@@ -108,8 +130,9 @@ Contact
 
 <div class="gallery-container">
 
+
 <!-- =========================
-     TITLE
+     SIDEBAR
 ========================= -->
 
 <div class="gallery-sidebar">
@@ -121,6 +144,7 @@ Gallery
 <p>
 Explore my creative works and designs.
 </p>
+
 
 <!-- =========================
      CATEGORY DROPDOWN
@@ -143,9 +167,11 @@ All Categories
 
 </button>
 
+
 <div
 class="category-dropdown-menu"
 id="categoryDropdownMenu">
+
 
 <button
 class="category-option active"
@@ -156,6 +182,7 @@ All Categories
 
 </button>
 
+
 <button
 class="category-option"
 data-category="poster"
@@ -164,6 +191,7 @@ type="button">
 Poster
 
 </button>
+
 
 <button
 class="category-option"
@@ -174,6 +202,7 @@ UI/UX Design
 
 </button>
 
+
 <button
 class="category-option"
 data-category="graphic"
@@ -182,6 +211,7 @@ type="button">
 Graphic Design
 
 </button>
+
 
 <button
 class="category-option"
@@ -192,6 +222,7 @@ Photo Editing
 
 </button>
 
+
 <button
 class="category-option"
 data-category="video"
@@ -200,6 +231,7 @@ type="button">
 Video Editing
 
 </button>
+
 
 <button
 class="category-option"
@@ -210,6 +242,7 @@ Digital Art
 
 </button>
 
+
 <button
 class="category-option"
 data-category="drawing"
@@ -218,6 +251,7 @@ type="button">
 Drawing
 
 </button>
+
 
 <button
 class="category-option"
@@ -228,17 +262,17 @@ Other
 
 </button>
 
-</div>
 
 </div>
 
 </div>
+
+</div>
+
+
 
 <!-- =========================
-     GALLERY GRID
-     
-     NEWEST IMAGE = FIRST
-     OLDEST IMAGE = LAST
+     GALLERY CONTENT
 ========================= -->
 
 <div class="gallery-content">
@@ -247,14 +281,11 @@ Other
 class="gallery-grid"
 id="galleryGrid">
 
-<!-- =================================================
-     NEWEST
-     
-     Kapag may bagong image:
-     ILAGAY ITO SA PINAKA-UNAHAN
-================================================= -->
 
-<!-- NEWEST #1 -->
+<!-- =========================
+     DRAWINGS
+========================= -->
+
 <div
 class="gallery-item"
 data-category="drawing">
@@ -276,17 +307,6 @@ alt="Rain Drawing">
 
 </div>
 
-<div
-class="gallery-item"
-data-category="graphic">
-
-<img
-src="LYkha.png"
-alt="LYkha Graphic Design">
-
-</div>
-
-<!-- NEWEST #2 -->
 
 <div
 class="gallery-item"
@@ -298,7 +318,6 @@ alt="Candle Drawing">
 
 </div>
 
-<!-- NEWEST #3 -->
 
 <div
 class="gallery-item"
@@ -310,49 +329,22 @@ alt="Chain Drawing">
 
 </div>
 
-<!-- =================================================
-     PREVIOUS IMAGES
-================================================= -->
+
+
+<!-- =========================
+     GRAPHIC DESIGN
+========================= -->
 
 <div
 class="gallery-item"
-data-category="poster">
+data-category="graphic">
 
 <img
-src="sonic.png"
-alt="Sonic Poster">
+src="LYkha.png"
+alt="LYkha Graphic Design">
 
 </div>
 
-<div
-class="gallery-item"
-data-category="poster">
-
-<img
-src="mundo.png"
-alt="Mundo Poster">
-
-</div>
-
-<div
-class="gallery-item"
-data-category="poster">
-
-<img
-src="usok.png"
-alt="Usok Poster">
-
-</div>
-
-<div
-class="gallery-item"
-data-category="other">
-
-<img
-src="ocean.png"
-alt="Ocean">
-
-</div>
 
 <div
 class="gallery-item"
@@ -364,15 +356,6 @@ alt="Graphic Design with Canva">
 
 </div>
 
-<div
-class="gallery-item"
-data-category="other">
-
-<img
-src="dont.png"
-alt="Don't">
-
-</div>
 
 <div
 class="gallery-item"
@@ -384,6 +367,45 @@ alt="Graphic Design">
 
 </div>
 
+
+
+<!-- =========================
+     POSTERS
+========================= -->
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="sonic.png"
+alt="Sonic Poster">
+
+</div>
+
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="mundo.png"
+alt="Mundo Poster">
+
+</div>
+
+
+<div
+class="gallery-item"
+data-category="poster">
+
+<img
+src="usok.png"
+alt="Usok Poster">
+
+</div>
+
+
 <div
 class="gallery-item"
 data-category="poster">
@@ -393,6 +415,7 @@ src="printing.png"
 alt="Printing Poster">
 
 </div>
+
 
 <div
 class="gallery-item"
@@ -404,6 +427,7 @@ alt="Grow Poster">
 
 </div>
 
+
 <div
 class="gallery-item"
 data-category="poster">
@@ -414,6 +438,34 @@ alt="Xiety Poster">
 
 </div>
 
+
+
+<!-- =========================
+     OTHER
+========================= -->
+
+<div
+class="gallery-item"
+data-category="other">
+
+<img
+src="ocean.png"
+alt="Ocean">
+
+</div>
+
+
+<div
+class="gallery-item"
+data-category="other">
+
+<img
+src="dont.png"
+alt="Don't">
+
+</div>
+
+
 </div>
 
 </div>
@@ -422,54 +474,7 @@ alt="Xiety Poster">
 
 </section>
 
-<!-- =========================
-     FOOTER
-========================= -->
 
-<footer>
-
-<div class="container footer-container">
-
-<p>
-
-© 2026 Loyd Ywen Masangcay. All rights reserved.
-
-</p>
-
-<div class="social-links">
-
-<a
-href="https://www.facebook.com/LoydieeWen"
-target="_blank"
-rel="noopener noreferrer">
-
-Facebook
-
-</a>
-
-<a
-href="https://www.instagram.com/ywen_masangcay"
-target="_blank"
-rel="noopener noreferrer">
-
-Instagram
-
-</a>
-
-<a
-href="https://www.tiktok.com/@wehn_26"
-target="_blank"
-rel="noopener noreferrer">
-
-TikTok
-
-</a>
-
-</div>
-
-</div>
-
-</footer>
 
 <!-- =========================
      IMAGE PREVIEW
@@ -487,8 +492,62 @@ alt="Gallery Preview">
 
 </div>
 
+
+
 <!-- =========================
-     JAVASCRIPT
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="container footer-container">
+
+<p>
+© 2026 Loyd Ywen Masangcay. All rights reserved.
+</p>
+
+
+<div class="social-links">
+
+<a
+href="https://www.facebook.com/LoydieeWen"
+target="_blank"
+rel="noopener noreferrer">
+
+Facebook
+
+</a>
+
+
+<a
+href="https://www.instagram.com/ywen_masangcay"
+target="_blank"
+rel="noopener noreferrer">
+
+Instagram
+
+</a>
+
+
+<a
+href="https://www.tiktok.com/@wehn_26"
+target="_blank"
+rel="noopener noreferrer">
+
+TikTok
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =========================
+     GALLERY JAVASCRIPT
 ========================= -->
 
 <script>
@@ -503,9 +562,7 @@ function toggleMenu(menu) {
 const nav =
 document.querySelector("header nav");
 
-
 nav.classList.toggle("show");
-
 
 menu.classList.toggle("active");
 
@@ -516,23 +573,17 @@ document
 .querySelectorAll("nav ul li a")
 .forEach(function(link) {
 
-
 link.addEventListener("click", function() {
-
 
 const nav =
 document.querySelector("header nav");
 
-
 const menu =
 document.querySelector(".menu-toggle");
 
-
 nav.classList.remove("show");
 
-
 menu.classList.remove("active");
-
 
 });
 
@@ -545,39 +596,40 @@ menu.classList.remove("active");
 ========================= */
 
 const dropdownButton =
-document.getElementById("categoryDropdownBtn");
-
+document.getElementById(
+"categoryDropdownBtn"
+);
 
 const dropdownMenu =
-document.getElementById("categoryDropdownMenu");
-
+document.getElementById(
+"categoryDropdownMenu"
+);
 
 const selectedCategory =
-document.getElementById("selectedCategory");
-
+document.getElementById(
+"selectedCategory"
+);
 
 const options =
-document.querySelectorAll(".category-option");
-
+document.querySelectorAll(
+".category-option"
+);
 
 const galleryItems =
-document.querySelectorAll(".gallery-item");
-
+document.querySelectorAll(
+".gallery-item"
+);
 
 
 dropdownButton.addEventListener(
 "click",
 function(event) {
 
-
 event.stopPropagation();
-
 
 dropdownMenu.classList.toggle("show");
 
-
 dropdownButton.classList.toggle("open");
-
 
 });
 
@@ -589,52 +641,50 @@ dropdownButton.classList.toggle("open");
 
 options.forEach(function(option) {
 
-
 option.addEventListener(
 "click",
 function(event) {
 
-
 event.stopPropagation();
 
-
 const category =
-this.getAttribute("data-category");
-
+this.getAttribute(
+"data-category"
+);
 
 
 options.forEach(function(item) {
 
-
-item.classList.remove("active");
-
+item.classList.remove(
+"active"
+);
 
 });
 
 
-
 this.classList.add("active");
-
 
 
 selectedCategory.textContent =
 this.textContent.trim();
 
 
+dropdownMenu.classList.remove(
+"show"
+);
 
-dropdownMenu.classList.remove("show");
+dropdownButton.classList.remove(
+"open"
+);
 
 
-dropdownButton.classList.remove("open");
-
-
-
-galleryItems.forEach(function(item) {
-
+galleryItems.forEach(
+function(item) {
 
 const itemCategory =
-item.getAttribute("data-category");
-
+item.getAttribute(
+"data-category"
+);
 
 
 if (
@@ -642,18 +692,13 @@ category === "all" ||
 itemCategory === category
 ) {
 
-
 item.style.display = "";
-
 
 } else {
 
-
 item.style.display = "none";
 
-
 }
-
 
 });
 
@@ -671,18 +716,22 @@ document.addEventListener(
 "click",
 function(event) {
 
-
 if (
-!dropdownButton.contains(event.target) &&
-!dropdownMenu.contains(event.target)
+!dropdownButton.contains(
+event.target
+) &&
+!dropdownMenu.contains(
+event.target
+)
 ) {
 
+dropdownMenu.classList.remove(
+"show"
+);
 
-dropdownMenu.classList.remove("show");
-
-
-dropdownButton.classList.remove("open");
-
+dropdownButton.classList.remove(
+"open"
+);
 
 }
 
@@ -695,50 +744,48 @@ dropdownButton.classList.remove("open");
 ========================= */
 
 const galleryGrid =
-document.getElementById("galleryGrid");
-
+document.getElementById(
+"galleryGrid"
+);
 
 const galleryOverlay =
-document.getElementById("galleryOverlay");
-
+document.getElementById(
+"galleryOverlay"
+);
 
 const galleryPreview =
-document.getElementById("galleryPreview");
-
+document.getElementById(
+"galleryPreview"
+);
 
 
 galleryGrid.addEventListener(
 "click",
 function(event) {
 
-
 const image =
-event.target.closest(".gallery-item img");
-
+event.target.closest(
+".gallery-item img"
+);
 
 
 if (!image) {
 
-
 return;
 
-
 }
-
 
 
 galleryPreview.src =
 image.src;
 
-
-
 galleryPreview.alt =
 image.alt;
 
 
-
-galleryOverlay.classList.add("show");
-
+galleryOverlay.classList.add(
+"show"
+);
 
 });
 
@@ -746,43 +793,35 @@ galleryOverlay.classList.add("show");
 
 /* =========================
    CLOSE PREVIEW
-   CLICK IMAGE AGAIN
 ========================= */
 
 galleryPreview.addEventListener(
 "click",
 function() {
 
-
-galleryOverlay.classList.remove("show");
-
+galleryOverlay.classList.remove(
+"show"
+);
 
 galleryPreview.src = "";
-
 
 });
 
 
 
-/* =========================
-   CLOSE OUTSIDE
-========================= */
-
 galleryOverlay.addEventListener(
 "click",
 function(event) {
-
 
 if (
 event.target === galleryOverlay
 ) {
 
-
-galleryOverlay.classList.remove("show");
-
+galleryOverlay.classList.remove(
+"show"
+);
 
 galleryPreview.src = "";
-
 
 }
 
@@ -798,21 +837,28 @@ document.addEventListener(
 "keydown",
 function(event) {
 
-
 if (event.key === "Escape") {
 
-
-galleryOverlay.classList.remove("show");
-
+galleryOverlay.classList.remove(
+"show"
+);
 
 galleryPreview.src = "";
-
 
 }
 
 });
 
 </script>
+
+
+
+<!-- =========================
+     DARK MODE SCRIPT
+========================= -->
+
+<script src="darkmode.js"></script>
+
 
 </body>
 
