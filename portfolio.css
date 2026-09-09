@@ -1,3 +1,5 @@
+
+
 /* =========================
    PORTFOLIO PAGE
 ========================= */
@@ -134,7 +136,9 @@
 
 .project-container{
 
-    max-width:1100px;
+    width:100%;
+
+    max-width:750px;
 
     margin:auto;
 
@@ -142,7 +146,7 @@
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:30px;
+    gap:15px;
 
 }
 
@@ -154,13 +158,15 @@
 
 .project-card{
 
+    width:100%;
+
     background:#E3E9E7;
 
-    border-radius:15px;
+    border-radius:12px;
 
     overflow:hidden;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.1);
+    box-shadow:0 6px 18px rgba(0,0,0,.1);
 
     transition:.3s;
 
@@ -169,9 +175,9 @@
 
 .project-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-6px);
 
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    box-shadow:0 12px 28px rgba(0,0,0,.15);
 
 }
 
@@ -188,7 +194,7 @@
 
     height:auto;
 
-    aspect-ratio:4 / 5;
+    aspect-ratio:1 / 1;
 
     object-fit:contain;
 
@@ -208,7 +214,7 @@
 
 .project-content{
 
-    padding:25px;
+    padding:10px;
 
 }
 
@@ -217,9 +223,9 @@
 
     color:#008080;
 
-    font-size:24px;
+    font-size:16px;
 
-    margin:15px 0;
+    margin:5px 0 8px;
 
 }
 
@@ -228,9 +234,11 @@
 
     color:#555;
 
-    font-size:15px;
+    font-size:12px;
 
-    line-height:1.6;
+    line-height:1.4;
+
+    margin-bottom:8px;
 
 }
 
@@ -245,17 +253,17 @@
 
     display:inline-block;
 
-    padding:6px 14px;
+    padding:4px 8px;
 
     border-radius:20px;
 
-    font-size:12px;
+    font-size:10px;
 
     font-weight:bold;
 
-    margin-right:5px;
+    margin-right:3px;
 
-    margin-bottom:10px;
+    margin-bottom:6px;
 
 }
 
@@ -285,9 +293,9 @@
 
 .tools-used{
 
-    margin-top:15px;
+    margin-top:8px;
 
-    font-size:14px;
+    font-size:12px;
 
     color:#333;
 
@@ -305,11 +313,11 @@
 
     display:flex;
 
-    gap:10px;
+    gap:5px;
 
     flex-wrap:wrap;
 
-    margin-top:20px;
+    margin-top:10px;
 
 }
 
@@ -320,13 +328,13 @@
 
     color:white;
 
-    padding:10px 15px;
+    padding:7px 10px;
 
     border-radius:20px;
 
     text-decoration:none;
 
-    font-size:14px;
+    font-size:11px;
 
 }
 
@@ -339,11 +347,13 @@
 
     border:none;
 
-    padding:10px 15px;
+    padding:7px 10px;
 
     border-radius:20px;
 
     cursor:pointer;
+
+    font-size:11px;
 
 }
 
@@ -356,11 +366,13 @@
 
     border:none;
 
-    padding:10px 15px;
+    padding:7px 10px;
 
     border-radius:20px;
 
     cursor:pointer;
+
+    font-size:11px;
 
 }
 
@@ -985,7 +997,11 @@ footer{
 
     .project-container{
 
+        max-width:650px;
+
         grid-template-columns:repeat(2,1fr);
+
+        gap:18px;
 
     }
 
@@ -1066,6 +1082,8 @@ footer{
     .project-container{
 
         grid-template-columns:1fr;
+
+        max-width:500px;
 
     }
 
@@ -1233,5 +1251,400 @@ footer{
         font-size:14px;
 
     }
+
+}
+
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+html.dark-mode .portfolio{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .portfolio-header h1{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .portfolio-header p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .add-project-btn{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .add-project-btn:hover{
+
+    background:#93C5FD;
+
+}
+
+
+html.dark-mode .project-card{
+
+    background:#1E293B;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.35);
+
+}
+
+
+html.dark-mode .project-card:hover{
+
+    box-shadow:0 12px 28px rgba(0,0,0,.45);
+
+}
+
+
+html.dark-mode .project-card img{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-content h2{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-content p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .category{
+
+    background:#D4AA00;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode .status{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .tools-used{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .view-btn{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .edit-btn{
+
+    background:#D4AA00;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode .delete-btn{
+
+    background:#D9534F;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode #noProject{
+
+    color:#94A3B8;
+
+}
+
+
+html.dark-mode .project-box{
+
+    background:#1E293B;
+
+    color:#E2E8F0;
+
+}
+
+
+html.dark-mode .project-box h2{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-box label{
+
+    color:#E2E8F0;
+
+}
+
+
+html.dark-mode .project-box input,
+html.dark-mode .project-box textarea,
+html.dark-mode .project-box select{
+
+    background:#111827;
+
+    color:#D1D5DB;
+
+    border-color:#475569;
+
+}
+
+
+html.dark-mode .project-box input::placeholder,
+html.dark-mode .project-box textarea::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+html.dark-mode .project-box input:focus,
+html.dark-mode .project-box textarea:focus,
+html.dark-mode .project-box select:focus{
+
+    border-color:#60A5FA;
+
+}
+
+
+html.dark-mode .image-preview{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .save-btn{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .save-btn:hover{
+
+    background:#93C5FD;
+
+}
+
+
+html.dark-mode .cancel-btn{
+
+    background:#dc3545;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode .cancel-btn:hover{
+
+    background:#b52a37;
+
+}
+
+
+
+/* =====================================================
+   DARK MODE PROJECT PREVIEW
+===================================================== */
+
+html.dark-mode .project-preview-overlay{
+
+    background:rgba(0,0,0,.82);
+
+}
+
+
+html.dark-mode .project-preview-box{
+
+    background:#1E293B;
+
+    color:#E2E8F0;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.55);
+
+}
+
+
+html.dark-mode .project-preview-cover{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-preview-content h1{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-preview-description{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-preview-tools{
+
+    background:#111827;
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-preview-actions{
+
+    border-top-color:#334155;
+
+}
+
+
+
+/* =====================================================
+   DARK MODE PHOTO STRIP
+===================================================== */
+
+html.dark-mode .photo-strip-section{
+
+    border-top-color:#334155;
+
+}
+
+
+html.dark-mode .photo-strip-section h2{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .photo-strip-intro{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .photo-strip-item{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .photo-strip-number{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .photo-strip-image{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .photo-strip-item h3{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .photo-strip-item p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .close-preview-btn{
+
+    background:#475569;
+
+    color:#FFFFFF;
+
+}
+
+
+
+/* =====================================================
+   DARK MODE SCROLLBARS
+===================================================== */
+
+html.dark-mode .project-box::-webkit-scrollbar,
+html.dark-mode .project-preview-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+html.dark-mode .project-box::-webkit-scrollbar-track,
+html.dark-mode .project-preview-box::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-box::-webkit-scrollbar-thumb,
+html.dark-mode .project-preview-box::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:10px;
 
 }
