@@ -1,8 +1,8 @@
 
 
-/* =========================
+/* =====================================================
    PORTFOLIO PAGE
-========================= */
+===================================================== */
 
 .portfolio{
 
@@ -15,10 +15,9 @@
 }
 
 
-
-/* =========================
-   HEADER SECTION
-========================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .portfolio-header{
 
@@ -50,10 +49,6 @@
 }
 
 
-/* =========================
-   PORTFOLIO TITLE
-========================= */
-
 .portfolio-header h1{
 
     font-family:'Playfair Display', serif;
@@ -62,7 +57,7 @@
 
     color:#008080;
 
-    margin-bottom:10px;
+    margin:0 0 10px;
 
     font-weight:800;
 
@@ -70,10 +65,6 @@
 
 }
 
-
-/* =========================
-   PORTFOLIO SUBTITLE
-========================= */
 
 .portfolio-header p{
 
@@ -85,21 +76,26 @@
 
     font-weight:500;
 
-    letter-spacing:0.3px;
+    letter-spacing:.3px;
+
+    margin:0;
 
 }
 
 
-
-/* =========================
-   ADD BUTTON
-========================= */
+/* =====================================================
+   ADD PROJECT BUTTON
+===================================================== */
 
 .add-project-btn{
 
     position:absolute;
 
     right:0;
+
+    top:50%;
+
+    transform:translateY(-50%);
 
     background:#008080;
 
@@ -124,15 +120,14 @@
 
     background:#00b3b3;
 
-    transform:translateY(-3px);
+    transform:translateY(-50%) translateY(-3px);
 
 }
 
 
-
-/* =========================
+/* =====================================================
    PROJECT GRID
-========================= */
+===================================================== */
 
 .project-container{
 
@@ -151,10 +146,9 @@
 }
 
 
-
-/* =========================
-   CARD
-========================= */
+/* =====================================================
+   PROJECT CARD
+===================================================== */
 
 .project-card{
 
@@ -170,6 +164,8 @@
 
     transition:.3s;
 
+    cursor:pointer;
+
 }
 
 
@@ -182,11 +178,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    PROJECT CARD IMAGE
-   FULL IMAGE / NO CROPPING
-========================= */
+===================================================== */
 
 .project-card img{
 
@@ -207,10 +201,9 @@
 }
 
 
-
-/* =========================
-   CONTENT
-========================= */
+/* =====================================================
+   PROJECT CONTENT
+===================================================== */
 
 .project-content{
 
@@ -238,15 +231,25 @@
 
     line-height:1.4;
 
-    margin-bottom:8px;
+    margin:0 0 8px;
 
 }
 
 
-
-/* =========================
+/* =====================================================
    BADGES
-========================= */
+===================================================== */
+
+.project-labels{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:3px;
+
+}
+
 
 .category,
 .status{
@@ -261,9 +264,7 @@
 
     font-weight:bold;
 
-    margin-right:3px;
-
-    margin-bottom:6px;
+    margin:0;
 
 }
 
@@ -286,10 +287,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    TOOLS
-========================= */
+===================================================== */
 
 .tools-used{
 
@@ -304,10 +304,9 @@
 }
 
 
-
-/* =========================
-   BUTTONS
-========================= */
+/* =====================================================
+   PROJECT BUTTONS
+===================================================== */
 
 .project-buttons{
 
@@ -336,6 +335,8 @@
 
     font-size:11px;
 
+    transition:.3s;
+
 }
 
 
@@ -354,6 +355,8 @@
     cursor:pointer;
 
     font-size:11px;
+
+    transition:.3s;
 
 }
 
@@ -374,6 +377,8 @@
 
     font-size:11px;
 
+    transition:.3s;
+
 }
 
 
@@ -386,10 +391,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    NO PROJECT
-========================= */
+===================================================== */
 
 #noProject{
 
@@ -404,10 +408,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    ADD / EDIT MODAL
-========================= */
+===================================================== */
 
 .project-modal{
 
@@ -415,9 +418,7 @@
 
     position:fixed;
 
-    top:0;
-
-    left:0;
+    inset:0;
 
     width:100%;
 
@@ -433,6 +434,8 @@
 
     padding:20px;
 
+    box-sizing:border-box;
+
 }
 
 
@@ -442,6 +445,8 @@
 
     width:500px;
 
+    max-width:100%;
+
     max-height:90vh;
 
     overflow-y:auto;
@@ -450,6 +455,8 @@
 
     border-radius:15px;
 
+    box-sizing:border-box;
+
 }
 
 
@@ -457,7 +464,7 @@
 
     color:#008080;
 
-    margin-bottom:20px;
+    margin:0 0 20px;
 
 }
 
@@ -491,6 +498,8 @@
 
     background:#D6DEDC;
 
+    box-sizing:border-box;
+
 }
 
 
@@ -503,10 +512,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    IMAGE PREVIEW
-========================= */
+===================================================== */
 
 .image-preview{
 
@@ -530,10 +538,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    MODAL BUTTONS
-========================= */
+===================================================== */
 
 .modal-buttons{
 
@@ -580,9 +587,8 @@
 }
 
 
-
 /* =====================================================
-   PROJECT PREVIEW
+   PROJECT PREVIEW OVERLAY
 ===================================================== */
 
 .project-preview-overlay{
@@ -590,6 +596,10 @@
     position:fixed;
 
     inset:0;
+
+    width:100%;
+
+    height:100%;
 
     background:rgba(0,0,0,.75);
 
@@ -605,14 +615,18 @@
 
     overflow-y:auto;
 
+    box-sizing:border-box;
+
 }
 
+
+/* =====================================================
+   PROJECT PREVIEW BOX
+===================================================== */
 
 .project-preview-box{
 
     position:relative;
-
-    background:#E3E9E7;
 
     width:100%;
 
@@ -622,12 +636,18 @@
 
     overflow-y:auto;
 
+    background:#E3E9E7;
+
     border-radius:20px;
 
     box-shadow:0 20px 60px rgba(0,0,0,.35);
 
 }
 
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
 
 .project-preview-close{
 
@@ -660,10 +680,8 @@
 }
 
 
-
 /* =====================================================
-   PROJECT PREVIEW COVER
-   SMALL + FULL IMAGE
+   PREVIEW COVER
 ===================================================== */
 
 .project-preview-cover{
@@ -689,16 +707,28 @@
 }
 
 
+/* =====================================================
+   PREVIEW CONTENT
+===================================================== */
+
 .project-preview-content{
 
     padding:35px;
+
+    box-sizing:border-box;
 
 }
 
 
 .project-preview-labels{
 
-    margin-bottom:10px;
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:3px;
+
+    margin:0 0 10px;
 
 }
 
@@ -722,7 +752,9 @@
 
     font-size:16px;
 
-    line-height:1.8;
+    line-height:1.7;
+
+    margin:0;
 
 }
 
@@ -742,18 +774,458 @@
 }
 
 
+/* =====================================================
+   IMPORTANT GLOBAL SECTION RESET
+   Prevent style.css section rules from affecting
+   sections created inside the project preview.
+===================================================== */
+
+.project-preview-box section{
+
+    width:100% !important;
+
+    max-width:none !important;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    padding:0 !important;
+
+    margin:0 !important;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   EXTRA PROJECT CONTENT
+===================================================== */
+
+.project-extra-content{
+
+    width:100%;
+
+    margin:22px 0 0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   EXTRA PROJECT SECTION
+===================================================== */
+
+.project-preview-box .project-extra-section{
+
+    display:block !important;
+
+    width:100% !important;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    margin:0 0 18px !important;
+
+    padding:18px !important;
+
+    background:#F4F6F5;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:14px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-preview-box .project-extra-section:last-child{
+
+    margin-bottom:0 !important;
+
+}
+
+
+/* =====================================================
+   EXTRA SECTION TITLE
+===================================================== */
+
+.project-preview-box .project-extra-title{
+
+    display:block;
+
+    width:100%;
+
+    margin:0 0 14px !important;
+
+    padding:0;
+
+    color:#008080;
+
+    font-family:'Raleway',sans-serif;
+
+    font-size:22px;
+
+    line-height:1.25;
+
+    text-align:left;
+
+}
+
+
+/* =====================================================
+   PROJECT HIGHLIGHTS
+===================================================== */
+
+.project-highlight-grid{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-highlight-card{
+
+    display:flex !important;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    width:100%;
+
+    min-width:0;
+
+    min-height:90px !important;
+
+    height:auto !important;
+
+    margin:0 !important;
+
+    padding:13px !important;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:11px;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT ICON
+===================================================== */
+
+.project-highlight-icon{
+
+    width:40px;
+
+    height:40px;
+
+    min-width:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0;
+
+    padding:0;
+
+    background:#D6DEDC;
+
+    border-radius:9px;
+
+    font-size:20px;
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT TEXT
+===================================================== */
+
+.project-highlight-text{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
+.project-highlight-card h3{
+
+    margin:0 0 4px !important;
+
+    padding:0;
+
+    color:#008080;
+
+    font-size:14px;
+
+    line-height:1.3;
+
+}
+
+
+.project-highlight-card p{
+
+    margin:0 !important;
+
+    padding:0;
+
+    color:#555;
+
+    font-size:12px;
+
+    line-height:1.45;
+
+}
+
+
+/* =====================================================
+   KEY FEATURES
+===================================================== */
+
+.project-feature-list{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:9px;
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-feature-item{
+
+    display:flex !important;
+
+    align-items:center;
+
+    gap:9px;
+
+    width:100%;
+
+    min-width:0;
+
+    min-height:42px !important;
+
+    height:auto !important;
+
+    margin:0 !important;
+
+    padding:9px 11px !important;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:9px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-feature-item > span{
+
+    width:24px;
+
+    height:24px;
+
+    min-width:24px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0;
+
+    padding:0;
+
+    background:#008080;
+
+    color:white;
+
+    border-radius:50%;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+
+.project-feature-item p{
+
+    margin:0 !important;
+
+    padding:0;
+
+    color:#555;
+
+    font-size:12px;
+
+    line-height:1.35;
+
+}
+
+
+/* =====================================================
+   DESIGN CONCEPT
+===================================================== */
+
+.project-concept-box{
+
+    display:block;
+
+    width:100%;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    margin:0;
+
+    padding:14px 16px;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-left:4px solid #008080;
+
+    border-radius:9px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-concept-box p{
+
+    margin:0 !important;
+
+    padding:0;
+
+    color:#555;
+
+    font-size:13px;
+
+    line-height:1.55;
+
+}
+
+
+/* =====================================================
+   MY ROLE
+===================================================== */
+
+.project-role-list{
+
+    display:flex !important;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-role-list span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    width:auto;
+
+    min-height:0;
+
+    margin:0 !important;
+
+    padding:7px 11px;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:20px;
+
+    color:#555;
+
+    font-size:12px;
+
+}
+
 
 /* =====================================================
    PHOTO STRIP SECTION
 ===================================================== */
 
-.photo-strip-section{
+.project-preview-box .photo-strip-section{
 
-    margin-top:40px;
+    width:100% !important;
 
-    padding-top:30px;
+    min-height:0 !important;
 
-    border-top:2px solid #cbd5d2;
+    height:auto !important;
+
+    margin:25px 0 0 !important;
+
+    padding:25px 0 0 !important;
+
+    border-top:2px solid #CBD5D2;
+
+    box-sizing:border-box;
 
 }
 
@@ -764,7 +1236,7 @@
 
     font-size:28px;
 
-    margin-bottom:8px;
+    margin:0 0 8px;
 
 }
 
@@ -775,17 +1247,16 @@
 
     font-size:15px;
 
-    margin-bottom:25px;
+    margin:0 0 25px;
 
     line-height:1.6;
 
 }
 
 
-
-/* =========================
+/* =====================================================
    PHOTO STRIP GRID
-========================= */
+===================================================== */
 
 .photo-strip-grid{
 
@@ -798,10 +1269,9 @@
 }
 
 
-
-/* =========================
-   PHOTO STRIP ITEM
-========================= */
+/* =====================================================
+   PHOTO STRIP CARD
+===================================================== */
 
 .photo-strip-item{
 
@@ -813,17 +1283,18 @@
 
     text-align:center;
 
-    border:1px solid #cbd5d2;
+    border:1px solid #CBD5D2;
 
     overflow:hidden;
+
+    box-sizing:border-box;
 
 }
 
 
-
-/* =========================
+/* =====================================================
    PHOTO STRIP NUMBER
-========================= */
+===================================================== */
 
 .photo-strip-number{
 
@@ -852,10 +1323,8 @@
 }
 
 
-
 /* =====================================================
-   IMPORTANT:
-   SHOW THE WHOLE PHOTO STRIP
+   PHOTO STRIP IMAGE
 ===================================================== */
 
 .photo-strip-image{
@@ -876,13 +1345,14 @@
 
     padding:5px;
 
+    box-sizing:border-box;
+
 }
 
 
-
-/* =========================
+/* =====================================================
    PHOTO STRIP TITLE
-========================= */
+===================================================== */
 
 .photo-strip-item h3{
 
@@ -897,11 +1367,6 @@
 }
 
 
-
-/* =========================
-   PHOTO STRIP DESCRIPTION
-========================= */
-
 .photo-strip-item p{
 
     color:#555;
@@ -915,10 +1380,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    PREVIEW ACTIONS
-========================= */
+===================================================== */
 
 .project-preview-actions{
 
@@ -932,7 +1396,7 @@
 
     padding-top:25px;
 
-    border-top:1px solid #cbd5d2;
+    border-top:1px solid #CBD5D2;
 
 }
 
@@ -961,10 +1425,9 @@
 }
 
 
-
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
 
@@ -981,9 +1444,8 @@ footer{
 }
 
 
-
 /* =====================================================
-   RESPONSIVE
+   TABLET
 ===================================================== */
 
 @media(max-width:900px){
@@ -1022,9 +1484,8 @@ footer{
 }
 
 
-
 /* =====================================================
-   TABLET
+   MOBILE
 ===================================================== */
 
 @media(max-width:768px){
@@ -1076,6 +1537,15 @@ footer{
 
         position:static;
 
+        transform:none;
+
+    }
+
+
+    .add-project-btn:hover{
+
+        transform:translateY(-2px);
+
     }
 
 
@@ -1093,7 +1563,6 @@ footer{
         width:100%;
 
     }
-
 
 
     /* =========================
@@ -1153,10 +1622,75 @@ footer{
     }
 
 
+    /* =========================
+       EXTRA CONTENT
+    ========================= */
+
+    .project-preview-box .project-extra-section{
+
+        margin-bottom:14px !important;
+
+        padding:14px !important;
+
+    }
+
+
+    .project-preview-box .project-extra-title{
+
+        font-size:20px;
+
+        margin-bottom:11px !important;
+
+    }
+
+
+    /* =========================
+       HIGHLIGHTS
+    ========================= */
+
+    .project-highlight-grid{
+
+        grid-template-columns:1fr;
+
+        gap:9px;
+
+    }
+
+
+    .project-highlight-card{
+
+        min-height:0 !important;
+
+        padding:12px !important;
+
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .project-feature-list{
+
+        grid-template-columns:1fr;
+
+        gap:8px;
+
+    }
+
 
     /* =========================
        PHOTO STRIPS
     ========================= */
+
+    .project-preview-box .photo-strip-section{
+
+        margin-top:22px !important;
+
+        padding-top:22px !important;
+
+    }
+
 
     .photo-strip-grid{
 
@@ -1191,7 +1725,6 @@ footer{
 }
 
 
-
 /* =====================================================
    SMALL MOBILE
 ===================================================== */
@@ -1220,8 +1753,106 @@ footer{
 
     }
 
-}
 
+    .project-content{
+
+        padding:12px;
+
+    }
+
+
+    .project-preview-content{
+
+        padding:20px 15px;
+
+    }
+
+
+    .project-preview-content h1{
+
+        font-size:25px;
+
+    }
+
+
+    .project-preview-description{
+
+        font-size:14px;
+
+    }
+
+
+    .project-preview-tools{
+
+        font-size:13px;
+
+    }
+
+
+    .project-preview-box .project-extra-section{
+
+        padding:12px !important;
+
+    }
+
+
+    .project-highlight-card{
+
+        gap:8px;
+
+    }
+
+
+    .project-highlight-icon{
+
+        width:36px;
+
+        height:36px;
+
+        min-width:36px;
+
+        font-size:18px;
+
+    }
+
+
+    .project-highlight-card h3{
+
+        font-size:14px;
+
+    }
+
+
+    .project-highlight-card p{
+
+        font-size:12px;
+
+    }
+
+
+    .project-feature-item p{
+
+        font-size:12px;
+
+    }
+
+
+    .project-concept-box p{
+
+        font-size:13px;
+
+    }
+
+
+    .project-role-list span{
+
+        font-size:12px;
+
+        padding:7px 10px;
+
+    }
+
+}
 
 
 /* =====================================================
@@ -1252,8 +1883,42 @@ footer{
 
     }
 
-}
 
+    .project-preview-overlay{
+
+        padding:10px;
+
+    }
+
+
+    .project-preview-box{
+
+        border-radius:13px;
+
+    }
+
+
+    .project-preview-content{
+
+        padding:18px 12px 20px;
+
+    }
+
+
+    .project-preview-content h1{
+
+        font-size:23px;
+
+    }
+
+
+    .project-preview-box .project-extra-section{
+
+        padding:11px !important;
+
+    }
+
+}
 
 
 /* =====================================================
@@ -1393,6 +2058,10 @@ html.dark-mode #noProject{
 }
 
 
+/* =====================================================
+   DARK MODE MODAL
+===================================================== */
+
 html.dark-mode .project-box{
 
     background:#1E293B;
@@ -1446,13 +2115,6 @@ html.dark-mode .project-box select:focus{
 }
 
 
-html.dark-mode .image-preview{
-
-    color:#D1D5DB;
-
-}
-
-
 html.dark-mode .save-btn{
 
     background:#60A5FA;
@@ -1483,7 +2145,6 @@ html.dark-mode .cancel-btn:hover{
     background:#b52a37;
 
 }
-
 
 
 /* =====================================================
@@ -1538,19 +2199,115 @@ html.dark-mode .project-preview-tools{
 }
 
 
-html.dark-mode .project-preview-actions{
+/* =====================================================
+   DARK MODE EXTRA SECTIONS
+===================================================== */
 
-    border-top-color:#334155;
+html.dark-mode .project-preview-box .project-extra-section{
+
+    background:#162235;
+
+    border-color:#334155;
 
 }
 
 
+html.dark-mode .project-preview-box .project-extra-title{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-highlight-card{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .project-highlight-icon{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-highlight-card h3{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-highlight-card p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-feature-item{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .project-feature-item > span{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .project-feature-item p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-concept-box{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+    border-left-color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-concept-box p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-role-list span{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+    color:#D1D5DB;
+
+}
+
 
 /* =====================================================
-   DARK MODE PHOTO STRIP
+   DARK MODE PHOTO STRIPS
 ===================================================== */
 
-html.dark-mode .photo-strip-section{
+html.dark-mode .project-preview-box .photo-strip-section{
 
     border-top-color:#334155;
 
@@ -1610,6 +2367,17 @@ html.dark-mode .photo-strip-item p{
 }
 
 
+/* =====================================================
+   DARK MODE ACTIONS
+===================================================== */
+
+html.dark-mode .project-preview-actions{
+
+    border-top-color:#334155;
+
+}
+
+
 html.dark-mode .close-preview-btn{
 
     background:#475569;
@@ -1619,15 +2387,24 @@ html.dark-mode .close-preview-btn{
 }
 
 
-
 /* =====================================================
-   DARK MODE SCROLLBARS
+   SCROLLBARS
 ===================================================== */
 
-html.dark-mode .project-box::-webkit-scrollbar,
-html.dark-mode .project-preview-box::-webkit-scrollbar{
+.project-box::-webkit-scrollbar,
+.project-preview-box::-webkit-scrollbar{
 
     width:8px;
+
+}
+
+
+.project-box::-webkit-scrollbar-thumb,
+.project-preview-box::-webkit-scrollbar-thumb{
+
+    background:#9BA9A5;
+
+    border-radius:10px;
 
 }
 
@@ -1644,7 +2421,5 @@ html.dark-mode .project-box::-webkit-scrollbar-thumb,
 html.dark-mode .project-preview-box::-webkit-scrollbar-thumb{
 
     background:#475569;
-
-    border-radius:10px;
 
 }
