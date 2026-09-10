@@ -1,21 +1,23 @@
+
 /* =========================================================
    BLOG.JS
-========================================================= */
+   ========================================================= */
 
 
 /* =========================================================
    BLOG DATA
-========================================================= */
+   ========================================================= */
 
-let blogs =
-    JSON.parse(localStorage.getItem("blogs")) || [];
-
+let blogs = [];
 let editingIndex = -1;
+
+let activeBlogCard = null;
+let blogClosing = false;
 
 
 /* =========================================================
    DEFAULT BLOGS
-========================================================= */
+   ========================================================= */
 
 const defaultBlogs = [
 
@@ -31,7 +33,8 @@ const defaultBlogs = [
         image: "com.jpg",
         featured: false,
 
-        content: `When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
+        content: `
+When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
 
 Sometimes, I edit posters and pictures. I enjoy choosing colors, fonts, images, and other elements to create a design that looks clean and visually appealing. There are times when I also edit videos, especially when I want to try something different from my usual designs. Even simple editing projects can be enjoyable because I get to explore new styles and techniques.
 
@@ -41,7 +44,8 @@ I also spend some of my free time working on this personal website. Creating the
 
 Most of the time, I do these activities while listening to music. Music makes the experience more enjoyable and helps me stay focused while I work. Sometimes I can spend a long time editing without noticing how much time has passed because I am enjoying both the music and the process of creating.
 
-For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.`
+For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.
+`
     },
 
 
@@ -57,7 +61,8 @@ For me, having free time does not always mean doing nothing. It can also be an o
         image: "leaves.jpg",
         featured: false,
 
-        content: `Spoken Word Poetry
+        content: `
+Spoken Word Poetry
 
 Alam mo... para sa akin, dalawa ang ibig sabihin ng linyang “Just Leaves.”
 
@@ -173,7 +178,7 @@ Minsan, sapat nang sabihin:
 
 At pagkatapos...
 
-ituloy ang kwento.
+it​​uloy ang kwento.
 
 🌱 May bagong dahon pagkatapos ng luma
 
@@ -205,7 +210,8 @@ may mas magandang dahon nang naghihintay.
 
 🌱 Just leave.
 
-📖 And then, let the story continue.`
+📖 And then, let the story continue.
+`
     },
 
 
@@ -221,7 +227,8 @@ may mas magandang dahon nang naghihintay.
         image: "profilepic.jpg",
         featured: true,
 
-        content: `June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
+        content: `
+June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
 
 After years of studying, completing projects, attending classes, working on requirements, taking examinations, preparing presentations, and facing different challenges, I finally reached one of the biggest milestones in my life — graduation.
 
@@ -231,295 +238,20 @@ During the graduation ceremony, I felt proud seeing myself wearing my graduation
 
 I am also thankful for my family, friends, classmates, instructors, and everyone who supported and encouraged me throughout my journey. Their support helped me continue even during difficult times.
 
-Graduation was not only about receiving a diploma. It was also a reminder of all the experiences and lessons that I gained during my college years.
+Graduation was not only about receiving a diploma. It was also a reminder of all the experiences and lessons that I gained during my college years. I learned how to manage my time, work with different people, solve problems, communicate my ideas, and become more responsible with my work.
 
-I learned how to manage my time, work with different people, solve problems, communicate my ideas, and become more responsible with my work.
+After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day. I wanted to visit him and somehow share this important achievement with him. Although he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
 
-After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day. I wanted to visit him and somehow share this important achievement with him.
+After visiting the cemetery, we went to eat together as a family. We spent some time talking, enjoying our meal, and celebrating the achievement together. It was a simple celebration, but it made the day even more memorable.
 
-Although he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
+After eating, we went home and finally ended the day. It was a simple ending to a very meaningful and unforgettable day.
 
-After visiting the cemetery, we went to eat together as a family. We spent some time talking, enjoying our meal, and celebrating the achievement together.
-
-It was a simple celebration, but it made the day even more memorable.
-
-After eating, we went home and finally ended the day.
-
-It was a simple ending to a very meaningful and unforgettable day.
-
-Graduation was not the end of my journey. It was the beginning of a new chapter in my life.
-
-As a BSIT graduate, I want to continue improving my skills in Graphic Design, Web Development, UI/UX Design, and Digital Creativity.
+Graduation was not the end of my journey. It was the beginning of a new chapter in my life. As a BSIT graduate, I want to continue improving my skills in Graphic Design, Web Development, UI/UX Design, and Digital Creativity.
 
 I hope to use everything I have learned to create meaningful projects, improve my skills, and build a successful career in the future.
 
-June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓`
-    },
-
-
-    /* =====================================================
-       THE PEOPLE I MET DURING MY OJT
-    ===================================================== */
-
-    {
-        title: "The People I Met During My OJT",
-        category: "OJT Experience",
-        date: "2026-06-10",
-        order: 4,
-        image: "ojts.jpg",
-        featured: false,
-
-        content: `My OJT experience was not only about the tasks I completed, the things I learned, or the 486 hours that I needed to finish. One of the most memorable parts of my OJT was the people I met along the way.
-
-When we were deployed at the library, there were students from different schools who were also completing their OJT. There were students from Urdaneta City University (UCU), Pangasinan State University (PSU), and LNL.
-
-At first, we did not really know each other. We were all just trying to adjust to the new environment, understand our responsibilities, and get comfortable working in the library.
-
-There were four of us from UCU and five PSU ABEL students who were deployed at the library at around the same time. When we arrived, there were already three PSU IT students who had been there for about a month.
-
-There were also four students from LNL who had already been assigned to the library since November 2025.
-
-At first, I was shy around everyone. I did not really know how to start conversations or become comfortable with people I had just met.
-
-After a few days, however, we slowly started to become more comfortable with each other.
-
-The people who were initially strangers slowly became friends and companions that I looked forward to seeing every day.
-
-One of the things that made us closer was the fact that we were sharing the same computer room.
-
-Since we were all in one room, it was almost impossible for the place to stay quiet. We became noisy, joked around, laughed at random things, and talked about different topics while doing our tasks.
-
-There were moments when the computer room was so noisy that it felt less like a workplace and more like a room full of friends spending time together.
-
-One of the people I became close with was Roxanne.
-
-She was from PSU ABEL, so she did not have as much experience with computers. She would often ask me for help whenever there was something about the computer that she did not know how to do.
-
-I would try to teach her and help her understand the things she was having difficulty with.
-
-Those simple moments became some of the memories I remember the most.
-
-It was not anything grand or extraordinary, but helping each other made our OJT experience more enjoyable.
-
-Another thing that brought us closer was Istoryahan sa Parke and Aklatan sa Parke.
-
-Every Tuesday to Friday, from around 4:00 to 5:00 in the afternoon, we would usually be together at the park. We assisted with the activities and helped children read books.
-
-Spending time together outside the library gave us more opportunities to talk, laugh, and bond with each other.
-
-The practice and preparation for Istoryahan sa Parke for the anniversary of Urdaneta City was also one of the moments that brought us even closer.
-
-We practiced together, spent time together, laughed together, and experienced the nervousness and excitement of preparing for the event.
-
-I think those moments were important because we were no longer just OJT students from different schools.
-
-We were already becoming a group that shared the same experiences.
-
-There were also times when the library had events and we would eat lunch together.
-
-Whenever there was food or an event, we would often find ourselves sitting together and talking while eating.
-
-Even simple lunches became memorable because of the conversations and laughter that came with them.
-
-We also took many pictures together.
-
-Some of our pictures were taken at the park during our activities. We also had a photo booth experience at the Cultural Center, where the library was involved in an activity.
-
-We took pictures together and captured moments that, at that time, seemed like ordinary memories.
-
-But looking back now, those pictures became something more meaningful.
-
-They became reminders of a group of people who unexpectedly became an important part of my college and OJT experience.
-
-Of course, our OJT could not last forever.
-
-The PSU ABEL students were the first ones among the PSU group to finish their OJT. They only needed 400 hours, so their OJT ended earlier than ours.
-
-When their last day came, they shared what they had learned during their time at the library.
-
-They talked about their experiences, the things they appreciated, their recommendations for the library, and the memories they would take with them.
-
-Listening to them made me realize that the time we had together was already coming to an end.
-
-I cried so much that day.
-
-It was difficult to accept that the people I had gotten used to seeing almost every day were already leaving.
-
-One of the moments I will never forget was when Rose gave me a letter.
-
-I became very emotional while reading it because Rose was one of the people who always made me feel happy during our OJT.
-
-She was also one of the people who would remind me to eat and ask me if I was okay.
-
-Those may seem like small things, but they meant a lot to me.
-
-Sometimes, we do not realize how much someone's simple concern can mean until the person is no longer around.
-
-After the PSU ABEL students left, the PSU IT students eventually finished their OJT as well.
-
-There were only the UCU students left.
-
-The library suddenly felt different.
-
-It became much quieter.
-
-The room that used to be filled with laughter, conversations, jokes, and noise was no longer the same.
-
-I could really feel the difference.
-
-It was strange seeing the same room but not hearing the same voices anymore.
-
-The people who used to make the room noisy and fun were already gone.
-
-After a few more weeks, it was my turn to leave.
-
-My last day was May 28, 2026.
-
-When I left, there were still three UCU students who remained at the library.
-
-At that time, there was also an event happening, so I was not able to properly share everything I wanted to say before leaving.
-
-Maybe that is one of the reasons why I still feel like there was something unfinished.
-
-I wanted to say goodbye properly.
-
-I wanted to tell everyone how thankful I was for the time we spent together.
-
-I wanted to tell them that the memories we created during those months meant so much to me.
-
-But sometimes, things do not end the way we imagine they will.
-
-One day, we were all together, laughing and making noise in the computer room.
-
-Then suddenly, one by one, people started leaving.
-
-The people who were once part of our everyday routine were no longer there.
-
-And eventually, I became one of the people who had to leave too.
-
-While writing this blog, I honestly feel emotional.
-
-I miss them so much.
-
-I miss the noise in the computer room.
-
-I miss the random conversations.
-
-I miss helping each other.
-
-I miss Roxanne asking me about things she did not know on the computer.
-
-I miss Rose reminding me to eat and asking if I was okay.
-
-I miss our afternoons at the park.
-
-I miss the laughter during Istoryahan sa Parke and Aklatan sa Parke.
-
-I miss our lunches together.
-
-I miss taking pictures with everyone.
-
-I miss the simple moments that I did not realize would become some of my favorite memories.
-
-Sometimes, I wish our OJT had lasted longer.
-
-I wish we had more days together.
-
-I wish we could have spent more time talking, laughing, practicing for events, eating together, and simply being around each other.
-
-If I had known that those days would become some of the best memories of my life, maybe I would have appreciated every single moment even more.
-
-Our OJT was supposed to be about completing 486 hours and gaining work experience.
-
-But for me, it became so much more than that.
-
-It became a chapter filled with friendship, laughter, learning, challenges, memories, and people who made the experience unforgettable.
-
-We came from different schools.
-
-We had different backgrounds.
-
-We had different skills and different experiences.
-
-But somehow, we became a group.
-
-We started as strangers who were shy around each other.
-
-Then we slowly became comfortable.
-
-Then we became friends.
-
-And eventually, we became people who would miss each other when the OJT ended.
-
-That is what makes this experience so special to me.
-
-The OJT may have ended, but the memories will always remain.
-
-The pictures we took, the letters we received, the conversations we had, the jokes we shared, the meals we ate together, and the moments we spent at the park will always remind me of that chapter of my life.
-
-I know that we will all eventually move forward.
-
-We will graduate, find jobs, continue our studies, meet new people, and experience different things in life.
-
-Maybe there will come a time when we will not talk as often as we used to.
-
-Maybe we will become busy with our own lives.
-
-But I hope that whenever we remember our OJT days, we will remember how happy we were during those moments.
-
-I hope they also remember the noisy computer room.
-
-I hope they remember the park.
-
-I hope they remember our lunches, our pictures, our jokes, and all the little moments that made our OJT special.
-
-Most of all, I hope they remember that for a short period of our lives, we became part of each other's story.
-
-Looking back, I realize that one of the best things I gained from my OJT was not something I could put on a resume.
-
-It was the friendships and memories that I will carry with me.
-
-The OJT may have been temporary, but the memories are something I will never forget.
-
-I am grateful that I met them.
-
-I am grateful that we were given the chance to spend those months together.
-
-And even though I cried when everyone started leaving, I would still choose to experience it all again.
-
-Because those moments were worth it.
-
-Those people were worth it.
-
-And that chapter of my life was one of the best memories I have ever had.
-
-Sometimes, the best memories are not planned.
-
-They happen unexpectedly, with people you never expected to become important to you.
-
-And when the chapter finally ends, you realize just how much those ordinary days actually meant.
-
-My OJT ended on May 28, 2026.
-
-But the memories we made together will stay with me for a much longer time.
-
-To everyone I met during my OJT — thank you.
-
-Thank you for the laughter.
-
-Thank you for the memories.
-
-Thank you for the friendship.
-
-And thank you for making my OJT experience one of the best chapters of my life.
-
-I may have already left the library, but a part of me will always remember the people, the place, and the moments that made those days special.
-
-I miss you all.
-
-And honestly...
-
-I wish our OJT never had to end.`
+June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓
+`
     },
 
 
@@ -531,11 +263,12 @@ I wish our OJT never had to end.`
         title: "OJT Experience",
         category: "OJT Experience",
         date: "2026-05-28",
-        order: 5,
+        order: 4,
         image: "ojt.jpg",
         featured: true,
 
-        content: `My On-the-Job Training experience was one of the important parts of my college journey.
+        content: `
+My On-the-Job Training experience was one of the important parts of my college journey.
 
 During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
 
@@ -559,7 +292,8 @@ Overall, my OJT experience gave me valuable lessons that I can use in my future 
 
 It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
 
-I am thankful for the people who guided me and for the experiences that became part of my college journey.`
+I am thankful for the people who guided me and for the experiences that became part of my college journey.
+`
     }
 
 ];
@@ -567,204 +301,162 @@ I am thankful for the people who guided me and for the experiences that became p
 
 /* =========================================================
    INITIALIZE BLOGS
-========================================================= */
+   ========================================================= */
 
 function initializeBlogs() {
 
-    if (!localStorage.getItem("blogs")) {
+    const savedBlogs = localStorage.getItem("blogs");
 
-        blogs = defaultBlogs.map(blog => ({
-            ...blog
-        }));
+    if (!savedBlogs) {
+
+        blogs = [...defaultBlogs];
 
         saveBlogs();
 
-    } else {
+        return;
 
-        blogs = JSON.parse(
-            localStorage.getItem("blogs")
+    }
+
+
+    try {
+
+        blogs = JSON.parse(savedBlogs);
+
+    } catch (error) {
+
+        console.error("Invalid blog data:", error);
+
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
+
+        return;
+
+    }
+
+
+    if (!Array.isArray(blogs)) {
+
+        blogs = [...defaultBlogs];
+
+        saveBlogs();
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       ADD MISSING DEFAULT BLOGS
+    ===================================================== */
+
+    defaultBlogs.forEach(defaultBlog => {
+
+        const existingIndex = blogs.findIndex(
+            blog => blog.title === defaultBlog.title
         );
 
 
-        /* =================================================
-           ADD MISSING DEFAULT BLOGS
-        ================================================= */
+        if (existingIndex === -1) {
 
-        defaultBlogs.forEach(defaultBlog => {
+            blogs.push({
+                ...defaultBlog
+            });
 
-            const exists =
-                blogs.some(
-                    blog =>
-                        blog.title ===
-                        defaultBlog.title
-                );
+        } else {
 
+            if (
+                defaultBlog.title ===
+                "Creating in My Free Time"
+            ) {
 
-            if (!exists) {
+                blogs[existingIndex].date =
+                    "2026-08-18";
 
-                blogs.push({
-                    ...defaultBlog
-                });
+                blogs[existingIndex].order =
+                    1;
+
+                blogs[existingIndex].category =
+                    "Personal";
+
+                blogs[existingIndex].image =
+                    "com.jpg";
+
+                blogs[existingIndex].featured =
+                    false;
 
             }
 
-        });
+
+            if (
+                defaultBlog.title ===
+                "Just Leaves 🍂"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-08-18";
+
+                blogs[existingIndex].order =
+                    2;
+
+                blogs[existingIndex].category =
+                    "Personal";
+
+                blogs[existingIndex].image =
+                    "leaves.jpg";
+
+                blogs[existingIndex].featured =
+                    false;
+
+            }
 
 
-        /* =================================================
-           FIX EXISTING BLOG DATA
-        ================================================= */
+            if (
+                defaultBlog.title ===
+                "Graduation Day"
+            ) {
 
-        const freeTime =
-            blogs.find(
-                blog =>
-                    blog.title ===
-                    "Creating in My Free Time"
-            );
+                blogs[existingIndex].date =
+                    "2026-06-24";
 
+                blogs[existingIndex].order =
+                    3;
 
-        if (freeTime) {
+                blogs[existingIndex].featured =
+                    true;
 
-            freeTime.date =
-                "2026-08-18";
-
-            freeTime.order =
-                1;
-
-            freeTime.category =
-                "Personal";
-
-            freeTime.image =
-                "com.jpg";
-
-            freeTime.featured =
-                false;
-
-        }
+            }
 
 
-        const justLeaves =
-            blogs.find(
-                blog =>
-                    blog.title ===
-                    "Just Leaves 🍂"
-            );
+            if (
+                defaultBlog.title ===
+                "OJT Experience"
+            ) {
 
+                blogs[existingIndex].date =
+                    "2026-05-28";
 
-        if (justLeaves) {
+                blogs[existingIndex].order =
+                    4;
 
-            justLeaves.date =
-                "2026-08-18";
+                blogs[existingIndex].featured =
+                    true;
 
-            justLeaves.order =
-                2;
-
-            justLeaves.category =
-                "Personal";
-
-            justLeaves.image =
-                "leaves.jpg";
-
-            justLeaves.featured =
-                false;
+            }
 
         }
 
-
-        const graduation =
-            blogs.find(
-                blog =>
-                    blog.title ===
-                    "Graduation Day"
-            );
+    });
 
 
-        if (graduation) {
-
-            graduation.date =
-                "2026-06-24";
-
-            graduation.order =
-                3;
-
-            graduation.category =
-                "School Experience";
-
-            graduation.image =
-                "profilepic.jpg";
-
-            graduation.featured =
-                true;
-
-        }
-
-
-        const peopleOJT =
-            blogs.find(
-                blog =>
-                    blog.title ===
-                    "The People I Met During My OJT"
-            );
-
-
-        if (peopleOJT) {
-
-            peopleOJT.date =
-                "2026-06-10";
-
-            peopleOJT.order =
-                4;
-
-            peopleOJT.category =
-                "OJT Experience";
-
-            peopleOJT.image =
-                "ojts.jpg";
-
-            peopleOJT.featured =
-                false;
-
-        }
-
-
-        const ojt =
-            blogs.find(
-                blog =>
-                    blog.title ===
-                    "OJT Experience"
-            );
-
-
-        if (ojt) {
-
-            ojt.date =
-                "2026-05-28";
-
-            ojt.order =
-                5;
-
-            ojt.category =
-                "OJT Experience";
-
-            ojt.image =
-                "ojt.jpg";
-
-            ojt.featured =
-                true;
-
-        }
-
-
-        saveBlogs();
-
-    }
+    saveBlogs();
 
 }
 
 
 /* =========================================================
    SAVE BLOGS
-========================================================= */
+   ========================================================= */
 
 function saveBlogs() {
 
@@ -778,17 +470,15 @@ function saveBlogs() {
 
 /* =========================================================
    DATE FORMAT
-========================================================= */
+   ========================================================= */
 
 function formatDate(date) {
 
     if (!date) return "";
 
-    const d =
-        new Date(
-            date + "T00:00:00"
-        );
-
+    const d = new Date(
+        date + "T00:00:00"
+    );
 
     return d.toLocaleDateString(
         "en-US",
@@ -804,54 +494,43 @@ function formatDate(date) {
 
 /* =========================================================
    SORT BLOGS
-   LATEST → OLDEST
-========================================================= */
+   ========================================================= */
 
 function sortBlogs() {
 
-    blogs.sort(
-        (a, b) => {
+    blogs.sort(function(a, b) {
 
-            const dateA =
-                new Date(
-                    a.date ||
-                    "1900-01-01"
-                );
+        const dateA =
+            new Date(a.date + "T00:00:00");
 
-            const dateB =
-                new Date(
-                    b.date ||
-                    "1900-01-01"
-                );
+        const dateB =
+            new Date(b.date + "T00:00:00");
 
 
-            const dateDifference =
-                dateB - dateA;
+        const dateDifference =
+            dateB - dateA;
 
 
-            if (
-                dateDifference !== 0
-            ) {
+        if (dateDifference !== 0) {
 
-                return dateDifference;
-
-            }
-
-
-            return (
-                (a.order || 999) -
-                (b.order || 999)
-            );
+            return dateDifference;
 
         }
-    );
+
+
+        return (
+            (a.order || 999) -
+            (b.order || 999)
+        );
+
+    });
 
 }
 
 
 /* =========================================================
    DISPLAY BLOGS
-========================================================= */
+   ========================================================= */
 
 function displayBlogs() {
 
@@ -873,212 +552,194 @@ function displayBlogs() {
     if (!container) return;
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
     if (featuredContainer) {
 
-        featuredContainer.innerHTML =
-            "";
+        featuredContainer.innerHTML = "";
 
     }
 
 
     /* =====================================================
-       ALL BLOGS
-       LATEST → OLDEST
+       LATEST BLOGS
+       ONLY 4
     ===================================================== */
 
     const latestBlogs =
-        blogs;
+        blogs.slice(0, 4);
 
 
-    latestBlogs.forEach(
-        blog => {
+    latestBlogs.forEach(function(blog) {
+
+        const originalIndex =
+            blogs.indexOf(blog);
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "blog-card";
+
+
+        card.dataset.category =
+            blog.category || "";
+
+
+        card.onclick = function() {
+
+            openBlog(
+                originalIndex,
+                this
+            );
+
+        };
+
+
+        card.innerHTML = `
+
+            <img
+                class="blog-card-image"
+                src="${blog.image || "profilepic.jpg"}"
+                alt="${escapeHTML(blog.title)}"
+            >
+
+            <div class="blog-info">
+
+                <span class="blog-category">
+                    ${escapeHTML(blog.category || "Other")}
+                </span>
+
+                <h2>
+                    ${escapeHTML(blog.title)}
+                </h2>
+
+                <p>
+                    Blog Date:
+                    ${formatDate(blog.date)}
+                </p>
+
+            </div>
+
+            <div class="actions">
+
+                <button
+                    class="edit"
+                    type="button"
+                    onclick="
+                        event.stopPropagation();
+                        editBlog(${originalIndex});
+                    "
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="delete"
+                    type="button"
+                    onclick="
+                        event.stopPropagation();
+                        deleteBlog(${originalIndex});
+                    "
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+
+    /* =====================================================
+       FEATURED BLOGS
+       ONLY GRADUATION + OJT
+    ===================================================== */
+
+    if (featuredContainer) {
+
+        const featuredBlogs =
+            blogs.filter(function(blog) {
+
+                return (
+                    blog.featured === true &&
+                    (
+                        blog.title ===
+                            "Graduation Day" ||
+
+                        blog.title ===
+                            "OJT Experience"
+                    )
+                );
+
+            });
+
+
+        featuredBlogs.forEach(function(blog) {
 
             const originalIndex =
                 blogs.indexOf(blog);
 
 
             const card =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             card.className =
-                "blog-card";
+                "featured-card";
 
 
-            card.dataset.category =
-                blog.category ||
-                "";
+            card.onclick = function() {
 
+                openBlog(
+                    originalIndex,
+                    this
+                );
 
-            card.onclick =
-                function () {
-
-                    openBlog(
-                        originalIndex
-                    );
-
-                };
+            };
 
 
             card.innerHTML = `
 
                 <img
-                    class="blog-card-image"
                     src="${blog.image || "profilepic.jpg"}"
                     alt="${escapeHTML(blog.title)}"
                 >
 
+                <span class="featured-badge">
+                    Featured
+                </span>
+
                 <div class="blog-info">
 
                     <span class="blog-category">
-                        ${escapeHTML(
-                            blog.category ||
-                            "Personal"
-                        )}
+                        ${escapeHTML(blog.category || "Other")}
                     </span>
 
                     <h2>
-                        ${escapeHTML(
-                            blog.title
-                        )}
+                        ${escapeHTML(blog.title)}
                     </h2>
 
                     <p>
                         Blog Date:
-                        ${formatDate(
-                            blog.date
-                        )}
+                        ${formatDate(blog.date)}
                     </p>
-
-                </div>
-
-                <div class="actions">
-
-                    <button
-                        type="button"
-                        class="edit"
-                        onclick="
-                            event.stopPropagation();
-                            editBlog(${originalIndex});
-                        "
-                    >
-                        Edit
-                    </button>
-
-                    <button
-                        type="button"
-                        class="delete"
-                        onclick="
-                            event.stopPropagation();
-                            deleteBlog(${originalIndex});
-                        "
-                    >
-                        Delete
-                    </button>
 
                 </div>
 
             `;
 
 
-            container.appendChild(
-                card
-            );
+            featuredContainer.appendChild(card);
 
-        }
-    );
-
-
-    /* =====================================================
-       FEATURED BLOGS
-    ===================================================== */
-
-    if (featuredContainer) {
-
-        const featuredBlogs =
-            blogs.filter(
-                blog =>
-                    blog.featured === true
-            );
-
-
-        featuredBlogs.forEach(
-            blog => {
-
-                const originalIndex =
-                    blogs.indexOf(blog);
-
-
-                const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                card.className =
-                    "featured-card";
-
-
-                card.onclick =
-                    function () {
-
-                        openBlog(
-                            originalIndex
-                        );
-
-                    };
-
-
-                card.innerHTML = `
-
-                    <img
-                        src="${blog.image || "profilepic.jpg"}"
-                        alt="${escapeHTML(blog.title)}"
-                    >
-
-                    <span class="featured-badge">
-                        Featured
-                    </span>
-
-                    <div class="blog-info">
-
-                        <span class="blog-category">
-                            ${escapeHTML(
-                                blog.category ||
-                                "Personal"
-                            )}
-                        </span>
-
-                        <h2>
-                            ${escapeHTML(
-                                blog.title
-                            )}
-                        </h2>
-
-                        <p>
-                            Blog Date:
-                            ${formatDate(
-                                blog.date
-                            )}
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                featuredContainer.appendChild(
-                    card
-                );
-
-            }
-        );
+        });
 
     }
 
@@ -1088,9 +749,7 @@ function displayBlogs() {
     ===================================================== */
 
     const noBlog =
-        document.getElementById(
-            "noBlog"
-        );
+        document.getElementById("noBlog");
 
 
     if (noBlog) {
@@ -1110,41 +769,25 @@ function displayBlogs() {
 
 /* =========================================================
    ESCAPE HTML
-========================================================= */
+   ========================================================= */
 
 function escapeHTML(text) {
 
     if (!text) return "";
 
-
     return String(text)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================================================
    FORMAT BLOG CONTENT
-========================================================= */
+   ========================================================= */
 
 function formatContent(content) {
 
@@ -1157,36 +800,29 @@ function formatContent(content) {
 
     const paragraphs =
         cleanContent
-            .split(
-                /\n\s*\n/
-            )
-            .filter(
-                paragraph =>
-                    paragraph.trim() !== ""
-            );
+            .split(/\n\s*\n/)
+            .filter(function(paragraph) {
+
+                return paragraph.trim() !== "";
+
+            });
 
 
     return paragraphs
-        .map(
-            paragraph => {
+        .map(function(paragraph) {
 
-                const text =
-                    paragraph.trim();
+            const text =
+                paragraph.trim();
 
 
-                return `
-                    <p>
-                        ${escapeHTML(
-                            text
-                        ).replace(
-                            /\n/g,
-                            "<br>"
-                        )}
-                    </p>
-                `;
+            return `
+                <p>
+                    ${escapeHTML(text)
+                        .replace(/\n/g, "<br>")}
+                </p>
+            `;
 
-            }
-        )
+        })
         .join("");
 
 }
@@ -1194,9 +830,9 @@ function formatContent(content) {
 
 /* =========================================================
    OPEN BLOG
-========================================================= */
+   ========================================================= */
 
-function openBlog(index) {
+function openBlog(index, sourceCard = null) {
 
     const overlay =
         document.getElementById(
@@ -1210,10 +846,10 @@ function openBlog(index) {
         );
 
 
-    if (
-        !overlay ||
-        !preview
-    ) return;
+    if (!overlay || !preview) return;
+
+
+    if (overlay.style.display === "block") return;
 
 
     const blog =
@@ -1223,13 +859,18 @@ function openBlog(index) {
     if (!blog) return;
 
 
-    overlay.style.display =
-        "block";
+    activeBlogCard =
+        sourceCard;
 
 
-    preview.style.display =
-        "block";
+    blogClosing =
+        false;
 
+
+    /* =====================================================
+       ORIGINAL BLOG PREVIEW STRUCTURE
+       DO NOT CHANGE
+    ===================================================== */
 
     preview.innerHTML = `
 
@@ -1237,35 +878,24 @@ function openBlog(index) {
 
             <img
                 src="${blog.image || "profilepic.jpg"}"
-                alt="${escapeHTML(
-                    blog.title
-                )}"
+                alt="${escapeHTML(blog.title)}"
             >
 
             <span class="blog-category">
-                ${escapeHTML(
-                    blog.category ||
-                    "Personal"
-                )}
+                ${escapeHTML(blog.category || "Other")}
             </span>
 
             <h2>
-                ${escapeHTML(
-                    blog.title
-                )}
+                ${escapeHTML(blog.title)}
             </h2>
 
             <p class="preview-date">
-                ${formatDate(
-                    blog.date
-                )}
+                ${formatDate(blog.date)}
             </p>
 
             <div class="preview-description">
 
-                ${formatContent(
-                    blog.content
-                )}
+                ${formatContent(blog.content)}
 
             </div>
 
@@ -1274,31 +904,184 @@ function openBlog(index) {
     `;
 
 
-    preview.onclick =
-        function () {
+    /* =====================================================
+       PREPARE
+    ===================================================== */
 
-            closePreview();
+    overlay.style.display =
+        "block";
 
-        };
+
+    overlay.style.setProperty(
+        "background",
+        "transparent",
+        "important"
+    );
 
 
-    overlay.onclick =
-        function () {
+    overlay.style.opacity =
+        "0";
 
-            closePreview();
 
-        };
+    preview.style.display =
+        "block";
+
+
+    preview.style.opacity =
+        "0";
+
+
+    preview.style.clipPath =
+        "inset(8% 8% 8% 8%)";
 
 
     document.body.style.overflow =
         "hidden";
+
+
+    /* =====================================================
+       REAL CARD FLIP
+       0 DEGREE → 180 DEGREE
+    ===================================================== */
+
+    if (activeBlogCard) {
+
+        activeBlogCard.style.willChange =
+            "transform, opacity";
+
+
+        activeBlogCard.style.transition =
+            "none";
+
+
+        activeBlogCard.animate(
+
+            [
+
+                {
+                    transform:
+                        "perspective(1200px) rotateY(0deg) scale(1)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        "perspective(1200px) rotateY(90deg) scale(0.98)",
+                    opacity: 1,
+                    offset: 0.45
+                },
+
+                {
+                    transform:
+                        "perspective(1200px) rotateY(180deg) scale(0.96)",
+                    opacity: 0
+                }
+
+            ],
+
+            {
+                duration: 650,
+
+                easing:
+                    "cubic-bezier(0.65, 0, 0.35, 1)",
+
+                fill: "forwards"
+
+            }
+
+        );
+
+    }
+
+
+    /* =====================================================
+       PREVIEW + OVERLAY COME OUT
+    ===================================================== */
+
+    setTimeout(function() {
+
+        overlay.animate(
+
+            [
+                {
+                    opacity: 0
+                },
+
+                {
+                    opacity: 1
+                }
+            ],
+
+            {
+                duration: 400,
+                easing: "ease-out",
+                fill: "forwards"
+            }
+
+        );
+
+
+        preview.animate(
+
+            [
+                {
+                    opacity: 0,
+                    clipPath:
+                        "inset(8% 8% 8% 8%)"
+                },
+
+                {
+                    opacity: 1,
+                    clipPath:
+                        "inset(0% 0% 0% 0%)"
+                }
+
+            ],
+
+            {
+                duration: 550,
+
+                easing:
+                    "cubic-bezier(0.22, 1, 0.36, 1)",
+
+                fill: "forwards"
+
+            }
+
+        );
+
+    }, 350);
+
+
+    /* =====================================================
+       CLICK PREVIEW TO CLOSE
+    ===================================================== */
+
+    preview.onclick = function(event) {
+
+        event.stopPropagation();
+
+        closePreview();
+
+    };
+
+
+    /* =====================================================
+       CLICK TRANSPARENT OVERLAY TO CLOSE
+    ===================================================== */
+
+    overlay.onclick = function() {
+
+        closePreview();
+
+    };
 
 }
 
 
 /* =========================================================
    CLOSE BLOG
-========================================================= */
+   ========================================================= */
 
 function closePreview() {
 
@@ -1314,37 +1097,200 @@ function closePreview() {
         );
 
 
-    if (overlay) {
-
-        overlay.style.display =
-            "none";
-
-    }
+    if (!overlay || !preview) return;
 
 
-    if (preview) {
-
-        preview.style.display =
-            "none";
-
-        preview.innerHTML =
-            "";
-
-        preview.onclick =
-            null;
-
-    }
+    if (overlay.style.display !== "block") return;
 
 
-    document.body.style.overflow =
-        "";
+    if (blogClosing) return;
+
+
+    blogClosing =
+        true;
+
+
+    /* =====================================================
+       PREVIEW CLOSES FIRST
+    ===================================================== */
+
+    preview.animate(
+
+        [
+
+            {
+                opacity: 1,
+                clipPath:
+                    "inset(0% 0% 0% 0%)"
+            },
+
+            {
+                opacity: 0,
+                clipPath:
+                    "inset(8% 8% 8% 8%)"
+            }
+
+        ],
+
+        {
+            duration: 450,
+
+            easing:
+                "cubic-bezier(0.65, 0, 0.35, 1)",
+
+            fill: "forwards"
+
+        }
+
+    );
+
+
+    overlay.animate(
+
+        [
+
+            {
+                opacity: 1
+            },
+
+            {
+                opacity: 0
+            }
+
+        ],
+
+        {
+            duration: 450,
+            easing: "ease-in",
+            fill: "forwards"
+        }
+
+    );
+
+
+    /* =====================================================
+       CARD FLIPS BACK
+       180 DEGREE → 360 DEGREE
+    ===================================================== */
+
+    setTimeout(function() {
+
+        if (activeBlogCard) {
+
+            activeBlogCard.animate(
+
+                [
+
+                    {
+                        transform:
+                            "perspective(1200px) rotateY(180deg) scale(0.96)",
+                        opacity: 0
+                    },
+
+                    {
+                        transform:
+                            "perspective(1200px) rotateY(270deg) scale(0.98)",
+                        opacity: 0
+                    },
+
+                    {
+                        transform:
+                            "perspective(1200px) rotateY(360deg) scale(1)",
+                        opacity: 1
+                    }
+
+                ],
+
+                {
+                    duration: 650,
+
+                    easing:
+                        "cubic-bezier(0.65, 0, 0.35, 1)",
+
+                    fill: "forwards"
+
+                }
+
+            );
+
+        }
+
+
+        /* =================================================
+           CLEAN UP
+        ================================================= */
+
+        setTimeout(function() {
+
+            overlay.style.display =
+                "none";
+
+
+            preview.style.display =
+                "none";
+
+
+            overlay.style.opacity =
+                "";
+
+
+            preview.style.opacity =
+                "";
+
+
+            preview.style.clipPath =
+                "";
+
+
+            preview.innerHTML =
+                "";
+
+
+            preview.onclick =
+                null;
+
+
+            if (activeBlogCard) {
+
+                activeBlogCard.style.transform =
+                    "";
+
+
+                activeBlogCard.style.opacity =
+                    "";
+
+
+                activeBlogCard.style.willChange =
+                    "";
+
+
+                activeBlogCard.style.transition =
+                    "";
+
+            }
+
+
+            activeBlogCard =
+                null;
+
+
+            blogClosing =
+                false;
+
+
+            document.body.style.overflow =
+                "";
+
+        }, 670);
+
+    }, 450);
 
 }
 
 
 /* =========================================================
    OPEN ADD BLOG MODAL
-========================================================= */
+   ========================================================= */
 
 function openModal() {
 
@@ -1353,56 +1299,105 @@ function openModal() {
             "blogModal"
         );
 
-
     if (!modal) return;
 
 
-    editingIndex =
-        -1;
+    editingIndex = -1;
 
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        "Add New Blog";
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
 
 
-    document.getElementById(
-        "title"
-    ).value =
-        "";
+    const title =
+        document.getElementById(
+            "title"
+        );
 
 
-    document.getElementById(
-        "category"
-    ).value =
-        "";
+    const category =
+        document.getElementById(
+            "category"
+        );
 
 
-    document.getElementById(
-        "blogDate"
-    ).value =
-        new Date()
-            .toISOString()
-            .split("T")[0];
+    const blogDate =
+        document.getElementById(
+            "blogDate"
+        );
 
 
-    document.getElementById(
-        "content"
-    ).value =
-        "";
+    const content =
+        document.getElementById(
+            "content"
+        );
 
 
-    document.getElementById(
-        "featured"
-    ).checked =
-        false;
+    const featured =
+        document.getElementById(
+            "featured"
+        );
 
 
-    document.getElementById(
-        "image"
-    ).value =
-        "";
+    const image =
+        document.getElementById(
+            "image"
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            "Add New Blog";
+
+    }
+
+
+    if (title) {
+
+        title.value = "";
+
+    }
+
+
+    if (category) {
+
+        category.value = "";
+
+    }
+
+
+    if (blogDate) {
+
+        blogDate.value =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+    }
+
+
+    if (content) {
+
+        content.value = "";
+
+    }
+
+
+    if (featured) {
+
+        featured.checked = false;
+
+    }
+
+
+    if (image) {
+
+        image.value = "";
+
+    }
 
 
     const previewContainer =
@@ -1411,10 +1406,23 @@ function openModal() {
         );
 
 
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
     if (previewContainer) {
 
         previewContainer.style.display =
             "none";
+
+    }
+
+
+    if (preview) {
+
+        preview.src = "";
 
     }
 
@@ -1427,7 +1435,7 @@ function openModal() {
 
 /* =========================================================
    CLOSE MODAL
-========================================================= */
+   ========================================================= */
 
 function closeModal() {
 
@@ -1445,46 +1453,45 @@ function closeModal() {
     }
 
 
-    editingIndex =
-        -1;
+    editingIndex = -1;
 
 }
 
 
 /* =========================================================
    SAVE BLOG
-========================================================= */
+   ========================================================= */
 
 function saveBlog() {
 
     const title =
         document.getElementById(
             "title"
-        ).value.trim();
+        )?.value.trim();
 
 
     const category =
         document.getElementById(
             "category"
-        ).value;
+        )?.value;
 
 
     const date =
         document.getElementById(
             "blogDate"
-        ).value;
+        )?.value;
 
 
     const content =
         document.getElementById(
             "content"
-        ).value.trim();
+        )?.value.trim();
 
 
     const featured =
         document.getElementById(
             "featured"
-        ).checked;
+        )?.checked;
 
 
     const imageInput =
@@ -1509,81 +1516,73 @@ function saveBlog() {
     }
 
 
-    function finishSave(
-        imageData
-    ) {
+    function finishSave(imageData) {
 
-        const maxOrder =
-            blogs.reduce(
-                (
-                    max,
-                    blog
-                ) =>
-                    Math.max(
-                        max,
-                        blog.order ||
-                        0
-                    ),
-                0
-            );
+        let order;
+
+
+        if (editingIndex >= 0) {
+
+            order =
+                blogs[editingIndex].order ||
+                999;
+
+        } else {
+
+            const maxOrder =
+                blogs.reduce(
+                    function(max, blog) {
+
+                        return Math.max(
+                            max,
+                            blog.order || 0
+                        );
+
+                    },
+                    0
+                );
+
+
+            order =
+                maxOrder + 1;
+
+        }
 
 
         const blogData = {
 
-            title:
-                title,
+            title: title,
 
-            category:
-                category,
+            category: category,
 
-            date:
-                date,
+            date: date,
 
-            order:
-                editingIndex >= 0
-                    ? (
-                        blogs[
-                            editingIndex
-                        ].order ||
-                        maxOrder + 1
-                    )
-                    : maxOrder + 1,
+            order: order,
 
-            content:
-                content,
+            content: content,
 
             image:
                 imageData ||
                 (
                     editingIndex >= 0
-                        ? blogs[
-                            editingIndex
-                        ].image
+                        ? blogs[editingIndex].image
                         : "profilepic.jpg"
                 ),
 
             featured:
-                featured
+                featured === true
 
         };
 
 
-        if (
-            editingIndex >= 0
-        ) {
+        if (editingIndex >= 0) {
 
-            blogs[
-                editingIndex
-            ] =
+            blogs[editingIndex] =
                 blogData;
 
-        }
+        } else {
 
-        else {
-
-            blogs.push(
-                blogData
-            );
+            blogs.push(blogData);
 
         }
 
@@ -1598,6 +1597,7 @@ function saveBlog() {
 
 
     if (
+        imageInput &&
         imageInput.files &&
         imageInput.files[0]
     ) {
@@ -1607,7 +1607,7 @@ function saveBlog() {
 
 
         reader.onload =
-            function (event) {
+            function(event) {
 
                 finishSave(
                     event.target.result
@@ -1620,9 +1620,7 @@ function saveBlog() {
             imageInput.files[0]
         );
 
-    }
-
-    else {
+    } else {
 
         finishSave();
 
@@ -1633,7 +1631,7 @@ function saveBlog() {
 
 /* =========================================================
    EDIT BLOG
-========================================================= */
+   ========================================================= */
 
 function editBlog(index) {
 
@@ -1648,40 +1646,94 @@ function editBlog(index) {
         index;
 
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        "Edit Blog";
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
 
 
-    document.getElementById(
-        "title"
-    ).value =
-        blog.title || "";
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
 
 
-    document.getElementById(
-        "category"
-    ).value =
-        blog.category || "";
+    const title =
+        document.getElementById(
+            "title"
+        );
 
 
-    document.getElementById(
-        "blogDate"
-    ).value =
-        blog.date || "";
+    const category =
+        document.getElementById(
+            "category"
+        );
 
 
-    document.getElementById(
-        "content"
-    ).value =
-        blog.content || "";
+    const blogDate =
+        document.getElementById(
+            "blogDate"
+        );
 
 
-    document.getElementById(
-        "featured"
-    ).checked =
-        blog.featured === true;
+    const content =
+        document.getElementById(
+            "content"
+        );
+
+
+    const featured =
+        document.getElementById(
+            "featured"
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            "Edit Blog";
+
+    }
+
+
+    if (title) {
+
+        title.value =
+            blog.title || "";
+
+    }
+
+
+    if (category) {
+
+        category.value =
+            blog.category || "";
+
+    }
+
+
+    if (blogDate) {
+
+        blogDate.value =
+            blog.date || "";
+
+    }
+
+
+    if (content) {
+
+        content.value =
+            blog.content || "";
+
+    }
+
+
+    if (featured) {
+
+        featured.checked =
+            blog.featured === true;
+
+    }
 
 
     const preview =
@@ -1705,29 +1757,26 @@ function editBlog(index) {
         preview.src =
             blog.image;
 
+
         previewContainer.style.display =
             "block";
 
     }
 
 
-    document.getElementById(
-        "image"
-    ).value =
-        "";
+    if (modal) {
 
+        modal.style.display =
+            "block";
 
-    document.getElementById(
-        "blogModal"
-    ).style.display =
-        "block";
+    }
 
 }
 
 
 /* =========================================================
    DELETE BLOG
-========================================================= */
+   ========================================================= */
 
 function deleteBlog(index) {
 
@@ -1762,7 +1811,7 @@ function deleteBlog(index) {
 
 /* =========================================================
    SEARCH
-========================================================= */
+   ========================================================= */
 
 function searchBlog() {
 
@@ -1773,7 +1822,7 @@ function searchBlog() {
 
 /* =========================================================
    CATEGORY FILTER
-========================================================= */
+   ========================================================= */
 
 function filterCategory() {
 
@@ -1784,7 +1833,7 @@ function filterCategory() {
 
 /* =========================================================
    SEARCH + CATEGORY FILTER
-========================================================= */
+   ========================================================= */
 
 function applySearchAndFilter() {
 
@@ -1826,58 +1875,48 @@ function applySearchAndFilter() {
         0;
 
 
-    cards.forEach(
-        card => {
+    cards.forEach(function(card) {
 
-            const title =
-                card
-                    .querySelector(
-                        "h2"
-                    )
-                    ?.textContent
-                    .toLowerCase() ||
+        const title =
+            card
+                .querySelector("h2")
+                ?.textContent
+                .toLowerCase() || "";
+
+
+        const category =
+            card.dataset.category ||
+            "";
+
+
+        const matchesSearch =
+            title.includes(searchText);
+
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            category === selectedCategory;
+
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            card.style.display =
                 "";
 
 
-            const category =
-                card.dataset.category ||
-                "";
+            visibleCount++;
 
+        } else {
 
-            const matchesSearch =
-                title.includes(
-                    searchText
-                );
-
-
-            const matchesCategory =
-                selectedCategory === "All" ||
-                selectedCategory === "" ||
-                category ===
-                    selectedCategory;
-
-
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
-
-                card.style.display =
-                    "";
-
-                visibleCount++;
-
-            }
-
-            else {
-
-                card.style.display =
-                    "none";
-
-            }
+            card.style.display =
+                "none";
 
         }
-    );
+
+    });
 
 
     const noBlog =
@@ -1900,11 +1939,11 @@ function applySearchAndFilter() {
 
 /* =========================================================
    IMAGE PREVIEW
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "change",
-    function (event) {
+    function(event) {
 
         if (
             event.target.id !==
@@ -1924,7 +1963,7 @@ document.addEventListener(
 
 
         reader.onload =
-            function (e) {
+            function(e) {
 
                 const preview =
                     document.getElementById(
@@ -1956,9 +1995,7 @@ document.addEventListener(
             };
 
 
-        reader.readAsDataURL(
-            file
-        );
+        reader.readAsDataURL(file);
 
     }
 );
@@ -1966,11 +2003,11 @@ document.addEventListener(
 
 /* =========================================================
    CLOSE MODAL OUTSIDE
-========================================================= */
+   ========================================================= */
 
 window.addEventListener(
     "click",
-    function (event) {
+    function(event) {
 
         const modal =
             document.getElementById(
@@ -1979,8 +2016,7 @@ window.addEventListener(
 
 
         if (
-            event.target ===
-            modal
+            event.target === modal
         ) {
 
             closeModal();
@@ -1993,11 +2029,11 @@ window.addEventListener(
 
 /* =========================================================
    ESC KEY
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function (event) {
+    function(event) {
 
         if (
             event.key ===
@@ -2016,11 +2052,11 @@ document.addEventListener(
 
 /* =========================================================
    INITIALIZE
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
         initializeBlogs();
 
