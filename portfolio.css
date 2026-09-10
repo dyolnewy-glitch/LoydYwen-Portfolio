@@ -1,2425 +1,1988 @@
 
+/* =========================================
+   PORTFOLIO DATA
+========================================= */
 
-/* =====================================================
-   PORTFOLIO PAGE
-===================================================== */
+let projects =
+    JSON.parse(localStorage.getItem("projects")) || [];
 
-.portfolio{
+let editIndex = null;
+let imageData = "";
 
-    margin-top:-80px;
+let activeProjectCard = null;
+let projectPreviewClosing = false;
 
-    padding:80px 20px;
 
-    background:#D6DEDC;
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const projectContainer =
+    document.getElementById("projectContainer");
+
+const noProject =
+    document.getElementById("noProject");
+
+const modal =
+    document.getElementById("projectModal");
+
+const imageInput =
+    document.getElementById("projectImage");
+
+const imagePreview =
+    document.getElementById("imagePreview");
+
+
+/* =========================================
+   DINEZY PROJECT
+========================================= */
+
+const dinezyProject = {
+
+    image: "dinezy.jpg",
+
+    title: "Dinezy",
+
+    category: "UI/UX Design",
+
+    status: "Completed",
+
+    description:
+        "A restaurant booking app mockup and UI design created in Figma. Dinezy focuses on providing a simple, modern, and user-friendly experience for browsing restaurants and making table reservations.",
+
+    tools: "Figma",
+
+    link:
+        "https://www.figma.com/design/m1J8ADeDC2FXIOQtVuc6US/Dinezy?node-id=14-237&t=KH9f8zN1jFzebkQP-0",
+
+    highlights: [
+        {
+            icon: "📱",
+            title: "Mobile App",
+            text: "Designed as a mobile restaurant booking experience."
+        },
+        {
+            icon: "🎨",
+            title: "UI/UX Design",
+            text: "Focused on clean layouts and an easy user experience."
+        },
+        {
+            icon: "🍽️",
+            title: "Restaurant Booking",
+            text: "Designed around browsing restaurants and reserving tables."
+        },
+        {
+            icon: "🖥️",
+            title: "Figma Prototype",
+            text: "Created and organized using Figma."
+        }
+    ],
+
+    features: [
+        "Restaurant browsing",
+        "Restaurant menu viewing",
+        "Table reservation",
+        "Booking management",
+        "Reservation status",
+        "User profile"
+    ],
+
+    designConcept:
+        "Dinezy was designed with simplicity and convenience in mind. The interface focuses on making restaurant discovery and table reservation easier through clear navigation, organized information, and a modern mobile layout.",
+
+    role: [
+        "UI/UX Design",
+        "Interface Layout",
+        "Visual Design",
+        "Prototype Design"
+    ]
+
+};
+
+
+/* =========================================
+   PHOTO STRIPS PROJECT
+========================================= */
+
+const photoStripProject = {
+
+    image: "pts.jpg",
+
+    title: "Photo Strips",
+
+    category: "Graphic Design",
+
+    status: "Ongoing",
+
+    description:
+        "A collection of creative photo strip designs created using Canva. Click the card to see each design and its description.",
+
+    tools: "Canva",
+
+    link:
+        "https://www.canva.com/design/DAHRMQEwvuw/3gEuly4qMC0gZP21feLHCQ/edit?continue_in_browser=true",
+
+    photoStrips: [
+
+        {
+            title: "🌊 Sea Memories",
+            image: "seamemories.jpg",
+            description:
+                "Soft blue tones, seaside elements, and relaxing ocean-inspired details create a fresh coastal look that feels like a collection of memories by the sea."
+        },
+
+        {
+            title: "🎋 Bamboo Shoots",
+            image: "bambooshoots.jpg",
+            description:
+                "Natural bamboo patterns, earthy details, and fresh green accents give the strip a clean, tropical, and calming appearance."
+        },
+
+        {
+            title: "🍓 Picnic Strawberry",
+            image: "picnicstrawberry.jpg",
+            description:
+                "Cute strawberry illustrations, picnic-inspired details, and fresh red and green accents create a cheerful and sweet outdoor-inspired look."
+        },
+
+        {
+            title: "🍊 Citrus Zest",
+            image: "citruszest.jpg",
+            description:
+                "Bright citrus elements, orange-inspired accents, and refreshing colors give the strip a lively and sunny appearance."
+        },
+
+        {
+            title: "🎧 Vintage Music",
+            image: "vintagemusic.jpg",
+            description:
+                "Retro music elements, classic decorative details, and nostalgic tones create a vintage-inspired strip with an old-school music aesthetic."
+        },
+
+        {
+            title: "🌳 Forest Glade",
+            image: "forestglade.jpg",
+            description:
+                "Soft greenery, woodland elements, tiny natural details, and forest-inspired decorations create a peaceful and cozy nature-filled appearance."
+        },
+
+        {
+            title: "🍵 Matcha Breeze",
+            image: "matchabreeze.jpg",
+            description:
+                "Soft matcha green tones, delicate tea-inspired elements, and simple decorative details give the strip a fresh, clean, and calming look."
+        },
+
+        {
+            title: "🪻 Lavender Hush",
+            image: "lavenderhush.jpg",
+            description:
+                "Soft lavender shades, delicate floral accents, and subtle decorative elements create a gentle, dreamy, and elegant appearance."
+        },
+
+        {
+            title: "🍀 Clover Luck",
+            image: "cloverluck.jpg",
+            description:
+                "Green clover details, playful accents, and fresh natural tones give the strip a cheerful and lucky-inspired appearance."
+        },
+
+        {
+            title: "🎡 Carnival Pop",
+            image: "carnivalpop.jpg",
+            description:
+                "Colorful carnival decorations, playful patterns, and vibrant accents create a fun and energetic photo strip that feels like a day at the fair."
+        },
+
+        {
+            title: "🎀 Ribbon & Lace",
+            image: "ribbonlace.jpg",
+            description:
+                "Decorative ribbons, lace-inspired patterns, and delicate accents create a soft, elegant, and charming appearance with a pretty decorative feel."
+        },
+
+        {
+            title: "🍦 Mint Choco Ice Cream",
+            image: "mintchocoicecream.jpg",
+            description:
+                "Mint green and chocolate tones, ice cream-inspired elements, and sweet decorative details create a cool and playful dessert-themed look."
+        },
+
+        {
+            title: "🍕 Pizza Party",
+            image: "pizzaparty.jpg",
+            description:
+                "Pizza illustrations, fun food details, and playful accents create a colorful and casual strip with a lively party-inspired appearance."
+        },
+
+        {
+            title: "🌙 Starlight Dreams",
+            image: "starlightdreams.jpg",
+            description:
+                "Deep nighttime tones, stars, moon-inspired details, and subtle glowing accents create a dreamy photo strip with a magical evening atmosphere."
+        },
+
+        {
+            title: "🌿🫖 Tea Garden",
+            image: "teagarden.jpg",
+            description:
+                "Botanical details, tea-inspired elements, soft greenery, and delicate decorations create a peaceful garden setting with a cozy and elegant feel."
+        },
+
+        {
+            title: "🍬 Candy Land",
+            image: "candyland.jpg",
+            description:
+                "Colorful candy details, sweet illustrations, and playful decorative elements create a bright, cheerful, and whimsical appearance."
+        },
+
+        {
+            title: "🎞️ Retro Snap",
+            image: "retrosnap.jpg",
+            description:
+                "Film-inspired details, vintage decorations, and classic tones give the strip a nostalgic photography look reminiscent of old snapshots."
+        },
+
+        {
+            title: "🫙 Jam & Joy",
+            image: "jamjoy.jpg",
+            description:
+                "Jam jars, fruity details, warm accents, and playful decorations create a cozy homemade look filled with colorful and cheerful details."
+        },
+
+        {
+            title: "🌸 Sakura Bloom",
+            image: "sakurabloom.jpg",
+            description:
+                "Soft cherry blossom details, pink floral accents, and delicate decorations create a graceful spring-inspired appearance with a gentle and elegant feel."
+        },
+
+        {
+            title: "🫐 Blueberry Bliss",
+            image: "blueberrybliss.jpg",
+            description:
+                "Blueberry illustrations, cool blue and purple tones, and playful berry-inspired details create a fresh and sweet-looking photo strip."
+        },
+
+        {
+            title: "🍉 Watermelon Splash",
+            image: "watermelon.jpg",
+            description:
+                "Watermelon slices, fresh green and red accents, and playful summer details create a bright and refreshing seasonal appearance."
+        },
+
+        {
+            title: "🌈 Rainbow Blast",
+            image: "rainbowblast.jpg",
+            description:
+                "Colorful rainbow accents, playful shapes, and vibrant decorative details create a cheerful photo strip with a lively and energetic look."
+        },
+
+        {
+            title: "💎🌪️ Brilyante ng Hangin",
+            image: "brilyantedhangin.jpg",
+            description:
+                "Sparkling diamond details, flowing wind-inspired elements, and light decorative accents create a unique and whimsical appearance with a sense of movement."
+        },
+
+        {
+            title: "🐼 Panda Vibe",
+            image: "pandavibe.jpg",
+            description:
+                "Cute panda illustrations, simple contrasting tones, and playful decorative details create a fun, relaxed, and adorable photo strip."
+        },
+
+        {
+            title: "🧋 Boba Break",
+            image: "bobabreak.jpg",
+            description:
+                "Bubble tea cups, boba pearls, soft colors, and cute drink-inspired decorations create a fun and refreshing photo strip with a youthful look."
+        },
+
+        {
+            title: "🐝 Sweet Moments",
+            image: "sweetmoments.jpg",
+            description:
+                "Cute bee and honey-inspired details, warm yellow accents, and sweet decorative elements create a cheerful photo strip with a cozy and charming appearance."
+        }
+
+    ]
+
+};
+
+
+/* =========================================
+   GABI STREET EATS AFTER DARK
+========================================= */
+
+const gabiStreetProject = {
+
+    image: "gabi.jpg",
+
+    title: "Gabi Street Eats After Dark",
+
+    category: "UI/UX Design",
+
+    status: "Ongoing",
+
+    description:
+        "A Figma food application concept focused on discovering street food and late-night eats through a simple, modern, and user-friendly interface.",
+
+    tools: "Figma",
+
+    link:
+        "https://www.figma.com/design/liI5ev1Z9hZf4Pc2Gv5vBH/Gabi-Food-app?m=auto&t=pUtlbdgaZRpGiXw7-6",
+
+    highlights: [
+        {
+            icon: "🌙",
+            title: "Night Food",
+            text: "Focused on discovering food options during the evening and nighttime."
+        },
+        {
+            icon: "🍔",
+            title: "Food Discovery",
+            text: "Designed to help users explore different street food choices."
+        },
+        {
+            icon: "📱",
+            title: "Mobile Experience",
+            text: "Created as a mobile-focused food application concept."
+        },
+        {
+            icon: "🎨",
+            title: "Modern UI",
+            text: "Uses organized layouts for a clean and easy browsing experience."
+        }
+    ],
+
+    features: [
+        "Street food discovery",
+        "Food browsing",
+        "Food categories",
+        "Food and restaurant details",
+        "Search and browsing concept",
+        "Late-night food discovery"
+    ],
+
+    designConcept:
+        "Gabi Street Eats After Dark is designed around the lively atmosphere of street food at night. The concept combines a modern interface with an easy browsing experience to help users discover food options after dark.",
+
+    role: [
+        "UI/UX Design",
+        "Interface Layout",
+        "Visual Design",
+        "Prototype Design"
+    ]
+
+};
+
+
+/* =========================================
+   CLEAN PORTFOLIO
+========================================= */
+
+projects = projects.filter(project => {
+
+    if (!project.title) {
+        return false;
+    }
+
+    const title =
+        project.title.trim().toLowerCase();
+
+    if (title === "test project") {
+        return false;
+    }
+
+    if (
+        title === "gabi" ||
+        title === "gabi street eats" ||
+        title === "gabi street eats after dark"
+    ) {
+        return false;
+    }
+
+    if (
+        title === "photo strip" ||
+        title === "photo strips"
+    ) {
+        return false;
+    }
+
+    if (
+        title === "dinezy"
+    ) {
+        return false;
+    }
+
+    return true;
+
+});
+
+
+/* =========================================
+   PUT PROJECTS IN LATEST-FIRST ORDER
+========================================= */
+
+projects.unshift(gabiStreetProject);
+projects.unshift(photoStripProject);
+projects.unshift(dinezyProject);
+
+
+/* =========================================
+   SAVE CLEAN DATA
+========================================= */
+
+localStorage.setItem(
+    "projects",
+    JSON.stringify(projects)
+);
+
+
+/* =========================================
+   OPEN ADD PROJECT MODAL
+========================================= */
+
+function openProjectModal() {
+
+    if (!modal) {
+        return;
+    }
+
+    modal.style.display = "flex";
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    if (modalTitle) {
+        modalTitle.textContent = "Add Project";
+    }
+
+    editIndex = null;
+
+    clearForm();
 
 }
 
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* =========================================
+   CLOSE PROJECT MODAL
+========================================= */
 
-.portfolio-header{
+function closeProjectModal() {
 
-    max-width:1100px;
+    if (!modal) {
+        return;
+    }
 
-    margin:auto;
+    modal.style.display = "none";
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    margin-bottom:50px;
-
-    gap:20px;
-
-    position:relative;
-
-    text-align:center;
+    clearForm();
 
 }
 
 
-.portfolio-header > div{
+/* =========================================
+   CLEAR FORM
+========================================= */
 
-    width:100%;
+function clearForm() {
 
-}
+    const title =
+        document.getElementById("projectTitle");
 
+    const category =
+        document.getElementById("projectCategory");
 
-.portfolio-header h1{
+    const status =
+        document.getElementById("projectStatus");
 
-    font-family:'Playfair Display', serif;
+    const description =
+        document.getElementById("projectDescription");
 
-    font-size:42px;
+    const tools =
+        document.getElementById("projectTools");
 
-    color:#008080;
-
-    margin:0 0 10px;
-
-    font-weight:800;
-
-    letter-spacing:-0.5px;
-
-}
-
-
-.portfolio-header p{
-
-    font-family:'Quicksand', sans-serif;
-
-    color:#555;
-
-    font-size:18px;
-
-    font-weight:500;
-
-    letter-spacing:.3px;
-
-    margin:0;
-
-}
+    const link =
+        document.getElementById("projectLink");
 
 
-/* =====================================================
-   ADD PROJECT BUTTON
-===================================================== */
+    if (title) {
+        title.value = "";
+    }
 
-.add-project-btn{
+    if (category) {
+        category.value = "";
+    }
 
-    position:absolute;
+    if (status) {
+        status.value = "";
+    }
 
-    right:0;
+    if (description) {
+        description.value = "";
+    }
 
-    top:50%;
+    if (tools) {
+        tools.value = "";
+    }
 
-    transform:translateY(-50%);
+    if (link) {
+        link.value = "";
+    }
 
-    background:#008080;
+    if (imageInput) {
+        imageInput.value = "";
+    }
 
-    color:white;
+    if (imagePreview) {
+        imagePreview.src = "";
+    }
 
-    border:none;
-
-    padding:14px 25px;
-
-    border-radius:30px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+    imageData = "";
 
 }
 
 
-.add-project-btn:hover{
-
-    background:#00b3b3;
-
-    transform:translateY(-50%) translateY(-3px);
-
-}
-
-
-/* =====================================================
-   PROJECT GRID
-===================================================== */
-
-.project-container{
-
-    width:100%;
-
-    max-width:750px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:15px;
-
-}
-
-
-/* =====================================================
-   PROJECT CARD
-===================================================== */
-
-.project-card{
-
-    width:100%;
-
-    background:#E3E9E7;
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.1);
-
-    transition:.3s;
-
-    cursor:pointer;
-
-}
-
-
-.project-card:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:0 12px 28px rgba(0,0,0,.15);
-
-}
-
-
-/* =====================================================
-   PROJECT CARD IMAGE
-===================================================== */
-
-.project-card img{
-
-    width:100%;
-
-    height:auto;
-
-    aspect-ratio:1 / 1;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    display:block;
-
-    background:#D6DEDC;
-
-}
-
-
-/* =====================================================
-   PROJECT CONTENT
-===================================================== */
-
-.project-content{
-
-    padding:10px;
-
-}
-
-
-.project-content h2{
-
-    color:#008080;
-
-    font-size:16px;
-
-    margin:5px 0 8px;
-
-}
-
-
-.project-content p{
-
-    color:#555;
-
-    font-size:12px;
-
-    line-height:1.4;
-
-    margin:0 0 8px;
-
-}
-
-
-/* =====================================================
-   BADGES
-===================================================== */
-
-.project-labels{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:3px;
-
-}
-
-
-.category,
-.status{
-
-    display:inline-block;
-
-    padding:4px 8px;
-
-    border-radius:20px;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-    margin:0;
-
-}
-
-
-.category{
-
-    background:#ffcc00;
-
-    color:#333;
-
-}
-
-
-.status{
-
-    background:#008080;
-
-    color:white;
-
-}
-
-
-/* =====================================================
-   TOOLS
-===================================================== */
-
-.tools-used{
-
-    margin-top:8px;
-
-    font-size:12px;
-
-    color:#333;
-
-    font-weight:500;
-
-}
-
-
-/* =====================================================
-   PROJECT BUTTONS
-===================================================== */
-
-.project-buttons{
-
-    display:flex;
-
-    gap:5px;
-
-    flex-wrap:wrap;
-
-    margin-top:10px;
-
-}
-
-
-.view-btn{
-
-    background:#008080;
-
-    color:white;
-
-    padding:7px 10px;
-
-    border-radius:20px;
-
-    text-decoration:none;
-
-    font-size:11px;
-
-    transition:.3s;
-
-}
-
-
-.edit-btn{
-
-    background:#ffcc00;
-
-    color:#333;
-
-    border:none;
-
-    padding:7px 10px;
-
-    border-radius:20px;
-
-    cursor:pointer;
-
-    font-size:11px;
-
-    transition:.3s;
-
-}
-
-
-.delete-btn{
-
-    background:#d9534f;
-
-    color:white;
-
-    border:none;
-
-    padding:7px 10px;
-
-    border-radius:20px;
-
-    cursor:pointer;
-
-    font-size:11px;
-
-    transition:.3s;
-
-}
-
-
-.view-btn:hover,
-.edit-btn:hover,
-.delete-btn:hover{
-
-    opacity:.8;
-
-}
-
-
-/* =====================================================
-   NO PROJECT
-===================================================== */
-
-#noProject{
-
-    text-align:center;
-
-    color:#777;
-
-    font-size:18px;
-
-    margin-top:30px;
-
-}
-
-
-/* =====================================================
-   ADD / EDIT MODAL
-===================================================== */
-
-.project-modal{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-
-    height:100%;
-
-    background:rgba(0,0,0,.6);
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:2000;
-
-    padding:20px;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-box{
-
-    background:#E3E9E7;
-
-    width:500px;
-
-    max-width:100%;
-
-    max-height:90vh;
-
-    overflow-y:auto;
-
-    padding:30px;
-
-    border-radius:15px;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-box h2{
-
-    color:#008080;
-
-    margin:0 0 20px;
-
-}
-
-
-.project-box label{
-
-    display:block;
-
-    font-weight:bold;
-
-    margin-top:15px;
-
-}
-
-
-.project-box input,
-.project-box textarea,
-.project-box select{
-
-    width:100%;
-
-    padding:12px;
-
-    margin-top:5px;
-
-    border:1px solid #bfcac7;
-
-    border-radius:8px;
-
-    outline:none;
-
-    background:#D6DEDC;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-box textarea{
-
-    height:120px;
-
-    resize:none;
-
-}
-
-
-/* =====================================================
+/* =========================================
    IMAGE PREVIEW
-===================================================== */
+========================================= */
 
-.image-preview{
+if (imageInput) {
 
-    text-align:center;
+    imageInput.addEventListener(
+        "change",
+        function () {
 
-    margin:15px 0;
+            const file =
+                this.files[0];
 
-}
+            if (!file) {
+                return;
+            }
 
+            const reader =
+                new FileReader();
 
-.image-preview img{
+            reader.onload =
+                function (event) {
 
-    max-width:200px;
+                    imageData =
+                        event.target.result;
 
-    max-height:200px;
+                    if (imagePreview) {
+                        imagePreview.src =
+                            imageData;
+                    }
 
-    border-radius:10px;
+                };
 
-    object-fit:contain;
+            reader.readAsDataURL(file);
 
-}
-
-
-/* =====================================================
-   MODAL BUTTONS
-===================================================== */
-
-.modal-buttons{
-
-    display:flex;
-
-    gap:15px;
-
-    margin-top:25px;
-
-}
-
-
-.save-btn{
-
-    background:#008080;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 25px;
-
-    border-radius:25px;
-
-    cursor:pointer;
+        }
+    );
 
 }
 
 
-.cancel-btn{
+/* =========================================
+   SAVE PROJECT
+========================================= */
 
-    background:#777;
+function saveProject() {
 
-    color:white;
+    const title =
+        document.getElementById(
+            "projectTitle"
+        )?.value.trim() || "";
 
-    border:none;
+    const category =
+        document.getElementById(
+            "projectCategory"
+        )?.value || "";
 
-    padding:12px 25px;
+    const status =
+        document.getElementById(
+            "projectStatus"
+        )?.value || "";
 
-    border-radius:25px;
+    const description =
+        document.getElementById(
+            "projectDescription"
+        )?.value.trim() || "";
 
-    cursor:pointer;
+    const tools =
+        document.getElementById(
+            "projectTools"
+        )?.value.trim() || "";
+
+    const link =
+        document.getElementById(
+            "projectLink"
+        )?.value.trim() || "";
+
+
+    if (
+        title === "" ||
+        description === ""
+    ) {
+
+        alert(
+            "Please complete required fields."
+        );
+
+        return;
+
+    }
+
+
+    const project = {
+
+        image:
+            imageData ||
+            "assets/default-project.png",
+
+        title:
+            title,
+
+        category:
+            category,
+
+        status:
+            status,
+
+        description:
+            description,
+
+        tools:
+            tools,
+
+        link:
+            link
+
+    };
+
+
+    if (editIndex === null) {
+
+        projects.unshift(project);
+
+    }
+
+    else {
+
+        if (
+            projects[editIndex] &&
+            projects[editIndex].photoStrips
+        ) {
+
+            project.photoStrips =
+                projects[editIndex].photoStrips;
+
+        }
+
+        if (
+            projects[editIndex] &&
+            projects[editIndex].highlights
+        ) {
+
+            project.highlights =
+                projects[editIndex].highlights;
+
+        }
+
+        if (
+            projects[editIndex] &&
+            projects[editIndex].features
+        ) {
+
+            project.features =
+                projects[editIndex].features;
+
+        }
+
+        if (
+            projects[editIndex] &&
+            projects[editIndex].designConcept
+        ) {
+
+            project.designConcept =
+                projects[editIndex].designConcept;
+
+        }
+
+        if (
+            projects[editIndex] &&
+            projects[editIndex].role
+        ) {
+
+            project.role =
+                projects[editIndex].role;
+
+        }
+
+        projects[editIndex] =
+            project;
+
+    }
+
+
+    localStorage.setItem(
+        "projects",
+        JSON.stringify(projects)
+    );
+
+    displayProjects();
+
+    closeProjectModal();
 
 }
 
 
-/* =====================================================
-   PROJECT PREVIEW OVERLAY
-===================================================== */
+/* =========================================
+   DISPLAY PROJECTS
+========================================= */
 
-.project-preview-overlay{
+function displayProjects() {
 
-    position:fixed;
+    if (!projectContainer) {
+        return;
+    }
 
-    inset:0;
-
-    width:100%;
-
-    height:100%;
-
-    background:rgba(0,0,0,.75);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:30px;
-
-    z-index:5000;
-
-    overflow-y:auto;
-
-    box-sizing:border-box;
-
-}
+    projectContainer.innerHTML = "";
 
 
-/* =====================================================
-   PROJECT PREVIEW BOX
-===================================================== */
+    if (projects.length === 0) {
 
-.project-preview-box{
+        if (noProject) {
+            noProject.style.display = "block";
+        }
 
-    position:relative;
+        return;
 
-    width:100%;
-
-    max-width:1000px;
-
-    max-height:92vh;
-
-    overflow-y:auto;
-
-    background:#E3E9E7;
-
-    border-radius:20px;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-
-}
+    }
 
 
-/* =====================================================
-   CLOSE BUTTON
-===================================================== */
-
-.project-preview-close{
-
-    position:absolute;
-
-    top:15px;
-
-    right:15px;
-
-    width:42px;
-
-    height:42px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:rgba(0,0,0,.65);
-
-    color:white;
-
-    font-size:28px;
-
-    line-height:42px;
-
-    cursor:pointer;
-
-    z-index:20;
-
-}
+    if (noProject) {
+        noProject.style.display = "none";
+    }
 
 
-/* =====================================================
-   PREVIEW COVER
-===================================================== */
+    projects.forEach(
+        (project, index) => {
 
-.project-preview-cover{
+            const card =
+                document.createElement("div");
 
-    width:auto;
+            card.className =
+                "project-card";
 
-    max-width:100%;
+            card.dataset.projectIndex =
+                index;
 
-    height:auto;
+            card.innerHTML = `
 
-    max-height:300px;
+                <img
+                    src="${project.image}"
+                    alt="${project.title}"
+                >
 
-    object-fit:contain;
+                <div class="project-content">
 
-    object-position:center;
+                    <div class="project-labels">
 
-    background:#D6DEDC;
+                        <span class="category">
+                            ${project.category || "Project"}
+                        </span>
 
-    display:block;
+                        <span class="status">
+                            ${project.status || "Ongoing"}
+                        </span>
 
-    margin:0 auto;
+                    </div>
 
-}
+                    <h2>
+                        ${project.title}
+                    </h2>
 
+                    <p>
+                        ${project.description}
+                    </p>
 
-/* =====================================================
-   PREVIEW CONTENT
-===================================================== */
+                    <div class="tools-used">
+                        🛠 Tools Used:
+                        ${project.tools || "N/A"}
+                    </div>
 
-.project-preview-content{
+                    <div class="project-buttons">
 
-    padding:35px;
+                        ${
+                            project.link
+                            ?
+                            `
+                            <a
+                                href="${project.link}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="view-btn"
+                            >
+                                View Project
+                            </a>
+                            `
+                            :
+                            ""
+                        }
 
-    box-sizing:border-box;
+                        <button
+                            type="button"
+                            class="edit-btn"
+                        >
+                            Edit
+                        </button>
+
+                        <button
+                            type="button"
+                            class="delete-btn"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            projectContainer.appendChild(card);
+
+        }
+    );
 
 }
 
 
-.project-preview-labels{
+/* =========================================
+   CARD CLICK
+   CLICK ANYWHERE ON CARD
+========================================= */
 
-    display:flex;
+if (projectContainer) {
 
-    flex-wrap:wrap;
+    projectContainer.addEventListener(
+        "click",
+        function (event) {
 
-    gap:3px;
+            const editButton =
+                event.target.closest(".edit-btn");
 
-    margin:0 0 10px;
+            const deleteButton =
+                event.target.closest(".delete-btn");
+
+            const viewButton =
+                event.target.closest(".view-btn");
+
+
+            if (editButton) {
+
+                event.preventDefault();
+
+                const card =
+                    editButton.closest(".project-card");
+
+                if (!card) {
+                    return;
+                }
+
+                editProject(
+                    Number(card.dataset.projectIndex)
+                );
+
+                return;
+
+            }
+
+
+            if (deleteButton) {
+
+                event.preventDefault();
+
+                const card =
+                    deleteButton.closest(".project-card");
+
+                if (!card) {
+                    return;
+                }
+
+                deleteProject(
+                    Number(card.dataset.projectIndex)
+                );
+
+                return;
+
+            }
+
+
+            if (viewButton) {
+                return;
+            }
+
+
+            const card =
+                event.target.closest(".project-card");
+
+            if (!card) {
+                return;
+            }
+
+
+            const index =
+                Number(card.dataset.projectIndex);
+
+
+            if (
+                Number.isNaN(index) ||
+                !projects[index]
+            ) {
+                return;
+            }
+
+
+            openProjectPreview(
+                projects[index],
+                card
+            );
+
+        }
+    );
 
 }
 
 
-.project-preview-content h1{
+/* =========================================
+   EDIT PROJECT
+========================================= */
 
-    color:#008080;
+function editProject(index) {
 
-    font-size:36px;
+    if (
+        index < 0 ||
+        index >= projects.length
+    ) {
+        return;
+    }
 
-    margin:15px 0;
+    editIndex = index;
 
-    line-height:1.2;
+    const project =
+        projects[index];
+
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    if (modalTitle) {
+        modalTitle.textContent =
+            "Edit Project";
+    }
+
+
+    const title =
+        document.getElementById("projectTitle");
+
+    const category =
+        document.getElementById("projectCategory");
+
+    const status =
+        document.getElementById("projectStatus");
+
+    const description =
+        document.getElementById("projectDescription");
+
+    const tools =
+        document.getElementById("projectTools");
+
+    const link =
+        document.getElementById("projectLink");
+
+
+    if (title) {
+        title.value =
+            project.title || "";
+    }
+
+    if (category) {
+        category.value =
+            project.category || "";
+    }
+
+    if (status) {
+        status.value =
+            project.status || "";
+    }
+
+    if (description) {
+        description.value =
+            project.description || "";
+    }
+
+    if (tools) {
+        tools.value =
+            project.tools || "";
+    }
+
+    if (link) {
+        link.value =
+            project.link || "";
+    }
+
+
+    imageData =
+        project.image || "";
+
+
+    if (imagePreview) {
+        imagePreview.src =
+            project.image || "";
+    }
+
+
+    if (modal) {
+        modal.style.display = "flex";
+    }
 
 }
 
 
-.project-preview-description{
+/* =========================================
+   DELETE PROJECT
+========================================= */
 
-    color:#555;
+function deleteProject(index) {
 
-    font-size:16px;
-
-    line-height:1.7;
-
-    margin:0;
-
-}
-
-
-.project-preview-tools{
-
-    margin-top:20px;
-
-    padding:15px;
-
-    background:#D6DEDC;
-
-    border-radius:10px;
-
-    color:#333;
-
-}
+    if (
+        index < 0 ||
+        index >= projects.length
+    ) {
+        return;
+    }
 
 
-/* =====================================================
-   IMPORTANT GLOBAL SECTION RESET
-   Prevent style.css section rules from affecting
-   sections created inside the project preview.
-===================================================== */
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this project?"
+        );
 
-.project-preview-box section{
 
-    width:100% !important;
+    if (!confirmDelete) {
+        return;
+    }
 
-    max-width:none !important;
 
-    min-height:0 !important;
+    projects.splice(index, 1);
 
-    height:auto !important;
 
-    padding:0 !important;
+    localStorage.setItem(
+        "projects",
+        JSON.stringify(projects)
+    );
 
-    margin:0 !important;
 
-    box-sizing:border-box;
+    displayProjects();
 
 }
 
 
-/* =====================================================
+/* =========================================
    EXTRA PROJECT CONTENT
-===================================================== */
+========================================= */
 
-.project-extra-content{
+function createExtraProjectContent(project) {
 
-    width:100%;
+    if (
+        !project.highlights &&
+        !project.features &&
+        !project.designConcept &&
+        !project.role
+    ) {
+        return "";
+    }
 
-    margin:22px 0 0;
 
-    padding:0;
+    let highlightsHTML = "";
 
-    box-sizing:border-box;
 
-}
+    /* =====================================
+       PROJECT HIGHLIGHTS
+    ===================================== */
 
+    if (
+        project.highlights &&
+        project.highlights.length > 0
+    ) {
 
-/* =====================================================
-   EXTRA PROJECT SECTION
-===================================================== */
+        highlightsHTML = `
 
-.project-preview-box .project-extra-section{
+            <section class="project-extra-section project-highlights-section">
 
-    display:block !important;
+                <h2 class="project-extra-title">
+                    ✨ Project Highlights
+                </h2>
 
-    width:100% !important;
+                <div class="project-highlight-grid">
 
-    min-height:0 !important;
+                    ${
+                        project.highlights
+                            .map(
+                                (highlight, index) => `
 
-    height:auto !important;
+                                    <div
+                                        class="project-highlight-card highlight-item-${index + 1}"
+                                    >
 
-    margin:0 0 18px !important;
+                                        <div
+                                            class="project-highlight-icon"
+                                        >
+                                            ${highlight.icon}
+                                        </div>
 
-    padding:18px !important;
+                                        <div class="project-highlight-text">
 
-    background:#F4F6F5;
+                                            <h3>
+                                                ${highlight.title}
+                                            </h3>
 
-    border:1px solid #CBD5D2;
+                                            <p>
+                                                ${highlight.text}
+                                            </p>
 
-    border-radius:14px;
+                                        </div>
 
-    box-sizing:border-box;
+                                    </div>
 
-}
+                                `
+                            )
+                            .join("")
+                    }
 
+                </div>
 
-.project-preview-box .project-extra-section:last-child{
+            </section>
 
-    margin-bottom:0 !important;
-
-}
-
-
-/* =====================================================
-   EXTRA SECTION TITLE
-===================================================== */
-
-.project-preview-box .project-extra-title{
-
-    display:block;
-
-    width:100%;
-
-    margin:0 0 14px !important;
-
-    padding:0;
-
-    color:#008080;
-
-    font-family:'Raleway',sans-serif;
-
-    font-size:22px;
-
-    line-height:1.25;
-
-    text-align:left;
-
-}
-
-
-/* =====================================================
-   PROJECT HIGHLIGHTS
-===================================================== */
-
-.project-highlight-grid{
-
-    display:grid !important;
-
-    grid-template-columns:repeat(2,minmax(0,1fr));
-
-    gap:10px;
-
-    width:100%;
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-highlight-card{
-
-    display:flex !important;
-
-    align-items:flex-start;
-
-    gap:10px;
-
-    width:100%;
-
-    min-width:0;
-
-    min-height:90px !important;
-
-    height:auto !important;
-
-    margin:0 !important;
-
-    padding:13px !important;
-
-    background:#E3E9E7;
-
-    border:1px solid #CBD5D2;
-
-    border-radius:11px;
-
-    box-sizing:border-box;
-
-}
-
-
-/* =====================================================
-   HIGHLIGHT ICON
-===================================================== */
-
-.project-highlight-icon{
-
-    width:40px;
-
-    height:40px;
-
-    min-width:40px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin:0;
-
-    padding:0;
-
-    background:#D6DEDC;
-
-    border-radius:9px;
-
-    font-size:20px;
-
-}
-
-
-/* =====================================================
-   HIGHLIGHT TEXT
-===================================================== */
-
-.project-highlight-text{
-
-    flex:1;
-
-    min-width:0;
-
-}
-
-
-.project-highlight-card h3{
-
-    margin:0 0 4px !important;
-
-    padding:0;
-
-    color:#008080;
-
-    font-size:14px;
-
-    line-height:1.3;
-
-}
-
-
-.project-highlight-card p{
-
-    margin:0 !important;
-
-    padding:0;
-
-    color:#555;
-
-    font-size:12px;
-
-    line-height:1.45;
-
-}
-
-
-/* =====================================================
-   KEY FEATURES
-===================================================== */
-
-.project-feature-list{
-
-    display:grid !important;
-
-    grid-template-columns:repeat(2,minmax(0,1fr));
-
-    gap:9px;
-
-    width:100%;
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-feature-item{
-
-    display:flex !important;
-
-    align-items:center;
-
-    gap:9px;
-
-    width:100%;
-
-    min-width:0;
-
-    min-height:42px !important;
-
-    height:auto !important;
-
-    margin:0 !important;
-
-    padding:9px 11px !important;
-
-    background:#E3E9E7;
-
-    border:1px solid #CBD5D2;
-
-    border-radius:9px;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-feature-item > span{
-
-    width:24px;
-
-    height:24px;
-
-    min-width:24px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin:0;
-
-    padding:0;
-
-    background:#008080;
-
-    color:white;
-
-    border-radius:50%;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-}
-
-
-.project-feature-item p{
-
-    margin:0 !important;
-
-    padding:0;
-
-    color:#555;
-
-    font-size:12px;
-
-    line-height:1.35;
-
-}
-
-
-/* =====================================================
-   DESIGN CONCEPT
-===================================================== */
-
-.project-concept-box{
-
-    display:block;
-
-    width:100%;
-
-    min-height:0 !important;
-
-    height:auto !important;
-
-    margin:0;
-
-    padding:14px 16px;
-
-    background:#E3E9E7;
-
-    border:1px solid #CBD5D2;
-
-    border-left:4px solid #008080;
-
-    border-radius:9px;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-concept-box p{
-
-    margin:0 !important;
-
-    padding:0;
-
-    color:#555;
-
-    font-size:13px;
-
-    line-height:1.55;
-
-}
-
-
-/* =====================================================
-   MY ROLE
-===================================================== */
-
-.project-role-list{
-
-    display:flex !important;
-
-    flex-wrap:wrap;
-
-    gap:7px;
-
-    width:100%;
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-
-.project-role-list span{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    width:auto;
-
-    min-height:0;
-
-    margin:0 !important;
-
-    padding:7px 11px;
-
-    background:#E3E9E7;
-
-    border:1px solid #CBD5D2;
-
-    border-radius:20px;
-
-    color:#555;
-
-    font-size:12px;
-
-}
-
-
-/* =====================================================
-   PHOTO STRIP SECTION
-===================================================== */
-
-.project-preview-box .photo-strip-section{
-
-    width:100% !important;
-
-    min-height:0 !important;
-
-    height:auto !important;
-
-    margin:25px 0 0 !important;
-
-    padding:25px 0 0 !important;
-
-    border-top:2px solid #CBD5D2;
-
-    box-sizing:border-box;
-
-}
-
-
-.photo-strip-section h2{
-
-    color:#008080;
-
-    font-size:28px;
-
-    margin:0 0 8px;
-
-}
-
-
-.photo-strip-intro{
-
-    color:#666;
-
-    font-size:15px;
-
-    margin:0 0 25px;
-
-    line-height:1.6;
-
-}
-
-
-/* =====================================================
-   PHOTO STRIP GRID
-===================================================== */
-
-.photo-strip-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:25px;
-
-}
-
-
-/* =====================================================
-   PHOTO STRIP CARD
-===================================================== */
-
-.photo-strip-item{
-
-    background:#E3E9E7;
-
-    border-radius:15px;
-
-    padding:15px;
-
-    text-align:center;
-
-    border:1px solid #CBD5D2;
-
-    overflow:hidden;
-
-    box-sizing:border-box;
-
-}
-
-
-/* =====================================================
-   PHOTO STRIP NUMBER
-===================================================== */
-
-.photo-strip-number{
-
-    width:30px;
-
-    height:30px;
-
-    margin:0 auto 12px;
-
-    background:#008080;
-
-    color:white;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-}
-
-
-/* =====================================================
-   PHOTO STRIP IMAGE
-===================================================== */
-
-.photo-strip-image{
-
-    width:100%;
-
-    height:380px;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    display:block;
-
-    background:#D6DEDC;
-
-    border-radius:10px;
-
-    padding:5px;
-
-    box-sizing:border-box;
-
-}
-
-
-/* =====================================================
-   PHOTO STRIP TITLE
-===================================================== */
-
-.photo-strip-item h3{
-
-    color:#008080;
-
-    font-size:18px;
-
-    margin:15px 5px 8px;
-
-    line-height:1.3;
-
-}
-
-
-.photo-strip-item p{
-
-    color:#555;
-
-    font-size:14px;
-
-    line-height:1.6;
-
-    margin:0 5px 10px;
-
-}
-
-
-/* =====================================================
-   PREVIEW ACTIONS
-===================================================== */
-
-.project-preview-actions{
-
-    display:flex;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-
-    margin-top:35px;
-
-    padding-top:25px;
-
-    border-top:1px solid #CBD5D2;
-
-}
-
-
-.close-preview-btn{
-
-    background:#777;
-
-    color:white;
-
-    border:none;
-
-    padding:10px 18px;
-
-    border-radius:20px;
-
-    cursor:pointer;
-
-}
-
-
-.close-preview-btn:hover{
-
-    opacity:.8;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-
-    background:#008080;
-
-    color:white;
-
-    padding:30px 20px;
-
-    text-align:center;
-
-    border-top:3px solid #00b3b3;
-
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media(max-width:900px){
-
-    .portfolio{
-
-        margin-top:-60px;
+        `;
 
     }
 
 
-    .project-container{
+    let featuresHTML = "";
 
-        max-width:650px;
 
-        grid-template-columns:repeat(2,1fr);
+    /* =====================================
+       KEY FEATURES
+    ===================================== */
 
-        gap:18px;
+    if (
+        project.features &&
+        project.features.length > 0
+    ) {
+
+        featuresHTML = `
+
+            <section class="project-extra-section project-key-features-section">
+
+                <h2 class="project-extra-title">
+                    ⭐ Key Features
+                </h2>
+
+                <div class="project-feature-list">
+
+                    ${
+                        project.features
+                            .map(
+                                (feature, index) => `
+
+                                    <div
+                                        class="project-feature-item feature-item-${index + 1}"
+                                    >
+
+                                        <span>
+                                            ✓
+                                        </span>
+
+                                        <p>
+                                            ${feature}
+                                        </p>
+
+                                    </div>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            </section>
+
+        `;
 
     }
 
 
-    .photo-strip-grid{
+    let conceptHTML = "";
 
-        grid-template-columns:repeat(2,1fr);
+
+    /* =====================================
+       DESIGN CONCEPT
+    ===================================== */
+
+    if (project.designConcept) {
+
+        conceptHTML = `
+
+            <section class="project-extra-section project-design-concept-section">
+
+                <h2 class="project-extra-title">
+                    🎨 Design Concept
+                </h2>
+
+                <div class="project-concept-box">
+
+                    <p>
+                        ${project.designConcept}
+                    </p>
+
+                </div>
+
+            </section>
+
+        `;
 
     }
 
 
-    .photo-strip-image{
+    let roleHTML = "";
 
-        height:350px;
+
+    /* =====================================
+       MY ROLE
+    ===================================== */
+
+    if (
+        project.role &&
+        project.role.length > 0
+    ) {
+
+        roleHTML = `
+
+            <section class="project-extra-section project-my-role-section">
+
+                <h2 class="project-extra-title">
+                    👨‍💻 My Role
+                </h2>
+
+                <div class="project-role-list">
+
+                    ${
+                        project.role
+                            .map(
+                                role => `
+
+                                    <span>
+                                        ${role}
+                                    </span>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            </section>
+
+        `;
 
     }
+
+
+    return `
+
+        <div class="project-extra-content">
+
+            ${highlightsHTML}
+
+            ${featuresHTML}
+
+            ${conceptHTML}
+
+            ${roleHTML}
+
+        </div>
+
+    `;
 
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* =========================================
+   PROJECT PREVIEW
+========================================= */
 
-@media(max-width:768px){
+function openProjectPreview(project, sourceCard) {
 
-    .portfolio{
-
-        margin-top:-45px;
-
-        padding:50px 15px;
-
+    if (projectPreviewClosing) {
+        return;
     }
 
 
-    .portfolio-header{
+    activeProjectCard =
+        sourceCard || null;
 
-        flex-direction:column;
 
-        align-items:center;
+    const oldPreview =
+        document.getElementById(
+            "projectPreviewOverlay"
+        );
 
-        text-align:center;
 
-        gap:20px;
-
+    if (oldPreview) {
+        oldPreview.remove();
     }
 
 
-    .portfolio-header > div{
+    const overlay =
+        document.createElement("div");
 
-        width:100%;
 
-    }
+    overlay.id =
+        "projectPreviewOverlay";
 
+    overlay.className =
+        "project-preview-overlay";
 
-    .portfolio-header h1{
 
-        font-size:32px;
+    const photoStripCount =
+        project.photoStrips
+            ? project.photoStrips.length
+            : 0;
 
-    }
 
+    let photoStripHTML = "";
 
-    .portfolio-header p{
 
-        font-size:16px;
-
-    }
-
-
-    .add-project-btn{
-
-        position:static;
-
-        transform:none;
-
-    }
-
-
-    .add-project-btn:hover{
-
-        transform:translateY(-2px);
-
-    }
-
-
-    .project-container{
-
-        grid-template-columns:1fr;
-
-        max-width:500px;
-
-    }
-
-
-    .project-box{
-
-        width:100%;
-
-    }
-
-
-    /* =========================
-       PREVIEW
-    ========================= */
-
-    .project-preview-overlay{
-
-        padding:15px;
-
-        align-items:flex-start;
-
-    }
-
-
-    .project-preview-box{
-
-        max-height:95vh;
-
-        border-radius:15px;
-
-    }
-
-
-    .project-preview-cover{
-
-        width:auto;
-
-        max-width:100%;
-
-        height:auto;
-
-        max-height:260px;
-
-        object-fit:contain;
-
-        object-position:center;
-
-        margin:0 auto;
-
-        background:#D6DEDC;
-
-    }
-
-
-    .project-preview-content{
-
-        padding:25px 20px;
-
-    }
-
-
-    .project-preview-content h1{
-
-        font-size:28px;
-
-    }
-
-
-    /* =========================
-       EXTRA CONTENT
-    ========================= */
-
-    .project-preview-box .project-extra-section{
-
-        margin-bottom:14px !important;
-
-        padding:14px !important;
-
-    }
-
-
-    .project-preview-box .project-extra-title{
-
-        font-size:20px;
-
-        margin-bottom:11px !important;
-
-    }
-
-
-    /* =========================
-       HIGHLIGHTS
-    ========================= */
-
-    .project-highlight-grid{
-
-        grid-template-columns:1fr;
-
-        gap:9px;
-
-    }
-
-
-    .project-highlight-card{
-
-        min-height:0 !important;
-
-        padding:12px !important;
-
-    }
-
-
-    /* =========================
-       FEATURES
-    ========================= */
-
-    .project-feature-list{
-
-        grid-template-columns:1fr;
-
-        gap:8px;
-
-    }
-
-
-    /* =========================
+    /* =====================================
        PHOTO STRIPS
-    ========================= */
+       UNCHANGED
+    ===================================== */
 
-    .project-preview-box .photo-strip-section{
+    if (
+        project.photoStrips &&
+        project.photoStrips.length > 0
+    ) {
 
-        margin-top:22px !important;
+        photoStripHTML = `
 
-        padding-top:22px !important;
+            <div class="photo-strip-section">
 
-    }
+                <h2>
+                    Photo Strip Designs
+                </h2>
 
+                <p class="photo-strip-intro">
 
-    .photo-strip-grid{
+                    Explore all ${photoStripCount}
+                    photo strip designs below.
+                    Click the card to see the design
+                    and its description.
 
-        grid-template-columns:1fr;
+                </p>
 
-        gap:20px;
+                <div class="photo-strip-grid">
 
-    }
+                    ${
+                        project.photoStrips
+                            .map(
+                                (strip, stripIndex) => `
 
+                                    <div
+                                        class="photo-strip-item"
+                                    >
 
-    .photo-strip-image{
+                                        <div
+                                            class="photo-strip-number"
+                                        >
+                                            ${stripIndex + 1}
+                                        </div>
 
-        width:100%;
+                                        <img
+                                            src="${strip.image}"
+                                            alt="${strip.title}"
+                                            class="photo-strip-image"
+                                        >
 
-        height:auto;
+                                        <h3>
+                                            ${strip.title}
+                                        </h3>
 
-        max-height:none;
+                                        <p>
+                                            ${strip.description}
+                                        </p>
 
-        object-fit:contain;
+                                    </div>
 
-        background:#D6DEDC;
+                                `
+                            )
+                            .join("")
+                    }
 
-    }
+                </div>
 
+            </div>
 
-    .photo-strip-item{
-
-        padding:15px;
-
-    }
-
-}
-
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media(max-width:500px){
-
-    .portfolio{
-
-        margin-top:-35px;
-
-        padding:45px 15px 50px;
-
-    }
-
-
-    .portfolio-header h1{
-
-        font-size:30px;
-
-    }
-
-
-    .portfolio-header p{
-
-        font-size:15px;
-
-    }
-
-
-    .project-content{
-
-        padding:12px;
+        `;
 
     }
 
 
-    .project-preview-content{
+    /* =====================================
+       EXTRA CONTENT
+    ===================================== */
 
-        padding:20px 15px;
+    const extraProjectHTML =
+        createExtraProjectContent(project);
+
+
+    /* =====================================
+       PREVIEW
+    ===================================== */
+
+    overlay.innerHTML = `
+
+        <div class="project-preview-box">
+
+            <button
+                type="button"
+                class="project-preview-close"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <img
+                class="project-preview-cover"
+                src="${project.image}"
+                alt="${project.title}"
+                style="
+                    width:100%;
+                    height:auto;
+                    max-height:500px;
+                    object-fit:contain;
+                    object-position:center;
+                    display:block;
+                    background:#f4f6f8;
+                "
+            >
+
+
+            <div class="project-preview-content">
+
+                <div class="project-preview-labels">
+
+                    <span class="category">
+                        ${project.category || "Project"}
+                    </span>
+
+                    <span class="status">
+                        ${project.status || "Ongoing"}
+                    </span>
+
+                </div>
+
+
+                <h1>
+                    ${project.title}
+                </h1>
+
+
+                <p class="project-preview-description">
+                    ${project.description}
+                </p>
+
+
+                <div class="project-preview-tools">
+
+                    🛠
+
+                    <strong>
+                        Tools Used:
+                    </strong>
+
+                    ${project.tools || "N/A"}
+
+                </div>
+
+
+                ${extraProjectHTML}
+
+
+                ${photoStripHTML}
+
+
+                <div class="project-preview-actions">
+
+                    ${
+                        project.link
+                        ?
+                        `
+                        <a
+                            href="${project.link}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="view-btn"
+                        >
+                            View Project
+                        </a>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    <button
+                        type="button"
+                        class="close-preview-btn"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        overlay
+    );
+
+
+    /* =====================================
+       PREPARE ANIMATION
+    ===================================== */
+
+    overlay.style.background =
+        "transparent";
+
+    overlay.style.opacity =
+        "0";
+
+    overlay.style.transition =
+        "opacity 400ms ease";
+
+    overlay.style.pointerEvents =
+        "none";
+
+
+    const previewBox =
+        overlay.querySelector(
+            ".project-preview-box"
+        );
+
+
+    if (previewBox) {
+
+        previewBox.style.opacity =
+            "0";
+
+        previewBox.style.clipPath =
+            "inset(8%)";
+
+        previewBox.style.transition =
+            "opacity 550ms ease, clip-path 550ms ease";
 
     }
 
 
-    .project-preview-content h1{
-
-        font-size:25px;
-
-    }
+    document.body.style.overflow =
+        "hidden";
 
 
-    .project-preview-description{
+    /* =====================================
+       CARD FLIP OPEN
+    ===================================== */
 
-        font-size:14px;
+    if (activeProjectCard) {
 
-    }
+        activeProjectCard.style.transformStyle =
+            "preserve-3d";
 
+        activeProjectCard.style.backfaceVisibility =
+            "hidden";
 
-    .project-preview-tools{
+        activeProjectCard.style.willChange =
+            "transform, opacity";
 
-        font-size:13px;
-
-    }
-
-
-    .project-preview-box .project-extra-section{
-
-        padding:12px !important;
-
-    }
+        activeProjectCard.style.transformOrigin =
+            "center center";
 
 
-    .project-highlight-card{
+        activeProjectCard.animate(
 
-        gap:8px;
+            [
+                {
+                    transform:
+                        "perspective(1200px) rotateY(0deg) scale(1)",
+                    opacity: "1"
+                },
 
-    }
+                {
+                    transform:
+                        "perspective(1200px) rotateY(90deg) scale(.98)",
+                    opacity: "1",
+                    offset: 0.45
+                },
 
+                {
+                    transform:
+                        "perspective(1200px) rotateY(180deg) scale(.96)",
+                    opacity: "0"
+                }
+            ],
 
-    .project-highlight-icon{
+            {
+                duration: 650,
+                easing:
+                    "cubic-bezier(0.65, 0, 0.35, 1)",
+                fill: "forwards"
+            }
 
-        width:36px;
-
-        height:36px;
-
-        min-width:36px;
-
-        font-size:18px;
-
-    }
-
-
-    .project-highlight-card h3{
-
-        font-size:14px;
-
-    }
-
-
-    .project-highlight-card p{
-
-        font-size:12px;
+        );
 
     }
 
 
-    .project-feature-item p{
+    /* =====================================
+       SHOW PREVIEW
+    ===================================== */
 
-        font-size:12px;
+    setTimeout(
+        function () {
 
-    }
+            if (!overlay) {
+                return;
+            }
 
+            overlay.style.pointerEvents =
+                "auto";
 
-    .project-concept-box p{
-
-        font-size:13px;
-
-    }
-
-
-    .project-role-list span{
-
-        font-size:12px;
-
-        padding:7px 10px;
-
-    }
-
-}
+            overlay.style.opacity =
+                "1";
 
 
-/* =====================================================
-   VERY SMALL PHONES
-===================================================== */
+            if (previewBox) {
 
-@media(max-width:360px){
+                previewBox.style.opacity =
+                    "1";
 
-    .portfolio{
+                previewBox.style.clipPath =
+                    "inset(0%)";
 
-        margin-top:-25px;
+            }
 
-        padding:40px 10px 45px;
-
-    }
-
-
-    .portfolio-header h1{
-
-        font-size:27px;
-
-    }
+        },
+        350
+    );
 
 
-    .portfolio-header p{
+    /* =====================================
+       CLOSE BUTTON
+    ===================================== */
 
-        font-size:14px;
+    const closeButton =
+        overlay.querySelector(
+            ".project-preview-close"
+        );
 
-    }
 
+    if (closeButton) {
 
-    .project-preview-overlay{
-
-        padding:10px;
+        closeButton.addEventListener(
+            "click",
+            closeProjectPreview
+        );
 
     }
 
 
-    .project-preview-box{
-
-        border-radius:13px;
-
-    }
-
-
-    .project-preview-content{
-
-        padding:18px 12px 20px;
-
-    }
+    const bottomClose =
+        overlay.querySelector(
+            ".close-preview-btn"
+        );
 
 
-    .project-preview-content h1{
+    if (bottomClose) {
 
-        font-size:23px;
+        bottomClose.addEventListener(
+            "click",
+            closeProjectPreview
+        );
 
     }
 
 
-    .project-preview-box .project-extra-section{
+    /* =====================================
+       CLICK OUTSIDE
+    ===================================== */
 
-        padding:11px !important;
+    overlay.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === overlay
+            ) {
+
+                closeProjectPreview();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CLOSE PREVIEW
+   REVERSE CARD FLIP
+========================================= */
+
+function closeProjectPreview() {
+
+    if (projectPreviewClosing) {
+        return;
+    }
+
+
+    const overlay =
+        document.getElementById(
+            "projectPreviewOverlay"
+        );
+
+
+    if (!overlay) {
+
+        document.body.style.overflow =
+            "";
+
+        return;
 
     }
 
-}
 
+    projectPreviewClosing =
+        true;
 
-/* =====================================================
-   DARK MODE
-===================================================== */
 
-html.dark-mode .portfolio{
+    const previewBox =
+        overlay.querySelector(
+            ".project-preview-box"
+        );
 
-    background:#111827;
 
-}
+    /* =====================================
+       CLOSE PREVIEW CONTENT
+    ===================================== */
 
+    if (previewBox) {
 
-html.dark-mode .portfolio-header h1{
+        previewBox.style.transition =
+            "opacity 450ms ease, clip-path 450ms ease";
 
-    color:#60A5FA;
+        previewBox.style.opacity =
+            "0";
 
-}
+        previewBox.style.clipPath =
+            "inset(8%)";
 
+    }
 
-html.dark-mode .portfolio-header p{
 
-    color:#D1D5DB;
+    /* =====================================
+       FADE OVERLAY
+    ===================================== */
 
-}
+    overlay.style.transition =
+        "opacity 450ms ease";
 
+    overlay.style.opacity =
+        "0";
 
-html.dark-mode .add-project-btn{
+    overlay.style.pointerEvents =
+        "none";
 
-    background:#60A5FA;
 
-    color:#172554;
+    /* =====================================
+       CARD FLIP BACK
+    ===================================== */
 
-}
+    setTimeout(
+        function () {
 
+            if (activeProjectCard) {
 
-html.dark-mode .add-project-btn:hover{
+                activeProjectCard.style.transformStyle =
+                    "preserve-3d";
 
-    background:#93C5FD;
+                activeProjectCard.style.backfaceVisibility =
+                    "hidden";
 
-}
+                activeProjectCard.style.willChange =
+                    "transform, opacity";
 
+                activeProjectCard.style.transformOrigin =
+                    "center center";
 
-html.dark-mode .project-card{
 
-    background:#1E293B;
+                activeProjectCard.animate(
 
-    box-shadow:0 6px 18px rgba(0,0,0,.35);
+                    [
+                        {
+                            transform:
+                                "perspective(1200px) rotateY(180deg) scale(.96)",
+                            opacity: "0"
+                        },
 
-}
+                        {
+                            transform:
+                                "perspective(1200px) rotateY(270deg) scale(.98)",
+                            opacity: "0",
+                            offset: 0.45
+                        },
 
+                        {
+                            transform:
+                                "perspective(1200px) rotateY(360deg) scale(1)",
+                            opacity: "1"
+                        }
+                    ],
 
-html.dark-mode .project-card:hover{
+                    {
+                        duration: 650,
+                        easing:
+                            "cubic-bezier(0.65, 0, 0.35, 1)",
+                        fill: "forwards"
+                    }
 
-    box-shadow:0 12px 28px rgba(0,0,0,.45);
+                );
 
-}
+            }
 
+        },
+        450
+    );
 
-html.dark-mode .project-card img{
 
-    background:#111827;
+    /* =====================================
+       CLEANUP
+    ===================================== */
 
-}
+    setTimeout(
+        function () {
 
+            if (overlay) {
+                overlay.remove();
+            }
 
-html.dark-mode .project-content h2{
 
-    color:#60A5FA;
+            if (activeProjectCard) {
 
-}
+                activeProjectCard.style.transform =
+                    "";
 
+                activeProjectCard.style.opacity =
+                    "";
 
-html.dark-mode .project-content p{
+                activeProjectCard.style.willChange =
+                    "";
 
-    color:#D1D5DB;
+                activeProjectCard.style.transformStyle =
+                    "";
 
-}
+                activeProjectCard.style.backfaceVisibility =
+                    "";
 
+                activeProjectCard.style.transformOrigin =
+                    "";
 
-html.dark-mode .category{
+            }
 
-    background:#D4AA00;
 
-    color:#FFFFFF;
+            activeProjectCard =
+                null;
 
-}
+            projectPreviewClosing =
+                false;
 
+            document.body.style.overflow =
+                "";
 
-html.dark-mode .status{
-
-    background:#60A5FA;
-
-    color:#172554;
-
-}
-
-
-html.dark-mode .tools-used{
-
-    color:#D1D5DB;
-
-}
-
-
-html.dark-mode .view-btn{
-
-    background:#60A5FA;
-
-    color:#172554;
-
-}
-
-
-html.dark-mode .edit-btn{
-
-    background:#D4AA00;
-
-    color:#FFFFFF;
-
-}
-
-
-html.dark-mode .delete-btn{
-
-    background:#D9534F;
-
-    color:#FFFFFF;
-
-}
-
-
-html.dark-mode #noProject{
-
-    color:#94A3B8;
-
-}
-
-
-/* =====================================================
-   DARK MODE MODAL
-===================================================== */
-
-html.dark-mode .project-box{
-
-    background:#1E293B;
-
-    color:#E2E8F0;
-
-}
-
-
-html.dark-mode .project-box h2{
-
-    color:#60A5FA;
+        },
+        1120
+    );
 
 }
 
 
-html.dark-mode .project-box label{
+/* =========================================
+   ESC KEY
+========================================= */
 
-    color:#E2E8F0;
+document.addEventListener(
+    "keydown",
+    function (event) {
 
-}
+        if (
+            event.key === "Escape"
+        ) {
 
+            closeProjectPreview();
 
-html.dark-mode .project-box input,
-html.dark-mode .project-box textarea,
-html.dark-mode .project-box select{
+        }
 
-    background:#111827;
+    }
+);
 
-    color:#D1D5DB;
 
-    border-color:#475569;
+/* =========================================
+   CLOSE ADD/EDIT MODAL OUTSIDE CLICK
+========================================= */
 
-}
+window.addEventListener(
+    "click",
+    function (event) {
 
+        if (
+            modal &&
+            event.target === modal
+        ) {
 
-html.dark-mode .project-box input::placeholder,
-html.dark-mode .project-box textarea::placeholder{
+            closeProjectModal();
 
-    color:#94A3B8;
+        }
 
-}
+    }
+);
 
 
-html.dark-mode .project-box input:focus,
-html.dark-mode .project-box textarea:focus,
-html.dark-mode .project-box select:focus{
+/* =========================================
+   INITIAL DISPLAY
+========================================= */
 
-    border-color:#60A5FA;
-
-}
-
-
-html.dark-mode .save-btn{
-
-    background:#60A5FA;
-
-    color:#172554;
-
-}
-
-
-html.dark-mode .save-btn:hover{
-
-    background:#93C5FD;
-
-}
-
-
-html.dark-mode .cancel-btn{
-
-    background:#dc3545;
-
-    color:#FFFFFF;
-
-}
-
-
-html.dark-mode .cancel-btn:hover{
-
-    background:#b52a37;
-
-}
-
-
-/* =====================================================
-   DARK MODE PROJECT PREVIEW
-===================================================== */
-
-html.dark-mode .project-preview-overlay{
-
-    background:rgba(0,0,0,.82);
-
-}
-
-
-html.dark-mode .project-preview-box{
-
-    background:#1E293B;
-
-    color:#E2E8F0;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.55);
-
-}
-
-
-html.dark-mode .project-preview-cover{
-
-    background:#111827;
-
-}
-
-
-html.dark-mode .project-preview-content h1{
-
-    color:#60A5FA;
-
-}
-
-
-html.dark-mode .project-preview-description{
-
-    color:#D1D5DB;
-
-}
-
-
-html.dark-mode .project-preview-tools{
-
-    background:#111827;
-
-    color:#D1D5DB;
-
-}
-
-
-/* =====================================================
-   DARK MODE EXTRA SECTIONS
-===================================================== */
-
-html.dark-mode .project-preview-box .project-extra-section{
-
-    background:#162235;
-
-    border-color:#334155;
-
-}
-
-
-html.dark-mode .project-preview-box .project-extra-title{
-
-    color:#60A5FA;
-
-}
-
-
-html.dark-mode .project-highlight-card{
-
-    background:#1E293B;
-
-    border-color:#334155;
-
-}
-
-
-html.dark-mode .project-highlight-icon{
-
-    background:#111827;
-
-}
-
-
-html.dark-mode .project-highlight-card h3{
-
-    color:#60A5FA;
-
-}
-
-
-html.dark-mode .project-highlight-card p{
-
-    color:#D1D5DB;
-
-}
-
-
-html.dark-mode .project-feature-item{
-
-    background:#1E293B;
-
-    border-color:#334155;
-
-}
-
-
-html.dark-mode .project-feature-item > span{
-
-    background:#60A5FA;
-
-    color:#172554;
-
-}
-
-
-html.dark-mode .project-feature-item p{
-
-    color:#D1D5DB;
-
-}
-
-
-html.dark-mode .project-concept-box{
-
-    background:#1E293B;
-
-    border-color:#334155;
-
-    border-left-color:#60A5FA;
-
-}
-
-
-html.dark-mode .project-concept-box p{
-
-    color:#D1D5DB;
-
-}
-
-
-html.dark-mode .project-role-list span{
-
-    background:#1E293B;
-
-    border-color:#334155;
-
-    color:#D1D5DB;
-
-}
-
-
-/* =====================================================
-   DARK MODE PHOTO STRIPS
-===================================================== */
-
-html.dark-mode .project-preview-box .photo-strip-section{
-
-    border-top-color:#334155;
-
-}
-
-
-html.dark-mode .photo-strip-section h2{
-
-    color:#60A5FA;
-
-}
-
-
-html.dark-mode .photo-strip-intro{
-
-    color:#D1D5DB;
-
-}
-
-
-html.dark-mode .photo-strip-item{
-
-    background:#1E293B;
-
-    border-color:#334155;
-
-}
-
-
-html.dark-mode .photo-strip-number{
-
-    background:#60A5FA;
-
-    color:#172554;
-
-}
-
-
-html.dark-mode .photo-strip-image{
-
-    background:#111827;
-
-}
-
-
-html.dark-mode .photo-strip-item h3{
-
-    color:#60A5FA;
-
-}
-
-
-html.dark-mode .photo-strip-item p{
-
-    color:#D1D5DB;
-
-}
-
-
-/* =====================================================
-   DARK MODE ACTIONS
-===================================================== */
-
-html.dark-mode .project-preview-actions{
-
-    border-top-color:#334155;
-
-}
-
-
-html.dark-mode .close-preview-btn{
-
-    background:#475569;
-
-    color:#FFFFFF;
-
-}
-
-
-/* =====================================================
-   SCROLLBARS
-===================================================== */
-
-.project-box::-webkit-scrollbar,
-.project-preview-box::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-
-.project-box::-webkit-scrollbar-thumb,
-.project-preview-box::-webkit-scrollbar-thumb{
-
-    background:#9BA9A5;
-
-    border-radius:10px;
-
-}
-
-
-html.dark-mode .project-box::-webkit-scrollbar-track,
-html.dark-mode .project-preview-box::-webkit-scrollbar-track{
-
-    background:#111827;
-
-}
-
-
-html.dark-mode .project-box::-webkit-scrollbar-thumb,
-html.dark-mode .project-preview-box::-webkit-scrollbar-thumb{
-
-    background:#475569;
-
-}
+displayProjects();
