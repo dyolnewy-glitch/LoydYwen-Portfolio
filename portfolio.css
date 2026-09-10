@@ -1,1564 +1,901 @@
 
-/* =========================================
-   PORTFOLIO DATA
-========================================= */
+/* =========================================================
+   BLOG.JS
+   ========================================================= */
 
-let projects =
-    JSON.parse(localStorage.getItem("projects")) || [];
 
-let editIndex = null;
-let imageData = "";
+/* =========================================================
+   BLOG DATA
+   ========================================================= */
 
-let activeProjectCard = null;
-let projectPreviewClosing = false;
+let blogs = [];
+let editingIndex = -1;
 
+let activeBlogCard = null;
+let blogClosing = false;
 
-/* =========================================
-   ELEMENTS
-========================================= */
 
-const projectContainer =
-    document.getElementById("projectContainer");
+/* =========================================================
+   DEFAULT BLOGS
+   ========================================================= */
 
-const noProject =
-    document.getElementById("noProject");
+const defaultBlogs = [
 
-const modal =
-    document.getElementById("projectModal");
+    /* =====================================================
+       CREATING IN MY FREE TIME
+    ===================================================== */
 
-const imageInput =
-    document.getElementById("projectImage");
+    {
+        title: "Creating in My Free Time",
+        category: "Personal",
+        date: "2026-08-18",
+        order: 1,
+        image: "com.jpg",
+        featured: false,
 
-const imagePreview =
-    document.getElementById("imagePreview");
+        content: `
+When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
 
+Sometimes, I edit posters and pictures. I enjoy choosing colors, fonts, images, and other elements to create a design that looks clean and visually appealing. There are times when I also edit videos, especially when I want to try something different from my usual designs. Even simple editing projects can be enjoyable because I get to explore new styles and techniques.
 
-/* =========================================
-   DINEZY PROJECT
-========================================= */
+Another thing I like doing is creating photo strip layouts. I enjoy designing different themes and arranging the elements so that the final layout looks balanced and attractive. I like thinking about what colors, decorations, fonts, and backgrounds would match a certain theme. It may look like a simple activity, but for me, it is a fun way to express my creativity.
 
-const dinezyProject = {
+I also spend some of my free time working on this personal website. Creating the website gives me another opportunity to be creative while also learning along the way. I can organize my work, share some of the things I have created, and experiment with how I want everything to look. It feels different from simply making a poster or editing a picture because I am creating something that combines both design and technology.
 
-    image: "dinezy.jpg",
+Most of the time, I do these activities while listening to music. Music makes the experience more enjoyable and helps me stay focused while I work. Sometimes I can spend a long time editing without noticing how much time has passed because I am enjoying both the music and the process of creating.
 
-    title: "Dinezy",
+For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.
+`
+    },
 
-    category: "UI/UX Design",
 
-    status: "Completed",
+    /* =====================================================
+       JUST LEAVES
+    ===================================================== */
 
-    description:
-        "A restaurant booking app mockup and UI design created in Figma. Dinezy focuses on providing a simple, modern, and user-friendly experience for browsing restaurants and making table reservations.",
+    {
+        title: "Just Leaves 🍂",
+        category: "Personal",
+        date: "2026-08-18",
+        order: 2,
+        image: "leaves.jpg",
+        featured: false,
 
-    tools: "Figma",
+        content: `
+Spoken Word Poetry
 
-    link:
-        "https://www.figma.com/design/m1J8ADeDC2FXIOQtVuc6US/Dinezy?node-id=14-237&t=KH9f8zN1jFzebkQP-0",
+Alam mo... para sa akin, dalawa ang ibig sabihin ng linyang “Just Leaves.”
 
-    highlights: [
-        {
-            icon: "📱",
-            title: "Mobile App",
-            text: "Designed as a mobile restaurant booking experience."
-        },
-        {
-            icon: "🎨",
-            title: "UI/UX Design",
-            text: "Focused on clean layouts and an easy user experience."
-        },
-        {
-            icon: "🍽️",
-            title: "Restaurant Booking",
-            text: "Designed around browsing restaurants and reserving tables."
-        },
-        {
-            icon: "🖥️",
-            title: "Figma Prototype",
-            text: "Created and organized using Figma."
-        }
-    ],
-
-    features: [
-        "Restaurant browsing",
-        "Restaurant menu viewing",
-        "Table reservation",
-        "Booking management",
-        "Reservation status",
-        "User profile"
-    ],
-
-    designConcept:
-        "Dinezy was designed with simplicity and convenience in mind. The interface focuses on making restaurant discovery and table reservation easier through clear navigation, organized information, and a modern mobile layout.",
-
-    role: [
-        "UI/UX Design",
-        "Interface Layout",
-        "Visual Design",
-        "Prototype Design"
-    ]
-
-};
-
-
-/* =========================================
-   PHOTO STRIPS PROJECT
-========================================= */
-
-const photoStripProject = {
-
-    image: "pts.jpg",
-
-    title: "Photo Strips",
-
-    category: "Graphic Design",
-
-    status: "Ongoing",
-
-    description:
-        "A collection of creative photo strip designs created using Canva. Click the card to see each design and its description.",
-
-    tools: "Canva",
-
-    link:
-        "https://www.canva.com/design/DAHRMQEwvuw/3gEuly4qMC0gZP21feLHCQ/edit?continue_in_browser=true",
-
-    photoStrips: [
-
-        {
-            title: "🌊 Sea Memories",
-            image: "seamemories.jpg",
-            description:
-                "Soft blue tones, seaside elements, and relaxing ocean-inspired details create a fresh coastal look that feels like a collection of memories by the sea."
-        },
-
-        {
-            title: "🎋 Bamboo Shoots",
-            image: "bambooshoots.jpg",
-            description:
-                "Natural bamboo patterns, earthy details, and fresh green accents give the strip a clean, tropical, and calming appearance."
-        },
-
-        {
-            title: "🍓 Picnic Strawberry",
-            image: "picnicstrawberry.jpg",
-            description:
-                "Cute strawberry illustrations, picnic-inspired details, and fresh red and green accents create a cheerful and sweet outdoor-inspired look."
-        },
-
-        {
-            title: "🍊 Citrus Zest",
-            image: "citruszest.jpg",
-            description:
-                "Bright citrus elements, orange-inspired accents, and refreshing colors give the strip a lively and sunny appearance."
-        },
-
-        {
-            title: "🎧 Vintage Music",
-            image: "vintagemusic.jpg",
-            description:
-                "Retro music elements, classic decorative details, and nostalgic tones create a vintage-inspired strip with an old-school music aesthetic."
-        },
-
-        {
-            title: "🌳 Forest Glade",
-            image: "forestglade.jpg",
-            description:
-                "Soft greenery, woodland elements, tiny natural details, and forest-inspired decorations create a peaceful and cozy nature-filled appearance."
-        },
-
-        {
-            title: "🍵 Matcha Breeze",
-            image: "matchabreeze.jpg",
-            description:
-                "Soft matcha green tones, delicate tea-inspired elements, and simple decorative details give the strip a fresh, clean, and calming look."
-        },
-
-        {
-            title: "🪻 Lavender Hush",
-            image: "lavenderhush.jpg",
-            description:
-                "Soft lavender shades, delicate floral accents, and subtle decorative elements create a gentle, dreamy, and elegant appearance."
-        },
-
-        {
-            title: "🍀 Clover Luck",
-            image: "cloverluck.jpg",
-            description:
-                "Green clover details, playful accents, and fresh natural tones give the strip a cheerful and lucky-inspired appearance."
-        },
-
-        {
-            title: "🎡 Carnival Pop",
-            image: "carnivalpop.jpg",
-            description:
-                "Colorful carnival decorations, playful patterns, and vibrant accents create a fun and energetic photo strip that feels like a day at the fair."
-        },
-
-        {
-            title: "🎀 Ribbon & Lace",
-            image: "ribbonlace.jpg",
-            description:
-                "Decorative ribbons, lace-inspired patterns, and delicate accents create a soft, elegant, and charming appearance with a pretty decorative feel."
-        },
-
-        {
-            title: "🍦 Mint Choco Ice Cream",
-            image: "mintchocoicecream.jpg",
-            description:
-                "Mint green and chocolate tones, ice cream-inspired elements, and sweet decorative details create a cool and playful dessert-themed look."
-        },
-
-        {
-            title: "🍕 Pizza Party",
-            image: "pizzaparty.jpg",
-            description:
-                "Pizza illustrations, fun food details, and playful accents create a colorful and casual strip with a lively party-inspired appearance."
-        },
-
-        {
-            title: "🌙 Starlight Dreams",
-            image: "starlightdreams.jpg",
-            description:
-                "Deep nighttime tones, stars, moon-inspired details, and subtle glowing accents create a dreamy photo strip with a magical evening atmosphere."
-        },
-
-        {
-            title: "🌿🫖 Tea Garden",
-            image: "teagarden.jpg",
-            description:
-                "Botanical details, tea-inspired elements, soft greenery, and delicate decorations create a peaceful garden setting with a cozy and elegant feel."
-        },
-
-        {
-            title: "🍬 Candy Land",
-            image: "candyland.jpg",
-            description:
-                "Colorful candy details, sweet illustrations, and playful decorative elements create a bright, cheerful, and whimsical appearance."
-        },
-
-        {
-            title: "🎞️ Retro Snap",
-            image: "retrosnap.jpg",
-            description:
-                "Film-inspired details, vintage decorations, and classic tones give the strip a nostalgic photography look reminiscent of old snapshots."
-        },
-
-        {
-            title: "🫙 Jam & Joy",
-            image: "jamjoy.jpg",
-            description:
-                "Jam jars, fruity details, warm accents, and playful decorations create a cozy homemade look filled with colorful and cheerful details."
-        },
-
-        {
-            title: "🌸 Sakura Bloom",
-            image: "sakurabloom.jpg",
-            description:
-                "Soft cherry blossom details, pink floral accents, and delicate decorations create a graceful spring-inspired appearance with a gentle and elegant feel."
-        },
-
-        {
-            title: "🫐 Blueberry Bliss",
-            image: "blueberrybliss.jpg",
-            description:
-                "Blueberry illustrations, cool blue and purple tones, and playful berry-inspired details create a fresh and sweet-looking photo strip."
-        },
-
-        {
-            title: "🍉 Watermelon Splash",
-            image: "watermelon.jpg",
-            description:
-                "Watermelon slices, fresh green and red accents, and playful summer details create a bright and refreshing seasonal appearance."
-        },
-
-        {
-            title: "🌈 Rainbow Blast",
-            image: "rainbowblast.jpg",
-            description:
-                "Colorful rainbow accents, playful shapes, and vibrant decorative details create a cheerful photo strip with a lively and energetic look."
-        },
-
-        {
-            title: "💎🌪️ Brilyante ng Hangin",
-            image: "brilyantedhangin.jpg",
-            description:
-                "Sparkling diamond details, flowing wind-inspired elements, and light decorative accents create a unique and whimsical appearance with a sense of movement."
-        },
-
-        {
-            title: "🐼 Panda Vibe",
-            image: "pandavibe.jpg",
-            description:
-                "Cute panda illustrations, simple contrasting tones, and playful decorative details create a fun, relaxed, and adorable photo strip."
-        },
-
-        {
-            title: "🧋 Boba Break",
-            image: "bobabreak.jpg",
-            description:
-                "Bubble tea cups, boba pearls, soft colors, and cute drink-inspired decorations create a fun and refreshing photo strip with a youthful look."
-        },
-
-        {
-            title: "🐝 Sweet Moments",
-            image: "sweetmoments.jpg",
-            description:
-                "Cute bee and honey-inspired details, warm yellow accents, and sweet decorative elements create a cheerful photo strip with a cozy and charming appearance."
-        }
-
-    ]
-
-};
-
-
-/* =========================================
-   GABI STREET EATS AFTER DARK
-========================================= */
-
-const gabiStreetProject = {
-
-    image: "gabi.jpg",
-
-    title: "Gabi Street Eats After Dark",
-
-    category: "UI/UX Design",
-
-    status: "Ongoing",
-
-    description:
-        "A Figma food application concept focused on discovering street food and late-night eats through a simple, modern, and user-friendly interface.",
-
-    tools: "Figma",
-
-    link:
-        "https://www.figma.com/design/liI5ev1Z9hZf4Pc2Gv5vBH/Gabi-Food-app?m=auto&t=pUtlbdgaZRpGiXw7-6",
-
-    highlights: [
-        {
-            icon: "🌙",
-            title: "Night Food",
-            text: "Focused on discovering food options during the evening and nighttime."
-        },
-        {
-            icon: "🍔",
-            title: "Food Discovery",
-            text: "Designed to help users explore different street food choices."
-        },
-        {
-            icon: "📱",
-            title: "Mobile Experience",
-            text: "Created as a mobile-focused food application concept."
-        },
-        {
-            icon: "🎨",
-            title: "Modern UI",
-            text: "Uses organized layouts for a clean and easy browsing experience."
-        }
-    ],
-
-    features: [
-        "Street food discovery",
-        "Food browsing",
-        "Food categories",
-        "Food and restaurant details",
-        "Search and browsing concept",
-        "Late-night food discovery"
-    ],
-
-    designConcept:
-        "Gabi Street Eats After Dark is designed around the lively atmosphere of street food at night. The concept combines a modern interface with an easy browsing experience to help users discover food options after dark.",
-
-    role: [
-        "UI/UX Design",
-        "Interface Layout",
-        "Visual Design",
-        "Prototype Design"
-    ]
-
-};
-
-
-/* =========================================
-   CLEAN PORTFOLIO
-========================================= */
-
-projects = projects.filter(project => {
-
-    if (!project.title) {
-        return false;
+Ang una... mga dahon lang naman 'yan. Walang kwenta. Tinatapak-tapakan. Patay, at tuyo.
+
+Ang pangalawa... iwan mo na ako. Isang pag-alis. Isang pagbitaw. Isang paglayas nang walang paalam.
+
+Pero kapag pinagsama mo ang dalawang kahulugang 'yan... doon mo makikita ang totoong ganda ng buhay.
+
+Oo, dahon lang 'yan. At oo, iniwan ka ng dahong tuyo. Pero hindi ba't kaya lang naman nahulog at natuyo ang dahong 'yan... ay dahil tapos na ang papel niya sa sanga ng buhay mo?
+
+Huwag mong kaawaan ang sarili mo kung may umalis. Hindi natin kailangang makulong sa iisang tao lang habangbuhay. Minsan, kailangan natin ng bagong mukha. Bagong simula. Bagong pag-asa.
+
+Hindi naman natin kakalimutan ang luma, eh. Dahil kung wala ang lumang dahon, walang basehan ang bago. Ang luma ang nagturo sa atin kung paano kumapit... at ang bago ang magtuturo sa atin kung paano muling sumibol.
+
+Kaya sa susunod na titingnan mo ang buhay mo, huwag kang maiyak sa mga nalagas.
+
+Dahil ang totoo...
+
+Hindi mo makikita ang susunod na magandang dahon ng kwento mo... kung hindi mo muna hinayaang mahulog at umalis... ang mga tuyong dahon ng kahapon.
+
+— 🆆🅴🅷🅽🅽 🅻🅷🅴🅴
+
+---
+
+My Thoughts Behind “Just Leaves”
+
+Ang “Just Leaves” ay nagsimula sa isang simpleng paglalaro ng salita, pero habang iniisip ko ang dalawang kahulugan nito, mas nakita ko na may mas malalim pala itong koneksyon sa buhay.
+
+Kapag sinabi mong “just leaves,” puwede itong mangahulugan na mga dahon lang. Mga bagay na minsan ay nasa puno, pero dumating ang panahon na nalaglag, natuyo, at tuluyang nawala.
+
+Pero kapag narinig mo naman ang “just leave,” iba na ang ibig sabihin.
+
+Umalis ka na. Iwan mo na ako.
+
+At doon nagsimula yung idea ng poetry na ito.
+
+🍂 Ang mga dahon ay parang mga tao at karanasan sa buhay
+
+May mga taong dumarating sa buhay natin na parang bagong dahon sa isang puno. Sa simula, hindi natin alam kung gaano sila katagal mananatili.
+
+May ilan na matagal.
+
+May ilan na sandali lang.
+
+At may ilan na darating sa panahon na kailangan natin sila.
+
+Pero hindi lahat ng dahon ay mananatili sa puno habambuhay.
+
+Darating ang panahon na may mga dahong kailangang malaglag.
+
+At minsan, masakit iyon.
+
+Dahil habang nakatingala tayo sa puno, ang nakikita natin ay yung puwang na iniwan ng dahon.
+
+Hindi natin agad nakikita na may dahilan kung bakit ito nahulog.
+
+🌱 Hindi lahat ng pag-alis ay pagkatalo
+
+Madalas, kapag may taong umaalis sa buhay natin, iniisip natin na may nawala sa atin.
+
+At oo, may nawala.
+
+Pero hindi ibig sabihin na tayo mismo ay nawala.
+
+May mga taong bahagi lang ng isang chapter. May mga karanasan na hindi para manatili habang buhay. At may mga bagay na kailangang matapos para magkaroon ng espasyo para sa susunod.
+
+Hindi ibig sabihin na walang halaga ang nauna.
+
+Sa katunayan, mahalaga sila dahil may itinuro sila sa atin.
+
+Kung walang lumang dahon, hindi natin malalaman kung paano naging ganito ang puno.
+
+🌳 Ang puno ay hindi namamatay dahil nalalaglag ang dahon
+
+Ito siguro ang pinakaimportanteng idea sa Just Leaves.
+
+Kapag nalaglag ang isang dahon, hindi ibig sabihin na tapos na ang buhay ng puno.
+
+Patuloy itong nabubuhay.
+
+Patuloy itong lumalaki.
+
+At darating ang panahon na magkakaroon ulit ito ng mga bagong dahon.
+
+Ganito rin siguro tayo.
+
+May mga bagay na mawawala. May mga taong aalis. May mga pangarap na magbabago. May mga chapter na matatapos.
+
+Pero hindi ibig sabihin na doon na rin nagtatapos ang buhay natin.
+
+🍃 Hindi kailangang kalimutan ang nakaraan
+
+Hindi ko rin ibig sabihin na kailangan nating kalimutan ang mga lumang dahon.
+
+Hindi naman ganoon ang buhay.
+
+Ang mga taong naging bahagi ng buhay natin ay maaaring hindi na kasama sa susunod na chapter, pero hindi nito binubura ang naging papel nila sa mga naunang chapter.
+
+May mga taong nagturo sa atin kung paano magmahal.
+
+May mga taong nagturo sa atin kung paano masaktan.
+
+May mga taong nagturo sa atin kung paano bumangon.
+
+At may mga taong nagturo sa atin kung sino talaga tayo.
+
+Kaya hindi kailangang kamuhian ang mga bagay na natapos.
+
+Minsan, sapat nang sabihin:
+
+“Salamat sa pagiging bahagi ng chapter na iyon.”
+
+At pagkatapos...
+
+it​​uloy ang kwento.
+
+🌱 May bagong dahon pagkatapos ng luma
+
+Siguro iyon ang gusto kong maiwan na mensahe ng Just Leaves.
+
+Kapag may nalagas sa buhay mo, huwag mong isipin na wala nang susunod.
+
+Baka hindi mo pa lang nakikita.
+
+Baka nasa panahon ka pa ng paghihintay.
+
+Baka kailangan mo munang bigyan ng pagkakataon ang sarili mong gumaling.
+
+At baka kailangan mo munang tanggapin na may mga dahon talagang kailangang mahulog.
+
+Dahil minsan, habang nakatingin tayo sa mga dahong nawala, hindi natin napapansin na may bagong dahon nang unti-unting tumutubo.
+
+Kaya kung may umalis man sa buhay mo, huwag mong isipin na nabawasan ang halaga mo.
+
+Kung may isang chapter na natapos, hindi ibig sabihin na tapos na ang buong libro.
+
+May susunod pang pahina.
+
+At baka sa susunod na pahinang iyon...
+
+may mas magandang dahon nang naghihintay.
+
+🍂 Just leaves.
+
+🌱 Just leave.
+
+📖 And then, let the story continue.
+`
+    },
+
+
+    /* =====================================================
+       GRADUATION DAY
+    ===================================================== */
+
+    {
+        title: "Graduation Day",
+        category: "School Experience",
+        date: "2026-06-24",
+        order: 3,
+        image: "profilepic.jpg",
+        featured: true,
+
+        content: `
+June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
+
+After years of studying, completing projects, attending classes, working on requirements, taking examinations, preparing presentations, and facing different challenges, I finally reached one of the biggest milestones in my life — graduation.
+
+The day was filled with happiness, excitement, and a little bit of sadness because it marked the end of my college journey. Looking back, there were many moments when I felt tired and stressed because of deadlines, projects, school activities, and other responsibilities. There were also times when I doubted myself, but I continued to move forward.
+
+During the graduation ceremony, I felt proud seeing myself wearing my graduation attire and finally receiving my diploma. It was a special moment because I knew that all the hard work and sacrifices I made throughout my college years had finally paid off.
+
+I am also thankful for my family, friends, classmates, instructors, and everyone who supported and encouraged me throughout my journey. Their support helped me continue even during difficult times.
+
+Graduation was not only about receiving a diploma. It was also a reminder of all the experiences and lessons that I gained during my college years. I learned how to manage my time, work with different people, solve problems, communicate my ideas, and become more responsible with my work.
+
+After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day. I wanted to visit him and somehow share this important achievement with him. Although he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
+
+After visiting the cemetery, we went to eat together as a family. We spent some time talking, enjoying our meal, and celebrating the achievement together. It was a simple celebration, but it made the day even more memorable.
+
+After eating, we went home and finally ended the day. It was a simple ending to a very meaningful and unforgettable day.
+
+Graduation was not the end of my journey. It was the beginning of a new chapter in my life. As a BSIT graduate, I want to continue improving my skills in Graphic Design, Web Development, UI/UX Design, and Digital Creativity.
+
+I hope to use everything I have learned to create meaningful projects, improve my skills, and build a successful career in the future.
+
+June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓
+`
+    },
+
+
+    /* =====================================================
+       OJT EXPERIENCE
+    ===================================================== */
+
+    {
+        title: "OJT Experience",
+        category: "OJT Experience",
+        date: "2026-05-28",
+        order: 4,
+        image: "ojt.jpg",
+        featured: true,
+
+        content: `
+My On-the-Job Training experience was one of the important parts of my college journey.
+
+During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
+
+One of the tasks I worked on was encoding information for the Vertical File and Clippings Section. I recorded information such as the article title, date, author, page number, and source newspaper.
+
+I also used Google Sheets to organize and record the information. This helped me become more familiar with organizing data and maintaining accurate records.
+
+Aside from the technical tasks, I also learned the importance of being responsible, patient, organized, and attentive when doing work.
+
+My OJT experience helped me understand that working in an actual organization is different from simply completing activities in school.
+
+There were also different activities and programs that I was able to assist with during my OJT experience.
+
+One of these was the R.E.A.D. Library Summer Program 2026. I assisted participants during different activities throughout the program.
+
+The activities included orientation, Book Booth activities, online sessions, storytelling, Canva activities, Wacom Drawing Tablet activities, Math Market Madness, a lecture about Solid Waste Management, and participation from the Bureau of Fire Protection.
+
+I also helped with the preparation and documentation of different activities and completed weekly reports.
+
+Overall, my OJT experience gave me valuable lessons that I can use in my future career.
+
+It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
+
+I am thankful for the people who guided me and for the experiences that became part of my college journey.
+`
     }
 
-    const title =
-        project.title.trim().toLowerCase();
-
-    if (title === "test project") {
-        return false;
-    }
-
-    if (
-        title === "gabi" ||
-        title === "gabi street eats" ||
-        title === "gabi street eats after dark"
-    ) {
-        return false;
-    }
-
-    if (
-        title === "photo strip" ||
-        title === "photo strips"
-    ) {
-        return false;
-    }
-
-    if (
-        title === "dinezy"
-    ) {
-        return false;
-    }
-
-    return true;
-
-});
+];
 
 
-/* =========================================
-   PUT PROJECTS IN LATEST-FIRST ORDER
-========================================= */
+/* =========================================================
+   INITIALIZE BLOGS
+   ========================================================= */
 
-projects.unshift(gabiStreetProject);
-projects.unshift(photoStripProject);
-projects.unshift(dinezyProject);
+function initializeBlogs() {
 
+    const savedBlogs = localStorage.getItem("blogs");
 
-/* =========================================
-   SAVE CLEAN DATA
-========================================= */
+    if (!savedBlogs) {
 
-localStorage.setItem(
-    "projects",
-    JSON.stringify(projects)
-);
+        blogs = [...defaultBlogs];
 
+        saveBlogs();
 
-/* =========================================
-   OPEN ADD PROJECT MODAL
-========================================= */
-
-function openProjectModal() {
-
-    if (!modal) {
         return;
+
     }
 
-    modal.style.display = "flex";
 
-    const modalTitle =
-        document.getElementById("modalTitle");
+    try {
 
-    if (modalTitle) {
-        modalTitle.textContent = "Add Project";
-    }
+        blogs = JSON.parse(savedBlogs);
 
-    editIndex = null;
+    } catch (error) {
 
-    clearForm();
+        console.error("Invalid blog data:", error);
 
-}
+        blogs = [...defaultBlogs];
 
+        saveBlogs();
 
-/* =========================================
-   CLOSE PROJECT MODAL
-========================================= */
-
-function closeProjectModal() {
-
-    if (!modal) {
         return;
+
     }
 
-    modal.style.display = "none";
 
-    clearForm();
+    if (!Array.isArray(blogs)) {
 
-}
+        blogs = [...defaultBlogs];
 
+        saveBlogs();
 
-/* =========================================
-   CLEAR FORM
-========================================= */
+        return;
 
-function clearForm() {
-
-    const title =
-        document.getElementById("projectTitle");
-
-    const category =
-        document.getElementById("projectCategory");
-
-    const status =
-        document.getElementById("projectStatus");
-
-    const description =
-        document.getElementById("projectDescription");
-
-    const tools =
-        document.getElementById("projectTools");
-
-    const link =
-        document.getElementById("projectLink");
-
-
-    if (title) {
-        title.value = "";
     }
 
-    if (category) {
-        category.value = "";
-    }
 
-    if (status) {
-        status.value = "";
-    }
+    /* =====================================================
+       ADD MISSING DEFAULT BLOGS
+    ===================================================== */
 
-    if (description) {
-        description.value = "";
-    }
+    defaultBlogs.forEach(defaultBlog => {
 
-    if (tools) {
-        tools.value = "";
-    }
-
-    if (link) {
-        link.value = "";
-    }
-
-    if (imageInput) {
-        imageInput.value = "";
-    }
-
-    if (imagePreview) {
-        imagePreview.src = "";
-    }
-
-    imageData = "";
-
-}
-
-
-/* =========================================
-   IMAGE PREVIEW
-========================================= */
-
-if (imageInput) {
-
-    imageInput.addEventListener(
-        "change",
-        function () {
-
-            const file =
-                this.files[0];
-
-            if (!file) {
-                return;
-            }
-
-            const reader =
-                new FileReader();
-
-            reader.onload =
-                function (event) {
-
-                    imageData =
-                        event.target.result;
-
-                    if (imagePreview) {
-                        imagePreview.src =
-                            imageData;
-                    }
-
-                };
-
-            reader.readAsDataURL(file);
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   SAVE PROJECT
-========================================= */
-
-function saveProject() {
-
-    const title =
-        document.getElementById(
-            "projectTitle"
-        )?.value.trim() || "";
-
-    const category =
-        document.getElementById(
-            "projectCategory"
-        )?.value || "";
-
-    const status =
-        document.getElementById(
-            "projectStatus"
-        )?.value || "";
-
-    const description =
-        document.getElementById(
-            "projectDescription"
-        )?.value.trim() || "";
-
-    const tools =
-        document.getElementById(
-            "projectTools"
-        )?.value.trim() || "";
-
-    const link =
-        document.getElementById(
-            "projectLink"
-        )?.value.trim() || "";
-
-
-    if (
-        title === "" ||
-        description === ""
-    ) {
-
-        alert(
-            "Please complete required fields."
+        const existingIndex = blogs.findIndex(
+            blog => blog.title === defaultBlog.title
         );
 
-        return;
 
-    }
+        if (existingIndex === -1) {
+
+            blogs.push({
+                ...defaultBlog
+            });
+
+        } else {
+
+            if (
+                defaultBlog.title ===
+                "Creating in My Free Time"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-08-18";
+
+                blogs[existingIndex].order =
+                    1;
+
+                blogs[existingIndex].category =
+                    "Personal";
+
+                blogs[existingIndex].image =
+                    "com.jpg";
+
+                blogs[existingIndex].featured =
+                    false;
+
+            }
 
 
-    const project = {
+            if (
+                defaultBlog.title ===
+                "Just Leaves 🍂"
+            ) {
 
-        image:
-            imageData ||
-            "assets/default-project.png",
+                blogs[existingIndex].date =
+                    "2026-08-18";
 
-        title:
-            title,
+                blogs[existingIndex].order =
+                    2;
 
-        category:
-            category,
+                blogs[existingIndex].category =
+                    "Personal";
 
-        status:
-            status,
+                blogs[existingIndex].image =
+                    "leaves.jpg";
 
-        description:
-            description,
+                blogs[existingIndex].featured =
+                    false;
 
-        tools:
-            tools,
-
-        link:
-            link
-
-    };
+            }
 
 
-    if (editIndex === null) {
+            if (
+                defaultBlog.title ===
+                "Graduation Day"
+            ) {
 
-        projects.unshift(project);
+                blogs[existingIndex].date =
+                    "2026-06-24";
 
-    }
+                blogs[existingIndex].order =
+                    3;
 
-    else {
+                blogs[existingIndex].featured =
+                    true;
 
-        if (
-            projects[editIndex] &&
-            projects[editIndex].photoStrips
-        ) {
+            }
 
-            project.photoStrips =
-                projects[editIndex].photoStrips;
+
+            if (
+                defaultBlog.title ===
+                "OJT Experience"
+            ) {
+
+                blogs[existingIndex].date =
+                    "2026-05-28";
+
+                blogs[existingIndex].order =
+                    4;
+
+                blogs[existingIndex].featured =
+                    true;
+
+            }
 
         }
 
-        if (
-            projects[editIndex] &&
-            projects[editIndex].highlights
-        ) {
-
-            project.highlights =
-                projects[editIndex].highlights;
-
-        }
-
-        if (
-            projects[editIndex] &&
-            projects[editIndex].features
-        ) {
-
-            project.features =
-                projects[editIndex].features;
-
-        }
-
-        if (
-            projects[editIndex] &&
-            projects[editIndex].designConcept
-        ) {
-
-            project.designConcept =
-                projects[editIndex].designConcept;
-
-        }
-
-        if (
-            projects[editIndex] &&
-            projects[editIndex].role
-        ) {
-
-            project.role =
-                projects[editIndex].role;
-
-        }
-
-        projects[editIndex] =
-            project;
-
-    }
+    });
 
 
-    localStorage.setItem(
-        "projects",
-        JSON.stringify(projects)
-    );
-
-    displayProjects();
-
-    closeProjectModal();
+    saveBlogs();
 
 }
 
 
-/* =========================================
-   DISPLAY PROJECTS
-========================================= */
+/* =========================================================
+   SAVE BLOGS
+   ========================================================= */
 
-function displayProjects() {
+function saveBlogs() {
 
-    if (!projectContainer) {
-        return;
-    }
+    localStorage.setItem(
+        "blogs",
+        JSON.stringify(blogs)
+    );
 
-    projectContainer.innerHTML = "";
+}
 
 
-    if (projects.length === 0) {
+/* =========================================================
+   DATE FORMAT
+   ========================================================= */
 
-        if (noProject) {
-            noProject.style.display = "block";
+function formatDate(date) {
+
+    if (!date) return "";
+
+    const d = new Date(
+        date + "T00:00:00"
+    );
+
+    return d.toLocaleDateString(
+        "en-US",
+        {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SORT BLOGS
+   ========================================================= */
+
+function sortBlogs() {
+
+    blogs.sort(function(a, b) {
+
+        const dateA =
+            new Date(a.date + "T00:00:00");
+
+        const dateB =
+            new Date(b.date + "T00:00:00");
+
+
+        const dateDifference =
+            dateB - dateA;
+
+
+        if (dateDifference !== 0) {
+
+            return dateDifference;
+
         }
 
-        return;
+
+        return (
+            (a.order || 999) -
+            (b.order || 999)
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   DISPLAY BLOGS
+   ========================================================= */
+
+function displayBlogs() {
+
+    sortBlogs();
+
+
+    const container =
+        document.getElementById(
+            "blogContainer"
+        );
+
+
+    const featuredContainer =
+        document.getElementById(
+            "featuredContainer"
+        );
+
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    if (featuredContainer) {
+
+        featuredContainer.innerHTML = "";
 
     }
 
 
-    if (noProject) {
-        noProject.style.display = "none";
-    }
+    /* =====================================================
+       LATEST BLOGS
+       ONLY 4
+    ===================================================== */
+
+    const latestBlogs =
+        blogs.slice(0, 4);
 
 
-    projects.forEach(
-        (project, index) => {
+    latestBlogs.forEach(function(blog) {
+
+        const originalIndex =
+            blogs.indexOf(blog);
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "blog-card";
+
+
+        card.dataset.category =
+            blog.category || "";
+
+
+        card.onclick = function() {
+
+            openBlog(
+                originalIndex,
+                this
+            );
+
+        };
+
+
+        card.innerHTML = `
+
+            <img
+                class="blog-card-image"
+                src="${blog.image || "profilepic.jpg"}"
+                alt="${escapeHTML(blog.title)}"
+            >
+
+            <div class="blog-info">
+
+                <span class="blog-category">
+                    ${escapeHTML(blog.category || "Other")}
+                </span>
+
+                <h2>
+                    ${escapeHTML(blog.title)}
+                </h2>
+
+                <p>
+                    Blog Date:
+                    ${formatDate(blog.date)}
+                </p>
+
+            </div>
+
+            <div class="actions">
+
+                <button
+                    class="edit"
+                    type="button"
+                    onclick="
+                        event.stopPropagation();
+                        editBlog(${originalIndex});
+                    "
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="delete"
+                    type="button"
+                    onclick="
+                        event.stopPropagation();
+                        deleteBlog(${originalIndex});
+                    "
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+
+    /* =====================================================
+       FEATURED BLOGS
+       ONLY GRADUATION + OJT
+    ===================================================== */
+
+    if (featuredContainer) {
+
+        const featuredBlogs =
+            blogs.filter(function(blog) {
+
+                return (
+                    blog.featured === true &&
+                    (
+                        blog.title ===
+                            "Graduation Day" ||
+
+                        blog.title ===
+                            "OJT Experience"
+                    )
+                );
+
+            });
+
+
+        featuredBlogs.forEach(function(blog) {
+
+            const originalIndex =
+                blogs.indexOf(blog);
+
 
             const card =
                 document.createElement("div");
 
-            card.className =
-                "project-card";
 
-            card.dataset.projectIndex =
-                index;
+            card.className =
+                "featured-card";
+
+
+            card.onclick = function() {
+
+                openBlog(
+                    originalIndex,
+                    this
+                );
+
+            };
+
 
             card.innerHTML = `
 
                 <img
-                    src="${project.image}"
-                    alt="${project.title}"
+                    src="${blog.image || "profilepic.jpg"}"
+                    alt="${escapeHTML(blog.title)}"
                 >
 
-                <div class="project-content">
+                <span class="featured-badge">
+                    Featured
+                </span>
 
-                    <div class="project-labels">
+                <div class="blog-info">
 
-                        <span class="category">
-                            ${project.category || "Project"}
-                        </span>
-
-                        <span class="status">
-                            ${project.status || "Ongoing"}
-                        </span>
-
-                    </div>
+                    <span class="blog-category">
+                        ${escapeHTML(blog.category || "Other")}
+                    </span>
 
                     <h2>
-                        ${project.title}
+                        ${escapeHTML(blog.title)}
                     </h2>
 
                     <p>
-                        ${project.description}
+                        Blog Date:
+                        ${formatDate(blog.date)}
                     </p>
-
-                    <div class="tools-used">
-                        🛠 Tools Used:
-                        ${project.tools || "N/A"}
-                    </div>
-
-                    <div class="project-buttons">
-
-                        ${
-                            project.link
-                            ?
-                            `
-                            <a
-                                href="${project.link}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="view-btn"
-                            >
-                                View Project
-                            </a>
-                            `
-                            :
-                            ""
-                        }
-
-                        <button
-                            type="button"
-                            class="edit-btn"
-                        >
-                            Edit
-                        </button>
-
-                        <button
-                            type="button"
-                            class="delete-btn"
-                        >
-                            Delete
-                        </button>
-
-                    </div>
 
                 </div>
 
             `;
 
-            projectContainer.appendChild(card);
 
-        }
-    );
+            featuredContainer.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =====================================================
+       NO BLOG
+    ===================================================== */
+
+    const noBlog =
+        document.getElementById("noBlog");
+
+
+    if (noBlog) {
+
+        noBlog.style.display =
+            latestBlogs.length === 0
+                ? "block"
+                : "none";
+
+    }
+
+
+    applySearchAndFilter();
 
 }
 
 
-/* =========================================
-   CARD CLICK
-   CLICK ANYWHERE ON CARD
-========================================= */
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
 
-if (projectContainer) {
+function escapeHTML(text) {
 
-    projectContainer.addEventListener(
-        "click",
-        function (event) {
+    if (!text) return "";
 
-            const editButton =
-                event.target.closest(".edit-btn");
-
-            const deleteButton =
-                event.target.closest(".delete-btn");
-
-            const viewButton =
-                event.target.closest(".view-btn");
-
-
-            if (editButton) {
-
-                event.preventDefault();
-
-                const card =
-                    editButton.closest(".project-card");
-
-                if (!card) {
-                    return;
-                }
-
-                editProject(
-                    Number(card.dataset.projectIndex)
-                );
-
-                return;
-
-            }
-
-
-            if (deleteButton) {
-
-                event.preventDefault();
-
-                const card =
-                    deleteButton.closest(".project-card");
-
-                if (!card) {
-                    return;
-                }
-
-                deleteProject(
-                    Number(card.dataset.projectIndex)
-                );
-
-                return;
-
-            }
-
-
-            if (viewButton) {
-                return;
-            }
-
-
-            const card =
-                event.target.closest(".project-card");
-
-            if (!card) {
-                return;
-            }
-
-
-            const index =
-                Number(card.dataset.projectIndex);
-
-
-            if (
-                Number.isNaN(index) ||
-                !projects[index]
-            ) {
-                return;
-            }
-
-
-            openProjectPreview(
-                projects[index],
-                card
-            );
-
-        }
-    );
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
-/* =========================================
-   EDIT PROJECT
-========================================= */
+/* =========================================================
+   FORMAT BLOG CONTENT
+   ========================================================= */
 
-function editProject(index) {
+function formatContent(content) {
 
-    if (
-        index < 0 ||
-        index >= projects.length
-    ) {
-        return;
-    }
-
-    editIndex = index;
-
-    const project =
-        projects[index];
+    if (!content) return "";
 
 
-    const modalTitle =
-        document.getElementById("modalTitle");
-
-    if (modalTitle) {
-        modalTitle.textContent =
-            "Edit Project";
-    }
+    const cleanContent =
+        content.trim();
 
 
-    const title =
-        document.getElementById("projectTitle");
+    const paragraphs =
+        cleanContent
+            .split(/\n\s*\n/)
+            .filter(function(paragraph) {
 
-    const category =
-        document.getElementById("projectCategory");
+                return paragraph.trim() !== "";
 
-    const status =
-        document.getElementById("projectStatus");
-
-    const description =
-        document.getElementById("projectDescription");
-
-    const tools =
-        document.getElementById("projectTools");
-
-    const link =
-        document.getElementById("projectLink");
+            });
 
 
-    if (title) {
-        title.value =
-            project.title || "";
-    }
+    return paragraphs
+        .map(function(paragraph) {
 
-    if (category) {
-        category.value =
-            project.category || "";
-    }
-
-    if (status) {
-        status.value =
-            project.status || "";
-    }
-
-    if (description) {
-        description.value =
-            project.description || "";
-    }
-
-    if (tools) {
-        tools.value =
-            project.tools || "";
-    }
-
-    if (link) {
-        link.value =
-            project.link || "";
-    }
+            const text =
+                paragraph.trim();
 
 
-    imageData =
-        project.image || "";
+            return `
+                <p>
+                    ${escapeHTML(text)
+                        .replace(/\n/g, "<br>")}
+                </p>
+            `;
 
-
-    if (imagePreview) {
-        imagePreview.src =
-            project.image || "";
-    }
-
-
-    if (modal) {
-        modal.style.display = "flex";
-    }
+        })
+        .join("");
 
 }
 
 
-/* =========================================
-   DELETE PROJECT
-========================================= */
-
-function deleteProject(index) {
-
-    if (
-        index < 0 ||
-        index >= projects.length
-    ) {
-        return;
-    }
-
-
-    const confirmDelete =
-        confirm(
-            "Are you sure you want to delete this project?"
-        );
-
-
-    if (!confirmDelete) {
-        return;
-    }
-
-
-    projects.splice(index, 1);
-
-
-    localStorage.setItem(
-        "projects",
-        JSON.stringify(projects)
-    );
-
-
-    displayProjects();
-
-}
-
-
-/* =========================================
-   EXTRA PROJECT CONTENT
-========================================= */
-
-function createExtraProjectContent(project) {
-
-    if (
-        !project.highlights &&
-        !project.features &&
-        !project.designConcept &&
-        !project.role
-    ) {
-        return "";
-    }
-
-
-    let highlightsHTML = "";
-
-
-    /* =====================================
-       PROJECT HIGHLIGHTS
-    ===================================== */
-
-    if (
-        project.highlights &&
-        project.highlights.length > 0
-    ) {
-
-        highlightsHTML = `
-
-            <section class="project-extra-section project-highlights-section">
-
-                <h2 class="project-extra-title">
-                    ✨ Project Highlights
-                </h2>
-
-                <div class="project-highlight-grid">
-
-                    ${
-                        project.highlights
-                            .map(
-                                (highlight, index) => `
-
-                                    <div
-                                        class="project-highlight-card highlight-item-${index + 1}"
-                                    >
-
-                                        <div
-                                            class="project-highlight-icon"
-                                        >
-                                            ${highlight.icon}
-                                        </div>
-
-                                        <div class="project-highlight-text">
-
-                                            <h3>
-                                                ${highlight.title}
-                                            </h3>
-
-                                            <p>
-                                                ${highlight.text}
-                                            </p>
-
-                                        </div>
-
-                                    </div>
-
-                                `
-                            )
-                            .join("")
-                    }
-
-                </div>
-
-            </section>
-
-        `;
-
-    }
-
-
-    let featuresHTML = "";
-
-
-    /* =====================================
-       KEY FEATURES
-    ===================================== */
-
-    if (
-        project.features &&
-        project.features.length > 0
-    ) {
-
-        featuresHTML = `
-
-            <section class="project-extra-section project-key-features-section">
-
-                <h2 class="project-extra-title">
-                    ⭐ Key Features
-                </h2>
-
-                <div class="project-feature-list">
-
-                    ${
-                        project.features
-                            .map(
-                                (feature, index) => `
-
-                                    <div
-                                        class="project-feature-item feature-item-${index + 1}"
-                                    >
-
-                                        <span>
-                                            ✓
-                                        </span>
-
-                                        <p>
-                                            ${feature}
-                                        </p>
-
-                                    </div>
-
-                                `
-                            )
-                            .join("")
-                    }
-
-                </div>
-
-            </section>
-
-        `;
-
-    }
-
-
-    let conceptHTML = "";
-
-
-    /* =====================================
-       DESIGN CONCEPT
-    ===================================== */
-
-    if (project.designConcept) {
-
-        conceptHTML = `
-
-            <section class="project-extra-section project-design-concept-section">
-
-                <h2 class="project-extra-title">
-                    🎨 Design Concept
-                </h2>
-
-                <div class="project-concept-box">
-
-                    <p>
-                        ${project.designConcept}
-                    </p>
-
-                </div>
-
-            </section>
-
-        `;
-
-    }
-
-
-    let roleHTML = "";
-
-
-    /* =====================================
-       MY ROLE
-    ===================================== */
-
-    if (
-        project.role &&
-        project.role.length > 0
-    ) {
-
-        roleHTML = `
-
-            <section class="project-extra-section project-my-role-section">
-
-                <h2 class="project-extra-title">
-                    👨‍💻 My Role
-                </h2>
-
-                <div class="project-role-list">
-
-                    ${
-                        project.role
-                            .map(
-                                role => `
-
-                                    <span>
-                                        ${role}
-                                    </span>
-
-                                `
-                            )
-                            .join("")
-                    }
-
-                </div>
-
-            </section>
-
-        `;
-
-    }
-
-
-    return `
-
-        <div class="project-extra-content">
-
-            ${highlightsHTML}
-
-            ${featuresHTML}
-
-            ${conceptHTML}
-
-            ${roleHTML}
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================
-   PROJECT PREVIEW
-========================================= */
-
-function openProjectPreview(project, sourceCard) {
-
-    if (projectPreviewClosing) {
-        return;
-    }
-
-
-    activeProjectCard =
-        sourceCard || null;
-
-
-    const oldPreview =
-        document.getElementById(
-            "projectPreviewOverlay"
-        );
-
-
-    if (oldPreview) {
-        oldPreview.remove();
-    }
-
+/* =========================================================
+   OPEN BLOG
+   ========================================================= */
+
+function openBlog(index, sourceCard = null) {
 
     const overlay =
-        document.createElement("div");
+        document.getElementById(
+            "blogOverlay"
+        );
 
 
-    overlay.id =
-        "projectPreviewOverlay";
-
-    overlay.className =
-        "project-preview-overlay";
-
-
-    const photoStripCount =
-        project.photoStrips
-            ? project.photoStrips.length
-            : 0;
+    const preview =
+        document.getElementById(
+            "blogPreview"
+        );
 
 
-    let photoStripHTML = "";
+    if (!overlay || !preview) return;
 
 
-    /* =====================================
-       PHOTO STRIPS
-       UNCHANGED
-    ===================================== */
-
-    if (
-        project.photoStrips &&
-        project.photoStrips.length > 0
-    ) {
-
-        photoStripHTML = `
-
-            <div class="photo-strip-section">
-
-                <h2>
-                    Photo Strip Designs
-                </h2>
-
-                <p class="photo-strip-intro">
-
-                    Explore all ${photoStripCount}
-                    photo strip designs below.
-                    Click the card to see the design
-                    and its description.
-
-                </p>
-
-                <div class="photo-strip-grid">
-
-                    ${
-                        project.photoStrips
-                            .map(
-                                (strip, stripIndex) => `
-
-                                    <div
-                                        class="photo-strip-item"
-                                    >
-
-                                        <div
-                                            class="photo-strip-number"
-                                        >
-                                            ${stripIndex + 1}
-                                        </div>
-
-                                        <img
-                                            src="${strip.image}"
-                                            alt="${strip.title}"
-                                            class="photo-strip-image"
-                                        >
-
-                                        <h3>
-                                            ${strip.title}
-                                        </h3>
-
-                                        <p>
-                                            ${strip.description}
-                                        </p>
-
-                                    </div>
-
-                                `
-                            )
-                            .join("")
-                    }
-
-                </div>
-
-            </div>
-
-        `;
-
-    }
+    if (overlay.style.display === "block") return;
 
 
-    /* =====================================
-       EXTRA CONTENT
-    ===================================== */
-
-    const extraProjectHTML =
-        createExtraProjectContent(project);
+    const blog =
+        blogs[index];
 
 
-    /* =====================================
-       PREVIEW
-    ===================================== */
+    if (!blog) return;
 
-    overlay.innerHTML = `
 
-        <div class="project-preview-box">
+    activeBlogCard =
+        sourceCard;
 
-            <button
-                type="button"
-                class="project-preview-close"
-                aria-label="Close"
-            >
-                ×
-            </button>
 
+    blogClosing =
+        false;
+
+
+    /* =====================================================
+       ORIGINAL BLOG PREVIEW STRUCTURE
+       DO NOT CHANGE
+    ===================================================== */
+
+    preview.innerHTML = `
+
+        <div class="preview-content">
 
             <img
-                class="project-preview-cover"
-                src="${project.image}"
-                alt="${project.title}"
-                style="
-                    width:100%;
-                    height:auto;
-                    max-height:500px;
-                    object-fit:contain;
-                    object-position:center;
-                    display:block;
-                    background:#f4f6f8;
-                "
+                src="${blog.image || "profilepic.jpg"}"
+                alt="${escapeHTML(blog.title)}"
             >
 
+            <span class="blog-category">
+                ${escapeHTML(blog.category || "Other")}
+            </span>
 
-            <div class="project-preview-content">
+            <h2>
+                ${escapeHTML(blog.title)}
+            </h2>
 
-                <div class="project-preview-labels">
+            <p class="preview-date">
+                ${formatDate(blog.date)}
+            </p>
 
-                    <span class="category">
-                        ${project.category || "Project"}
-                    </span>
+            <div class="preview-description">
 
-                    <span class="status">
-                        ${project.status || "Ongoing"}
-                    </span>
-
-                </div>
-
-
-                <h1>
-                    ${project.title}
-                </h1>
-
-
-                <p class="project-preview-description">
-                    ${project.description}
-                </p>
-
-
-                <div class="project-preview-tools">
-
-                    🛠
-
-                    <strong>
-                        Tools Used:
-                    </strong>
-
-                    ${project.tools || "N/A"}
-
-                </div>
-
-
-                ${extraProjectHTML}
-
-
-                ${photoStripHTML}
-
-
-                <div class="project-preview-actions">
-
-                    ${
-                        project.link
-                        ?
-                        `
-                        <a
-                            href="${project.link}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="view-btn"
-                        >
-                            View Project
-                        </a>
-                        `
-                        :
-                        ""
-                    }
-
-
-                    <button
-                        type="button"
-                        class="close-preview-btn"
-                    >
-                        Close
-                    </button>
-
-                </div>
-
+                ${formatContent(blog.content)}
 
             </div>
 
@@ -1567,413 +904,1122 @@ function openProjectPreview(project, sourceCard) {
     `;
 
 
-    document.body.appendChild(
-        overlay
+    /* =====================================================
+       PREPARE
+    ===================================================== */
+
+    overlay.style.display =
+        "block";
+
+
+    overlay.style.setProperty(
+        "background",
+        "transparent",
+        "important"
     );
 
-
-    /* =====================================
-       PREPARE ANIMATION
-    ===================================== */
-
-    overlay.style.background =
-        "transparent";
 
     overlay.style.opacity =
         "0";
 
-    overlay.style.transition =
-        "opacity 400ms ease";
 
-    overlay.style.pointerEvents =
-        "none";
+    preview.style.display =
+        "block";
 
 
-    const previewBox =
-        overlay.querySelector(
-            ".project-preview-box"
-        );
+    preview.style.opacity =
+        "0";
 
 
-    if (previewBox) {
-
-        previewBox.style.opacity =
-            "0";
-
-        previewBox.style.clipPath =
-            "inset(8%)";
-
-        previewBox.style.transition =
-            "opacity 550ms ease, clip-path 550ms ease";
-
-    }
+    preview.style.clipPath =
+        "inset(8% 8% 8% 8%)";
 
 
     document.body.style.overflow =
         "hidden";
 
 
-    /* =====================================
-       CARD FLIP OPEN
-    ===================================== */
+    /* =====================================================
+       REAL CARD FLIP
+       0 DEGREE → 180 DEGREE
+    ===================================================== */
 
-    if (activeProjectCard) {
+    if (activeBlogCard) {
 
-        activeProjectCard.style.transformStyle =
-            "preserve-3d";
-
-        activeProjectCard.style.backfaceVisibility =
-            "hidden";
-
-        activeProjectCard.style.willChange =
+        activeBlogCard.style.willChange =
             "transform, opacity";
 
-        activeProjectCard.style.transformOrigin =
-            "center center";
+
+        activeBlogCard.style.transition =
+            "none";
 
 
-        activeProjectCard.animate(
+        activeBlogCard.animate(
 
             [
+
                 {
                     transform:
                         "perspective(1200px) rotateY(0deg) scale(1)",
-                    opacity: "1"
+                    opacity: 1
                 },
 
                 {
                     transform:
-                        "perspective(1200px) rotateY(90deg) scale(.98)",
-                    opacity: "1",
+                        "perspective(1200px) rotateY(90deg) scale(0.98)",
+                    opacity: 1,
                     offset: 0.45
                 },
 
                 {
                     transform:
-                        "perspective(1200px) rotateY(180deg) scale(.96)",
-                    opacity: "0"
+                        "perspective(1200px) rotateY(180deg) scale(0.96)",
+                    opacity: 0
                 }
+
             ],
 
             {
                 duration: 650,
+
                 easing:
                     "cubic-bezier(0.65, 0, 0.35, 1)",
+
+                fill: "forwards"
+
+            }
+
+        );
+
+    }
+
+
+    /* =====================================================
+       PREVIEW + OVERLAY COME OUT
+    ===================================================== */
+
+    setTimeout(function() {
+
+        overlay.animate(
+
+            [
+                {
+                    opacity: 0
+                },
+
+                {
+                    opacity: 1
+                }
+            ],
+
+            {
+                duration: 400,
+                easing: "ease-out",
                 fill: "forwards"
             }
 
         );
 
-    }
 
+        preview.animate(
 
-    /* =====================================
-       SHOW PREVIEW
-    ===================================== */
+            [
+                {
+                    opacity: 0,
+                    clipPath:
+                        "inset(8% 8% 8% 8%)"
+                },
 
-    setTimeout(
-        function () {
+                {
+                    opacity: 1,
+                    clipPath:
+                        "inset(0% 0% 0% 0%)"
+                }
 
-            if (!overlay) {
-                return;
-            }
+            ],
 
-            overlay.style.pointerEvents =
-                "auto";
+            {
+                duration: 550,
 
-            overlay.style.opacity =
-                "1";
+                easing:
+                    "cubic-bezier(0.22, 1, 0.36, 1)",
 
-
-            if (previewBox) {
-
-                previewBox.style.opacity =
-                    "1";
-
-                previewBox.style.clipPath =
-                    "inset(0%)";
+                fill: "forwards"
 
             }
 
-        },
-        350
-    );
-
-
-    /* =====================================
-       CLOSE BUTTON
-    ===================================== */
-
-    const closeButton =
-        overlay.querySelector(
-            ".project-preview-close"
         );
 
-
-    if (closeButton) {
-
-        closeButton.addEventListener(
-            "click",
-            closeProjectPreview
-        );
-
-    }
+    }, 350);
 
 
-    const bottomClose =
-        overlay.querySelector(
-            ".close-preview-btn"
-        );
+    /* =====================================================
+       CLICK PREVIEW TO CLOSE
+    ===================================================== */
+
+    preview.onclick = function(event) {
+
+        event.stopPropagation();
+
+        closePreview();
+
+    };
 
 
-    if (bottomClose) {
+    /* =====================================================
+       CLICK TRANSPARENT OVERLAY TO CLOSE
+    ===================================================== */
 
-        bottomClose.addEventListener(
-            "click",
-            closeProjectPreview
-        );
+    overlay.onclick = function() {
 
-    }
+        closePreview();
 
-
-    /* =====================================
-       CLICK OUTSIDE
-    ===================================== */
-
-    overlay.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target === overlay
-            ) {
-
-                closeProjectPreview();
-
-            }
-
-        }
-    );
+    };
 
 }
 
 
-/* =========================================
-   CLOSE PREVIEW
-   REVERSE CARD FLIP
-========================================= */
+/* =========================================================
+   CLOSE BLOG
+   ========================================================= */
 
-function closeProjectPreview() {
-
-    if (projectPreviewClosing) {
-        return;
-    }
-
+function closePreview() {
 
     const overlay =
         document.getElementById(
-            "projectPreviewOverlay"
+            "blogOverlay"
         );
 
 
-    if (!overlay) {
-
-        document.body.style.overflow =
-            "";
-
-        return;
-
-    }
+    const preview =
+        document.getElementById(
+            "blogPreview"
+        );
 
 
-    projectPreviewClosing =
+    if (!overlay || !preview) return;
+
+
+    if (overlay.style.display !== "block") return;
+
+
+    if (blogClosing) return;
+
+
+    blogClosing =
         true;
 
 
-    const previewBox =
-        overlay.querySelector(
-            ".project-preview-box"
-        );
+    /* =====================================================
+       PREVIEW CLOSES FIRST
+    ===================================================== */
 
+    preview.animate(
 
-    /* =====================================
-       CLOSE PREVIEW CONTENT
-    ===================================== */
+        [
 
-    if (previewBox) {
+            {
+                opacity: 1,
+                clipPath:
+                    "inset(0% 0% 0% 0%)"
+            },
 
-        previewBox.style.transition =
-            "opacity 450ms ease, clip-path 450ms ease";
-
-        previewBox.style.opacity =
-            "0";
-
-        previewBox.style.clipPath =
-            "inset(8%)";
-
-    }
-
-
-    /* =====================================
-       FADE OVERLAY
-    ===================================== */
-
-    overlay.style.transition =
-        "opacity 450ms ease";
-
-    overlay.style.opacity =
-        "0";
-
-    overlay.style.pointerEvents =
-        "none";
-
-
-    /* =====================================
-       CARD FLIP BACK
-    ===================================== */
-
-    setTimeout(
-        function () {
-
-            if (activeProjectCard) {
-
-                activeProjectCard.style.transformStyle =
-                    "preserve-3d";
-
-                activeProjectCard.style.backfaceVisibility =
-                    "hidden";
-
-                activeProjectCard.style.willChange =
-                    "transform, opacity";
-
-                activeProjectCard.style.transformOrigin =
-                    "center center";
-
-
-                activeProjectCard.animate(
-
-                    [
-                        {
-                            transform:
-                                "perspective(1200px) rotateY(180deg) scale(.96)",
-                            opacity: "0"
-                        },
-
-                        {
-                            transform:
-                                "perspective(1200px) rotateY(270deg) scale(.98)",
-                            opacity: "0",
-                            offset: 0.45
-                        },
-
-                        {
-                            transform:
-                                "perspective(1200px) rotateY(360deg) scale(1)",
-                            opacity: "1"
-                        }
-                    ],
-
-                    {
-                        duration: 650,
-                        easing:
-                            "cubic-bezier(0.65, 0, 0.35, 1)",
-                        fill: "forwards"
-                    }
-
-                );
-
+            {
+                opacity: 0,
+                clipPath:
+                    "inset(8% 8% 8% 8%)"
             }
 
-        },
-        450
+        ],
+
+        {
+            duration: 450,
+
+            easing:
+                "cubic-bezier(0.65, 0, 0.35, 1)",
+
+            fill: "forwards"
+
+        }
+
     );
 
 
-    /* =====================================
-       CLEANUP
-    ===================================== */
+    overlay.animate(
 
-    setTimeout(
-        function () {
+        [
 
-            if (overlay) {
-                overlay.remove();
+            {
+                opacity: 1
+            },
+
+            {
+                opacity: 0
             }
 
+        ],
 
-            if (activeProjectCard) {
+        {
+            duration: 450,
+            easing: "ease-in",
+            fill: "forwards"
+        }
 
-                activeProjectCard.style.transform =
-                    "";
-
-                activeProjectCard.style.opacity =
-                    "";
-
-                activeProjectCard.style.willChange =
-                    "";
-
-                activeProjectCard.style.transformStyle =
-                    "";
-
-                activeProjectCard.style.backfaceVisibility =
-                    "";
-
-                activeProjectCard.style.transformOrigin =
-                    "";
-
-            }
+    );
 
 
-            activeProjectCard =
+    /* =====================================================
+       CARD FLIPS BACK
+       180 DEGREE → 360 DEGREE
+    ===================================================== */
+
+    setTimeout(function() {
+
+        if (activeBlogCard) {
+
+            activeBlogCard.animate(
+
+                [
+
+                    {
+                        transform:
+                            "perspective(1200px) rotateY(180deg) scale(0.96)",
+                        opacity: 0
+                    },
+
+                    {
+                        transform:
+                            "perspective(1200px) rotateY(270deg) scale(0.98)",
+                        opacity: 0
+                    },
+
+                    {
+                        transform:
+                            "perspective(1200px) rotateY(360deg) scale(1)",
+                        opacity: 1
+                    }
+
+                ],
+
+                {
+                    duration: 650,
+
+                    easing:
+                        "cubic-bezier(0.65, 0, 0.35, 1)",
+
+                    fill: "forwards"
+
+                }
+
+            );
+
+        }
+
+
+        /* =================================================
+           CLEAN UP
+        ================================================= */
+
+        setTimeout(function() {
+
+            overlay.style.display =
+                "none";
+
+
+            preview.style.display =
+                "none";
+
+
+            overlay.style.opacity =
+                "";
+
+
+            preview.style.opacity =
+                "";
+
+
+            preview.style.clipPath =
+                "";
+
+
+            preview.innerHTML =
+                "";
+
+
+            preview.onclick =
                 null;
 
-            projectPreviewClosing =
+
+            if (activeBlogCard) {
+
+                activeBlogCard.style.transform =
+                    "";
+
+
+                activeBlogCard.style.opacity =
+                    "";
+
+
+                activeBlogCard.style.willChange =
+                    "";
+
+
+                activeBlogCard.style.transition =
+                    "";
+
+            }
+
+
+            activeBlogCard =
+                null;
+
+
+            blogClosing =
                 false;
+
 
             document.body.style.overflow =
                 "";
 
-        },
-        1120
-    );
+        }, 670);
+
+    }, 450);
 
 }
 
 
-/* =========================================
-   ESC KEY
-========================================= */
+/* =========================================================
+   OPEN ADD BLOG MODAL
+   ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    function (event) {
+function openModal() {
 
-        if (
-            event.key === "Escape"
-        ) {
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
 
-            closeProjectPreview();
+    if (!modal) return;
+
+
+    editingIndex = -1;
+
+
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
+
+
+    const title =
+        document.getElementById(
+            "title"
+        );
+
+
+    const category =
+        document.getElementById(
+            "category"
+        );
+
+
+    const blogDate =
+        document.getElementById(
+            "blogDate"
+        );
+
+
+    const content =
+        document.getElementById(
+            "content"
+        );
+
+
+    const featured =
+        document.getElementById(
+            "featured"
+        );
+
+
+    const image =
+        document.getElementById(
+            "image"
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            "Add New Blog";
+
+    }
+
+
+    if (title) {
+
+        title.value = "";
+
+    }
+
+
+    if (category) {
+
+        category.value = "";
+
+    }
+
+
+    if (blogDate) {
+
+        blogDate.value =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+    }
+
+
+    if (content) {
+
+        content.value = "";
+
+    }
+
+
+    if (featured) {
+
+        featured.checked = false;
+
+    }
+
+
+    if (image) {
+
+        image.value = "";
+
+    }
+
+
+    const previewContainer =
+        document.getElementById(
+            "imagePreviewContainer"
+        );
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    if (previewContainer) {
+
+        previewContainer.style.display =
+            "none";
+
+    }
+
+
+    if (preview) {
+
+        preview.src = "";
+
+    }
+
+
+    modal.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+   ========================================================= */
+
+function closeModal() {
+
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
+
+
+    if (modal) {
+
+        modal.style.display =
+            "none";
+
+    }
+
+
+    editingIndex = -1;
+
+}
+
+
+/* =========================================================
+   SAVE BLOG
+   ========================================================= */
+
+function saveBlog() {
+
+    const title =
+        document.getElementById(
+            "title"
+        )?.value.trim();
+
+
+    const category =
+        document.getElementById(
+            "category"
+        )?.value;
+
+
+    const date =
+        document.getElementById(
+            "blogDate"
+        )?.value;
+
+
+    const content =
+        document.getElementById(
+            "content"
+        )?.value.trim();
+
+
+    const featured =
+        document.getElementById(
+            "featured"
+        )?.checked;
+
+
+    const imageInput =
+        document.getElementById(
+            "image"
+        );
+
+
+    if (
+        !title ||
+        !category ||
+        !date ||
+        !content
+    ) {
+
+        alert(
+            "Please complete all required fields."
+        );
+
+        return;
+
+    }
+
+
+    function finishSave(imageData) {
+
+        let order;
+
+
+        if (editingIndex >= 0) {
+
+            order =
+                blogs[editingIndex].order ||
+                999;
+
+        } else {
+
+            const maxOrder =
+                blogs.reduce(
+                    function(max, blog) {
+
+                        return Math.max(
+                            max,
+                            blog.order || 0
+                        );
+
+                    },
+                    0
+                );
+
+
+            order =
+                maxOrder + 1;
 
         }
+
+
+        const blogData = {
+
+            title: title,
+
+            category: category,
+
+            date: date,
+
+            order: order,
+
+            content: content,
+
+            image:
+                imageData ||
+                (
+                    editingIndex >= 0
+                        ? blogs[editingIndex].image
+                        : "profilepic.jpg"
+                ),
+
+            featured:
+                featured === true
+
+        };
+
+
+        if (editingIndex >= 0) {
+
+            blogs[editingIndex] =
+                blogData;
+
+        } else {
+
+            blogs.push(blogData);
+
+        }
+
+
+        saveBlogs();
+
+        displayBlogs();
+
+        closeModal();
+
+    }
+
+
+    if (
+        imageInput &&
+        imageInput.files &&
+        imageInput.files[0]
+    ) {
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event) {
+
+                finishSave(
+                    event.target.result
+                );
+
+            };
+
+
+        reader.readAsDataURL(
+            imageInput.files[0]
+        );
+
+    } else {
+
+        finishSave();
+
+    }
+
+}
+
+
+/* =========================================================
+   EDIT BLOG
+   ========================================================= */
+
+function editBlog(index) {
+
+    const blog =
+        blogs[index];
+
+
+    if (!blog) return;
+
+
+    editingIndex =
+        index;
+
+
+    const modal =
+        document.getElementById(
+            "blogModal"
+        );
+
+
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
+
+
+    const title =
+        document.getElementById(
+            "title"
+        );
+
+
+    const category =
+        document.getElementById(
+            "category"
+        );
+
+
+    const blogDate =
+        document.getElementById(
+            "blogDate"
+        );
+
+
+    const content =
+        document.getElementById(
+            "content"
+        );
+
+
+    const featured =
+        document.getElementById(
+            "featured"
+        );
+
+
+    if (modalTitle) {
+
+        modalTitle.textContent =
+            "Edit Blog";
+
+    }
+
+
+    if (title) {
+
+        title.value =
+            blog.title || "";
+
+    }
+
+
+    if (category) {
+
+        category.value =
+            blog.category || "";
+
+    }
+
+
+    if (blogDate) {
+
+        blogDate.value =
+            blog.date || "";
+
+    }
+
+
+    if (content) {
+
+        content.value =
+            blog.content || "";
+
+    }
+
+
+    if (featured) {
+
+        featured.checked =
+            blog.featured === true;
+
+    }
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    const previewContainer =
+        document.getElementById(
+            "imagePreviewContainer"
+        );
+
+
+    if (
+        blog.image &&
+        preview &&
+        previewContainer
+    ) {
+
+        preview.src =
+            blog.image;
+
+
+        previewContainer.style.display =
+            "block";
+
+    }
+
+
+    if (modal) {
+
+        modal.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   DELETE BLOG
+   ========================================================= */
+
+function deleteBlog(index) {
+
+    const blog =
+        blogs[index];
+
+
+    if (!blog) return;
+
+
+    const confirmed =
+        confirm(
+            `Delete "${blog.title}"?`
+        );
+
+
+    if (!confirmed) return;
+
+
+    blogs.splice(
+        index,
+        1
+    );
+
+
+    saveBlogs();
+
+    displayBlogs();
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function searchBlog() {
+
+    applySearchAndFilter();
+
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+   ========================================================= */
+
+function filterCategory() {
+
+    applySearchAndFilter();
+
+}
+
+
+/* =========================================================
+   SEARCH + CATEGORY FILTER
+   ========================================================= */
+
+function applySearchAndFilter() {
+
+    const searchInput =
+        document.getElementById(
+            "search"
+        );
+
+
+    const categorySelect =
+        document.getElementById(
+            "filterCategory"
+        );
+
+
+    if (
+        !searchInput ||
+        !categorySelect
+    ) return;
+
+
+    const searchText =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+    const selectedCategory =
+        categorySelect.value;
+
+
+    const cards =
+        document.querySelectorAll(
+            "#blogContainer .blog-card"
+        );
+
+
+    let visibleCount =
+        0;
+
+
+    cards.forEach(function(card) {
+
+        const title =
+            card
+                .querySelector("h2")
+                ?.textContent
+                .toLowerCase() || "";
+
+
+        const category =
+            card.dataset.category ||
+            "";
+
+
+        const matchesSearch =
+            title.includes(searchText);
+
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            category === selectedCategory;
+
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            card.style.display =
+                "";
+
+
+            visibleCount++;
+
+        } else {
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    const noBlog =
+        document.getElementById(
+            "noBlog"
+        );
+
+
+    if (noBlog) {
+
+        noBlog.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+   ========================================================= */
+
+document.addEventListener(
+    "change",
+    function(event) {
+
+        if (
+            event.target.id !==
+            "image"
+        ) return;
+
+
+        const file =
+            event.target.files[0];
+
+
+        if (!file) return;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(e) {
+
+                const preview =
+                    document.getElementById(
+                        "imagePreview"
+                    );
+
+
+                const container =
+                    document.getElementById(
+                        "imagePreviewContainer"
+                    );
+
+
+                if (preview) {
+
+                    preview.src =
+                        e.target.result;
+
+                }
+
+
+                if (container) {
+
+                    container.style.display =
+                        "block";
+
+                }
+
+            };
+
+
+        reader.readAsDataURL(file);
 
     }
 );
 
 
-/* =========================================
-   CLOSE ADD/EDIT MODAL OUTSIDE CLICK
-========================================= */
+/* =========================================================
+   CLOSE MODAL OUTSIDE
+   ========================================================= */
 
 window.addEventListener(
     "click",
-    function (event) {
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "blogModal"
+            );
+
 
         if (
-            modal &&
             event.target === modal
         ) {
 
-            closeProjectModal();
+            closeModal();
 
         }
 
@@ -1981,8 +2027,40 @@ window.addEventListener(
 );
 
 
-/* =========================================
-   INITIAL DISPLAY
-========================================= */
+/* =========================================================
+   ESC KEY
+   ========================================================= */
 
-displayProjects();
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closePreview();
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        initializeBlogs();
+
+        displayBlogs();
+
+    }
+);
