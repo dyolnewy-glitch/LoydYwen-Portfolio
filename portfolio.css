@@ -1,2066 +1,2425 @@
 
-/* =========================================================
-   BLOG.JS
-   ========================================================= */
 
+/* =====================================================
+   PORTFOLIO PAGE
+===================================================== */
 
-/* =========================================================
-   BLOG DATA
-   ========================================================= */
+.portfolio{
 
-let blogs = [];
-let editingIndex = -1;
+    margin-top:-80px;
 
-let activeBlogCard = null;
-let blogClosing = false;
+    padding:80px 20px;
 
-
-/* =========================================================
-   DEFAULT BLOGS
-   ========================================================= */
-
-const defaultBlogs = [
-
-    /* =====================================================
-       CREATING IN MY FREE TIME
-    ===================================================== */
-
-    {
-        title: "Creating in My Free Time",
-        category: "Personal",
-        date: "2026-08-18",
-        order: 1,
-        image: "com.jpg",
-        featured: false,
-
-        content: `
-When I have nothing else to do, I usually spend my free time doing things that I enjoy. Instead of just staying idle, I like to keep myself busy by creating and editing different kinds of things. Editing has become one of my favorite hobbies because it allows me to be creative and experiment with different ideas.
-
-Sometimes, I edit posters and pictures. I enjoy choosing colors, fonts, images, and other elements to create a design that looks clean and visually appealing. There are times when I also edit videos, especially when I want to try something different from my usual designs. Even simple editing projects can be enjoyable because I get to explore new styles and techniques.
-
-Another thing I like doing is creating photo strip layouts. I enjoy designing different themes and arranging the elements so that the final layout looks balanced and attractive. I like thinking about what colors, decorations, fonts, and backgrounds would match a certain theme. It may look like a simple activity, but for me, it is a fun way to express my creativity.
-
-I also spend some of my free time working on this personal website. Creating the website gives me another opportunity to be creative while also learning along the way. I can organize my work, share some of the things I have created, and experiment with how I want everything to look. It feels different from simply making a poster or editing a picture because I am creating something that combines both design and technology.
-
-Most of the time, I do these activities while listening to music. Music makes the experience more enjoyable and helps me stay focused while I work. Sometimes I can spend a long time editing without noticing how much time has passed because I am enjoying both the music and the process of creating.
-
-For me, having free time does not always mean doing nothing. It can also be an opportunity to create something, learn something new, or simply enjoy a hobby. Whether I am editing a poster, a video, a picture, a photo strip layout, or working on my personal website, I enjoy the feeling of turning an idea into something I can actually see. These small creative activities are some of the things that make my free time more meaningful and enjoyable.
-`
-    },
-
-
-    /* =====================================================
-       JUST LEAVES
-    ===================================================== */
-
-    {
-        title: "Just Leaves 🍂",
-        category: "Personal",
-        date: "2026-08-18",
-        order: 2,
-        image: "leaves.jpg",
-        featured: false,
-
-        content: `
-Spoken Word Poetry
-
-Alam mo... para sa akin, dalawa ang ibig sabihin ng linyang “Just Leaves.”
-
-Ang una... mga dahon lang naman 'yan. Walang kwenta. Tinatapak-tapakan. Patay, at tuyo.
-
-Ang pangalawa... iwan mo na ako. Isang pag-alis. Isang pagbitaw. Isang paglayas nang walang paalam.
-
-Pero kapag pinagsama mo ang dalawang kahulugang 'yan... doon mo makikita ang totoong ganda ng buhay.
-
-Oo, dahon lang 'yan. At oo, iniwan ka ng dahong tuyo. Pero hindi ba't kaya lang naman nahulog at natuyo ang dahong 'yan... ay dahil tapos na ang papel niya sa sanga ng buhay mo?
-
-Huwag mong kaawaan ang sarili mo kung may umalis. Hindi natin kailangang makulong sa iisang tao lang habangbuhay. Minsan, kailangan natin ng bagong mukha. Bagong simula. Bagong pag-asa.
-
-Hindi naman natin kakalimutan ang luma, eh. Dahil kung wala ang lumang dahon, walang basehan ang bago. Ang luma ang nagturo sa atin kung paano kumapit... at ang bago ang magtuturo sa atin kung paano muling sumibol.
-
-Kaya sa susunod na titingnan mo ang buhay mo, huwag kang maiyak sa mga nalagas.
-
-Dahil ang totoo...
-
-Hindi mo makikita ang susunod na magandang dahon ng kwento mo... kung hindi mo muna hinayaang mahulog at umalis... ang mga tuyong dahon ng kahapon.
-
-— 🆆🅴🅷🅽🅽 🅻🅷🅴🅴
-
----
-
-My Thoughts Behind “Just Leaves”
-
-Ang “Just Leaves” ay nagsimula sa isang simpleng paglalaro ng salita, pero habang iniisip ko ang dalawang kahulugan nito, mas nakita ko na may mas malalim pala itong koneksyon sa buhay.
-
-Kapag sinabi mong “just leaves,” puwede itong mangahulugan na mga dahon lang. Mga bagay na minsan ay nasa puno, pero dumating ang panahon na nalaglag, natuyo, at tuluyang nawala.
-
-Pero kapag narinig mo naman ang “just leave,” iba na ang ibig sabihin.
-
-Umalis ka na. Iwan mo na ako.
-
-At doon nagsimula yung idea ng poetry na ito.
-
-🍂 Ang mga dahon ay parang mga tao at karanasan sa buhay
-
-May mga taong dumarating sa buhay natin na parang bagong dahon sa isang puno. Sa simula, hindi natin alam kung gaano sila katagal mananatili.
-
-May ilan na matagal.
-
-May ilan na sandali lang.
-
-At may ilan na darating sa panahon na kailangan natin sila.
-
-Pero hindi lahat ng dahon ay mananatili sa puno habambuhay.
-
-Darating ang panahon na may mga dahong kailangang malaglag.
-
-At minsan, masakit iyon.
-
-Dahil habang nakatingala tayo sa puno, ang nakikita natin ay yung puwang na iniwan ng dahon.
-
-Hindi natin agad nakikita na may dahilan kung bakit ito nahulog.
-
-🌱 Hindi lahat ng pag-alis ay pagkatalo
-
-Madalas, kapag may taong umaalis sa buhay natin, iniisip natin na may nawala sa atin.
-
-At oo, may nawala.
-
-Pero hindi ibig sabihin na tayo mismo ay nawala.
-
-May mga taong bahagi lang ng isang chapter. May mga karanasan na hindi para manatili habang buhay. At may mga bagay na kailangang matapos para magkaroon ng espasyo para sa susunod.
-
-Hindi ibig sabihin na walang halaga ang nauna.
-
-Sa katunayan, mahalaga sila dahil may itinuro sila sa atin.
-
-Kung walang lumang dahon, hindi natin malalaman kung paano naging ganito ang puno.
-
-🌳 Ang puno ay hindi namamatay dahil nalalaglag ang dahon
-
-Ito siguro ang pinakaimportanteng idea sa Just Leaves.
-
-Kapag nalaglag ang isang dahon, hindi ibig sabihin na tapos na ang buhay ng puno.
-
-Patuloy itong nabubuhay.
-
-Patuloy itong lumalaki.
-
-At darating ang panahon na magkakaroon ulit ito ng mga bagong dahon.
-
-Ganito rin siguro tayo.
-
-May mga bagay na mawawala. May mga taong aalis. May mga pangarap na magbabago. May mga chapter na matatapos.
-
-Pero hindi ibig sabihin na doon na rin nagtatapos ang buhay natin.
-
-🍃 Hindi kailangang kalimutan ang nakaraan
-
-Hindi ko rin ibig sabihin na kailangan nating kalimutan ang mga lumang dahon.
-
-Hindi naman ganoon ang buhay.
-
-Ang mga taong naging bahagi ng buhay natin ay maaaring hindi na kasama sa susunod na chapter, pero hindi nito binubura ang naging papel nila sa mga naunang chapter.
-
-May mga taong nagturo sa atin kung paano magmahal.
-
-May mga taong nagturo sa atin kung paano masaktan.
-
-May mga taong nagturo sa atin kung paano bumangon.
-
-At may mga taong nagturo sa atin kung sino talaga tayo.
-
-Kaya hindi kailangang kamuhian ang mga bagay na natapos.
-
-Minsan, sapat nang sabihin:
-
-“Salamat sa pagiging bahagi ng chapter na iyon.”
-
-At pagkatapos...
-
-it​​uloy ang kwento.
-
-🌱 May bagong dahon pagkatapos ng luma
-
-Siguro iyon ang gusto kong maiwan na mensahe ng Just Leaves.
-
-Kapag may nalagas sa buhay mo, huwag mong isipin na wala nang susunod.
-
-Baka hindi mo pa lang nakikita.
-
-Baka nasa panahon ka pa ng paghihintay.
-
-Baka kailangan mo munang bigyan ng pagkakataon ang sarili mong gumaling.
-
-At baka kailangan mo munang tanggapin na may mga dahon talagang kailangang mahulog.
-
-Dahil minsan, habang nakatingin tayo sa mga dahong nawala, hindi natin napapansin na may bagong dahon nang unti-unting tumutubo.
-
-Kaya kung may umalis man sa buhay mo, huwag mong isipin na nabawasan ang halaga mo.
-
-Kung may isang chapter na natapos, hindi ibig sabihin na tapos na ang buong libro.
-
-May susunod pang pahina.
-
-At baka sa susunod na pahinang iyon...
-
-may mas magandang dahon nang naghihintay.
-
-🍂 Just leaves.
-
-🌱 Just leave.
-
-📖 And then, let the story continue.
-`
-    },
-
-
-    /* =====================================================
-       GRADUATION DAY
-    ===================================================== */
-
-    {
-        title: "Graduation Day",
-        category: "School Experience",
-        date: "2026-06-24",
-        order: 3,
-        image: "profilepic.jpg",
-        featured: true,
-
-        content: `
-June 24, 2026 was one of the most memorable and meaningful days of my life because it was the day I officially graduated with a Bachelor of Science in Information Technology (BSIT) from Urdaneta City University (UCU).
-
-After years of studying, completing projects, attending classes, working on requirements, taking examinations, preparing presentations, and facing different challenges, I finally reached one of the biggest milestones in my life — graduation.
-
-The day was filled with happiness, excitement, and a little bit of sadness because it marked the end of my college journey. Looking back, there were many moments when I felt tired and stressed because of deadlines, projects, school activities, and other responsibilities. There were also times when I doubted myself, but I continued to move forward.
-
-During the graduation ceremony, I felt proud seeing myself wearing my graduation attire and finally receiving my diploma. It was a special moment because I knew that all the hard work and sacrifices I made throughout my college years had finally paid off.
-
-I am also thankful for my family, friends, classmates, instructors, and everyone who supported and encouraged me throughout my journey. Their support helped me continue even during difficult times.
-
-Graduation was not only about receiving a diploma. It was also a reminder of all the experiences and lessons that I gained during my college years. I learned how to manage my time, work with different people, solve problems, communicate my ideas, and become more responsible with my work.
-
-After the graduation ceremony, we went to the cemetery to visit my father. It was an emotional but meaningful part of the day. I wanted to visit him and somehow share this important achievement with him. Although he was not physically there to witness my graduation, visiting his grave made me feel that he was still part of this special moment in my life.
-
-After visiting the cemetery, we went to eat together as a family. We spent some time talking, enjoying our meal, and celebrating the achievement together. It was a simple celebration, but it made the day even more memorable.
-
-After eating, we went home and finally ended the day. It was a simple ending to a very meaningful and unforgettable day.
-
-Graduation was not the end of my journey. It was the beginning of a new chapter in my life. As a BSIT graduate, I want to continue improving my skills in Graphic Design, Web Development, UI/UX Design, and Digital Creativity.
-
-I hope to use everything I have learned to create meaningful projects, improve my skills, and build a successful career in the future.
-
-June 24, 2026 will always be a special date for me — the day I officially became a Bachelor of Science in Information Technology graduate. 🎓
-`
-    },
-
-
-    /* =====================================================
-       OJT EXPERIENCE
-    ===================================================== */
-
-    {
-        title: "OJT Experience",
-        category: "OJT Experience",
-        date: "2026-05-28",
-        order: 4,
-        image: "ojt.jpg",
-        featured: true,
-
-        content: `
-My On-the-Job Training experience was one of the important parts of my college journey.
-
-During my OJT, I was assigned to the LGU Urdaneta City Department of City Library. It gave me the opportunity to experience an actual working environment and understand how tasks are handled in an organization.
-
-One of the tasks I worked on was encoding information for the Vertical File and Clippings Section. I recorded information such as the article title, date, author, page number, and source newspaper.
-
-I also used Google Sheets to organize and record the information. This helped me become more familiar with organizing data and maintaining accurate records.
-
-Aside from the technical tasks, I also learned the importance of being responsible, patient, organized, and attentive when doing work.
-
-My OJT experience helped me understand that working in an actual organization is different from simply completing activities in school.
-
-There were also different activities and programs that I was able to assist with during my OJT experience.
-
-One of these was the R.E.A.D. Library Summer Program 2026. I assisted participants during different activities throughout the program.
-
-The activities included orientation, Book Booth activities, online sessions, storytelling, Canva activities, Wacom Drawing Tablet activities, Math Market Madness, a lecture about Solid Waste Management, and participation from the Bureau of Fire Protection.
-
-I also helped with the preparation and documentation of different activities and completed weekly reports.
-
-Overall, my OJT experience gave me valuable lessons that I can use in my future career.
-
-It helped me improve my communication skills, organization, responsibility, and ability to work with other people.
-
-I am thankful for the people who guided me and for the experiences that became part of my college journey.
-`
-    }
-
-];
-
-
-/* =========================================================
-   INITIALIZE BLOGS
-   ========================================================= */
-
-function initializeBlogs() {
-
-    const savedBlogs = localStorage.getItem("blogs");
-
-    if (!savedBlogs) {
-
-        blogs = [...defaultBlogs];
-
-        saveBlogs();
-
-        return;
-
-    }
-
-
-    try {
-
-        blogs = JSON.parse(savedBlogs);
-
-    } catch (error) {
-
-        console.error("Invalid blog data:", error);
-
-        blogs = [...defaultBlogs];
-
-        saveBlogs();
-
-        return;
-
-    }
-
-
-    if (!Array.isArray(blogs)) {
-
-        blogs = [...defaultBlogs];
-
-        saveBlogs();
-
-        return;
-
-    }
-
-
-    /* =====================================================
-       ADD MISSING DEFAULT BLOGS
-    ===================================================== */
-
-    defaultBlogs.forEach(defaultBlog => {
-
-        const existingIndex = blogs.findIndex(
-            blog => blog.title === defaultBlog.title
-        );
-
-
-        if (existingIndex === -1) {
-
-            blogs.push({
-                ...defaultBlog
-            });
-
-        } else {
-
-            if (
-                defaultBlog.title ===
-                "Creating in My Free Time"
-            ) {
-
-                blogs[existingIndex].date =
-                    "2026-08-18";
-
-                blogs[existingIndex].order =
-                    1;
-
-                blogs[existingIndex].category =
-                    "Personal";
-
-                blogs[existingIndex].image =
-                    "com.jpg";
-
-                blogs[existingIndex].featured =
-                    false;
-
-            }
-
-
-            if (
-                defaultBlog.title ===
-                "Just Leaves 🍂"
-            ) {
-
-                blogs[existingIndex].date =
-                    "2026-08-18";
-
-                blogs[existingIndex].order =
-                    2;
-
-                blogs[existingIndex].category =
-                    "Personal";
-
-                blogs[existingIndex].image =
-                    "leaves.jpg";
-
-                blogs[existingIndex].featured =
-                    false;
-
-            }
-
-
-            if (
-                defaultBlog.title ===
-                "Graduation Day"
-            ) {
-
-                blogs[existingIndex].date =
-                    "2026-06-24";
-
-                blogs[existingIndex].order =
-                    3;
-
-                blogs[existingIndex].featured =
-                    true;
-
-            }
-
-
-            if (
-                defaultBlog.title ===
-                "OJT Experience"
-            ) {
-
-                blogs[existingIndex].date =
-                    "2026-05-28";
-
-                blogs[existingIndex].order =
-                    4;
-
-                blogs[existingIndex].featured =
-                    true;
-
-            }
-
-        }
-
-    });
-
-
-    saveBlogs();
+    background:#D6DEDC;
 
 }
 
 
-/* =========================================================
-   SAVE BLOGS
-   ========================================================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
-function saveBlogs() {
+.portfolio-header{
 
-    localStorage.setItem(
-        "blogs",
-        JSON.stringify(blogs)
-    );
+    max-width:1100px;
 
-}
+    margin:auto;
 
+    display:flex;
 
-/* =========================================================
-   DATE FORMAT
-   ========================================================= */
+    justify-content:center;
 
-function formatDate(date) {
+    align-items:center;
 
-    if (!date) return "";
+    margin-bottom:50px;
 
-    const d = new Date(
-        date + "T00:00:00"
-    );
+    gap:20px;
 
-    return d.toLocaleDateString(
-        "en-US",
-        {
-            month: "long",
-            day: "numeric",
-            year: "numeric"
-        }
-    );
+    position:relative;
+
+    text-align:center;
 
 }
 
 
-/* =========================================================
-   SORT BLOGS
-   ========================================================= */
+.portfolio-header > div{
 
-function sortBlogs() {
-
-    blogs.sort(function(a, b) {
-
-        const dateA =
-            new Date(a.date + "T00:00:00");
-
-        const dateB =
-            new Date(b.date + "T00:00:00");
-
-
-        const dateDifference =
-            dateB - dateA;
-
-
-        if (dateDifference !== 0) {
-
-            return dateDifference;
-
-        }
-
-
-        return (
-            (a.order || 999) -
-            (b.order || 999)
-        );
-
-    });
+    width:100%;
 
 }
 
 
-/* =========================================================
-   DISPLAY BLOGS
-   ========================================================= */
+.portfolio-header h1{
 
-function displayBlogs() {
+    font-family:'Playfair Display', serif;
 
-    sortBlogs();
+    font-size:42px;
 
+    color:#008080;
 
-    const container =
-        document.getElementById(
-            "blogContainer"
-        );
+    margin:0 0 10px;
 
+    font-weight:800;
 
-    const featuredContainer =
-        document.getElementById(
-            "featuredContainer"
-        );
-
-
-    if (!container) return;
-
-
-    container.innerHTML = "";
-
-
-    if (featuredContainer) {
-
-        featuredContainer.innerHTML = "";
-
-    }
-
-
-    /* =====================================================
-       LATEST BLOGS
-       ONLY 4
-    ===================================================== */
-
-    const latestBlogs =
-        blogs.slice(0, 4);
-
-
-    latestBlogs.forEach(function(blog) {
-
-        const originalIndex =
-            blogs.indexOf(blog);
-
-
-        const card =
-            document.createElement("div");
-
-
-        card.className =
-            "blog-card";
-
-
-        card.dataset.category =
-            blog.category || "";
-
-
-        card.onclick = function() {
-
-            openBlog(
-                originalIndex,
-                this
-            );
-
-        };
-
-
-        card.innerHTML = `
-
-            <img
-                class="blog-card-image"
-                src="${blog.image || "profilepic.jpg"}"
-                alt="${escapeHTML(blog.title)}"
-            >
-
-            <div class="blog-info">
-
-                <span class="blog-category">
-                    ${escapeHTML(blog.category || "Other")}
-                </span>
-
-                <h2>
-                    ${escapeHTML(blog.title)}
-                </h2>
-
-                <p>
-                    Blog Date:
-                    ${formatDate(blog.date)}
-                </p>
-
-            </div>
-
-            <div class="actions">
-
-                <button
-                    class="edit"
-                    type="button"
-                    onclick="
-                        event.stopPropagation();
-                        editBlog(${originalIndex});
-                    "
-                >
-                    Edit
-                </button>
-
-                <button
-                    class="delete"
-                    type="button"
-                    onclick="
-                        event.stopPropagation();
-                        deleteBlog(${originalIndex});
-                    "
-                >
-                    Delete
-                </button>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(card);
-
-    });
-
-
-    /* =====================================================
-       FEATURED BLOGS
-       ONLY GRADUATION + OJT
-    ===================================================== */
-
-    if (featuredContainer) {
-
-        const featuredBlogs =
-            blogs.filter(function(blog) {
-
-                return (
-                    blog.featured === true &&
-                    (
-                        blog.title ===
-                            "Graduation Day" ||
-
-                        blog.title ===
-                            "OJT Experience"
-                    )
-                );
-
-            });
-
-
-        featuredBlogs.forEach(function(blog) {
-
-            const originalIndex =
-                blogs.indexOf(blog);
-
-
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                "featured-card";
-
-
-            card.onclick = function() {
-
-                openBlog(
-                    originalIndex,
-                    this
-                );
-
-            };
-
-
-            card.innerHTML = `
-
-                <img
-                    src="${blog.image || "profilepic.jpg"}"
-                    alt="${escapeHTML(blog.title)}"
-                >
-
-                <span class="featured-badge">
-                    Featured
-                </span>
-
-                <div class="blog-info">
-
-                    <span class="blog-category">
-                        ${escapeHTML(blog.category || "Other")}
-                    </span>
-
-                    <h2>
-                        ${escapeHTML(blog.title)}
-                    </h2>
-
-                    <p>
-                        Blog Date:
-                        ${formatDate(blog.date)}
-                    </p>
-
-                </div>
-
-            `;
-
-
-            featuredContainer.appendChild(card);
-
-        });
-
-    }
-
-
-    /* =====================================================
-       NO BLOG
-    ===================================================== */
-
-    const noBlog =
-        document.getElementById("noBlog");
-
-
-    if (noBlog) {
-
-        noBlog.style.display =
-            latestBlogs.length === 0
-                ? "block"
-                : "none";
-
-    }
-
-
-    applySearchAndFilter();
+    letter-spacing:-0.5px;
 
 }
 
 
-/* =========================================================
-   ESCAPE HTML
-   ========================================================= */
+.portfolio-header p{
 
-function escapeHTML(text) {
+    font-family:'Quicksand', sans-serif;
 
-    if (!text) return "";
+    color:#555;
 
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    font-size:18px;
 
-}
+    font-weight:500;
 
+    letter-spacing:.3px;
 
-/* =========================================================
-   FORMAT BLOG CONTENT
-   ========================================================= */
-
-function formatContent(content) {
-
-    if (!content) return "";
-
-
-    const cleanContent =
-        content.trim();
-
-
-    const paragraphs =
-        cleanContent
-            .split(/\n\s*\n/)
-            .filter(function(paragraph) {
-
-                return paragraph.trim() !== "";
-
-            });
-
-
-    return paragraphs
-        .map(function(paragraph) {
-
-            const text =
-                paragraph.trim();
-
-
-            return `
-                <p>
-                    ${escapeHTML(text)
-                        .replace(/\n/g, "<br>")}
-                </p>
-            `;
-
-        })
-        .join("");
+    margin:0;
 
 }
 
 
-/* =========================================================
-   OPEN BLOG
-   ========================================================= */
+/* =====================================================
+   ADD PROJECT BUTTON
+===================================================== */
 
-function openBlog(index, sourceCard = null) {
+.add-project-btn{
 
-    const overlay =
-        document.getElementById(
-            "blogOverlay"
-        );
+    position:absolute;
 
+    right:0;
 
-    const preview =
-        document.getElementById(
-            "blogPreview"
-        );
+    top:50%;
 
+    transform:translateY(-50%);
 
-    if (!overlay || !preview) return;
+    background:#008080;
 
+    color:white;
 
-    if (overlay.style.display === "block") return;
+    border:none;
 
+    padding:14px 25px;
 
-    const blog =
-        blogs[index];
+    border-radius:30px;
 
+    font-weight:bold;
 
-    if (!blog) return;
+    cursor:pointer;
 
-
-    activeBlogCard =
-        sourceCard;
-
-
-    blogClosing =
-        false;
-
-
-    /* =====================================================
-       ORIGINAL BLOG PREVIEW STRUCTURE
-       DO NOT CHANGE
-    ===================================================== */
-
-    preview.innerHTML = `
-
-        <div class="preview-content">
-
-            <img
-                src="${blog.image || "profilepic.jpg"}"
-                alt="${escapeHTML(blog.title)}"
-            >
-
-            <span class="blog-category">
-                ${escapeHTML(blog.category || "Other")}
-            </span>
-
-            <h2>
-                ${escapeHTML(blog.title)}
-            </h2>
-
-            <p class="preview-date">
-                ${formatDate(blog.date)}
-            </p>
-
-            <div class="preview-description">
-
-                ${formatContent(blog.content)}
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    /* =====================================================
-       PREPARE
-    ===================================================== */
-
-    overlay.style.display =
-        "block";
-
-
-    overlay.style.setProperty(
-        "background",
-        "transparent",
-        "important"
-    );
-
-
-    overlay.style.opacity =
-        "0";
-
-
-    preview.style.display =
-        "block";
-
-
-    preview.style.opacity =
-        "0";
-
-
-    preview.style.clipPath =
-        "inset(8% 8% 8% 8%)";
-
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    /* =====================================================
-       REAL CARD FLIP
-       0 DEGREE → 180 DEGREE
-    ===================================================== */
-
-    if (activeBlogCard) {
-
-        activeBlogCard.style.willChange =
-            "transform, opacity";
-
-
-        activeBlogCard.style.transition =
-            "none";
-
-
-        activeBlogCard.animate(
-
-            [
-
-                {
-                    transform:
-                        "perspective(1200px) rotateY(0deg) scale(1)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "perspective(1200px) rotateY(90deg) scale(0.98)",
-                    opacity: 1,
-                    offset: 0.45
-                },
-
-                {
-                    transform:
-                        "perspective(1200px) rotateY(180deg) scale(0.96)",
-                    opacity: 0
-                }
-
-            ],
-
-            {
-                duration: 650,
-
-                easing:
-                    "cubic-bezier(0.65, 0, 0.35, 1)",
-
-                fill: "forwards"
-
-            }
-
-        );
-
-    }
-
-
-    /* =====================================================
-       PREVIEW + OVERLAY COME OUT
-    ===================================================== */
-
-    setTimeout(function() {
-
-        overlay.animate(
-
-            [
-                {
-                    opacity: 0
-                },
-
-                {
-                    opacity: 1
-                }
-            ],
-
-            {
-                duration: 400,
-                easing: "ease-out",
-                fill: "forwards"
-            }
-
-        );
-
-
-        preview.animate(
-
-            [
-                {
-                    opacity: 0,
-                    clipPath:
-                        "inset(8% 8% 8% 8%)"
-                },
-
-                {
-                    opacity: 1,
-                    clipPath:
-                        "inset(0% 0% 0% 0%)"
-                }
-
-            ],
-
-            {
-                duration: 550,
-
-                easing:
-                    "cubic-bezier(0.22, 1, 0.36, 1)",
-
-                fill: "forwards"
-
-            }
-
-        );
-
-    }, 350);
-
-
-    /* =====================================================
-       CLICK PREVIEW TO CLOSE
-    ===================================================== */
-
-    preview.onclick = function(event) {
-
-        event.stopPropagation();
-
-        closePreview();
-
-    };
-
-
-    /* =====================================================
-       CLICK TRANSPARENT OVERLAY TO CLOSE
-    ===================================================== */
-
-    overlay.onclick = function() {
-
-        closePreview();
-
-    };
+    transition:.3s;
 
 }
 
 
-/* =========================================================
-   CLOSE BLOG
-   ========================================================= */
+.add-project-btn:hover{
 
-function closePreview() {
+    background:#00b3b3;
 
-    const overlay =
-        document.getElementById(
-            "blogOverlay"
-        );
-
-
-    const preview =
-        document.getElementById(
-            "blogPreview"
-        );
-
-
-    if (!overlay || !preview) return;
-
-
-    if (overlay.style.display !== "block") return;
-
-
-    if (blogClosing) return;
-
-
-    blogClosing =
-        true;
-
-
-    /* =====================================================
-       PREVIEW CLOSES FIRST
-    ===================================================== */
-
-    preview.animate(
-
-        [
-
-            {
-                opacity: 1,
-                clipPath:
-                    "inset(0% 0% 0% 0%)"
-            },
-
-            {
-                opacity: 0,
-                clipPath:
-                    "inset(8% 8% 8% 8%)"
-            }
-
-        ],
-
-        {
-            duration: 450,
-
-            easing:
-                "cubic-bezier(0.65, 0, 0.35, 1)",
-
-            fill: "forwards"
-
-        }
-
-    );
-
-
-    overlay.animate(
-
-        [
-
-            {
-                opacity: 1
-            },
-
-            {
-                opacity: 0
-            }
-
-        ],
-
-        {
-            duration: 450,
-            easing: "ease-in",
-            fill: "forwards"
-        }
-
-    );
-
-
-    /* =====================================================
-       CARD FLIPS BACK
-       180 DEGREE → 360 DEGREE
-    ===================================================== */
-
-    setTimeout(function() {
-
-        if (activeBlogCard) {
-
-            activeBlogCard.animate(
-
-                [
-
-                    {
-                        transform:
-                            "perspective(1200px) rotateY(180deg) scale(0.96)",
-                        opacity: 0
-                    },
-
-                    {
-                        transform:
-                            "perspective(1200px) rotateY(270deg) scale(0.98)",
-                        opacity: 0
-                    },
-
-                    {
-                        transform:
-                            "perspective(1200px) rotateY(360deg) scale(1)",
-                        opacity: 1
-                    }
-
-                ],
-
-                {
-                    duration: 650,
-
-                    easing:
-                        "cubic-bezier(0.65, 0, 0.35, 1)",
-
-                    fill: "forwards"
-
-                }
-
-            );
-
-        }
-
-
-        /* =================================================
-           CLEAN UP
-        ================================================= */
-
-        setTimeout(function() {
-
-            overlay.style.display =
-                "none";
-
-
-            preview.style.display =
-                "none";
-
-
-            overlay.style.opacity =
-                "";
-
-
-            preview.style.opacity =
-                "";
-
-
-            preview.style.clipPath =
-                "";
-
-
-            preview.innerHTML =
-                "";
-
-
-            preview.onclick =
-                null;
-
-
-            if (activeBlogCard) {
-
-                activeBlogCard.style.transform =
-                    "";
-
-
-                activeBlogCard.style.opacity =
-                    "";
-
-
-                activeBlogCard.style.willChange =
-                    "";
-
-
-                activeBlogCard.style.transition =
-                    "";
-
-            }
-
-
-            activeBlogCard =
-                null;
-
-
-            blogClosing =
-                false;
-
-
-            document.body.style.overflow =
-                "";
-
-        }, 670);
-
-    }, 450);
+    transform:translateY(-50%) translateY(-3px);
 
 }
 
 
-/* =========================================================
-   OPEN ADD BLOG MODAL
-   ========================================================= */
+/* =====================================================
+   PROJECT GRID
+===================================================== */
 
-function openModal() {
+.project-container{
 
-    const modal =
-        document.getElementById(
-            "blogModal"
-        );
+    width:100%;
 
-    if (!modal) return;
+    max-width:750px;
 
+    margin:auto;
 
-    editingIndex = -1;
+    display:grid;
 
+    grid-template-columns:repeat(3,1fr);
 
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-
-    const title =
-        document.getElementById(
-            "title"
-        );
-
-
-    const category =
-        document.getElementById(
-            "category"
-        );
-
-
-    const blogDate =
-        document.getElementById(
-            "blogDate"
-        );
-
-
-    const content =
-        document.getElementById(
-            "content"
-        );
-
-
-    const featured =
-        document.getElementById(
-            "featured"
-        );
-
-
-    const image =
-        document.getElementById(
-            "image"
-        );
-
-
-    if (modalTitle) {
-
-        modalTitle.textContent =
-            "Add New Blog";
-
-    }
-
-
-    if (title) {
-
-        title.value = "";
-
-    }
-
-
-    if (category) {
-
-        category.value = "";
-
-    }
-
-
-    if (blogDate) {
-
-        blogDate.value =
-            new Date()
-                .toISOString()
-                .split("T")[0];
-
-    }
-
-
-    if (content) {
-
-        content.value = "";
-
-    }
-
-
-    if (featured) {
-
-        featured.checked = false;
-
-    }
-
-
-    if (image) {
-
-        image.value = "";
-
-    }
-
-
-    const previewContainer =
-        document.getElementById(
-            "imagePreviewContainer"
-        );
-
-
-    const preview =
-        document.getElementById(
-            "imagePreview"
-        );
-
-
-    if (previewContainer) {
-
-        previewContainer.style.display =
-            "none";
-
-    }
-
-
-    if (preview) {
-
-        preview.src = "";
-
-    }
-
-
-    modal.style.display =
-        "block";
+    gap:15px;
 
 }
 
 
-/* =========================================================
-   CLOSE MODAL
-   ========================================================= */
+/* =====================================================
+   PROJECT CARD
+===================================================== */
 
-function closeModal() {
+.project-card{
 
-    const modal =
-        document.getElementById(
-            "blogModal"
-        );
+    width:100%;
 
+    background:#E3E9E7;
 
-    if (modal) {
+    border-radius:12px;
 
-        modal.style.display =
-            "none";
+    overflow:hidden;
 
-    }
+    box-shadow:0 6px 18px rgba(0,0,0,.1);
 
+    transition:.3s;
 
-    editingIndex = -1;
+    cursor:pointer;
 
 }
 
 
-/* =========================================================
-   SAVE BLOG
-   ========================================================= */
+.project-card:hover{
 
-function saveBlog() {
+    transform:translateY(-6px);
 
-    const title =
-        document.getElementById(
-            "title"
-        )?.value.trim();
-
-
-    const category =
-        document.getElementById(
-            "category"
-        )?.value;
-
-
-    const date =
-        document.getElementById(
-            "blogDate"
-        )?.value;
-
-
-    const content =
-        document.getElementById(
-            "content"
-        )?.value.trim();
-
-
-    const featured =
-        document.getElementById(
-            "featured"
-        )?.checked;
-
-
-    const imageInput =
-        document.getElementById(
-            "image"
-        );
-
-
-    if (
-        !title ||
-        !category ||
-        !date ||
-        !content
-    ) {
-
-        alert(
-            "Please complete all required fields."
-        );
-
-        return;
-
-    }
-
-
-    function finishSave(imageData) {
-
-        let order;
-
-
-        if (editingIndex >= 0) {
-
-            order =
-                blogs[editingIndex].order ||
-                999;
-
-        } else {
-
-            const maxOrder =
-                blogs.reduce(
-                    function(max, blog) {
-
-                        return Math.max(
-                            max,
-                            blog.order || 0
-                        );
-
-                    },
-                    0
-                );
-
-
-            order =
-                maxOrder + 1;
-
-        }
-
-
-        const blogData = {
-
-            title: title,
-
-            category: category,
-
-            date: date,
-
-            order: order,
-
-            content: content,
-
-            image:
-                imageData ||
-                (
-                    editingIndex >= 0
-                        ? blogs[editingIndex].image
-                        : "profilepic.jpg"
-                ),
-
-            featured:
-                featured === true
-
-        };
-
-
-        if (editingIndex >= 0) {
-
-            blogs[editingIndex] =
-                blogData;
-
-        } else {
-
-            blogs.push(blogData);
-
-        }
-
-
-        saveBlogs();
-
-        displayBlogs();
-
-        closeModal();
-
-    }
-
-
-    if (
-        imageInput &&
-        imageInput.files &&
-        imageInput.files[0]
-    ) {
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function(event) {
-
-                finishSave(
-                    event.target.result
-                );
-
-            };
-
-
-        reader.readAsDataURL(
-            imageInput.files[0]
-        );
-
-    } else {
-
-        finishSave();
-
-    }
+    box-shadow:0 12px 28px rgba(0,0,0,.15);
 
 }
 
 
-/* =========================================================
-   EDIT BLOG
-   ========================================================= */
+/* =====================================================
+   PROJECT CARD IMAGE
+===================================================== */
 
-function editBlog(index) {
+.project-card img{
 
-    const blog =
-        blogs[index];
+    width:100%;
 
+    height:auto;
 
-    if (!blog) return;
+    aspect-ratio:1 / 1;
 
+    object-fit:contain;
 
-    editingIndex =
-        index;
+    object-position:center;
 
+    display:block;
 
-    const modal =
-        document.getElementById(
-            "blogModal"
-        );
-
-
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-
-    const title =
-        document.getElementById(
-            "title"
-        );
-
-
-    const category =
-        document.getElementById(
-            "category"
-        );
-
-
-    const blogDate =
-        document.getElementById(
-            "blogDate"
-        );
-
-
-    const content =
-        document.getElementById(
-            "content"
-        );
-
-
-    const featured =
-        document.getElementById(
-            "featured"
-        );
-
-
-    if (modalTitle) {
-
-        modalTitle.textContent =
-            "Edit Blog";
-
-    }
-
-
-    if (title) {
-
-        title.value =
-            blog.title || "";
-
-    }
-
-
-    if (category) {
-
-        category.value =
-            blog.category || "";
-
-    }
-
-
-    if (blogDate) {
-
-        blogDate.value =
-            blog.date || "";
-
-    }
-
-
-    if (content) {
-
-        content.value =
-            blog.content || "";
-
-    }
-
-
-    if (featured) {
-
-        featured.checked =
-            blog.featured === true;
-
-    }
-
-
-    const preview =
-        document.getElementById(
-            "imagePreview"
-        );
-
-
-    const previewContainer =
-        document.getElementById(
-            "imagePreviewContainer"
-        );
-
-
-    if (
-        blog.image &&
-        preview &&
-        previewContainer
-    ) {
-
-        preview.src =
-            blog.image;
-
-
-        previewContainer.style.display =
-            "block";
-
-    }
-
-
-    if (modal) {
-
-        modal.style.display =
-            "block";
-
-    }
+    background:#D6DEDC;
 
 }
 
 
-/* =========================================================
-   DELETE BLOG
-   ========================================================= */
+/* =====================================================
+   PROJECT CONTENT
+===================================================== */
 
-function deleteBlog(index) {
+.project-content{
 
-    const blog =
-        blogs[index];
-
-
-    if (!blog) return;
-
-
-    const confirmed =
-        confirm(
-            `Delete "${blog.title}"?`
-        );
-
-
-    if (!confirmed) return;
-
-
-    blogs.splice(
-        index,
-        1
-    );
-
-
-    saveBlogs();
-
-    displayBlogs();
+    padding:10px;
 
 }
 
 
-/* =========================================================
-   SEARCH
-   ========================================================= */
+.project-content h2{
 
-function searchBlog() {
+    color:#008080;
 
-    applySearchAndFilter();
+    font-size:16px;
 
-}
-
-
-/* =========================================================
-   CATEGORY FILTER
-   ========================================================= */
-
-function filterCategory() {
-
-    applySearchAndFilter();
+    margin:5px 0 8px;
 
 }
 
 
-/* =========================================================
-   SEARCH + CATEGORY FILTER
-   ========================================================= */
+.project-content p{
 
-function applySearchAndFilter() {
+    color:#555;
 
-    const searchInput =
-        document.getElementById(
-            "search"
-        );
+    font-size:12px;
 
+    line-height:1.4;
 
-    const categorySelect =
-        document.getElementById(
-            "filterCategory"
-        );
-
-
-    if (
-        !searchInput ||
-        !categorySelect
-    ) return;
-
-
-    const searchText =
-        searchInput.value
-            .toLowerCase()
-            .trim();
-
-
-    const selectedCategory =
-        categorySelect.value;
-
-
-    const cards =
-        document.querySelectorAll(
-            "#blogContainer .blog-card"
-        );
-
-
-    let visibleCount =
-        0;
-
-
-    cards.forEach(function(card) {
-
-        const title =
-            card
-                .querySelector("h2")
-                ?.textContent
-                .toLowerCase() || "";
-
-
-        const category =
-            card.dataset.category ||
-            "";
-
-
-        const matchesSearch =
-            title.includes(searchText);
-
-
-        const matchesCategory =
-            selectedCategory === "All" ||
-            category === selectedCategory;
-
-
-        if (
-            matchesSearch &&
-            matchesCategory
-        ) {
-
-            card.style.display =
-                "";
-
-
-            visibleCount++;
-
-        } else {
-
-            card.style.display =
-                "none";
-
-        }
-
-    });
-
-
-    const noBlog =
-        document.getElementById(
-            "noBlog"
-        );
-
-
-    if (noBlog) {
-
-        noBlog.style.display =
-            visibleCount === 0
-                ? "block"
-                : "none";
-
-    }
+    margin:0 0 8px;
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   BADGES
+===================================================== */
+
+.project-labels{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:3px;
+
+}
+
+
+.category,
+.status{
+
+    display:inline-block;
+
+    padding:4px 8px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    margin:0;
+
+}
+
+
+.category{
+
+    background:#ffcc00;
+
+    color:#333;
+
+}
+
+
+.status{
+
+    background:#008080;
+
+    color:white;
+
+}
+
+
+/* =====================================================
+   TOOLS
+===================================================== */
+
+.tools-used{
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    color:#333;
+
+    font-weight:500;
+
+}
+
+
+/* =====================================================
+   PROJECT BUTTONS
+===================================================== */
+
+.project-buttons{
+
+    display:flex;
+
+    gap:5px;
+
+    flex-wrap:wrap;
+
+    margin-top:10px;
+
+}
+
+
+.view-btn{
+
+    background:#008080;
+
+    color:white;
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    transition:.3s;
+
+}
+
+
+.edit-btn{
+
+    background:#ffcc00;
+
+    color:#333;
+
+    border:none;
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    transition:.3s;
+
+}
+
+
+.delete-btn{
+
+    background:#d9534f;
+
+    color:white;
+
+    border:none;
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    transition:.3s;
+
+}
+
+
+.view-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover{
+
+    opacity:.8;
+
+}
+
+
+/* =====================================================
+   NO PROJECT
+===================================================== */
+
+#noProject{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:18px;
+
+    margin-top:30px;
+
+}
+
+
+/* =====================================================
+   ADD / EDIT MODAL
+===================================================== */
+
+.project-modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.6);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:2000;
+
+    padding:20px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-box{
+
+    background:#E3E9E7;
+
+    width:500px;
+
+    max-width:100%;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-box h2{
+
+    color:#008080;
+
+    margin:0 0 20px;
+
+}
+
+
+.project-box label{
+
+    display:block;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+}
+
+
+.project-box input,
+.project-box textarea,
+.project-box select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:5px;
+
+    border:1px solid #bfcac7;
+
+    border-radius:8px;
+
+    outline:none;
+
+    background:#D6DEDC;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-box textarea{
+
+    height:120px;
+
+    resize:none;
+
+}
+
+
+/* =====================================================
    IMAGE PREVIEW
-   ========================================================= */
+===================================================== */
 
-document.addEventListener(
-    "change",
-    function(event) {
+.image-preview{
 
-        if (
-            event.target.id !==
-            "image"
-        ) return;
+    text-align:center;
 
+    margin:15px 0;
 
-        const file =
-            event.target.files[0];
+}
 
 
-        if (!file) return;
+.image-preview img{
+
+    max-width:200px;
+
+    max-height:200px;
+
+    border-radius:10px;
+
+    object-fit:contain;
+
+}
 
 
-        const reader =
-            new FileReader();
+/* =====================================================
+   MODAL BUTTONS
+===================================================== */
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
 
 
-        reader.onload =
-            function(e) {
+.save-btn{
 
-                const preview =
-                    document.getElementById(
-                        "imagePreview"
-                    );
+    background:#008080;
 
+    color:white;
 
-                const container =
-                    document.getElementById(
-                        "imagePreviewContainer"
-                    );
+    border:none;
 
+    padding:12px 25px;
 
-                if (preview) {
+    border-radius:25px;
 
-                    preview.src =
-                        e.target.result;
+    cursor:pointer;
 
-                }
+}
 
 
-                if (container) {
+.cancel-btn{
 
-                    container.style.display =
-                        "block";
+    background:#777;
 
-                }
+    color:white;
 
-            };
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+}
 
 
-        reader.readAsDataURL(file);
+/* =====================================================
+   PROJECT PREVIEW OVERLAY
+===================================================== */
+
+.project-preview-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    z-index:5000;
+
+    overflow-y:auto;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   PROJECT PREVIEW BOX
+===================================================== */
+
+.project-preview-box{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1000px;
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    background:#E3E9E7;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.project-preview-close{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.65);
+
+    color:white;
+
+    font-size:28px;
+
+    line-height:42px;
+
+    cursor:pointer;
+
+    z-index:20;
+
+}
+
+
+/* =====================================================
+   PREVIEW COVER
+===================================================== */
+
+.project-preview-cover{
+
+    width:auto;
+
+    max-width:100%;
+
+    height:auto;
+
+    max-height:300px;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    background:#D6DEDC;
+
+    display:block;
+
+    margin:0 auto;
+
+}
+
+
+/* =====================================================
+   PREVIEW CONTENT
+===================================================== */
+
+.project-preview-content{
+
+    padding:35px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-preview-labels{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:3px;
+
+    margin:0 0 10px;
+
+}
+
+
+.project-preview-content h1{
+
+    color:#008080;
+
+    font-size:36px;
+
+    margin:15px 0;
+
+    line-height:1.2;
+
+}
+
+
+.project-preview-description{
+
+    color:#555;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    margin:0;
+
+}
+
+
+.project-preview-tools{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#D6DEDC;
+
+    border-radius:10px;
+
+    color:#333;
+
+}
+
+
+/* =====================================================
+   IMPORTANT GLOBAL SECTION RESET
+   Prevent style.css section rules from affecting
+   sections created inside the project preview.
+===================================================== */
+
+.project-preview-box section{
+
+    width:100% !important;
+
+    max-width:none !important;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    padding:0 !important;
+
+    margin:0 !important;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   EXTRA PROJECT CONTENT
+===================================================== */
+
+.project-extra-content{
+
+    width:100%;
+
+    margin:22px 0 0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   EXTRA PROJECT SECTION
+===================================================== */
+
+.project-preview-box .project-extra-section{
+
+    display:block !important;
+
+    width:100% !important;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    margin:0 0 18px !important;
+
+    padding:18px !important;
+
+    background:#F4F6F5;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:14px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-preview-box .project-extra-section:last-child{
+
+    margin-bottom:0 !important;
+
+}
+
+
+/* =====================================================
+   EXTRA SECTION TITLE
+===================================================== */
+
+.project-preview-box .project-extra-title{
+
+    display:block;
+
+    width:100%;
+
+    margin:0 0 14px !important;
+
+    padding:0;
+
+    color:#008080;
+
+    font-family:'Raleway',sans-serif;
+
+    font-size:22px;
+
+    line-height:1.25;
+
+    text-align:left;
+
+}
+
+
+/* =====================================================
+   PROJECT HIGHLIGHTS
+===================================================== */
+
+.project-highlight-grid{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-highlight-card{
+
+    display:flex !important;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    width:100%;
+
+    min-width:0;
+
+    min-height:90px !important;
+
+    height:auto !important;
+
+    margin:0 !important;
+
+    padding:13px !important;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:11px;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT ICON
+===================================================== */
+
+.project-highlight-icon{
+
+    width:40px;
+
+    height:40px;
+
+    min-width:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0;
+
+    padding:0;
+
+    background:#D6DEDC;
+
+    border-radius:9px;
+
+    font-size:20px;
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT TEXT
+===================================================== */
+
+.project-highlight-text{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
+.project-highlight-card h3{
+
+    margin:0 0 4px !important;
+
+    padding:0;
+
+    color:#008080;
+
+    font-size:14px;
+
+    line-height:1.3;
+
+}
+
+
+.project-highlight-card p{
+
+    margin:0 !important;
+
+    padding:0;
+
+    color:#555;
+
+    font-size:12px;
+
+    line-height:1.45;
+
+}
+
+
+/* =====================================================
+   KEY FEATURES
+===================================================== */
+
+.project-feature-list{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:9px;
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-feature-item{
+
+    display:flex !important;
+
+    align-items:center;
+
+    gap:9px;
+
+    width:100%;
+
+    min-width:0;
+
+    min-height:42px !important;
+
+    height:auto !important;
+
+    margin:0 !important;
+
+    padding:9px 11px !important;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:9px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-feature-item > span{
+
+    width:24px;
+
+    height:24px;
+
+    min-width:24px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0;
+
+    padding:0;
+
+    background:#008080;
+
+    color:white;
+
+    border-radius:50%;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+
+.project-feature-item p{
+
+    margin:0 !important;
+
+    padding:0;
+
+    color:#555;
+
+    font-size:12px;
+
+    line-height:1.35;
+
+}
+
+
+/* =====================================================
+   DESIGN CONCEPT
+===================================================== */
+
+.project-concept-box{
+
+    display:block;
+
+    width:100%;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    margin:0;
+
+    padding:14px 16px;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-left:4px solid #008080;
+
+    border-radius:9px;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-concept-box p{
+
+    margin:0 !important;
+
+    padding:0;
+
+    color:#555;
+
+    font-size:13px;
+
+    line-height:1.55;
+
+}
+
+
+/* =====================================================
+   MY ROLE
+===================================================== */
+
+.project-role-list{
+
+    display:flex !important;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+.project-role-list span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    width:auto;
+
+    min-height:0;
+
+    margin:0 !important;
+
+    padding:7px 11px;
+
+    background:#E3E9E7;
+
+    border:1px solid #CBD5D2;
+
+    border-radius:20px;
+
+    color:#555;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   PHOTO STRIP SECTION
+===================================================== */
+
+.project-preview-box .photo-strip-section{
+
+    width:100% !important;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    margin:25px 0 0 !important;
+
+    padding:25px 0 0 !important;
+
+    border-top:2px solid #CBD5D2;
+
+    box-sizing:border-box;
+
+}
+
+
+.photo-strip-section h2{
+
+    color:#008080;
+
+    font-size:28px;
+
+    margin:0 0 8px;
+
+}
+
+
+.photo-strip-intro{
+
+    color:#666;
+
+    font-size:15px;
+
+    margin:0 0 25px;
+
+    line-height:1.6;
+
+}
+
+
+/* =====================================================
+   PHOTO STRIP GRID
+===================================================== */
+
+.photo-strip-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+/* =====================================================
+   PHOTO STRIP CARD
+===================================================== */
+
+.photo-strip-item{
+
+    background:#E3E9E7;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    text-align:center;
+
+    border:1px solid #CBD5D2;
+
+    overflow:hidden;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   PHOTO STRIP NUMBER
+===================================================== */
+
+.photo-strip-number{
+
+    width:30px;
+
+    height:30px;
+
+    margin:0 auto 12px;
+
+    background:#008080;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   PHOTO STRIP IMAGE
+===================================================== */
+
+.photo-strip-image{
+
+    width:100%;
+
+    height:380px;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    display:block;
+
+    background:#D6DEDC;
+
+    border-radius:10px;
+
+    padding:5px;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+   PHOTO STRIP TITLE
+===================================================== */
+
+.photo-strip-item h3{
+
+    color:#008080;
+
+    font-size:18px;
+
+    margin:15px 5px 8px;
+
+    line-height:1.3;
+
+}
+
+
+.photo-strip-item p{
+
+    color:#555;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    margin:0 5px 10px;
+
+}
+
+
+/* =====================================================
+   PREVIEW ACTIONS
+===================================================== */
+
+.project-preview-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:35px;
+
+    padding-top:25px;
+
+    border-top:1px solid #CBD5D2;
+
+}
+
+
+.close-preview-btn{
+
+    background:#777;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+}
+
+
+.close-preview-btn:hover{
+
+    opacity:.8;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#008080;
+
+    color:white;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    border-top:3px solid #00b3b3;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:900px){
+
+    .portfolio{
+
+        margin-top:-60px;
 
     }
-);
 
 
-/* =========================================================
-   CLOSE MODAL OUTSIDE
-   ========================================================= */
+    .project-container{
 
-window.addEventListener(
-    "click",
-    function(event) {
+        max-width:650px;
 
-        const modal =
-            document.getElementById(
-                "blogModal"
-            );
+        grid-template-columns:repeat(2,1fr);
 
-
-        if (
-            event.target === modal
-        ) {
-
-            closeModal();
-
-        }
+        gap:18px;
 
     }
-);
 
 
-/* =========================================================
-   ESC KEY
-   ========================================================= */
+    .photo-strip-grid{
 
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key ===
-            "Escape"
-        ) {
-
-            closePreview();
-
-            closeModal();
-
-        }
+        grid-template-columns:repeat(2,1fr);
 
     }
-);
 
 
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
+    .photo-strip-image{
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        initializeBlogs();
-
-        displayBlogs();
+        height:350px;
 
     }
-);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:768px){
+
+    .portfolio{
+
+        margin-top:-45px;
+
+        padding:50px 15px;
+
+    }
+
+
+    .portfolio-header{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+        gap:20px;
+
+    }
+
+
+    .portfolio-header > div{
+
+        width:100%;
+
+    }
+
+
+    .portfolio-header h1{
+
+        font-size:32px;
+
+    }
+
+
+    .portfolio-header p{
+
+        font-size:16px;
+
+    }
+
+
+    .add-project-btn{
+
+        position:static;
+
+        transform:none;
+
+    }
+
+
+    .add-project-btn:hover{
+
+        transform:translateY(-2px);
+
+    }
+
+
+    .project-container{
+
+        grid-template-columns:1fr;
+
+        max-width:500px;
+
+    }
+
+
+    .project-box{
+
+        width:100%;
+
+    }
+
+
+    /* =========================
+       PREVIEW
+    ========================= */
+
+    .project-preview-overlay{
+
+        padding:15px;
+
+        align-items:flex-start;
+
+    }
+
+
+    .project-preview-box{
+
+        max-height:95vh;
+
+        border-radius:15px;
+
+    }
+
+
+    .project-preview-cover{
+
+        width:auto;
+
+        max-width:100%;
+
+        height:auto;
+
+        max-height:260px;
+
+        object-fit:contain;
+
+        object-position:center;
+
+        margin:0 auto;
+
+        background:#D6DEDC;
+
+    }
+
+
+    .project-preview-content{
+
+        padding:25px 20px;
+
+    }
+
+
+    .project-preview-content h1{
+
+        font-size:28px;
+
+    }
+
+
+    /* =========================
+       EXTRA CONTENT
+    ========================= */
+
+    .project-preview-box .project-extra-section{
+
+        margin-bottom:14px !important;
+
+        padding:14px !important;
+
+    }
+
+
+    .project-preview-box .project-extra-title{
+
+        font-size:20px;
+
+        margin-bottom:11px !important;
+
+    }
+
+
+    /* =========================
+       HIGHLIGHTS
+    ========================= */
+
+    .project-highlight-grid{
+
+        grid-template-columns:1fr;
+
+        gap:9px;
+
+    }
+
+
+    .project-highlight-card{
+
+        min-height:0 !important;
+
+        padding:12px !important;
+
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .project-feature-list{
+
+        grid-template-columns:1fr;
+
+        gap:8px;
+
+    }
+
+
+    /* =========================
+       PHOTO STRIPS
+    ========================= */
+
+    .project-preview-box .photo-strip-section{
+
+        margin-top:22px !important;
+
+        padding-top:22px !important;
+
+    }
+
+
+    .photo-strip-grid{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+
+    }
+
+
+    .photo-strip-image{
+
+        width:100%;
+
+        height:auto;
+
+        max-height:none;
+
+        object-fit:contain;
+
+        background:#D6DEDC;
+
+    }
+
+
+    .photo-strip-item{
+
+        padding:15px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:500px){
+
+    .portfolio{
+
+        margin-top:-35px;
+
+        padding:45px 15px 50px;
+
+    }
+
+
+    .portfolio-header h1{
+
+        font-size:30px;
+
+    }
+
+
+    .portfolio-header p{
+
+        font-size:15px;
+
+    }
+
+
+    .project-content{
+
+        padding:12px;
+
+    }
+
+
+    .project-preview-content{
+
+        padding:20px 15px;
+
+    }
+
+
+    .project-preview-content h1{
+
+        font-size:25px;
+
+    }
+
+
+    .project-preview-description{
+
+        font-size:14px;
+
+    }
+
+
+    .project-preview-tools{
+
+        font-size:13px;
+
+    }
+
+
+    .project-preview-box .project-extra-section{
+
+        padding:12px !important;
+
+    }
+
+
+    .project-highlight-card{
+
+        gap:8px;
+
+    }
+
+
+    .project-highlight-icon{
+
+        width:36px;
+
+        height:36px;
+
+        min-width:36px;
+
+        font-size:18px;
+
+    }
+
+
+    .project-highlight-card h3{
+
+        font-size:14px;
+
+    }
+
+
+    .project-highlight-card p{
+
+        font-size:12px;
+
+    }
+
+
+    .project-feature-item p{
+
+        font-size:12px;
+
+    }
+
+
+    .project-concept-box p{
+
+        font-size:13px;
+
+    }
+
+
+    .project-role-list span{
+
+        font-size:12px;
+
+        padding:7px 10px;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:360px){
+
+    .portfolio{
+
+        margin-top:-25px;
+
+        padding:40px 10px 45px;
+
+    }
+
+
+    .portfolio-header h1{
+
+        font-size:27px;
+
+    }
+
+
+    .portfolio-header p{
+
+        font-size:14px;
+
+    }
+
+
+    .project-preview-overlay{
+
+        padding:10px;
+
+    }
+
+
+    .project-preview-box{
+
+        border-radius:13px;
+
+    }
+
+
+    .project-preview-content{
+
+        padding:18px 12px 20px;
+
+    }
+
+
+    .project-preview-content h1{
+
+        font-size:23px;
+
+    }
+
+
+    .project-preview-box .project-extra-section{
+
+        padding:11px !important;
+
+    }
+
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+html.dark-mode .portfolio{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .portfolio-header h1{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .portfolio-header p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .add-project-btn{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .add-project-btn:hover{
+
+    background:#93C5FD;
+
+}
+
+
+html.dark-mode .project-card{
+
+    background:#1E293B;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.35);
+
+}
+
+
+html.dark-mode .project-card:hover{
+
+    box-shadow:0 12px 28px rgba(0,0,0,.45);
+
+}
+
+
+html.dark-mode .project-card img{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-content h2{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-content p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .category{
+
+    background:#D4AA00;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode .status{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .tools-used{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .view-btn{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .edit-btn{
+
+    background:#D4AA00;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode .delete-btn{
+
+    background:#D9534F;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode #noProject{
+
+    color:#94A3B8;
+
+}
+
+
+/* =====================================================
+   DARK MODE MODAL
+===================================================== */
+
+html.dark-mode .project-box{
+
+    background:#1E293B;
+
+    color:#E2E8F0;
+
+}
+
+
+html.dark-mode .project-box h2{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-box label{
+
+    color:#E2E8F0;
+
+}
+
+
+html.dark-mode .project-box input,
+html.dark-mode .project-box textarea,
+html.dark-mode .project-box select{
+
+    background:#111827;
+
+    color:#D1D5DB;
+
+    border-color:#475569;
+
+}
+
+
+html.dark-mode .project-box input::placeholder,
+html.dark-mode .project-box textarea::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+html.dark-mode .project-box input:focus,
+html.dark-mode .project-box textarea:focus,
+html.dark-mode .project-box select:focus{
+
+    border-color:#60A5FA;
+
+}
+
+
+html.dark-mode .save-btn{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .save-btn:hover{
+
+    background:#93C5FD;
+
+}
+
+
+html.dark-mode .cancel-btn{
+
+    background:#dc3545;
+
+    color:#FFFFFF;
+
+}
+
+
+html.dark-mode .cancel-btn:hover{
+
+    background:#b52a37;
+
+}
+
+
+/* =====================================================
+   DARK MODE PROJECT PREVIEW
+===================================================== */
+
+html.dark-mode .project-preview-overlay{
+
+    background:rgba(0,0,0,.82);
+
+}
+
+
+html.dark-mode .project-preview-box{
+
+    background:#1E293B;
+
+    color:#E2E8F0;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.55);
+
+}
+
+
+html.dark-mode .project-preview-cover{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-preview-content h1{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-preview-description{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-preview-tools{
+
+    background:#111827;
+
+    color:#D1D5DB;
+
+}
+
+
+/* =====================================================
+   DARK MODE EXTRA SECTIONS
+===================================================== */
+
+html.dark-mode .project-preview-box .project-extra-section{
+
+    background:#162235;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .project-preview-box .project-extra-title{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-highlight-card{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .project-highlight-icon{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-highlight-card h3{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-highlight-card p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-feature-item{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .project-feature-item > span{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .project-feature-item p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-concept-box{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+    border-left-color:#60A5FA;
+
+}
+
+
+html.dark-mode .project-concept-box p{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .project-role-list span{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+    color:#D1D5DB;
+
+}
+
+
+/* =====================================================
+   DARK MODE PHOTO STRIPS
+===================================================== */
+
+html.dark-mode .project-preview-box .photo-strip-section{
+
+    border-top-color:#334155;
+
+}
+
+
+html.dark-mode .photo-strip-section h2{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .photo-strip-intro{
+
+    color:#D1D5DB;
+
+}
+
+
+html.dark-mode .photo-strip-item{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+
+html.dark-mode .photo-strip-number{
+
+    background:#60A5FA;
+
+    color:#172554;
+
+}
+
+
+html.dark-mode .photo-strip-image{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .photo-strip-item h3{
+
+    color:#60A5FA;
+
+}
+
+
+html.dark-mode .photo-strip-item p{
+
+    color:#D1D5DB;
+
+}
+
+
+/* =====================================================
+   DARK MODE ACTIONS
+===================================================== */
+
+html.dark-mode .project-preview-actions{
+
+    border-top-color:#334155;
+
+}
+
+
+html.dark-mode .close-preview-btn{
+
+    background:#475569;
+
+    color:#FFFFFF;
+
+}
+
+
+/* =====================================================
+   SCROLLBARS
+===================================================== */
+
+.project-box::-webkit-scrollbar,
+.project-preview-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+.project-box::-webkit-scrollbar-thumb,
+.project-preview-box::-webkit-scrollbar-thumb{
+
+    background:#9BA9A5;
+
+    border-radius:10px;
+
+}
+
+
+html.dark-mode .project-box::-webkit-scrollbar-track,
+html.dark-mode .project-preview-box::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+
+html.dark-mode .project-box::-webkit-scrollbar-thumb,
+html.dark-mode .project-preview-box::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+}
