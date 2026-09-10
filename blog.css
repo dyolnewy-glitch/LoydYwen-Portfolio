@@ -1215,6 +1215,16 @@ html.dark-mode .blog-category {
 
 
 /* =========================
+   LATEST BLOG CATEGORY TEXT
+   ONLY
+========================= */
+
+html.dark-mode .blog-container .blog-category {
+    color: #BFDBFE;
+}
+
+
+/* =========================
    ACTION BUTTONS
 ========================= */
 
